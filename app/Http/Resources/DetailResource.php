@@ -6,6 +6,7 @@ use App\Models\BusinessSize;
 use App\Models\BusinessType;
 use App\Models\Country;
 use App\Models\Detail;
+use App\Models\Follower;
 use App\Models\LegalStatus;
 use App\Models\Status;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -45,6 +46,8 @@ class DetailResource extends JsonResource
             'status_id' => $this->status_id,
             'native_country' => $this->native_country,
             'residence_country' => $this->residence_country,
+            'subscribers' =>  FollowerResource::collection(Follower::where('subscription', $this->user_id)->orderBy('id', 'desc')->get()),
+            'subscriptions' =>  FollowerResource::collection(Follower::where('subscriber', $this->user_id)->orderBy('id', 'desc')->get()),
             'status' => new StatusResource(Status::find($this->status_id)),
             'business_type' => new BusinessTypeResource(BusinessType::find($this->business_type_id)),
             'business_size' => new BusinessSizeResource(BusinessSize::find($this->business_size_id)),

@@ -274,6 +274,17 @@
                                 Characters</span
                             >
                         </div>
+                        <span
+                            v-if="type == 'article'"
+                            class="text-xs font-light italic"
+                        >
+                            <span>{{ $t("instead-add-propau") }}</span>
+                            <span class="ml-1 text-primary-blue"
+                                ><a href="/add/propau"
+                                    >{{ $tc("add", 2) }} PropAU</a
+                                ></span
+                            >
+                        </span>
                     </div>
                 </div>
 
@@ -383,11 +394,6 @@ onMounted(async () => {
         router.push({ name: "home" });
     }
 
-    await getContinents();
-    await getZones();
-    await getCountries();
-    await getMinistries();
-
     if (props.type == "article") {
         sceditor.create(textarea.value, {
             format: "xhtml",
@@ -400,6 +406,11 @@ onMounted(async () => {
         textarea.value.value == "";
     }
     nbClick.value++;
+
+    await getContinents();
+    await getZones();
+    await getCountries();
+    await getMinistries();
 });
 
 const filteredZone = () => {

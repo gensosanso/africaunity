@@ -35,6 +35,15 @@ class JobOfferController extends Controller
             $jobs = $jobs->whereRaw('LOWER(`title`) LIKE ?', ['%' . trim(strtolower($searchKey)) . '%']);
         }
 
+        if ($request->recruitment_agency != "") {
+            $recruitment_agency = $request->recruitment_agency;
+            $jobs = $jobs->with(['user' => function ($query) use ($recruitment_agency) {
+                $query->where('recruitment_agency', $recruitment_agency);
+            }])->whereHas('user', function (Builder $query) use ($recruitment_agency) {
+                $query->where('recruitment_agency',  intval($recruitment_agency));
+            });
+        }
+
         if ($request->min_price != "") {
             $price = $request->min_price;
             $jobs = $jobs->where('min_price', '>=', $price)->where('max_price', '<=', $price);
@@ -215,6 +224,7 @@ class JobOfferController extends Controller
             'level_study_id' => 'integer|required',
             'city_id' => 'integer|required',
             'zone_id' => 'integer|required',
+            'start_date' => 'date|required',
             'continent_id' => 'integer|required',
             'country_id' => 'integer|required',
             'activityAreas' => 'required',
@@ -234,6 +244,7 @@ class JobOfferController extends Controller
             'year_experience_id' => $fileds['year_experience_id'],
             'work_department_id' => $fileds['work_department_id'],
             'work_mode_id' => $fileds['work_mode_id'],
+            'start_date' => $fileds['start_date'],
             'size_company_id' => $fileds['size_company_id'],
             'offer_type_id' => $fileds['offer_type_id'],
             'level_study_id' => $fileds['level_study_id'],
@@ -292,6 +303,7 @@ class JobOfferController extends Controller
             'company_name' => 'required|string',
             'company_email' => 'required|string',
             'company_website' => '',
+            'start_date' => 'date|required',
             'min_price' => 'required|string',
             'max_price' => 'string|required',
             'user_id' => 'integer|required',
@@ -330,6 +342,7 @@ class JobOfferController extends Controller
             'zone_id' => $fileds['zone_id'],
             'continent_id' => $fileds['continent_id'],
             'country_id' => $fileds['country_id'],
+            'start_date' => $fileds['start_date'],
         ];
 
         if ($request->file('company_logo')) {

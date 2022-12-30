@@ -182,17 +182,33 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-span-2">
-                        <label class="dark:text-gray-200 text-gray-700"
-                            >{{ $t("location") }}
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input
-                            required
-                            v-model="jobOffer.location"
-                            type="text"
-                            class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
-                        />
+                   <div
+                        class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
+                    >
+                        <div class="">
+                            <label class="dark:text-gray-200 text-gray-700"
+                                >{{ $t("location") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.location"
+                                type="text"
+                                class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                        </div>
+                        <div class="">
+                            <label class="dark:text-gray-200 text-gray-700"
+                                >{{ $t("start-date") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.start_date"
+                                type="date"
+                                class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                        </div>
                     </div>
 
                     <div
@@ -762,6 +778,7 @@ const saveJobOffer = async () => {
     formData.append("company_logo", jobOffer.value.company_logo);
     formData.append("min_price", jobOffer.value.min_price);
     formData.append("max_price", jobOffer.value.max_price);
+    formData.append("start_date", jobOffer.value.start_date);
     formData.append("user_id", jobOffer.value.user.id);
     formData.append("currency_id", jobOffer.value.currency.id);
     formData.append("year_experience_id", jobOffer.value.year_experience.id);

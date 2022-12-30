@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DetailController;
 use App\Http\Controllers\Api\EmailVerificationController;
+use App\Http\Controllers\Api\FollowerController;
 use App\Http\Controllers\Api\ForgotPasswordController;
 use App\Http\Controllers\Api\JobOfferController;
 use App\Http\Controllers\Api\LanguageController;
@@ -165,4 +166,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::post("/logout", [AuthController::class, 'logout']);
     Route::post("/verif-admin", [AuthController::class, 'verif_admin']);
+
+
+    Route::post("/followers", [FollowerController::class, 'store']);
+    Route::delete("/followers/{follower}", [FollowerController::class, 'destroy']);
 });

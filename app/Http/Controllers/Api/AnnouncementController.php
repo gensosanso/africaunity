@@ -153,14 +153,18 @@ class AnnouncementController extends Controller
             'university_id' => $fileds['university_id'],
             'email' => $fileds['email'],
         ];
-
-        if ($request->file('image')) {
-            $request->validate([
-                'image' => 'required|mimes:png,jpg,jpeg,gif|dimensions:max_width=2048,max_height=2048'
-            ]);
-            $filename = '/uploads/' . time() . '.' . $request->file('image')->extension();
-            $request->file('image')->storePubliclyAs('public', $filename);
-            $data['image'] = $filename;
+        $imageList = "";
+        $i = 1;
+        if ($request->image) {
+            foreach ($request->image as $image) {
+                if (is_file($image)) {
+                    $filename =  '/uploads/' . time() . "_$i" . '.' . $image->extension();
+                    $imageList .= $imageList == "" ? $filename : ";$filename";
+                    $image->storePubliclyAs('public', $filename);
+                    $i += 1;
+                }
+            }
+            $data['image'] = $imageList;
         }
 
         $announcement = Announcement::create($data);
@@ -170,7 +174,7 @@ class AnnouncementController extends Controller
 
     public function show(Announcement $announcement)
     {
-        return new AnnouncementResource2($announcement);
+        return new AnnouncementResource($announcement);
     }
 
     public function show2(Announcement $announcement)
@@ -187,7 +191,6 @@ class AnnouncementController extends Controller
             'phone' => 'required|string',
             'email' => 'required|string',
             'website' => '',
-            'user_id' => 'integer|required',
             'category_announcement_id' => 'integer|required',
             'university_id' => 'integer|required',
         ]);
@@ -197,7 +200,6 @@ class AnnouncementController extends Controller
             'adress' => $fileds['adress'],
             'phone' => $fileds['phone'],
             'website' => $fileds['website'],
-            'user_id' => $fileds['user_id'],
             'category_announcement_id' => $fileds['category_announcement_id'],
             'university_id' => $fileds['university_id'],
             'email' => $fileds['email'],
@@ -217,18 +219,37 @@ class AnnouncementController extends Controller
             $data['price'] = $fileds['price'];
         }
 
-        if ($request->file('image')) {
-            $request->validate([
-                'image' => 'required|mimes:png,jpg,jpeng,gif|dimensions:max_width=2048,max_height=2048'
-            ]);
-            $filename = '/uploads/' . time() . '.' . $request->file('image')->extension();
-            $request->file('image')->storePubliclyAs('public', $filename);
-            if (File::exists(public_path(substr($announcement->image, 1, null)))) {
-                File::delete(public_path(substr($announcement->image, 1, null)));
+        $initFiles = explode(';', $announcement->image);
+        $oldFiles = explode(',', $request->old_files);
+
+        foreach ($initFiles as $initFile) {
+            if (!in_array($initFile, $oldFiles)) {
+                if (File::exists(public_path(substr($initFile, 1, null)))) {
+                    File::delete(public_path(substr($initFile, 1, null)));
+                }
             }
-            $data['image'] = $filename;
         }
 
+        $imageList = "";
+        $i = 1;
+        if ($request->image) {
+            foreach ($request->image as $image) {
+                if (is_file($image)) {
+                    $filename =  '/uploads/' . time() . "_$i" . '.' . $image->extension();
+                    $imageList .= $imageList == "" ? $filename : ";$filename";
+                    $image->storePubliclyAs('public', $filename);
+                    $i += 1;
+                }
+            }
+        }
+
+        if (sizeof($oldFiles) > 0 && $oldFiles[0] != "") {
+            foreach ($oldFiles as $oldFile) {
+                $imageList .= $imageList == "" ? $oldFile : ";$oldFile";
+            }
+        }
+
+        $data['image'] = $imageList;
         $announcement->update($data);
 
         return new AnnouncementResource($announcement);

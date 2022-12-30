@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Follower;
 use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Str;
@@ -23,10 +24,16 @@ class UserResource2 extends JsonResource
             'slug' => Str::slug("$this->firstname  $this->lastname"),
             'status' => $this->status,
             'email' => $this->email,
+            'hide_email' => $this->hide_email,
+            'hide_phone' => $this->hide_phone,
+            'hide_birthday' => $this->hide_birthday,
+            'recruitment_agency' => $this->recruitment_agency,
             'type' => $this->type,
             'avatar' => $this->avatar,
             'cover' => $this->cover,
-            'detail' => new DetailResource(User::find($this->id)->detail)
+            'detail' => new DetailResource(User::find($this->id)->detail),
+            'subscribers' =>  FollowerResource::collection(Follower::where('subscription', $this->id)->orderBy('id', 'desc')->get()),
+            'subscriptions' =>  FollowerResource::collection(Follower::where('subscriber', $this->id)->orderBy('id', 'desc')->get()),
         ];
     }
 }

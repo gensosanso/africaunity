@@ -9,6 +9,17 @@ export default function useAnnouncements() {
     const loading = ref(0);
     const isAll = ref(false);
     const page = ref(1);
+
+    const getFormData = (object) =>
+        Object.entries(object).reduce((fd, [key, val]) => {
+            if (Array.isArray(val)) {
+                val.forEach((v) => fd.append(`${key}[]`, v.file));
+            } else {
+                fd.append(key, val);
+            }
+            return fd;
+        }, new FormData());
+
     const getAnnouncements = async () => {
         errors.value = "";
         loading.value = true;
@@ -112,12 +123,16 @@ export default function useAnnouncements() {
         errors.value = "";
         try {
             loading.value = true;
-            await axios.post("/api/announcements", data, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.token}`,
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            let response = await axios.post(
+                "/api/announcements",
+                getFormData(data),
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.token}`,
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            );
             loading.value = false;
         } catch (e) {
             if (e.response.status == 422) {
@@ -128,13 +143,21 @@ export default function useAnnouncements() {
         }
     };
 
-    const updateAnnouncement = async (data) => {
+    const updateAnnouncement = async (data, id) => {
         errors.value = "";
         try {
             loading.value = true;
-            await axios.post(
+            let oldFiles = data.image.filter((f) => typeof f == "string");
+            let newFiles = data.image.filter((f) => typeof f != "string");
+            data.image = newFiles;
+
+            let form = getFormData(data);
+            form.append("old_files", oldFiles);
+            form.append("_method", "PUT");
+
+            let response = await axios.post(
                 "/api/announcements/" + announcement.value.id,
-                data,
+                form,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.token}`,
@@ -142,6 +165,7 @@ export default function useAnnouncements() {
                     },
                 }
             );
+            console.log(response.data.data);
             loading.value = false;
         } catch (e) {
             loading.value = 0;

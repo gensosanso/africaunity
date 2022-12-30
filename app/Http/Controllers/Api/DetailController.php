@@ -79,6 +79,9 @@ class DetailController extends Controller
 
         $user = User::find($detail->user_id);
         $user->hide_email = $request->hideEmail ? 1 : 0;
+        $user->hide_phone = $request->hidePhone ? 1 : 0;
+        $user->hide_birthday = $request->hideBirthday ? 1 : 0;
+        $user->recruitment_agency = $request->recruitmentAgency ? 1 : 0;
         $user->save();
 
         return new DetailResource($detail);

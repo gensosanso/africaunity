@@ -1,12 +1,15 @@
 <template>
     <div>
+        <h1 class="text-center text-2xl font-bold text-gray-500">
+            {{ $t("edit") }} {{ $t("your") }} {{ $t("profile") }}
+        </h1>
         <form @submit.prevent="saveDetail()" class="py-7">
             <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
                 <div
                     v-if="user.type == 'particular'"
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700"
+                    <label class="text-gray-700"
                         >{{ $t("status") }}
                         <span class="text-red-500">*</span></label
                     >
@@ -39,32 +42,32 @@
                     "
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700">{{
+                    <label class="text-gray-700">{{
                         $t("social-object")
                     }}</label>
                     <textarea
                         v-model="detail.social_object"
-                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                        class="mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
                     </textarea>
                 </div>
                 <div v-else class="relative col-span-2">
-                    <label class="dark:text-gray-200 text-gray-700">{{
+                    <label class="text-gray-700">{{
                         $t("goal-attribution")
                     }}</label>
                     <textarea
                         v-model="detail.goal_attribution"
-                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                        class="mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
                     </textarea>
                 </div>
                 <div class="relative col-span-2">
-                    <label class="dark:text-gray-200 text-gray-700">
+                    <label class="text-gray-700">
                         {{ $t("adresse") + " " + $t("email") }}
                         <span class="text-red-500">*</span>
                         <span class="ml-4">
                             <input type="checkbox" v-model="user.hide_email" />
-                            <span class="text-xs font-light">Masquer</span>
+                            <span class="ml-2 text-xs font-light">Masquer</span>
                         </span>
                     </label>
                     <input
@@ -79,23 +82,23 @@
                     v-if="user.type == 'particular'"
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700">{{
+                    <label class="text-gray-700">{{
                         $t("diplome-certification")
                     }}</label>
                     <textarea
                         v-model="detail.goal_attribution"
-                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                        class="mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
                     </textarea>
                 </div>
                 <div class="relative col-span-2">
-                    <label class="dark:text-gray-200 text-gray-700">{{
+                    <label class="text-gray-700">{{
                         $t("presentation")
                     }}</label>
                     <textarea
                         maxlength="500"
                         v-model="detail.presentation"
-                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                        class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
                     </textarea>
                     <span class="text-xs font-light text-gray-400"
@@ -113,7 +116,7 @@
                     "
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700"
+                    <label class="text-gray-700"
                         >{{ $t("name-responsable")
                         }}<span class="text-red-500">*</span></label
                     >
@@ -132,9 +135,7 @@
                     "
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700">{{
-                        $t("adresse")
-                    }}</label>
+                    <label class="text-gray-700">{{ $t("adresse") }}</label>
                     <input
                         type="text"
                         v-model="detail.adress"
@@ -144,7 +145,7 @@
                 </div>
                 <div class="col-span-2 grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div v-if="user.type == 'particular'" class="relative">
-                        <label class="dark:text-gray-200 text-gray-700"
+                        <label class="text-gray-700"
                             >{{ $t("sex") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -157,10 +158,19 @@
                         </select>
                     </div>
                     <div class="relative">
-                        <label class="dark:text-gray-200 text-gray-700"
+                        <label class="text-gray-700"
                             >{{ $t("phone-number")
-                            }}<span class="text-red-500">*</span></label
-                        >
+                            }}<span class="text-red-500">*</span>
+                            <span class="ml-4">
+                                <input
+                                    type="checkbox"
+                                    v-model="user.hide_phone"
+                                />
+                                <span class="ml-2 text-xs font-light"
+                                    >Masquer</span
+                                >
+                            </span>
+                        </label>
                         <input
                             type="text"
                             v-model="detail.phone_number"
@@ -169,7 +179,7 @@
                         />
                     </div>
                     <div v-if="user.type != 'particular'" class="relative">
-                        <label class="dark:text-gray-200 text-gray-700"
+                        <label class="text-gray-700"
                             >{{ $t("phone-number") }} 2</label
                         >
                         <input
@@ -184,7 +194,7 @@
                         class="relative"
                         v-if="user.type == 'particular' || user.type == 'ip'"
                     >
-                        <label class="dark:text-gray-200 text-gray-700">
+                        <label class="text-gray-700">
                             <span>{{ $t("native-country") }}</span>
                             <span class="text-red-500"> *</span>
                         </label>
@@ -219,7 +229,7 @@
                                 : 'col-span-2',
                         ]"
                     >
-                        <label class="dark:text-gray-200 text-gray-700">
+                        <label class="text-gray-700">
                             <span
                                 v-if="
                                     user.type == 'particular' ||
@@ -256,10 +266,14 @@
                 </div>
                 <div
                     v-if="user.type != 'particular'"
-                    class="col-span-2 grid grid-cols-1 gap-6 sm:grid-cols-2"
+                    :class="[
+                        user.type != 'particular' && user.type != 'ip'
+                            ? 'col-span-2 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'
+                            : 'col-span-2 grid grid-cols-1 gap-6 sm:grid-cols-2',
+                    ]"
                 >
                     <div class="relative">
-                        <label class="dark:text-gray-200 text-gray-700">
+                        <label class="text-gray-700">
                             <span v-if="user.type == 'ip'">{{
                                 $t("perimetre")
                             }}</span>
@@ -290,7 +304,7 @@
                         </select>
                     </div>
                     <div class="relative">
-                        <label class="dark:text-gray-200 text-gray-700">
+                        <label class="text-gray-700">
                             <span v-if="user.type == 'ip'">{{
                                 $t("size-institution")
                             }}</span>
@@ -320,12 +334,43 @@
                             </option>
                         </select>
                     </div>
+                    <div class="relative" v-if="user.type != 'ip'">
+                        <label class="text-gray-700">
+                            <span>{{ $t("recruitment-agency") }}</span>
+                            <span class="text-red-500"> *</span>
+                        </label>
+                        <div class="mt-2 flex items-center space-x-4 py-2">
+                            <div>
+                                <input
+                                    type="radio"
+                                    id="yes"
+                                    value="1"
+                                    v-model="user.recruitment_agency"
+                                />
+                                <label for="yes" class="ml-2">{{
+                                    $tc("yes-no", 1)
+                                }}</label>
+                            </div>
+
+                            <div>
+                                <input
+                                    type="radio"
+                                    id="no"
+                                    value="0"
+                                    v-model="user.recruitment_agency"
+                                />
+                                <label for="no" class="ml-2">{{
+                                    $tc("yes-no", 2)
+                                }}</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div
                     v-if="user.type == 'particular'"
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700"
+                    <label class="text-gray-700"
                         >{{ $t("speak-language") }}
                         <span class="hidden text-xs font-light lg:inline-block"
                             >({{ $t("maintain-crtl") }})</span
@@ -361,7 +406,7 @@
                     v-if="user.type == 'business1' || user.type == 'business2'"
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700"
+                    <label class="text-gray-700"
                         >{{ $t("legal-status")
                         }}<span class="text-red-500"> *</span></label
                     >
@@ -389,12 +434,22 @@
                     </select>
                 </div>
                 <div class="relative col-span-2">
-                    <label class="dark:text-gray-200 text-gray-700">
+                    <label class="text-gray-700">
                         <span v-if="user.type == 'particular'">{{
                             $t("birth-date")
                         }}</span>
                         <span v-else>{{ $t("create-date") }}</span>
-                        <span class="text-red-500"> *</span>
+                        <span class="mr-2 text-red-500"> *</span>
+                        <input
+                            type="checkbox"
+                            v-if="user.type == 'particular'"
+                            v-model="user.hide_birthday"
+                        />
+                        <span
+                            v-if="user.type == 'particular'"
+                            class="ml-2 text-xs font-light"
+                            >Masquer</span
+                        >
                     </label>
                     <input
                         type="date"
@@ -405,7 +460,7 @@
                 </div>
                 <div class="col-span-2 grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div class="relative">
-                        <label class="dark:text-gray-200 text-gray-700">
+                        <label class="text-gray-700">
                             {{ $t("website") }}
                         </label>
                         <input
@@ -416,9 +471,7 @@
                         />
                     </div>
                     <div class="relative">
-                        <label class="dark:text-gray-200 text-gray-700">
-                            Youtube
-                        </label>
+                        <label class="text-gray-700"> Youtube </label>
                         <input
                             type="url"
                             v-model="detail.youtube"
@@ -428,7 +481,7 @@
                     </div>
                 </div>
                 <div v-if="user.type != 'ip'" class="relative col-span-2">
-                    <label class="dark:text-gray-200 text-gray-700">
+                    <label class="text-gray-700">
                         {{ $t("activity-area") }}
                         <span class="hidden text-xs font-light lg:inline-block"
                             >({{ $t("maintain-crtl") }})</span
@@ -464,12 +517,10 @@
                     v-if="user.type == 'particular'"
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700">{{
-                        $t("o-activity")
-                    }}</label>
+                    <label class="text-gray-700">{{ $t("o-activity") }}</label>
                     <textarea
                         v-model="detail.other_activity"
-                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                        class="mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
                     </textarea>
                 </div>
@@ -477,12 +528,10 @@
                     v-if="user.type == 'particular'"
                     class="relative col-span-2"
                 >
-                    <label class="dark:text-gray-200 text-gray-700">{{
-                        $t("rsearch-p")
-                    }}</label>
+                    <label class="text-gray-700">{{ $t("rsearch-p") }}</label>
                     <textarea
                         v-model="detail.search_partner"
-                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                        class="mt-2 block h-20 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
                     </textarea>
                 </div>
@@ -567,6 +616,9 @@ const saveDetail = async () => {
     props.detail.activity_areas = area_activities.value;
     props.detail.languages = langs.value;
     props.detail.hideEmail = props.user.hide_email;
+    props.detail.hidePhone = props.user.hide_phone;
+    props.detail.hideBirthday = props.user.hide_birthday;
+    props.detail.recruitmentAgency = props.user.recruitment_agency;
     await axios.put("/api/details/" + props.detail.id, props.detail, {
         headers: {
             Authorization: `Bearer ${localStorage.token}`,

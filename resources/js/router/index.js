@@ -794,7 +794,7 @@ const router = createRouter({
 // });
 
 router.beforeEach((to, from, next) => {
-    if (to.params.slug) {
+    if (to.params.slug && to.params.slug != "") {
         document.title =
             to.meta.title +
             `${to.params.slug[0].toUpperCase()}${to.params.slug

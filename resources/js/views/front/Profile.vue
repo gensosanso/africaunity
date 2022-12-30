@@ -9,7 +9,7 @@
     <section
         class="mx-auto min-h-screen w-full bg-white p-4 lg:py-10 lg:px-20 xl:w-[90%]"
     >
-        <div class="relative h-96">
+        <div class="relative h-[27rem]">
             <div class="z-0 h-1/2 bg-gray-50 shadow">
                 <img
                     :src="user.cover"
@@ -56,7 +56,7 @@
                     />
                 </div>
                 <div
-                    class="mt-20 h-full w-full overflow-y-auto px-8 py-2 lg:mt-0 lg:w-[65%] xl:w-[75%]"
+                    class="no-scrollbar mt-20 h-full w-full overflow-y-auto px-8 py-2 lg:mt-0 lg:w-[65%] xl:w-[75%]"
                 >
                     <div v-if="loading == 1" class="mt-4">
                         <svg
@@ -82,7 +82,7 @@
                     </div>
                     <div v-else>
                         <div
-                            class="mt-20 flex flex-col items-center lg:mt-0 lg:flex-row lg:justify-between"
+                            class="mt-1 flex flex-col items-center lg:mt-0 lg:items-start lg:justify-between xl:flex-row xl:items-center"
                         >
                             <div>
                                 <h1
@@ -100,11 +100,60 @@
                                         class="text-primary-blue"
                                         v-if="!user.hide_email"
                                     >
-                                        {{ user.email }} °
+                                        {{ user.email }}
                                     </h2>
-                                    <h2 class="text-gray-400">
-                                        {{ detail.phone_number }}
+                                    <h2
+                                        class="text-gray-400"
+                                        v-if="!user.hide_phone"
+                                    >
+                                        ° {{ detail.phone_number }}
                                     </h2>
+                                </div>
+                                <div
+                                    class="my-2 flex items-center space-x-4 text-sm text-gray-700"
+                                >
+                                    <button
+                                        type="button"
+                                        @click="changeTab('subscription')"
+                                        v-if="detail.subscriptions"
+                                    >
+                                        <span
+                                            class="font-bold text-primary-blue"
+                                            >{{
+                                                detail.subscriptions.length
+                                            }}</span
+                                        >&nbsp;
+                                        <span
+                                            v-if="
+                                                detail.subscriptions.length <= 1
+                                            "
+                                            >{{ $tc("subscription", 1) }}</span
+                                        >
+                                        <span v-else>{{
+                                            $tc("subscription", 2)
+                                        }}</span>
+                                    </button>
+                                    <button
+                                        type="button"
+                                        @click="changeTab('subscriber')"
+                                        v-if="detail.subscribers"
+                                    >
+                                        <span
+                                            class="font-bold text-primary-blue"
+                                            >{{
+                                                detail.subscribers.length
+                                            }}</span
+                                        >&nbsp;
+                                        <span
+                                            v-if="
+                                                detail.subscribers.length <= 1
+                                            "
+                                            >{{ $tc("subscriber", 1) }}</span
+                                        >
+                                        <span v-else>{{
+                                            $tc("subscriber", 2)
+                                        }}</span>
+                                    </button>
                                 </div>
                             </div>
                             <div
@@ -126,6 +175,7 @@
                                     >
                                 </router-link>
                                 <button
+                                    type="button"
                                     @click="changeTab('edit')"
                                     class="flex items-center space-x-2 rounded-xl bg-primary-blue py-2 px-2 text-sm text-white shadow-md lg:px-4"
                                 >
@@ -149,9 +199,83 @@
                                     />
                                 </router-link>
                             </div>
+                            <button
+                                v-else-if="isFollow.length == 0"
+                                @click="follow(user.id)"
+                                type="button"
+                                class="mt-2 rounded-xl bg-primary-blue py-2 px-2 text-sm text-white shadow-md lg:mt-0 lg:px-4"
+                            >
+                                <div
+                                    v-if="!loadingFollow"
+                                    class="flex items-center space-x-2"
+                                >
+                                    <UserPlusIcon class="h-5 w-5" />
+                                    <span class="hidden lg:block">{{
+                                        $t("follow")
+                                    }}</span>
+                                </div>
+                                <span v-else
+                                    ><svg
+                                        class="h-5 w-5 animate-spin text-white"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <circle
+                                            class="opacity-25"
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                        ></circle>
+                                        <path
+                                            class="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                        ></path></svg
+                                ></span>
+                            </button>
+                            <button
+                                v-else
+                                @click="unfollow(isFollow[0].id)"
+                                type="button"
+                                class="mt-2 rounded-xl bg-primary-blue py-2 px-2 text-sm text-white shadow-md lg:mt-0 lg:px-4"
+                            >
+                                <div
+                                    v-if="!loadingFollow"
+                                    class="flex items-center space-x-2"
+                                >
+                                    <UserMinusIcon class="h-5 w-5" />
+                                    <span class="hidden lg:block">{{
+                                        $t("unfollow")
+                                    }}</span>
+                                </div>
+                                <span v-else
+                                    ><svg
+                                        class="h-5 w-5 animate-spin text-white"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <circle
+                                            class="opacity-25"
+                                            cx="12"
+                                            cy="12"
+                                            r="10"
+                                            stroke="currentColor"
+                                            stroke-width="4"
+                                        ></circle>
+                                        <path
+                                            class="opacity-75"
+                                            fill="currentColor"
+                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                        ></path></svg
+                                ></span>
+                            </button>
                         </div>
                         <div
-                            class="my-2 mx-auto h-20 overflow-y-auto break-words text-sm font-light text-gray-500 lg:h-24 lg:w-full"
+                            class="my-2 mx-auto mb-2 break-words text-sm font-light text-gray-500 lg:h-24 lg:w-full"
                         >
                             {{ detail.presentation }}
                         </div>
@@ -411,7 +535,7 @@
                             <span v-else>{{ $t("female") }}</span>
                         </p>
                     </div>
-                    <div class="relative border-b py-2">
+                    <div v-if="!user.hide_phone" class="relative border-b py-2">
                         <label
                             class="text-md py-1 font-semibold text-gray-700"
                             >{{ $t("phone-number") }}</label
@@ -421,7 +545,7 @@
                         </p>
                     </div>
                     <div
-                        v-if="user.type != 'particular'"
+                        v-if="user.type != 'particular' && !user.hide_phone"
                         class="relative border-b py-2"
                     >
                         <label class="text-md py-1 font-semibold text-gray-700"
@@ -598,7 +722,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="relative col-span-2 border-b py-2">
+                <div
+                    class="relative col-span-2 border-b py-2"
+                    v-if="!user.hide_birthday"
+                >
                     <label class="text-md py-1 font-semibold text-gray-700">
                         <span v-if="user.type == 'particular'">{{
                             $t("birth-date")
@@ -745,7 +872,7 @@
                             class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                         >
                             <svg
-                                class="dark:text-gray-400 h-5 w-5 text-gray-500"
+                                class="h-5 w-5 text-gray-500"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -761,7 +888,7 @@
                             type="text"
                             id="table-search"
                             v-model="searchArticle"
-                            class="dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                            class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                             placeholder="Search"
                         />
                     </div>
@@ -786,7 +913,7 @@
                 <div
                     v-for="post in filteredArticles"
                     :key="post.id"
-                    class="dark:bg-gray-800 mx-auto flex max-w-md overflow-hidden rounded-lg bg-white shadow-lg"
+                    class="mx-auto flex max-w-md overflow-hidden rounded-lg bg-white shadow-lg"
                 >
                     <div class="w-1/3 overflow-hidden bg-cover">
                         <router-link
@@ -807,7 +934,7 @@
                                 name: 'show.post',
                                 params: { id: post.id },
                             }"
-                            class="dark:text-white text-2xl font-bold text-gray-800"
+                            class="text-2xl font-bold text-gray-800"
                         >
                             {{
                                 post.title.length <= 20
@@ -816,7 +943,7 @@
                             }}</router-link
                         >
 
-                        <!-- <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">{{ post.content.substring(0, 19) + "..." }}</p> -->
+                        <!-- <p class="mt-2 text-sm text-gray-600 ">{{ post.content.substring(0, 19) + "..." }}</p> -->
 
                         <div class="item-center mt-2 flex space-x-1">
                             <ChatBubbleOvalLeftEllipsisIcon
@@ -858,7 +985,7 @@
 
                                 <button
                                     @click="deletePost(post.id)"
-                                    class="dark:text-blue-500 text-red-600 hover:underline"
+                                    class="text-red-600 hover:underline"
                                 >
                                     <TrashIcon
                                         class="h-5 w-5 cursor-pointer text-red-400 hover:text-red-700"
@@ -885,7 +1012,7 @@
                             class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                         >
                             <svg
-                                class="dark:text-gray-400 h-5 w-5 text-gray-500"
+                                class="h-5 w-5 text-gray-500"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -901,7 +1028,7 @@
                             type="text"
                             id="table-search"
                             v-model="searchProp"
-                            class="dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                            class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                             placeholder="Search"
                         />
                     </div>
@@ -926,7 +1053,7 @@
                 <div
                     v-for="post in filteredPropAu"
                     :key="post.id"
-                    class="dark:bg-gray-800 mx-auto flex max-w-md overflow-hidden rounded-lg bg-white shadow-lg"
+                    class="mx-auto flex max-w-md overflow-hidden rounded-lg bg-white shadow-lg"
                 >
                     <div class="w-1/3 overflow-hidden bg-cover">
                         <router-link
@@ -945,7 +1072,7 @@
                                 name: 'show.post',
                                 params: { id: post.id },
                             }"
-                            class="dark:text-white text-2xl font-bold text-gray-800"
+                            class="text-2xl font-bold text-gray-800"
                             >{{
                                 post.title.length <= 20
                                     ? post.title
@@ -953,9 +1080,7 @@
                             }}</router-link
                         >
 
-                        <p
-                            class="dark:text-gray-400 mt-2 text-sm text-gray-600"
-                        >
+                        <p class="mt-2 text-sm text-gray-600">
                             {{ post.content.substring(0, 19) + "..." }}
                         </p>
 
@@ -999,7 +1124,7 @@
 
                                 <button
                                     @click="deletePost(post.id)"
-                                    class="dark:text-blue-500 text-red-600 hover:underline"
+                                    class="text-red-600 hover:underline"
                                 >
                                     <TrashIcon
                                         class="h-5 w-5 cursor-pointer text-red-400 hover:text-red-700"
@@ -1026,7 +1151,7 @@
                         class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                     >
                         <svg
-                            class="dark:text-gray-400 h-5 w-5 text-gray-500"
+                            class="h-5 w-5 text-gray-500"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
@@ -1042,26 +1167,24 @@
                         type="text"
                         id="table-search"
                         v-model="searchComment"
-                        class="dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                        class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                         placeholder="Search"
                     />
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table
-                    class="dark:divide-gray-700 min-w-full table-fixed divide-y divide-gray-200"
-                >
-                    <thead class="dark:bg-gray-700 bg-gray-100">
+                <table class="min-w-full table-fixed divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
                         <tr>
                             <th
                                 scope="col"
-                                class="dark:text-gray-400 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
+                                class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
                                 {{ $t("articles") }} & {{ $t("propau") }}
                             </th>
                             <th
                                 scope="col"
-                                class="dark:text-gray-400 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
+                                class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
                                 {{ $t("comments") }}
                             </th>
@@ -1075,16 +1198,16 @@
                         </tr>
                     </thead>
                     <tbody
-                        class="dark:bg-gray-800 dark:divide-gray-700 divide-y divide-gray-200 bg-white"
+                        class="divide-y divide-gray-200 bg-white"
                         v-if="filteredComment.length != 0"
                     >
                         <tr
                             v-for="comment in filteredComment"
                             :key="comment.id"
-                            class="dark:hover:bg-gray-700 hover:bg-gray-100"
+                            class="hover:bg-gray-100"
                         >
                             <td
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
                             >
                                 <router-link
                                     :to="{
@@ -1096,7 +1219,7 @@
                                 >
                             </td>
                             <td
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
                             >
                                 <span
                                     v-if="
@@ -1117,7 +1240,7 @@
                                         v-model="modifyComment.content"
                                         type="text"
                                         id="pt"
-                                        class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                                        class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                                     >
                                     </textarea>
                                     <div class="mt-6 flex justify-end">
@@ -1137,7 +1260,7 @@
                                 <div class="flex">
                                     <button
                                         @click="selectComment(comment)"
-                                        class="dark:text-blue-500 text-primary-blue hover:underline"
+                                        class="text-primary-blue hover:underline"
                                     >
                                         <PencilSquareIcon
                                             class="h-5 w-5 cursor-pointer text-blue-400 hover:text-blue-700"
@@ -1145,7 +1268,7 @@
                                     </button>
                                     <button
                                         @click="deleteComment(comment.id)"
-                                        class="dark:text-blue-500 ml-3 text-red-600 hover:underline"
+                                        class="ml-3 text-red-600 hover:underline"
                                     >
                                         <TrashIcon
                                             class="h-5 w-5 cursor-pointer text-red-400 hover:text-red-700"
@@ -1155,14 +1278,11 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tbody
-                        class="dark:bg-gray-800 dark:divide-gray-700 divide-y divide-gray-200 bg-white"
-                        v-else
-                    >
-                        <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
+                    <tbody class="divide-y divide-gray-200 bg-white" v-else>
+                        <tr class="hover:bg-gray-100">
                             <td
                                 colspan="5"
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-center text-xl font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-center text-xl font-medium text-gray-900"
                             >
                                 <div
                                     class="flex animate-pulse flex-col items-center justify-center p-28 text-gray-500"
@@ -1189,7 +1309,7 @@
                             class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                         >
                             <svg
-                                class="dark:text-gray-400 h-5 w-5 text-gray-500"
+                                class="h-5 w-5 text-gray-500"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -1205,7 +1325,7 @@
                             type="text"
                             id="table-search"
                             v-model="searchJob"
-                            class="dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                            class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                             placeholder="Search"
                         />
                     </div>
@@ -1221,20 +1341,18 @@
                 </router-link>
             </div>
             <div class="overflow-x-auto">
-                <table
-                    class="dark:divide-gray-700 min-w-full table-fixed divide-y divide-gray-200"
-                >
-                    <thead class="dark:bg-gray-700 bg-gray-100">
+                <table class="min-w-full table-fixed divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
                         <tr>
                             <th
                                 scope="col"
-                                class="dark:text-gray-400 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
+                                class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
                                 {{ $t("my-jobs") }}
                             </th>
                             <th
                                 scope="col"
-                                class="dark:text-gray-400 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
+                                class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
                                 {{ $t("status") }}
                             </th>
@@ -1248,16 +1366,16 @@
                         </tr>
                     </thead>
                     <tbody
-                        class="dark:bg-gray-800 dark:divide-gray-700 divide-y divide-gray-200 bg-white"
+                        class="divide-y divide-gray-200 bg-white"
                         v-if="filteredJob.length != 0"
                     >
                         <tr
                             v-for="jobOffer in filteredJob"
                             :key="jobOffer.id"
-                            class="dark:hover:bg-gray-700 hover:bg-gray-100"
+                            class="hover:bg-gray-100"
                         >
                             <td
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
                             >
                                 <router-link
                                     :to="{
@@ -1269,7 +1387,7 @@
                                 >
                             </td>
                             <td
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
                             >
                                 <span
                                     v-if="jobOffer.status == 3"
@@ -1292,7 +1410,7 @@
                                             name: 'edit.job',
                                             params: { id: jobOffer.id },
                                         }"
-                                        class="dark:text-blue-500 text-primary-blue hover:underline"
+                                        class="text-primary-blue hover:underline"
                                     >
                                         <!-- <PencilSquareIcon
                                                     class="h-5 w-5 hover:text-blue-700 cursor-pointer text-blue-400"
@@ -1301,7 +1419,7 @@
                                     </router-link>
                                     <button
                                         @click="deleteJobOffer(jobOffer.id)"
-                                        class="dark:text-blue-500 ml-3 text-red-600 hover:underline"
+                                        class="ml-3 text-red-600 hover:underline"
                                     >
                                         <!-- <TrashIcon
                                                     class="h-5 w-5 hover:text-red-700 cursor-pointer text-red-400"
@@ -1312,7 +1430,7 @@
                                     </button>
                                     <button
                                         @click="mark(jobOffer.id)"
-                                        class="dark:text-blue-500 relative ml-3 text-purple-600 hover:underline"
+                                        class="relative ml-3 text-purple-600 hover:underline"
                                     >
                                         <!-- <CheckCircleIcon
                                                     class="h-5 w-5 hover:text-purple-700 cursor-pointer text-purple-400"
@@ -1332,7 +1450,7 @@
                                                     JSON.stringify(jobOffer),
                                             },
                                         }"
-                                        class="dark:text-blue-500 relative ml-3 text-pink-600 hover:underline"
+                                        class="relative ml-3 text-pink-600 hover:underline"
                                     >
                                         <span>
                                             {{ $t("duplicate") }}
@@ -1342,14 +1460,11 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tbody
-                        class="dark:bg-gray-800 dark:divide-gray-700 divide-y divide-gray-200 bg-white"
-                        v-else
-                    >
-                        <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
+                    <tbody class="divide-y divide-gray-200 bg-white" v-else>
+                        <tr class="hover:bg-gray-100">
                             <td
                                 colspan="3"
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-center text-xl font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-center text-xl font-medium text-gray-900"
                             >
                                 <div
                                     class="flex animate-pulse flex-col items-center justify-center p-28 text-gray-500"
@@ -1376,7 +1491,7 @@
                             class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                         >
                             <svg
-                                class="dark:text-gray-400 h-5 w-5 text-gray-500"
+                                class="h-5 w-5 text-gray-500"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -1392,7 +1507,7 @@
                             type="text"
                             id="table-search"
                             v-model="searchAds"
-                            class="dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+                            class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                             placeholder="Search"
                         />
                     </div>
@@ -1410,14 +1525,12 @@
                 </router-link>
             </div>
             <div class="overflow-x-auto">
-                <table
-                    class="dark:divide-gray-700 min-w-full table-fixed divide-y divide-gray-200"
-                >
-                    <thead class="dark:bg-gray-700 bg-gray-100">
+                <table class="min-w-full table-fixed divide-y divide-gray-200">
+                    <thead class="bg-gray-100">
                         <tr>
                             <th
                                 scope="col"
-                                class="dark:text-gray-400 py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
+                                class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
                                 {{ $t("my-ads") }}
                             </th>
@@ -1431,16 +1544,16 @@
                         </tr>
                     </thead>
                     <tbody
-                        class="dark:bg-gray-800 dark:divide-gray-700 divide-y divide-gray-200 bg-white"
+                        class="divide-y divide-gray-200 bg-white"
                         v-if="filteredAnnouncement.length != 0"
                     >
                         <tr
                             v-for="announcement in filteredAnnouncement"
                             :key="announcement.id"
-                            class="dark:hover:bg-gray-700 hover:bg-gray-100"
+                            class="hover:bg-gray-100"
                         >
                             <td
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
                             >
                                 <router-link
                                     :to="{
@@ -1461,7 +1574,7 @@
                                             name: 'edit.ads',
                                             params: { id: announcement.id },
                                         }"
-                                        class="dark:text-blue-500 text-primary-blue hover:underline"
+                                        class="text-primary-blue hover:underline"
                                     >
                                         <PencilSquareIcon
                                             class="h-5 w-5 cursor-pointer text-blue-400 hover:text-blue-700"
@@ -1471,7 +1584,7 @@
                                         @click="
                                             deleteAnnouncement(announcement.id)
                                         "
-                                        class="dark:text-blue-500 ml-3 text-red-600 hover:underline"
+                                        class="ml-3 text-red-600 hover:underline"
                                     >
                                         <TrashIcon
                                             class="h-5 w-5 cursor-pointer text-red-400 hover:text-red-700"
@@ -1481,14 +1594,11 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tbody
-                        class="dark:bg-gray-800 dark:divide-gray-700 divide-y divide-gray-200 bg-white"
-                        v-else
-                    >
-                        <tr class="dark:hover:bg-gray-700 hover:bg-gray-100">
+                    <tbody class="divide-y divide-gray-200 bg-white" v-else>
+                        <tr class="hover:bg-gray-100">
                             <td
                                 colspan="5"
-                                class="dark:text-white whitespace-nowrap py-4 px-6 text-center text-xl font-medium text-gray-900"
+                                class="whitespace-nowrap py-4 px-6 text-center text-xl font-medium text-gray-900"
                             >
                                 <div
                                     class="flex animate-pulse flex-col items-center justify-center p-28 text-gray-500"
@@ -1505,9 +1615,6 @@
             </div>
         </div>
         <div class="py-8 lg:px-16" v-else-if="open.edit && loading == 0">
-            <h1 class="text-center text-2xl font-bold text-gray-500">
-                {{ $t("edit") }} {{ $t("your") }} {{ $t("profile") }}
-            </h1>
             <EditProfile
                 :user="user"
                 :detail="detail"
@@ -1520,6 +1627,15 @@
                 :businessTypes="businessTypes"
             />
         </div>
+        <div class="py-8 lg:px-16" v-else-if="open.subscriber && loading == 0">
+            <Subscriber :subscribers="detail.subscribers" />
+        </div>
+        <div
+            class="py-8 lg:px-16"
+            v-else-if="open.subscription && loading == 0"
+        >
+            <Subscription :subcriptions="detail.subscriptions" />
+        </div>
     </section>
 </template>
 
@@ -1529,6 +1645,7 @@ import Report from "@/components/Report.vue";
 import usePosts from "@/services/postServices.js";
 import EditProfile from "@/components/EditProfile.vue";
 import useUsers from "@/services/userServices.js";
+import useFollowers from "@/services/followerServices.js";
 import useComments from "@/services/commentServices.js";
 import useAnnouncements from "@/services/announcementServices.js";
 import useLanguages from "@/services/languageServices.js";
@@ -1554,8 +1671,12 @@ import {
     BookOpenIcon,
     IdentificationIcon,
     UserCircleIcon,
+    UserPlusIcon,
+    UserMinusIcon,
 } from "@heroicons/vue/24/solid";
 import useStatus from "@/services/statusServices.js";
+import Subscriber from "@/components/Subscriber.vue";
+import Subscription from "@/components/Subscription.vue";
 
 const props = defineProps({
     slug: {
@@ -1572,11 +1693,13 @@ const props = defineProps({
     },
 });
 const { status, getStatus, errorsStatus } = useStatus();
-const loginUser = localStorage.user ? JSON.parse(localStorage.user) : "";
+
 const { articles, getPostsUser, propau, destroyPost } = usePosts();
 const { user, getUser } = useUsers();
 const { comments, getCommentsUser, destroyComment, updateComment } =
     useComments();
+const { followers, createFollower, destroyFollower, errorsFollower } =
+    useFollowers();
 const { jobOffers, getJobOffersUser, destroyJobOffer, markFilled } =
     useJobOffers();
 const { announcements, getAnnouncementsUser, destroyAnnouncement } =
@@ -1588,7 +1711,11 @@ const { activityAreas, getActivityAreas } = useActivityAreas();
 const { legalStatuses, getLegalStatuses } = useLegalStatuses();
 const { countries, getCountries } = useCountries();
 const detail = ref([]);
+const loginUser = ref("");
+loginUser.value = localStorage.user ? JSON.parse(localStorage.user) : "";
 const loading = ref(0);
+const loadingFollow = ref(false);
+const isFollow = ref(false);
 const searchArticle = ref("");
 const searchAds = ref("");
 const searchJob = ref("");
@@ -1606,24 +1733,22 @@ const open = reactive({
     job: false,
     ads: false,
     edit: false,
+    subscription: false,
+    subscriber: false,
 });
+
 onMounted(async () => {
     try {
         loading.value = 1;
+        setLoginUser();
         if (props.redirect == "article") {
-            open.profil = false;
-            open.article = true;
+            changeTab("article");
         } else if (props.redirect == "propau") {
-            open.profil = false;
-            open.propau = true;
+            changeTab("propau");
         }
         await getUser(props.id);
-        let response = await axios.get("/api/details/" + props.id, {
-            headers: {
-                Authorization: `Bearer ${localStorage.token}`,
-            },
-        });
-        detail.value = response.data.data;
+        await getDetail(props.id);
+
         loading.value = 0;
         await getPostsUser(props.id);
         await getCommentsUser(props.id);
@@ -1653,13 +1778,16 @@ onMounted(async () => {
 watch(props, async (currentValue, oldValue) => {
     try {
         loading.value = 1;
+        setLoginUser();
+        if (currentValue.redirect == "article") {
+            changeTab("article");
+        } else if (currentValue.redirect == "propau") {
+            changeTab("propau");
+        } else {
+            changeTab("profil");
+        }
         await getUser(currentValue.id);
-        let response = await axios.get("/api/details/" + currentValue.id, {
-            headers: {
-                Authorization: `Bearer ${localStorage.token}`,
-            },
-        });
-        detail.value = response.data.data;
+        await getDetail(currentValue.id);
         loading.value = 0;
         await getPostsUser(currentValue.id);
         await getCommentsUser(currentValue.id);
@@ -1681,6 +1809,42 @@ watch(props, async (currentValue, oldValue) => {
 
 const toogleModal = () => {
     openReport.value = !openReport.value;
+};
+
+const getDetail = async (id) => {
+    let response = await axios.get("/api/details/" + id, {
+        headers: {
+            Authorization: `Bearer ${localStorage.token}`,
+        },
+    });
+    detail.value = response.data.data;
+};
+
+const setLoginUser = async () => {
+    loginUser.value = localStorage.user ? JSON.parse(localStorage.user) : "";
+    if (loginUser.value) {
+        isFollow.value = loginUser.value.subscriptions.filter(
+            (u) => u.subscription == props.id
+        );
+    }
+};
+
+const follow = async (id) => {
+    loadingFollow.value = true;
+    await createFollower({ subscriber: loginUser.value.id, subscription: id });
+    await setLoginUser();
+    await getDetail(props.id);
+    loadingFollow.value = false;
+};
+
+const unfollow = async (id) => {
+    loadingFollow.value = true;
+    if (confirm("I you Sure ?")) {
+        await destroyFollower(id);
+        await setLoginUser();
+        await getDetail(props.id);
+    }
+    loadingFollow.value = false;
 };
 
 const deletePost = async (id) => {
@@ -1754,6 +1918,8 @@ const changeTab = (type) => {
             open.comment = false;
             open.propau = false;
             open.article = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.profil = true;
             break;
         case "article":
@@ -1762,6 +1928,8 @@ const changeTab = (type) => {
             open.comment = false;
             open.propau = false;
             open.profil = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.article = true;
             break;
         case "propau":
@@ -1770,6 +1938,8 @@ const changeTab = (type) => {
             open.comment = false;
             open.article = false;
             open.profil = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.propau = true;
             break;
         case "comment":
@@ -1778,6 +1948,8 @@ const changeTab = (type) => {
             open.propau = false;
             open.article = false;
             open.profil = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.comment = true;
             break;
         case "job":
@@ -1786,6 +1958,8 @@ const changeTab = (type) => {
             open.propau = false;
             open.article = false;
             open.profil = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.job = true;
             break;
         case "ads":
@@ -1794,6 +1968,8 @@ const changeTab = (type) => {
             open.propau = false;
             open.article = false;
             open.profil = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.ads = true;
             break;
         case "edit":
@@ -1803,7 +1979,31 @@ const changeTab = (type) => {
             open.article = false;
             open.profil = false;
             open.ads = false;
+            open.subscription = false;
+            open.subscriber = false;
             open.edit = true;
+            break;
+        case "subscriber":
+            open.job = false;
+            open.comment = false;
+            open.propau = false;
+            open.article = false;
+            open.profil = false;
+            open.ads = false;
+            open.edit = false;
+            open.subscription = false;
+            open.subscriber = true;
+            break;
+        case "subscription":
+            open.job = false;
+            open.comment = false;
+            open.propau = false;
+            open.article = false;
+            open.profil = false;
+            open.ads = false;
+            open.edit = false;
+            open.subscriber = false;
+            open.subscription = true;
             break;
     }
 };
@@ -1815,6 +2015,7 @@ const filteredAnnouncement = computed(() => {
             .includes(searchAds.value.toLowerCase());
     });
 });
+
 const filteredJob = computed(() => {
     return jobOffers.value.filter((jobOffer) => {
         return jobOffer.title
@@ -1822,6 +2023,7 @@ const filteredJob = computed(() => {
             .includes(searchJob.value.toLowerCase());
     });
 });
+
 const filteredComment = computed(() => {
     return comments.value.filter((comment) => {
         return comment.post.title
@@ -1829,6 +2031,7 @@ const filteredComment = computed(() => {
             .includes(searchComment.value.toLowerCase());
     });
 });
+
 const filteredPropAu = computed(() => {
     return propau.value.filter((prop) => {
         if (langProp.value != "") {
@@ -1845,6 +2048,7 @@ const filteredPropAu = computed(() => {
         }
     });
 });
+
 const filteredArticles = computed(() => {
     return articles.value.filter((article) => {
         if (langArticle.value != "") {

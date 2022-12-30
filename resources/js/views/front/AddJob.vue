@@ -178,19 +178,34 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-span-2">
-                        <label class="dark:text-gray-200 text-gray-700"
-                            >{{ $t("location") }}
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input
-                            required
-                            v-model="jobOffer.location"
-                            type="text"
-                            class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
-                        />
+                    <div
+                        class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
+                    >
+                        <div class="">
+                            <label class="dark:text-gray-200 text-gray-700"
+                                >{{ $t("location") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.location"
+                                type="text"
+                                class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                        </div>
+                        <div class="">
+                            <label class="dark:text-gray-200 text-gray-700"
+                                >{{ $t("start-date") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.start_date"
+                                type="date"
+                                class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                        </div>
                     </div>
-
                     <div
                         class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
                     >
@@ -232,10 +247,10 @@
                         </div>
 
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700">{{
+                            <label class="text-gray-700">{{
                                 $t("company-logo")
                             }}</label>
-                            <div class="flex items-center space-x-4 py-4">
+                            <div class="mt-2 flex items-center space-x-4">
                                 <img
                                     v-if="jobOffer.company_logo"
                                     :src="
@@ -257,7 +272,7 @@
                                     ref="file"
                                     @change="handelFileObject()"
                                     type="file"
-                                    class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                    class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                                 />
                             </div>
                         </div>
@@ -677,6 +692,7 @@ const jobOffer = reactive({
     max_price: "",
     user_id: user.id,
     currency_id: "",
+    start_date: "",
     year_experience_id: "",
     work_department_id: "",
     work_mode_id: "",
@@ -702,6 +718,7 @@ onMounted(async () => {
             dJob.value = JSON.parse(props.duplicate);
             jobOffer.title = dJob.value.title;
             jobOffer.description = dJob.value.description;
+            jobOffer.start_date = dJob.value.start_date;
             jobOffer.location = dJob.value.location;
             jobOffer.company_name = dJob.value.company_name;
             jobOffer.company_email = dJob.value.company_email;
@@ -781,6 +798,7 @@ const storeJobOffer = async () => {
     formData.append("company_name", jobOffer.company_name);
     formData.append("company_email", jobOffer.company_email);
     formData.append("company_website", jobOffer.company_website);
+    formData.append("start_date", jobOffer.start_date);
     formData.append("company_logo", jobOffer.company_logo);
     formData.append("min_price", jobOffer.min_price);
     formData.append("max_price", jobOffer.max_price);

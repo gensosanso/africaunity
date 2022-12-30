@@ -22,7 +22,10 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         'type',
         'avatar',
         'cover',
-        'hide_email'
+        'hide_email',
+        'hide_phone',
+        'hide_birthday',
+        'recruitment_agency'
     ];
 
     protected $hidden = [
@@ -33,6 +36,8 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     protected $casts = [
         'email_verified_at' => 'datetime',
         'hide_email' => 'boolean',
+        'hide_phone' => 'boolean',
+        'hide_birthday' => 'boolean',
     ];
 
 
@@ -59,5 +64,15 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     public function detail()
     {
         return $this->hasOne(Detail::class);
+    }
+
+    public function subscribers()
+    {
+        return $this->hasMany(Follower::class, 'subscriber');
+    }
+
+    public function subscriptions()
+    {
+        return $this->hasMany(Follower::class, 'subscription');
     }
 }

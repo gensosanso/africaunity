@@ -35,6 +35,7 @@ class JobOfferResource extends JsonResource
             'description' => $this->description,
             'location' => $this->location,
             'company_name' => $this->company_name,
+            'start_date' => $this->start_date,
             'company_email' => $this->company_email,
             'company_website' => $this->company_website,
             'company_logo' => $this->company_logo,

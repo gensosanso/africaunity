@@ -330,7 +330,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return new UserResource($user);
+        return new UserResource2($user);
     }
 
     public function update(Request $request, User $user)
@@ -376,7 +376,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return new UserResource($user);
+        return new UserResource2($user);
     }
 
     /**

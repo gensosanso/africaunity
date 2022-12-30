@@ -177,26 +177,9 @@
                             >{{ $t("thumbnails") }}</label
                         >
                         <div class="flex items-center space-x-4 py-4">
-                            <img
-                                v-if="announcement.image"
-                                :src="
-                                    typeof announcement.image == 'string'
-                                        ? announcement.image
-                                        : previewImage(announcement.image)
-                                "
-                                @load="
-                                    typeof announcement.image == 'string'
-                                        ? ''
-                                        : loadImage(announcement.image)
-                                "
-                                class="h-16 w-16 rounded-full"
-                                :alt="announcement.title"
-                            />
-                            <input
-                                ref="file"
-                                @change="handelFileObject()"
-                                type="file"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            <DropZone
+                                v-model="announcement.image"
+                                :multiple="true"
                             />
                         </div>
                     </div>
@@ -267,6 +250,7 @@ import useCurrencies from "@/services/currencyServices.js";
 import useUniversities from "@/services/universityServices.js";
 import { useRouter } from "vue-router";
 import SelectFilter from "@/components/SelectFilter.vue";
+import DropZone from "@/components/media/DropZone.vue";
 const router = useRouter();
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 const { categoryAnnouncements, getCategoryAnnouncements } =
@@ -287,7 +271,7 @@ const announcement = reactive({
     user_id: user.id,
     description: "",
     price: "",
-    image: "",
+    image: [],
     adress: "",
     website: "",
     email: user.email,
@@ -299,38 +283,11 @@ const announcement = reactive({
 const { createAnnouncement, errors, loading } = useAnnouncements();
 
 const storeAnnouncement = async () => {
-    let formData = new FormData();
-    formData.append("image", announcement.image);
-    formData.append("title", announcement.title);
-    formData.append("description", announcement.description);
-    formData.append("price", announcement.price);
-    formData.append("adress", announcement.adress);
-    formData.append("website", announcement.website);
-    formData.append("email", announcement.email);
-    formData.append("phone", announcement.phone);
-    formData.append("user_id", announcement.user_id);
-    formData.append(
-        "category_announcement_id",
-        announcement.category_announcement_id
-    );
-    formData.append("currency_id", announcement.currency_id);
-    formData.append("university_id", announcement.university_id);
-
-    await createAnnouncement(formData);
+    await createAnnouncement({ ...announcement });
     if (errors.value == "") {
         router.push({
             name: "ads",
         });
     }
 };
-
-const handelFileObject = () => {
-    announcement.image = file.value.files[0];
-};
-function previewImage(file) {
-    return URL.createObjectURL(file);
-}
-function loadImage(file) {
-    return URL.revokeObjectURL(file);
-}
 </script>

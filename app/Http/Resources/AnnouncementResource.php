@@ -25,7 +25,7 @@ class AnnouncementResource extends JsonResource
             'title' => $this->title,
             'slug' => Str::slug($this->title),
             'description' => $this->description,
-            'image' => $this->image,
+            'image' => explode(";", $this->image),
             'status' => $this->status,
             'price' => $this->price,
             'email' => $this->email,
@@ -35,6 +35,9 @@ class AnnouncementResource extends JsonResource
             'user' => new UserResource2(
                 User::find($this->user_id)
             ),
+            'currency_id' => $this->currency_id,
+            'category_announcement_id' => $this->category_announcement_id,
+            'university_id' => $this->university_id,
             'currency' => $this->currency_id != null ? new CurrencyResource(Currency::find($this->currency_id)) : '',
             'category' => new CategoryAnnouncementResource(CategoryAnnouncement::find($this->category_announcement_id)),
             'university' => new UniversityResource(University::find($this->university_id)),

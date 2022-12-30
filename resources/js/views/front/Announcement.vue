@@ -372,7 +372,7 @@ const filteredZoneA = () => {
                     v-else-if="announcements.length != 0"
                 >
                     <div
-                        class="dark:bg-gray-800 overflow-hidden rounded-lg bg-white shadow-lg"
+                        class="dark:bg-gray-800 relative overflow-hidden rounded-lg shadow-lg"
                         v-for="announcement in announcements"
                         :key="announcement.id"
                     >
@@ -385,19 +385,27 @@ const filteredZoneA = () => {
                                 },
                             }"
                         >
-                            <img
-                                class="mt-2 h-48 w-full rounded-t-lg object-cover"
-                                v-if="announcement.image"
-                                :src="announcement.image"
-                                :alt="announcement.title"
-                            />
-                            <div
-                                v-else
-                                class="mt-2 h-48 w-full overflow-hidden rounded-t-lg bg-gray-50 py-10"
-                            >
-                                <MegaphoneIcon
-                                    class="h-full w-full text-gray-500"
+                            <div class="relative">
+                                <div
+                                    v-if="announcement.image[0]"
+                                    class="absolute top-5 right-5 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 p-2 text-center text-sm text-white"
+                                >
+                                    <span>{{ announcement.image.length }}</span>
+                                </div>
+                                <img
+                                    class="h-48 w-full rounded-t-lg object-cover"
+                                    v-if="announcement.image[0]"
+                                    :src="announcement.image[0]"
+                                    :alt="announcement.title"
                                 />
+                                <div
+                                    v-else
+                                    class="h-48 w-full overflow-hidden rounded-t-lg bg-gray-50 py-10"
+                                >
+                                    <MegaphoneIcon
+                                        class="h-full w-full text-gray-500"
+                                    />
+                                </div>
                             </div>
                         </router-link>
                         <div class="space-y-2 px-4 py-2">

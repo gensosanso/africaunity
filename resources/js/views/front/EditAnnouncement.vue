@@ -178,27 +178,7 @@
                             >{{ $t("thumbnails") }}</label
                         >
                         <div class="flex items-center space-x-4 py-4">
-                            <img
-                                v-if="announcement.image"
-                                :src="
-                                    typeof announcement.image == 'string'
-                                        ? announcement.image
-                                        : previewImage(announcement.image)
-                                "
-                                @load="
-                                    typeof announcement.image == 'string'
-                                        ? ''
-                                        : loadImage(announcement.image)
-                                "
-                                class="h-16 w-16 rounded-full"
-                                :alt="announcement.title"
-                            />
-                            <input
-                                ref="file"
-                                @change="handelFileObject()"
-                                type="file"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
-                            />
+                            <DropZone v-model="files" :multiple="true" />
                         </div>
                     </div>
 
@@ -266,6 +246,7 @@ import useAnnouncements from "@/services/announcementServices.js";
 import usecategoryAnnouncements from "@/services/categoryAnnouncementServices.js";
 import useCurrencies from "@/services/currencyServices.js";
 import useUniversities from "@/services/universityServices.js";
+import DropZone from "@/components/media/DropZone.vue";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -275,7 +256,7 @@ const props = defineProps({
         type: String,
     },
 });
-const file = ref(null);
+const files = ref([]);
 const { updateAnnouncement, getAnnouncement, announcement, errors, loading } =
     useAnnouncements();
 const { categoryAnnouncements, getCategoryAnnouncements } =
@@ -286,6 +267,8 @@ const loadUniv = ref(false);
 onMounted(async () => {
     loadUniv.value = true;
     await getAnnouncement(props.id);
+    files.value = announcement.value.image;
+    console.log(announcement.value.image);
     await getCurrencies();
     await getCategoryAnnouncements();
     let univId = announcement.value.university_id;
@@ -296,39 +279,11 @@ onMounted(async () => {
 });
 announcement.value.image = "";
 const saveAnnouncement = async () => {
-    let formData = new FormData();
-    formData.append("image", announcement.value.image);
-    formData.append("title", announcement.value.title);
-    formData.append("description", announcement.value.description);
-    formData.append("price", announcement.value.price);
-    formData.append("adress", announcement.value.adress);
-    formData.append("website", announcement.value.website);
-    formData.append("email", announcement.value.email);
-    formData.append("phone", announcement.value.phone);
-    formData.append("user_id", announcement.value.user_id);
-    formData.append(
-        "category_announcement_id",
-        announcement.value.category_announcement_id
-    );
-    formData.append("currency_id", announcement.value.currency_id);
-    formData.append("university_id", announcement.value.university_id);
-    formData.append("_method", "PUT");
-
-    await updateAnnouncement(formData, props.id);
-    if (errors.value == "") {
-        router.push({
-            name: "universities",
-        });
-    }
+    await updateAnnouncement({ ...announcement.value }, props.id);
+    // if (errors.value == "") {
+    //     router.push({
+    //         name: "ads",
+    //     });
+    // }
 };
-
-const handelFileObject = () => {
-    announcement.value.image = file.value.files[0];
-};
-function previewImage(file) {
-    return URL.createObjectURL(file);
-}
-function loadImage(file) {
-    return URL.revokeObjectURL(file);
-}
 </script>
