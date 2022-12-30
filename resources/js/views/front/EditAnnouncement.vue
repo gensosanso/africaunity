@@ -280,10 +280,10 @@ onMounted(async () => {
 announcement.value.image = "";
 const saveAnnouncement = async () => {
     await updateAnnouncement({ ...announcement.value }, props.id);
-    // if (errors.value == "") {
-    //     router.push({
-    //         name: "ads",
-    //     });
-    // }
+    if (errors.value == "") {
+        router.push({
+            name: "ads",
+        });
+    }
 };
 </script>
