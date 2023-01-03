@@ -29,6 +29,11 @@ class Announcement extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function announcementComments()
+    {
+        return $this->hasMany(AnnouncementComment::class);
+    }
+
     public function university()
     {
         return $this->belongsTo(University::class);

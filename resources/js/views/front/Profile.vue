@@ -1180,7 +1180,7 @@
                                 scope="col"
                                 class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
-                                {{ $t("articles") }} & {{ $t("propau") }}
+                                {{ $t("articles") }} & {{ $t("propau") }} & Ads
                             </th>
                             <th
                                 scope="col"
@@ -1210,12 +1210,30 @@
                                 class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
                             >
                                 <router-link
+                                    v-if="comment.post"
                                     :to="{
                                         name: 'show.post',
-                                        params: { id: comment.post.id },
+                                        params: {
+                                            id: comment.post.id,
+                                            slug: comment.post.slug,
+                                        },
                                     }"
                                     class="hover:underline"
                                     >{{ comment.post.title }}</router-link
+                                >
+                                <router-link
+                                    v-else
+                                    :to="{
+                                        name: 'show.ads',
+                                        params: {
+                                            id: comment.announcement.id,
+                                            slug: comment.announcement.slug,
+                                        },
+                                    }"
+                                    class="hover:underline"
+                                    >{{
+                                        comment.announcement.title
+                                    }}</router-link
                                 >
                             </td>
                             <td
@@ -1226,8 +1244,14 @@
                                         modifyComment.id == '' ||
                                         modifyComment.id != comment.id
                                     "
-                                    >{{ comment.content }}</span
                                 >
+                                    <span>{{
+                                        comment.content.length <= 50
+                                            ? comment.content
+                                            : comment.content.substring(0, 49) +
+                                              "..."
+                                    }}</span>
+                                </span>
                                 <form
                                     v-if="
                                         modifyComment.id != '' &&
@@ -1267,7 +1291,12 @@
                                         />
                                     </button>
                                     <button
-                                        @click="deleteComment(comment.id)"
+                                        @click="
+                                            deleteComment(
+                                                comment.id,
+                                                comment.post ? 'post' : 'ads'
+                                            )
+                                        "
                                         class="ml-3 text-red-600 hover:underline"
                                     >
                                         <TrashIcon
@@ -1677,6 +1706,7 @@ import {
 import useStatus from "@/services/statusServices.js";
 import Subscriber from "@/components/Subscriber.vue";
 import Subscription from "@/components/Subscription.vue";
+import useAnnouncementComments from "@/services/announcementCommentServices.js";
 
 const props = defineProps({
     slug: {
@@ -1693,7 +1723,13 @@ const props = defineProps({
     },
 });
 const { status, getStatus, errorsStatus } = useStatus();
-
+const {
+    updateAnnouncementComment,
+    errorsCmtAds,
+    destroyAnnouncementComment,
+    announcementComments,
+    getAnnouncementCommentsUser,
+} = useAnnouncementComments();
 const { articles, getPostsUser, propau, destroyPost } = usePosts();
 const { user, getUser } = useUsers();
 const { comments, getCommentsUser, destroyComment, updateComment } =
@@ -1752,6 +1788,7 @@ onMounted(async () => {
         loading.value = 0;
         await getPostsUser(props.id);
         await getCommentsUser(props.id);
+        await getAnnouncementCommentsUser(props.id);
         await getJobOffersUser(props.id);
         await getAnnouncementsUser(props.id);
         await getLanguages();
@@ -1791,6 +1828,7 @@ watch(props, async (currentValue, oldValue) => {
         loading.value = 0;
         await getPostsUser(currentValue.id);
         await getCommentsUser(currentValue.id);
+        await getAnnouncementCommentsUser(currentValue.id);
         await getJobOffersUser(currentValue.id);
         await getAnnouncementsUser(currentValue.id);
     } catch (e) {
@@ -1855,11 +1893,14 @@ const deletePost = async (id) => {
     }
 };
 
-const deleteComment = async (id) => {
+const deleteComment = async (id, type) => {
     const deleteId = [id];
     if (confirm("I you Sure ?")) {
-        await destroyComment(deleteId);
+        type == "post"
+            ? await destroyComment(deleteId)
+            : await destroyAnnouncementComment(deleteId);
         await getCommentsUser(props.id);
+        await getAnnouncementCommentsUser(props.id);
     }
 };
 
@@ -1891,6 +1932,7 @@ const modifyComment = reactive({
     id: "",
     user_id: "",
     post_id: "",
+    announcement_id: "",
     content: "",
 });
 
@@ -1898,16 +1940,23 @@ const selectComment = (comment) => {
     modifyComment.id = comment.id;
     modifyComment.content = comment.content;
     modifyComment.user_id = comment.user.id;
-    modifyComment.post_id = comment.post.id;
+    modifyComment.post_id = comment.post ? comment.post.id : "";
+    modifyComment.announcement_id = comment.announcement
+        ? comment.announcement.id
+        : "";
 };
 
 const saveComment = async () => {
-    await updateComment(modifyComment);
+    modifyComment.post_id
+        ? await updateComment(modifyComment)
+        : await updateAnnouncementComment(modifyComment);
     modifyComment.id = "";
     modifyComment.content = "";
     modifyComment.user_id = "";
     modifyComment.post_id = "";
+    modifyComment.announcement_id = "";
     await getCommentsUser(props.id);
+    await getAnnouncementCommentsUser(props.id);
 };
 
 const changeTab = (type) => {
@@ -2025,11 +2074,17 @@ const filteredJob = computed(() => {
 });
 
 const filteredComment = computed(() => {
-    return comments.value.filter((comment) => {
-        return comment.post.title
-            .toLowerCase()
-            .includes(searchComment.value.toLowerCase());
-    });
+    return comments.value
+        .concat(announcementComments.value)
+        .filter((comment) => {
+            return comment.post
+                ? comment.post.title
+                      .toLowerCase()
+                      .includes(searchComment.value.toLowerCase())
+                : comment.announcement.title
+                      .toLowerCase()
+                      .includes(searchComment.value.toLowerCase());
+        });
 });
 
 const filteredPropAu = computed(() => {

@@ -546,6 +546,28 @@ const routes = [
                 },
             },
             {
+                path: "announcement-comment",
+                component: () =>
+                    import(
+                        "@/views/back/announcement_comment/AnnouncementCommentIndex.vue"
+                    ),
+                name: "admin.announcement-comment.index",
+                meta: {
+                    title: siteName + " - Announcement Comment",
+                },
+            },
+            {
+                path: "announcement-comment/create",
+                component: () =>
+                    import(
+                        "@/views/back/announcement_comment/AnnouncementCommentCreate.vue"
+                    ),
+                name: "admin.announcement-comment.create",
+                meta: {
+                    title: siteName + " - Create Announcement Comment",
+                },
+            },
+            {
                 path: "zone",
                 component: () => import("@/views/back/zone/ZoneIndex.vue"),
                 name: "admin.zone.index",

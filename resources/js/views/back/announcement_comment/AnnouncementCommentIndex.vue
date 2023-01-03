@@ -58,32 +58,36 @@
                                 </button>
                             </div>
                         </div>
-                        <Error v-if="errors != ''">{{ errors }}</Error>
+                        <Error v-if="errorsCmtAds != ''">{{
+                            errorsCmtAds
+                        }}</Error>
                         <EasyDataTable
                             v-model:items-selected="itemsSelected"
                             :headers="headers"
-                            :items="comments"
+                            :items="announcementComments"
                             alternating
                             show-index
                             buttons-pagination
                             :loading="loading"
                         >
-                            <template #item-post.title="item">
+                            <template #item-announcement.title="item">
                                 <router-link
                                     :to="{
-                                        name: 'show.post',
+                                        name: 'show.ads',
                                         params: {
-                                            id: item.post.id,
-                                            slug: item.post.slug,
+                                            id: item.announcement.id,
+                                            slug: item.announcement.slug,
                                         },
                                     }"
                                     class="hover:underline"
                                 >
                                     {{
-                                        item.post.title <= 50
-                                            ? item.post.title
-                                            : item.post.title.substring(0, 49) +
-                                              "..."
+                                        item.announcement.title <= 50
+                                            ? item.announcement.title
+                                            : item.announcement.title.substring(
+                                                  0,
+                                                  49
+                                              ) + "..."
                                     }}
                                 </router-link>
                             </template>
@@ -147,23 +151,23 @@
 
 <script setup>
 import { onMounted, ref, reactive, computed } from "vue";
-
-import useComments from "@/services/commentServices.js";
+import useAnnouncementComments from "@/services/announcementCommentServices.js";
 import Error from "@/components/Error.vue";
 import { TrashIcon } from "@heroicons/vue/24/solid";
 const itemsSelected = ref([]);
 const {
-    comments,
-    getComments,
-    destroyComment,
-    updateComment,
     loading,
-    errors,
-} = useComments();
+    errorsCmtAds,
+
+    announcementComments,
+    getAnnouncementComments,
+    destroyAnnouncementComment,
+    updateAnnouncementComment,
+} = useAnnouncementComments();
 const searchKey = ref("");
 
 onMounted(async () => {
-    await getComments();
+    await getAnnouncementComments();
 });
 
 const deleteComments = async () => {
@@ -173,9 +177,9 @@ const deleteComments = async () => {
             deleteIds.value.push(d.id);
         });
         if (confirm("I you Sure ?")) {
-            await destroyComment(deleteIds.value);
-            if (errors.value == "") {
-                await getComments();
+            await destroyAnnouncementComment(deleteIds.value);
+            if (errorsCmtAds.value == "") {
+                await getAnnouncementComments();
                 itemsSelected.value = [];
             }
         }
@@ -185,7 +189,7 @@ const deleteComments = async () => {
 const modifyComment = reactive({
     id: "",
     user_id: "",
-    post_id: "",
+    announcement_id: "",
     content: "",
 });
 
@@ -193,21 +197,21 @@ const selectComment = (comment) => {
     modifyComment.id = comment.id;
     modifyComment.content = comment.content;
     modifyComment.user_id = comment.user.id;
-    modifyComment.post_id = comment.post.id;
+    modifyComment.announcement_id = comment.announcement.id;
 };
 
 const saveComment = async () => {
-    await updateComment(modifyComment);
+    await updateAnnouncementComment(modifyComment);
     modifyComment.id = "";
     modifyComment.content = "";
     modifyComment.user_id = "";
-    modifyComment.post_id = "";
-    await getComments();
+    modifyComment.announcement_id = "";
+    await getAnnouncementComments();
 };
 
 const headers = [
     { text: "User", value: "user.firstname" },
-    { text: "Post", value: "post.title" },
+    { text: "Post", value: "announcement.title" },
     { text: "Comment", value: "content" },
     { text: "ACTION", value: "id" },
 ];

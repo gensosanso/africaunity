@@ -144,6 +144,19 @@
                             />
                         </div>
 
+                        <div class="">
+                            <label class="dark:text-gray-200 text-gray-700"
+                                >{{ $t("start-date") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.start_date"
+                                type="date"
+                                class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                        </div>
+
                         <div
                             class="col-span-2 grid grid-cols-1 gap-6 sm:grid-cols-2"
                         >
@@ -537,6 +550,7 @@ const jobOffer = reactive({
     title: "",
     description: "",
     location: "",
+    start_date: "",
     company_name: "",
     company_email: "",
     company_website: "",
@@ -591,6 +605,7 @@ const storeJobOffer = async () => {
     formData.append("description", jobOffer.description);
     formData.append("location", jobOffer.location);
     formData.append("company_name", jobOffer.company_name);
+    formData.append("start_date", jobOffer.start_date);
     formData.append("company_email", jobOffer.company_email);
     formData.append("company_website", jobOffer.company_website);
     formData.append("company_logo", jobOffer.company_logo);

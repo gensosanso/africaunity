@@ -83,9 +83,21 @@ class CommentController extends Controller
         return new CommentResource($comment);
     }
 
+    public function delete($comments)
+    {
+        dd($comments);
+        $comments = json_decode($comments);
+        foreach ($comments as  $comment) {
+            Comment::where('id', $comment)->delete();
+        }
+
+        return response()->noContent();
+    }
+
 
     public function destroy($comments)
     {
+
         $comments = json_decode($comments);
         foreach ($comments as  $comment) {
             Comment::where('id', $comment)->delete();

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ActivityAreaController;
+use App\Http\Controllers\Api\AnnouncementCommentController;
 use App\Http\Controllers\Api\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
@@ -125,8 +126,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::apiResource('categoryAnnouncements', CategoryAnnouncementController::class);
 
     Route::apiResource('comments', CommentController::class);
+    Route::delete("/comments/{comments}", [CommentController::class, 'delete']);
     Route::get('comments-post/{id}', [CommentController::class, 'comment_post']);
     Route::get('comments-user/{id}', [CommentController::class, 'comment_user']);
+
+    Route::apiResource('announcement-comments', AnnouncementCommentController::class);
+    Route::get('announcement-comments-post/{id}', [AnnouncementCommentController::class, 'comment_announcement']);
+    Route::get('announcement-comments-user/{id}', [AnnouncementCommentController::class, 'comment_user']);
 
     Route::apiResource('jobOffers', JobOfferController::class);
     Route::get('jobOffers-user/{id}', [JobOfferController::class, 'jobOffers_user']);

@@ -100,6 +100,7 @@ export default function useComments() {
     };
 
     const destroyComment = async (data) => {
+        console.log(data);
         errors.value = "";
         try {
             loading.value = true;
@@ -108,7 +109,6 @@ export default function useComments() {
                     Authorization: `Bearer ${localStorage.token}`,
                 },
             });
-            comments;
             loading.value = false;
             return true;
         } catch (e) {
