@@ -137,7 +137,7 @@
                     v-if="filteredAnnouncement.length != 0"
                 >
                     <div
-                        class="dark:bg-gray-800 overflow-hidden rounded-lg bg-white shadow-lg"
+                        class="dark:bg-gray-800 relative overflow-hidden rounded-lg shadow-lg"
                         v-for="announcement in filteredAnnouncement"
                         :key="announcement.id"
                     >
@@ -150,19 +150,27 @@
                                 },
                             }"
                         >
-                            <img
-                                class="mt-2 h-48 w-full rounded-t-lg object-cover"
-                                v-if="announcement.image"
-                                :src="announcement.image"
-                                :alt="announcement.title"
-                            />
-                            <div
-                                v-else
-                                class="mt-2 h-48 w-full overflow-hidden rounded-t-lg bg-gray-50 py-10"
-                            >
-                                <MegaphoneIcon
-                                    class="h-full w-full text-gray-500"
+                            <div class="relative">
+                                <div
+                                    v-if="announcement.image[0]"
+                                    class="absolute top-5 right-5 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 p-2 text-center text-sm text-white"
+                                >
+                                    <span>{{ announcement.image.length }}</span>
+                                </div>
+                                <img
+                                    class="h-48 w-full rounded-t-lg object-cover"
+                                    v-if="announcement.image[0]"
+                                    :src="announcement.image[0]"
+                                    :alt="announcement.title"
                                 />
+                                <div
+                                    v-else
+                                    class="h-48 w-full overflow-hidden rounded-t-lg bg-gray-50 py-10"
+                                >
+                                    <MegaphoneIcon
+                                        class="h-full w-full text-gray-500"
+                                    />
+                                </div>
                             </div>
                         </router-link>
                         <div class="space-y-2 px-4 py-2">
@@ -170,7 +178,14 @@
                                 href="#"
                                 class="mt-2 rounded bg-primary-blue py-1 px-2 text-xs capitalize text-white"
                             >
-                                {{ announcement.category.name }}
+                                {{
+                                    announcement.category.name.length <= 30
+                                        ? announcement.category.name
+                                        : announcement.category.name.substring(
+                                              0,
+                                              25
+                                          ) + "..."
+                                }}
                             </a>
                             <router-link
                                 :to="{
@@ -184,7 +199,14 @@
                                 <h1
                                     class="text-2xl font-bold capitalize text-gray-800 hover:underline"
                                 >
-                                    {{ announcement.title }}
+                                    {{
+                                        announcement.title.length <= 20
+                                            ? announcement.title
+                                            : announcement.title.substring(
+                                                  0,
+                                                  19
+                                              ) + "..."
+                                    }}
                                 </h1>
                             </router-link>
 
@@ -227,20 +249,6 @@
                                         >{{
                                             announcement.user.firstname
                                         }}</router-link
-                                    >
-                                </div>
-                                <div class="hidden space-x-1 lg:flex">
-                                    <CalendarIcon class="h-4 w-4" />
-                                    <a href="#" class="hover:text-primary-blue">
-                                        {{
-                                            new Date(
-                                                announcement.date
-                                            ).toLocaleDateString(locale, {
-                                                day: "numeric",
-                                                year: "numeric",
-                                                month: "long",
-                                            })
-                                        }}</a
                                     >
                                 </div>
                             </div>
