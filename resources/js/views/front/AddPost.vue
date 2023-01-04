@@ -192,28 +192,15 @@
                             >{{ $t("ministry")
                             }}<span class="text-red-500">*</span></label
                         >
-                        <select
-                            required
-                            v-model="post.ministry_id"
-                            class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
-                        >
-                            <option
-                                v-for="ministry in ministries"
-                                :key="ministry.id"
-                                :value="ministry.id"
-                            >
-                                <span v-if="$i18n.locale == 'en'">{{
-                                    ministry.name_en
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'fr'">{{
-                                    ministry.name_fr
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'es'">{{
-                                    ministry.name_es
-                                }}</span>
-                                <span v-else>{{ ministry.name_pt }}</span>
-                            </option>
-                        </select>
+                        <SelectFilter
+                            v-model="selectedMinistries"
+                            :data="ministries"
+                            :placeholder="'Select Ministry'"
+                            :required="true"
+                            :resetField="true"
+                            :multiple="false"
+                            :className="'form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue'"
+                        />
                     </div>
 
                     <div class="col-span-2" v-if="type == 'article'">
@@ -364,6 +351,7 @@ const props = defineProps({
 });
 const { locale } = useI18n();
 
+const selectedMinistries = ref([]);
 const types = ["article", "propau"];
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 const { continents, getContinents } = useContinents();

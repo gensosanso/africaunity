@@ -14,6 +14,14 @@ class MinistryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'color' => $this->color,
+            'name_fr' => $this->name_fr,
+            'name_en' => $this->name_en,
+            'name_es' => $this->name_es,
+            'name_pt' => $this->name_pt,
+            'name' => $this->name_en,
+        ];
     }
 }

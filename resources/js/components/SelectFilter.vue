@@ -24,13 +24,17 @@ const props = defineProps({
         type: Array,
     },
     modelValue: {
-        type: String,
+        type: [String, Number, Array],
     },
     resetField: {
         type: Boolean,
         default: false,
     },
     handled: {
+        type: Boolean,
+        default: false,
+    },
+    multiple: {
         type: Boolean,
         default: false,
     },
@@ -88,9 +92,14 @@ const filteredData = computed(() => {
 });
 
 async function changeValue(item) {
-    selectItem.id = item.id;
-    selectItem.name = item.name;
-    emit("update:modelValue", `${item.id}`);
+    if (typeof props.modelValue == "string" || !props.multiple) {
+        selectItem.id = item.id;
+        selectItem.name = item.name;
+        emit("update:modelValue", `${item.id}`);
+    } else {
+        props.modelValue.push(item.id);
+        emit("update:modelValue", props.modelValue);
+    }
     open.value = false;
     if (props.handled) emit("handle");
 }
@@ -149,15 +158,20 @@ onClickOutside(itemModal, () => {
             ><ChevronDownIcon v-if="!open" class="h-5 w-5 text-gray-400" />
             <ChevronUpIcon v-else class="h-5 w-5 text-gray-400"
         /></span>
-        <input
+        <!-- <input
             readonly
-            :value="selectItem.name"
             :required="required"
-            :class="className + ' cursor-pointer'"
+            
             :placeholder="placeholder"
+            
+        /> -->
+        <span
+            :class="className + ' cursor-pointer'"
             @click="open = !open"
             @keydown.enter="changeValue(filteredData[0])"
-        />
+        >
+            <span>{{ selectItem.name }}</span>
+        </span>
         <div
             ref="itemModal"
             v-show="open"
@@ -209,7 +223,7 @@ onClickOutside(itemModal, () => {
                     <span
                         class="block w-full bg-gray-50 px-3 py-2 font-bold text-gray-900"
                     >
-                        {{ item.name }}
+                        <span> {{ item.name }}</span>
                     </span>
                     <div>
                         <span
@@ -220,7 +234,15 @@ onClickOutside(itemModal, () => {
                                     : 'block w-full cursor-pointer py-2 pr-3 pl-8 hover:bg-gray-100 hover:font-semibold hover:text-gray-900',
                             ]"
                         >
-                            {{ item.name }}
+                            <span class="mr-2" v-if="multiple">
+                                <input
+                                    type="checkbox"
+                                    name=""
+                                    id=""
+                                    class="cursor-pointer border"
+                                />
+                            </span>
+                            <span> {{ item.name }}</span>
                         </span>
                         <span
                             v-if="item.children.length != 0"
@@ -233,7 +255,15 @@ onClickOutside(itemModal, () => {
                                     : 'block w-full cursor-pointer py-2 pr-3 pl-8 hover:bg-gray-100 hover:font-semibold hover:text-gray-900',
                             ]"
                         >
-                            {{ subitem.name }}
+                            <span class="mr-2" v-if="multiple">
+                                <input
+                                    type="checkbox"
+                                    name=""
+                                    id=""
+                                    class="cursor-pointer border"
+                                />
+                            </span>
+                            <span>{{ subitem.name }}</span>
                         </span>
                     </div>
                 </template>
@@ -248,8 +278,16 @@ onClickOutside(itemModal, () => {
                             ? 'block w-full cursor-pointer bg-blue-400 px-3 py-2 font-semibold text-white hover:bg-gray-100 hover:text-gray-900'
                             : 'block w-full cursor-pointer px-3 py-2 hover:bg-gray-100 hover:font-semibold hover:text-gray-900',
                     ]"
-                    >{{ item.name }}</span
-                >
+                    ><span class="mr-2" v-if="multiple">
+                        <input
+                            type="checkbox"
+                            name=""
+                            id=""
+                            class="cursor-pointer border"
+                        />
+                    </span>
+                    <span class="">{{ item.name }}</span>
+                </span>
                 <span v-else class="block w-full py-2 text-center font-bold">
                     No Data Available !
                 </span>
