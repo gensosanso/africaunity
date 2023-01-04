@@ -46,6 +46,11 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         return $this->hasMany(Post::class);
     }
 
+    public function personalPosts()
+    {
+        return $this->hasMany(PersonalPost::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

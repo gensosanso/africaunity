@@ -579,7 +579,6 @@
 </template>
 
 <script setup>
-import Error from "./Error.vue";
 import {
     UserIcon,
     LockClosedIcon,

@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('category_personal_posts', function (Blueprint $table) {
             $table->id();
+            $table->string('name_fr');
+            $table->string('name_en')->nullable();
+            $table->string('name_es')->nullable();
+            $table->string('name_pt')->nullable();
             $table->timestamps();
         });
     }

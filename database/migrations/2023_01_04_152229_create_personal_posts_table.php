@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('personal_posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->longText('content');
+            $table->string('image')->nullable();
+            $table->integer('status')->default(1);
+            $table->string('subtheme')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('category_personal_post_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

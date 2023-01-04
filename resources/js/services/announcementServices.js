@@ -53,7 +53,6 @@ export default function useAnnouncements() {
             },
         });
         announcements.value = response.data.data;
-
         loading.value = false;
     };
 
@@ -165,7 +164,6 @@ export default function useAnnouncements() {
                     },
                 }
             );
-            console.log(response.data.data);
             loading.value = false;
         } catch (e) {
             loading.value = 0;

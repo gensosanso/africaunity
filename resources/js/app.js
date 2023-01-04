@@ -2,6 +2,7 @@ import "./bootstrap";
 import "../css/app.css";
 import { createApp } from "vue";
 import App from "./App.vue";
+import Error from "./components/Error.vue";
 import router from "./router";
 import i18n from "./locales/i18n";
 import SelectFilter from "@/components/SelectFilter.vue";
@@ -11,6 +12,7 @@ const app = createApp(App);
 app.use(i18n);
 app.use(router);
 app.component("SelectFilter", SelectFilter);
+app.component("Error", Error);
 app.component("EasyDataTable", Vue3EasyDataTable);
 app.mount("#app");
 
