@@ -189,13 +189,7 @@
                     ></path>
                 </svg>
             </div>
-            <div
-                v-else
-                class="flex animate-pulse flex-col items-center justify-center p-28 text-gray-500"
-            >
-                <FaceFrownIcon class="h-16 w-16" />
-                <span class="mt-2 text-2xl">{{ $t("no-content") }}</span>
-            </div>
+            <NoContent v-else />
         </div>
         <div class="bg-white py-5 lg:w-[35%]">
             <div class="space-y-3 rounded-md py-5 px-10 shadow">

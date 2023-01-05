@@ -14,8 +14,7 @@ class PersonalPost extends Model
         'content',
         'image',
         'status',
-        'type',
-        'language',
+        'subtheme',
         'user_id',
         'category_personal_post_id',
     ];

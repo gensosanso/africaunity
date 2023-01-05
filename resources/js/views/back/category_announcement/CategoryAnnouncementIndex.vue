@@ -98,7 +98,6 @@
 import { onMounted, ref, computed } from "vue";
 import { PlusCircleIcon, TrashIcon } from "@heroicons/vue/24/solid";
 import useCategoryAnnouncements from "@/services/categoryAnnouncementServices.js";
-import Error from "@/components/Error.vue";
 
 const {
     categoryAnnouncements,

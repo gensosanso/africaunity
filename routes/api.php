@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BusinessSizeController;
 use App\Http\Controllers\Api\BusinessTypeController;
 use App\Http\Controllers\Api\CategoryAnnouncementController;
+use App\Http\Controllers\Api\CategoryPersonalPostController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ContactController;
@@ -25,6 +26,7 @@ use App\Http\Controllers\Api\LegalStatusController;
 use App\Http\Controllers\Api\LevelStudyController;
 use App\Http\Controllers\Api\MinistryController;
 use App\Http\Controllers\Api\OfferTypeController;
+use App\Http\Controllers\Api\PersonalPostController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\SizeCompanyController;
 use App\Http\Controllers\Api\StatusController;
@@ -78,6 +80,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get("/posts2/{post}", [PostController::class, 'show2']);
     Route::post("/post-report", [PostController::class, 'post_report']);
 
+    Route::apiResource('personalPosts', PersonalPostController::class);
+    Route::get("/personalPosts-user/{user}", [PersonalPostController::class, 'post_user']);
+    Route::get("/personalPosts-all", [PersonalPostController::class, 'all']);
+
     Route::apiResource('users', UserController::class);
     Route::put("/users-change-password/{user}", [UserController::class, 'changePassword']);
     Route::put("/users-update/{user}", [UserController::class, 'update2']);
@@ -124,6 +130,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::apiResource('details', DetailController::class);
 
     Route::apiResource('categoryAnnouncements', CategoryAnnouncementController::class);
+    Route::apiResource('categoryPersonalPosts', CategoryPersonalPostController::class);
 
     Route::apiResource('comments', CommentController::class);
     Route::delete("/comments/{comments}", [CommentController::class, 'delete']);

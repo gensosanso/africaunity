@@ -59,26 +59,7 @@
                     class="no-scrollbar mt-20 h-full w-full overflow-y-auto px-8 py-2 lg:mt-0 lg:w-[65%] xl:w-[75%]"
                 >
                     <div v-if="loading == 1" class="mt-4">
-                        <svg
-                            class="mx-auto h-16 w-16 animate-spin"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                class="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                stroke-width="4"
-                            ></circle>
-                            <path
-                                class="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
+                        <Spin />
                     </div>
                     <div v-else>
                         <div
@@ -214,27 +195,7 @@
                                         $t("follow")
                                     }}</span>
                                 </div>
-                                <span v-else
-                                    ><svg
-                                        class="h-5 w-5 animate-spin text-white"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <circle
-                                            class="opacity-25"
-                                            cx="12"
-                                            cy="12"
-                                            r="10"
-                                            stroke="currentColor"
-                                            stroke-width="4"
-                                        ></circle>
-                                        <path
-                                            class="opacity-75"
-                                            fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                        ></path></svg
-                                ></span>
+                                <span v-else><Spin :size="'small'" /></span>
                             </button>
                             <button
                                 v-else
@@ -251,27 +212,7 @@
                                         $t("unfollow")
                                     }}</span>
                                 </div>
-                                <span v-else
-                                    ><svg
-                                        class="h-5 w-5 animate-spin text-white"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <circle
-                                            class="opacity-25"
-                                            cx="12"
-                                            cy="12"
-                                            r="10"
-                                            stroke="currentColor"
-                                            stroke-width="4"
-                                        ></circle>
-                                        <path
-                                            class="opacity-75"
-                                            fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                        ></path></svg
-                                ></span>
+                                <span v-else><Spin :size="'small'" /> </span>
                             </button>
                         </div>
                         <div
@@ -369,32 +310,13 @@
                 ]"
             >
                 <ClipboardIcon class="h-5 w-5" />
-                <span class="hidden whitespace-nowrap lg:block"
-                    >Personal Blog</span
-                >
+                <span class="hidden whitespace-nowrap lg:block">{{
+                    $t("personal-blog")
+                }}</span>
             </button>
         </div>
         <div v-if="loading == 1" class="p-28">
-            <svg
-                class="mx-auto h-16 w-16 animate-spin"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-            >
-                <circle
-                    class="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="4"
-                ></circle>
-                <path
-                    class="opacity-75"
-                    fill="currentColor"
-                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-            </svg>
+            <Spin />
         </div>
         <div class="py-8 lg:px-16" v-if="open.profil && loading == 0">
             <Detail
@@ -455,13 +377,22 @@
         >
             <Subscription :subcriptions="detail.subscriptions" />
         </div>
+        <div
+        id="personal_post"
+            class="py-8 lg:px-16"
+            v-else-if="open.personalBlog && loading == 0"
+        >
+            <PersonalBlog :user="user" :post="personalPost" />
+        </div>
     </section>
 </template>
 
 <script setup>
 import { reactive, ref, onMounted, watch, computed } from "vue";
+import { useRoute } from "vue-router";
 import Report from "@/components/Report.vue";
 
+import PersonalBlog from "@/components/profile/personal_blog/PersonalBlog.vue";
 import EditProfile from "@/components/profile/EditProfile.vue";
 import Detail from "@/components/profile/Detail.vue";
 import Article from "@/components/profile/Article.vue";
@@ -474,7 +405,6 @@ import Comment from "@/components/profile/Comment.vue";
 
 import useUsers from "@/services/userServices.js";
 import useFollowers from "@/services/followerServices.js";
-
 import useLanguages from "@/services/languageServices.js";
 import useBusinessTypes from "@/services/businessTypeServices.js";
 import useBusinessSizes from "@/services/businessSizeServices.js";
@@ -516,7 +446,7 @@ const props = defineProps({
         type: String,
     },
 });
-
+const route = useRoute();
 const { status, getStatus, errorsStatus } = useStatus();
 const { user, getUser } = useUsers();
 const { followers, createFollower, destroyFollower, errorsFollower } =
@@ -531,9 +461,9 @@ const detail = ref([]);
 const loginUser = ref("");
 loginUser.value = localStorage.user ? JSON.parse(localStorage.user) : "";
 const loading = ref(0);
+const personalPost = ref(0);
 const loadingFollow = ref(false);
 const isFollow = ref(false);
-
 const openReport = ref(false);
 const open = reactive({
     profil: true,
@@ -557,6 +487,12 @@ onMounted(async () => {
         } else if (props.redirect == "propau") {
             changeTab("propau");
         }
+
+        if ("personal_post" in route.query) {
+            personalPost.value = route.query.personal_post;
+            changeTab("personalBlog");
+        }
+
         await getUser(props.id);
         await getDetail(props.id);
         loading.value = 0;
@@ -582,6 +518,13 @@ onMounted(async () => {
     }
 });
 
+watch(route, async function (newsRoute, oldRoute) {
+    if ("personal_post" in newsRoute.query) {
+        personalPost.value = newsRoute.query.personal_post;
+        changeTab("personalBlog");
+    }
+});
+
 watch(props, async (currentValue, oldValue) => {
     try {
         loading.value = 1;
@@ -593,6 +536,7 @@ watch(props, async (currentValue, oldValue) => {
         } else {
             changeTab("profil");
         }
+
         await getUser(currentValue.id);
         await getDetail(currentValue.id);
         loading.value = 0;

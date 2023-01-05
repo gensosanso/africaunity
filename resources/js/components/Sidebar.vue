@@ -206,6 +206,54 @@
                     class="flex w-full flex-col items-center justify-start border-b border-gray-600 px-4"
                 >
                     <button
+                        @click="open.personalBlog = !open.personalBlog"
+                        class="flex w-full items-center justify-between space-x-14 py-2 text-left text-white focus:text-primary-blue focus:outline-none"
+                    >
+                        <p
+                            class="jusitfy-start flex w-full items-center text-base leading-4"
+                        >
+                            <ClipboardIcon class="mr-6 h-6 w-6" />
+                            <span class="whitespace-nowrap">
+                                Personal Blog</span
+                            >
+                        </p>
+
+                        <ChevronDownIcon
+                            v-if="!open.personalBlog"
+                            class="h-10 w-10"
+                        />
+                        <ChevronUpIcon
+                            v-if="open.personalBlog"
+                            class="h-10 w-10"
+                        />
+                    </button>
+                    <div
+                        v-if="open.personalBlog"
+                        class="flex w-full flex-col items-start justify-start pb-1 md:w-auto"
+                    >
+                        <router-link
+                            :to="{
+                                name: 'admin.post.index',
+                                params: { type: 'article' },
+                            }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <QueueListIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">All Post</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.category-personal-blog' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <ChartPieIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Category</p>
+                        </router-link>
+                    </div>
+                </div>
+                <div
+                    class="flex w-full flex-col items-center justify-start border-b border-gray-600 px-4"
+                >
+                    <button
                         @click="open.university = !open.university"
                         class="flex w-full items-center justify-between space-x-14 py-2 text-left text-white focus:text-primary-blue focus:outline-none"
                     >
@@ -491,6 +539,7 @@ import {
     BriefcaseIcon,
     SwatchIcon,
     ArrowRightOnRectangleIcon,
+    ClipboardIcon,
 } from "@heroicons/vue/24/solid";
 import axios from "axios";
 import { reactive, ref, onMounted } from "vue";
@@ -528,6 +577,7 @@ const open = reactive({
     menu: true,
     article: false,
     propau: false,
+    personalBlog: false,
     announcement: false,
     university: false,
     job: false,

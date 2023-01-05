@@ -192,7 +192,30 @@
                             >{{ $t("ministry")
                             }}<span class="text-red-500">*</span></label
                         >
-                        <SelectFilter
+
+                        <select
+                            required
+                            v-model="post.ministry_id"
+                            class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                        >
+                            <option
+                                v-for="ministry in ministries"
+                                :key="ministry.id"
+                                :value="ministry.id"
+                            >
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    ministry.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    ministry.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    ministry.name_es
+                                }}</span>
+                                <span v-else>{{ ministry.name_pt }}</span>
+                            </option>
+                        </select>
+                        <!-- <SelectFilter
                             v-model="selectedMinistries"
                             :data="ministries"
                             :placeholder="'Select Ministry'"
@@ -200,7 +223,7 @@
                             :resetField="true"
                             :multiple="false"
                             :className="'form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue'"
-                        />
+                        /> -->
                     </div>
 
                     <div class="col-span-2" v-if="type == 'article'">
@@ -290,26 +313,7 @@
                         class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                     >
                         {{ $t("save") }}...
-                        <svg
-                            class="h-5 w-5 animate-spin text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                class="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                stroke-width="4"
-                            ></circle>
-                            <path
-                                class="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
+                        <Spin :size="'small'" />
                     </button>
                     <Transition
                         enter-active-class=" transition-all  "

@@ -255,26 +255,7 @@
                                     class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                                 >
                                     {{ $t("save") }}...
-                                    <svg
-                                        class="h-5 w-5 animate-spin text-white"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <circle
-                                            class="opacity-25"
-                                            cx="12"
-                                            cy="12"
-                                            r="10"
-                                            stroke="currentColor"
-                                            stroke-width="4"
-                                        ></circle>
-                                        <path
-                                            class="opacity-75"
-                                            fill="currentColor"
-                                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                        ></path>
-                                    </svg>
+                                    <Spin :size="'small'" />
                                 </button>
                             </div>
                         </div>
@@ -303,13 +284,7 @@
                     ></path>
                 </svg>
             </div>
-            <div
-                v-else
-                class="flex animate-pulse flex-col items-center justify-center p-28 text-gray-500"
-            >
-                <FaceFrownIcon class="h-16 w-16" />
-                <span class="mt-2 text-2xl">{{ $t("no-content") }}</span>
-            </div>
+            <NoContent v-else />
         </div>
         <div class="bg-white py-5 lg:w-[30%]">
             <div class="space-y-3 rounded-md py-5 px-10 shadow">

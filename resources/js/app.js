@@ -3,6 +3,8 @@ import "../css/app.css";
 import { createApp } from "vue";
 import App from "./App.vue";
 import Error from "./components/Error.vue";
+import Spin from "./components/utils/Spin.vue";
+import NoContent from "./components/utils/NoContent.vue";
 import router from "./router";
 import i18n from "./locales/i18n";
 import SelectFilter from "@/components/SelectFilter.vue";
@@ -13,6 +15,8 @@ app.use(i18n);
 app.use(router);
 app.component("SelectFilter", SelectFilter);
 app.component("Error", Error);
+app.component("Spin", Spin);
+app.component("NoContent", NoContent);
 app.component("EasyDataTable", Vue3EasyDataTable);
 app.mount("#app");
 

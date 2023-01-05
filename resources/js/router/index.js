@@ -420,6 +420,16 @@ const routes = [
             },
 
             {
+                path: "category-personal-blog",
+                component: () =>
+                    import("@/views/back/CategoryPersonalBlog.vue"),
+                name: "admin.category-personal-blog",
+                meta: {
+                    title: siteName + " - Category Personal Blog",
+                },
+            },
+
+            {
                 path: "post/:type",
                 component: () => import("@/views/back/posts/PostIndex.vue"),
                 props: true,
