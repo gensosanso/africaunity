@@ -518,12 +518,6 @@ onMounted(async () => {
     }
 });
 
-watch(route, async function (newsRoute, oldRoute) {
-    if ("personal_post" in newsRoute.query) {
-        personalPost.value = newsRoute.query.personal_post;
-        changeTab("personalBlog");
-    }
-});
 
 watch(props, async (currentValue, oldValue) => {
     try {
@@ -536,6 +530,11 @@ watch(props, async (currentValue, oldValue) => {
         } else {
             changeTab("profil");
         }
+
+        if ("personal_post" in newsRoute.query) {
+        personalPost.value = newsRoute.query.personal_post;
+        changeTab("personalBlog");
+    }
 
         await getUser(currentValue.id);
         await getDetail(currentValue.id);

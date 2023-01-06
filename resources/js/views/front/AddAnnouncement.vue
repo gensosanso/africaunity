@@ -213,7 +213,6 @@
                         disabled
                         class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                     >
-                        {{ $t("save") }}...
                         <svg
                             class="h-5 w-5 animate-spin text-white"
                             xmlns="http://www.w3.org/2000/svg"

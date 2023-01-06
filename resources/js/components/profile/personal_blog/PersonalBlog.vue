@@ -38,25 +38,22 @@ async function changeView(view) {
         case "create":
             show.index = false;
             show.edit = false;
+            show.single = false;
             show.create = true;
             currentPost.value = 0;
             break;
         case "edit":
             show.create = false;
             show.index = false;
+            show.single = false;
             show.edit = true;
-
             break;
         case "index":
             show.edit = false;
             show.create = false;
+            show.single = false;
             show.index = true;
-
-            router.replace({
-                name: "compte",
-                params: { slug: props.user.slug, id: props.user.id },
-                hash: "#personal_post",
-            });
+            currentPost.value = 0;
             break;
         case "single":
             show.edit = false;
@@ -91,6 +88,7 @@ async function changeView(view) {
         />
         <PersonalBlogSingle
             v-else="currentPost != 0 && show.single"
+            :id="currentPost"
             @back="changeView('index')"
         />
     </div>

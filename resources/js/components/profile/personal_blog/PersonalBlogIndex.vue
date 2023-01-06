@@ -56,14 +56,7 @@ function goToCreate() {
 }
 
 function goToSingle(id) {
-    router.replace({
-        name: "compte",
-        params: { slug: props.user.slug, id: props.user.id },
-        query: {
-            personal_post: id,
-        },
-        hash: "#personal_post",
-    });
+    emits("update:modelValue", `${id}`);
     emits("single");
 }
 

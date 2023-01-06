@@ -19,7 +19,7 @@ const emits = defineEmits(["back"]);
 function goBack() {
     emits("back");
 }
-const url = window.location.href;
+const url = window.location.href + `?personal_post=${props.id}#personal_post`;
 onMounted(async () => {
     await getPersonalPost(props.id);
 });

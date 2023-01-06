@@ -182,7 +182,7 @@
                             </select>
                         </div>
                     </div>
-                   <div
+                    <div
                         class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
                     >
                         <div class="">
@@ -625,7 +625,6 @@
                         disabled
                         class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                     >
-                        {{ $t("save") }}...
                         <svg
                             class="h-5 w-5 animate-spin text-white"
                             xmlns="http://www.w3.org/2000/svg"

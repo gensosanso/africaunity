@@ -254,7 +254,6 @@
                                     disabled
                                     class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                                 >
-                                    {{ $t("save") }}...
                                     <Spin :size="'small'" />
                                 </button>
                             </div>

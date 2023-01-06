@@ -456,6 +456,38 @@ const routes = [
                     title: siteName + " - Edit Post",
                 },
             },
+
+            {
+                path: "personal-posts",
+                component: () =>
+                    import("@/views/back/personal_blog/PersonalBlogIndex.vue"),
+                props: true,
+                name: "admin.personal-post.index",
+                meta: {
+                    title: siteName + " - Posts",
+                },
+            },
+            {
+                path: "personal-post/create",
+                component: () =>
+                    import("@/views/back/personal_blog/PersonalBlogCreate.vue"),
+                props: true,
+                name: "admin.personal-post.create",
+                meta: {
+                    title: siteName + " - Create Post",
+                },
+            },
+            {
+                path: "personal-post/edit/:id",
+                component: () =>
+                    import("@/views/back/personal_blog/PersonalBlogEdit.vue"),
+                props: true,
+                name: "admin.personal-post.edit",
+                meta: {
+                    title: siteName + " - Edit Post",
+                },
+            },
+
             {
                 path: "continent",
                 component: () =>

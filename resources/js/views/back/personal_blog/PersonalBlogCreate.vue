@@ -1,27 +1,28 @@
 <script setup>
-import { ChevronLeftIcon } from "@heroicons/vue/24/solid";
+import { useRouter } from "vue-router";
+import { reactive, ref, onMounted } from "vue";
 import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import usePersonalPosts from "@/services/personalPostsServices.js";
-import { ref, onMounted } from "vue";
-const { getPersonalPost, updatePersonalPost, errors, loading, personalPost } =
-    usePersonalPosts();
+const { createPersonalPost, errors, loading } = usePersonalPosts();
 const { categoryPersonalPosts, getCategoryPersonalPosts } =
     useCategoryPersonalPosts();
+const user = JSON.parse(localStorage.user);
+const router = useRouter();
 const emits = defineEmits(["back"]);
 const nbClick = ref(0);
 const textarea = ref(null);
 const msgClick = ref("");
 const file = ref(null);
-const props = defineProps({
-    user: Object,
-    id: [String, Number],
+const post = reactive({
+    title: "",
+    user_id: user.id,
+    content: "",
+    image: "",
+    subtheme: "",
+    category_personal_post_id: "",
 });
 
 onMounted(async () => {
-    await getPersonalPost(props.id);
-
-    textarea.value.value = personalPost.value.content;
-
     sceditor.create(textarea.value, {
         format: "xhtml",
         style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
@@ -30,38 +31,41 @@ onMounted(async () => {
             "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
         icons: "material",
     });
+    textarea.value.value == "";
 
     nbClick.value++;
+
     await getCategoryPersonalPosts();
 });
 
-const savePost = async () => {
-    personalPost.value.content = textarea.value.value;
+const storePost = async () => {
+    post.content = textarea.value.value;
     if (nbClick.value == 1) {
         nbClick.value++;
         msgClick.value = "please click again";
         return;
     }
     let formData = new FormData();
-    formData.append("image", personalPost.value.image);
-    formData.append("title", personalPost.value.title);
-    formData.append("subtheme", personalPost.value.subtheme);
-    formData.append("user_id", personalPost.value.user_id);
-    formData.append("content", personalPost.value.content);
+    formData.append("image", post.image);
+    formData.append("title", post.title);
+    formData.append("subtheme", post.subtheme);
+    formData.append("user_id", post.user_id);
+    formData.append("content", post.content);
     formData.append(
         "category_personal_post_id",
-        personalPost.value.category_personal_post_id
+        post.category_personal_post_id
     );
-    formData.append("_method", "PUT");
 
-    await updatePersonalPost(formData, props.id);
+    await createPersonalPost(formData);
     if (errors.value == "") {
-        goBack();
+        router.push({
+            name: "admin.personal-post.index",
+        });
     }
 };
 
 const handelFileObject = () => {
-    personalPost.value.image = file.value.files[0];
+    post.image = file.value.files[0];
 };
 
 function previewImage(file) {
@@ -70,33 +74,19 @@ function previewImage(file) {
 function loadImage(file) {
     return URL.revokeObjectURL(file);
 }
-function goBack() {
-    emits("back");
-}
 </script>
 
 <template>
     <div>
         <h1 class="text-center text-2xl font-bold text-gray-500 sm:text-4xl">
-            {{ $tc("edit", 1) }} Post
+            {{ $tc("add", 1) }} Post
         </h1>
 
-        <button
-            type="button"
-            @click="goBack()"
-            class="flex items-center space-x-3 rounded bg-primary-blue px-3 py-2 text-white"
-        >
-            <span> <ChevronLeftIcon class="h-5 w-5" /></span>
-            <span>Back</span>
-        </button>
         <section class="mx-auto w-full rounded-md bg-white p-6 shadow-xl">
             <Error v-if="errors != ''">{{ errors }}</Error>
-            <h1 class="text-xl font-semibold">{{ $tc("add", 2) }} Post</h1>
-            <h2 class="text-md font-light text-gray-700">
-                {{ $t("good-msg-post") }} !
-            </h2>
+
             <form
-                @submit.prevent="savePost()"
+                @submit.prevent="storePost()"
                 id="postform"
                 enctype="multipart/form-data"
             >
@@ -108,16 +98,13 @@ function goBack() {
                         >
                         <input
                             required
-                            v-model="personalPost.title"
+                            v-model="post.title"
                             maxlength="50"
                             type="text"
                             class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                         />
-                        <span
-                            v-if="personalPost.title"
-                            class="text-xs font-light text-gray-400"
-                            >{{ personalPost.title.length }} of 50
-                            Characters</span
+                        <span class="text-xs font-light text-gray-400"
+                            >{{ post.title.length }} of 50 Characters</span
                         >
                     </div>
 
@@ -128,7 +115,7 @@ function goBack() {
                         >
                         <select
                             required
-                            v-model="personalPost.category_personal_post_id"
+                            v-model="post.category_personal_post_id"
                             class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                         >
                             <option
@@ -157,16 +144,13 @@ function goBack() {
                             $t("subtheme")
                         }}</label>
                         <input
-                            v-model="personalPost.subtheme"
+                            v-model="post.subtheme"
                             maxlength="255"
                             type="text"
                             class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                         />
-                        <span
-                            v-if="personalPost.subtheme"
-                            class="text-xs font-light text-gray-400"
-                            >{{ personalPost.subtheme.length }} of 255
-                            Characters</span
+                        <span class="text-xs font-light text-gray-400"
+                            >{{ post.subtheme.length }} of 255 Characters</span
                         >
                     </div>
 
@@ -177,21 +161,22 @@ function goBack() {
                         >
                         <div class="flex items-center space-x-4 py-4">
                             <img
-                                v-if="personalPost.image"
+                                v-if="post.image"
                                 :src="
-                                    typeof personalPost.image == 'string'
-                                        ? personalPost.image
-                                        : previewImage(personalPost.image)
+                                    typeof post.image == 'string'
+                                        ? post.image
+                                        : previewImage(post.image)
                                 "
                                 @load="
-                                    typeof personalPost.image == 'string'
+                                    typeof post.image == 'string'
                                         ? ''
-                                        : loadImage(personalPost.image)
+                                        : loadImage(post.image)
                                 "
                                 class="h-16 w-16 rounded-full"
-                                :alt="personalPost.title"
+                                :alt="post.title"
                             />
                             <input
+                                required
                                 ref="file"
                                 @change="handelFileObject()"
                                 accept="image/*"

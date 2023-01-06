@@ -1,5 +1,5 @@
 <script setup>
-import { ChevronLeftIcon } from "@heroicons/vue/24/solid";
+import { useRouter } from "vue-router";
 import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import usePersonalPosts from "@/services/personalPostsServices.js";
 import { ref, onMounted } from "vue";
@@ -13,10 +13,9 @@ const textarea = ref(null);
 const msgClick = ref("");
 const file = ref(null);
 const props = defineProps({
-    user: Object,
     id: [String, Number],
 });
-
+const router = useRouter();
 onMounted(async () => {
     await getPersonalPost(props.id);
 
@@ -56,7 +55,9 @@ const savePost = async () => {
 
     await updatePersonalPost(formData, props.id);
     if (errors.value == "") {
-        goBack();
+        router.push({
+            name: "admin.personal-post.index",
+        });
     }
 };
 
@@ -70,9 +71,6 @@ function previewImage(file) {
 function loadImage(file) {
     return URL.revokeObjectURL(file);
 }
-function goBack() {
-    emits("back");
-}
 </script>
 
 <template>
@@ -81,20 +79,9 @@ function goBack() {
             {{ $tc("edit", 1) }} Post
         </h1>
 
-        <button
-            type="button"
-            @click="goBack()"
-            class="flex items-center space-x-3 rounded bg-primary-blue px-3 py-2 text-white"
-        >
-            <span> <ChevronLeftIcon class="h-5 w-5" /></span>
-            <span>Back</span>
-        </button>
         <section class="mx-auto w-full rounded-md bg-white p-6 shadow-xl">
             <Error v-if="errors != ''">{{ errors }}</Error>
-            <h1 class="text-xl font-semibold">{{ $tc("add", 2) }} Post</h1>
-            <h2 class="text-md font-light text-gray-700">
-                {{ $t("good-msg-post") }} !
-            </h2>
+
             <form
                 @submit.prevent="savePost()"
                 id="postform"
