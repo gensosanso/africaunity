@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.45c9c1ea.js",
+    "file": "assets/app.a6e0b7af.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
@@ -39,9 +39,13 @@
       "resources/js/components/Sidebar.vue",
       "resources/js/views/back/Dashboard.vue",
       "resources/js/views/back/OtherTools.vue",
+      "resources/js/views/back/CategoryPersonalBlog.vue",
       "resources/js/views/back/posts/PostIndex.vue",
       "resources/js/views/back/posts/PostCreate.vue",
       "resources/js/views/back/posts/PostEdit.vue",
+      "resources/js/views/back/personal_blog/PersonalBlogIndex.vue",
+      "resources/js/views/back/personal_blog/PersonalBlogCreate.vue",
+      "resources/js/views/back/personal_blog/PersonalBlogEdit.vue",
       "resources/js/views/back/continent/ContinentIndex.vue",
       "resources/js/views/back/continent/ContinentCreate.vue",
       "resources/js/views/back/continent/ContinentEdit.vue",
@@ -81,27 +85,26 @@
       "resources/js/views/back/ministry/MinistryEdit.vue"
     ],
     "css": [
-      "assets/app.ad3a3bda.css"
+      "assets/app.8e12b4f6.css"
     ]
   },
   "resources/js/components/Header.vue": {
-    "file": "assets/Header.b7cd7cdf.js",
+    "file": "assets/Header.53569782.js",
     "src": "resources/js/components/Header.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "__plugin-vue_export-helper.cdc0426e.js",
-      "_HomeIcon.218ac115.js",
-      "_UserCircleIcon.24350501.js",
-      "_swiper.min.21936a9f.js"
+      "_HomeIcon.a8537f81.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_swiper.min.2a058c4f.js"
     ],
     "css": [
       "assets/Header.93ae00a5.css",
       "assets/effect-fade.8b6e9104.css"
     ]
   },
-  "_swiper.min.21936a9f.js": {
-    "file": "assets/swiper.min.21936a9f.js",
+  "_swiper.min.2a058c4f.js": {
+    "file": "assets/swiper.min.2a058c4f.js",
     "imports": [
       "resources/js/app.js"
     ],
@@ -109,23 +112,20 @@
       "assets/swiper.8962dd2d.css"
     ]
   },
-  "__plugin-vue_export-helper.cdc0426e.js": {
-    "file": "assets/_plugin-vue_export-helper.cdc0426e.js"
-  },
-  "_HomeIcon.218ac115.js": {
-    "file": "assets/HomeIcon.218ac115.js",
+  "_HomeIcon.a8537f81.js": {
+    "file": "assets/HomeIcon.a8537f81.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_UserCircleIcon.24350501.js": {
-    "file": "assets/UserCircleIcon.24350501.js",
+  "_UserCircleIcon.65e2c685.js": {
+    "file": "assets/UserCircleIcon.65e2c685.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/components/Footer.vue": {
-    "file": "assets/Footer.c1bad514.js",
+    "file": "assets/Footer.27296e28.js",
     "src": "resources/js/components/Footer.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -133,1353 +133,1275 @@
     ]
   },
   "resources/js/views/front/Home.vue": {
-    "file": "assets/Home.cc4a57f4.js",
+    "file": "assets/Home.81e83b06.js",
     "src": "resources/js/views/front/Home.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_authServices.ea7c825e.js",
-      "_FilterArticle.9a4becc2.js",
-      "_swiper.min.21936a9f.js",
-      "_PhotoIcon.b14bd024.js",
+      "_authServices.4558a43f.js",
+      "_FilterArticle.b2bbb3a6.js",
+      "_swiper.min.2a058c4f.js",
+      "_PhotoIcon.576bb08e.js",
       "resources/js/app.js",
-      "_CalendarIcon.b116ac4d.js",
-      "_UserIcon.fd318caf.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_BuildingOffice2Icon.70941f2e.js"
+      "_CalendarIcon.36da1348.js",
+      "_UserIcon.d0afcc78.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js",
+      "_BuildingOffice2Icon.00a8fb51.js"
     ],
     "css": [
       "assets/effect-fade.8b6e9104.css"
     ]
   },
-  "_authServices.ea7c825e.js": {
-    "file": "assets/authServices.ea7c825e.js",
+  "_authServices.4558a43f.js": {
+    "file": "assets/authServices.4558a43f.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_FilterArticle.9a4becc2.js": {
-    "file": "assets/FilterArticle.9a4becc2.js",
+  "_FilterArticle.b2bbb3a6.js": {
+    "file": "assets/FilterArticle.b2bbb3a6.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_CalendarIcon.b116ac4d.js": {
-    "file": "assets/CalendarIcon.b116ac4d.js",
+  "_CalendarIcon.36da1348.js": {
+    "file": "assets/CalendarIcon.36da1348.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_UserIcon.fd318caf.js": {
-    "file": "assets/UserIcon.fd318caf.js",
+  "_UserIcon.d0afcc78.js": {
+    "file": "assets/UserIcon.d0afcc78.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js": {
-    "file": "assets/ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
+  "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js": {
+    "file": "assets/ChatBubbleOvalLeftEllipsisIcon.4146fe84.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BuildingOffice2Icon.70941f2e.js": {
-    "file": "assets/BuildingOffice2Icon.70941f2e.js",
+  "_BuildingOffice2Icon.00a8fb51.js": {
+    "file": "assets/BuildingOffice2Icon.00a8fb51.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_FaceFrownIcon.27f13efd.js": {
-    "file": "assets/FaceFrownIcon.27f13efd.js",
-    "imports": [
-      "resources/js/app.js"
-    ]
-  },
-  "_PhotoIcon.b14bd024.js": {
-    "file": "assets/PhotoIcon.b14bd024.js",
+  "_PhotoIcon.576bb08e.js": {
+    "file": "assets/PhotoIcon.576bb08e.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Article.vue": {
-    "file": "assets/Article.2fd293bc.js",
+    "file": "assets/Article.8f12a13f.js",
     "src": "resources/js/views/front/Article.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_ministryServices.17d1638d.js",
-      "_postServices.9533a329.js",
-      "_PhotoIcon.b14bd024.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_UserIcon.fd318caf.js",
-      "_CalendarIcon.b116ac4d.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
-      "_FaceFrownIcon.27f13efd.js"
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_ministryServices.c3bacdfa.js",
+      "_postServices.ec0b2ea2.js",
+      "_PhotoIcon.576bb08e.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_UserIcon.d0afcc78.js",
+      "_CalendarIcon.36da1348.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js"
     ]
   },
-  "_countryServices.40acb1e6.js": {
-    "file": "assets/countryServices.40acb1e6.js",
+  "_countryServices.205b0384.js": {
+    "file": "assets/countryServices.205b0384.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_zoneServices.f3fc5d70.js": {
-    "file": "assets/zoneServices.f3fc5d70.js",
+  "_zoneServices.558e62e1.js": {
+    "file": "assets/zoneServices.558e62e1.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_continentServices.7b53bf4e.js": {
-    "file": "assets/continentServices.7b53bf4e.js",
+  "_continentServices.7d39236e.js": {
+    "file": "assets/continentServices.7d39236e.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ministryServices.17d1638d.js": {
-    "file": "assets/ministryServices.17d1638d.js",
+  "_ministryServices.c3bacdfa.js": {
+    "file": "assets/ministryServices.c3bacdfa.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_postServices.9533a329.js": {
-    "file": "assets/postServices.9533a329.js",
+  "_postServices.ec0b2ea2.js": {
+    "file": "assets/postServices.ec0b2ea2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PlusCircleIcon.a5e331a6.js": {
-    "file": "assets/PlusCircleIcon.a5e331a6.js",
+  "_PlusCircleIcon.ce1d843a.js": {
+    "file": "assets/PlusCircleIcon.ce1d843a.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/PropAu.vue": {
-    "file": "assets/PropAu.d75742a4.js",
+    "file": "assets/PropAu.95303331.js",
     "src": "resources/js/views/front/PropAu.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_ministryServices.17d1638d.js",
-      "_postServices.9533a329.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_UserIcon.fd318caf.js",
-      "_CalendarIcon.b116ac4d.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
-      "_FaceFrownIcon.27f13efd.js"
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_ministryServices.c3bacdfa.js",
+      "_postServices.ec0b2ea2.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_UserIcon.d0afcc78.js",
+      "_CalendarIcon.36da1348.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js"
     ]
   },
   "resources/js/views/front/AddPost.vue": {
-    "file": "assets/AddPost.71c08f2b.js",
+    "file": "assets/AddPost.3b7e0eb4.js",
     "src": "resources/js/views/front/AddPost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_postServices.9533a329.js",
-      "_continentServices.7b53bf4e.js",
-      "_zoneServices.f3fc5d70.js",
-      "_countryServices.40acb1e6.js",
-      "_ministryServices.17d1638d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
-    ]
-  },
-  "_Error.17d7fb0f.js": {
-    "file": "assets/Error.17d7fb0f.js",
-    "imports": [
-      "__plugin-vue_export-helper.cdc0426e.js",
-      "resources/js/app.js"
+      "_postServices.ec0b2ea2.js",
+      "_continentServices.7d39236e.js",
+      "_zoneServices.558e62e1.js",
+      "_countryServices.205b0384.js",
+      "_ministryServices.c3bacdfa.js"
     ]
   },
   "resources/js/views/front/SinglePost.vue": {
-    "file": "assets/SinglePost.00d314cc.js",
+    "file": "assets/SinglePost.eee03ebc.js",
     "src": "resources/js/views/front/SinglePost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_FilterArticle.9a4becc2.js",
-      "_Report.f0e93fd5.js",
-      "_postServices.9533a329.js",
-      "_commentServices.67e290e8.js",
-      "_Error.17d7fb0f.js",
-      "_CalendarIcon.b116ac4d.js",
-      "_UserIcon.fd318caf.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
-      "_UserCircleIcon.24350501.js",
-      "_PencilSquareIcon.1ac638ad.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_FilterArticle.b2bbb3a6.js",
+      "_Report.9c194f4a.js",
+      "_postServices.ec0b2ea2.js",
+      "_commentServices.ba3d6fc9.js",
+      "_CalendarIcon.36da1348.js",
+      "_UserIcon.d0afcc78.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_PencilSquareIcon.e380f7b4.js"
     ]
   },
-  "_Report.f0e93fd5.js": {
-    "file": "assets/Report.f0e93fd5.js",
-    "imports": [
-      "resources/js/app.js",
-      "_Error.17d7fb0f.js"
-    ]
-  },
-  "_commentServices.67e290e8.js": {
-    "file": "assets/commentServices.67e290e8.js",
+  "_Report.9c194f4a.js": {
+    "file": "assets/Report.9c194f4a.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PencilSquareIcon.1ac638ad.js": {
-    "file": "assets/PencilSquareIcon.1ac638ad.js",
+  "_commentServices.ba3d6fc9.js": {
+    "file": "assets/commentServices.ba3d6fc9.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_PencilSquareIcon.e380f7b4.js": {
+    "file": "assets/PencilSquareIcon.e380f7b4.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/SingleAnnouncement.vue": {
-    "file": "assets/SingleAnnouncement.28496e6e.js",
+    "file": "assets/SingleAnnouncement.660256ed.js",
     "src": "resources/js/views/front/SingleAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_announcementServices.f0479202.js",
-      "_swiper.min.21936a9f.js",
-      "_announcementCommentServices.52d5c7f5.js",
-      "_CalendarIcon.b116ac4d.js",
-      "_UserIcon.fd318caf.js",
-      "_UserCircleIcon.24350501.js",
-      "_PencilSquareIcon.1ac638ad.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_MapPinIcon.a1260ab6.js",
-      "_EnvelopeIcon.32f470b5.js",
-      "_GlobeEuropeAfricaIcon.35398b28.js",
-      "_BriefcaseIcon.ac2eb887.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_announcementServices.79e4efd4.js",
+      "_swiper.min.2a058c4f.js",
+      "_announcementCommentServices.7f49e639.js",
+      "_CalendarIcon.36da1348.js",
+      "_UserIcon.d0afcc78.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_PencilSquareIcon.e380f7b4.js",
+      "_MapPinIcon.ea51159d.js",
+      "_EnvelopeIcon.905b77d7.js",
+      "_GlobeEuropeAfricaIcon.15b47878.js",
+      "_BriefcaseIcon.2a00e9dc.js"
     ],
     "css": [
       "assets/SingleAnnouncement.5ed6ea1c.css"
     ]
   },
-  "_announcementServices.f0479202.js": {
-    "file": "assets/announcementServices.f0479202.js",
+  "_announcementServices.79e4efd4.js": {
+    "file": "assets/announcementServices.79e4efd4.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_announcementCommentServices.52d5c7f5.js": {
-    "file": "assets/announcementCommentServices.52d5c7f5.js",
+  "_announcementCommentServices.7f49e639.js": {
+    "file": "assets/announcementCommentServices.7f49e639.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_MapPinIcon.a1260ab6.js": {
-    "file": "assets/MapPinIcon.a1260ab6.js",
+  "_MapPinIcon.ea51159d.js": {
+    "file": "assets/MapPinIcon.ea51159d.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_EnvelopeIcon.32f470b5.js": {
-    "file": "assets/EnvelopeIcon.32f470b5.js",
+  "_EnvelopeIcon.905b77d7.js": {
+    "file": "assets/EnvelopeIcon.905b77d7.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_GlobeEuropeAfricaIcon.35398b28.js": {
-    "file": "assets/GlobeEuropeAfricaIcon.35398b28.js",
+  "_GlobeEuropeAfricaIcon.15b47878.js": {
+    "file": "assets/GlobeEuropeAfricaIcon.15b47878.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BriefcaseIcon.ac2eb887.js": {
-    "file": "assets/BriefcaseIcon.ac2eb887.js",
+  "_BriefcaseIcon.2a00e9dc.js": {
+    "file": "assets/BriefcaseIcon.2a00e9dc.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/EditAnnouncement.vue": {
-    "file": "assets/EditAnnouncement.078537cc.js",
+    "file": "assets/EditAnnouncement.6aeeb580.js",
     "src": "resources/js/views/front/EditAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_announcementServices.f0479202.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_universityServices.9d9e034d.js",
-      "_DropZone.407f6221.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_announcementServices.79e4efd4.js",
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_currencyServices.e2864a01.js",
+      "_universityServices.28e4a053.js",
+      "_DropZone.3b75f778.js"
     ]
   },
-  "_categoryAnnouncementServices.e1e07e65.js": {
-    "file": "assets/categoryAnnouncementServices.e1e07e65.js",
+  "_categoryAnnouncementServices.8a41ed77.js": {
+    "file": "assets/categoryAnnouncementServices.8a41ed77.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_currencyServices.4c2a2b9d.js": {
-    "file": "assets/currencyServices.4c2a2b9d.js",
+  "_currencyServices.e2864a01.js": {
+    "file": "assets/currencyServices.e2864a01.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_universityServices.9d9e034d.js": {
-    "file": "assets/universityServices.9d9e034d.js",
+  "_universityServices.28e4a053.js": {
+    "file": "assets/universityServices.28e4a053.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_DropZone.407f6221.js": {
-    "file": "assets/DropZone.407f6221.js",
+  "_DropZone.3b75f778.js": {
+    "file": "assets/DropZone.3b75f778.js",
     "imports": [
-      "resources/js/app.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "resources/js/app.js"
     ],
     "css": [
       "assets/DropZone.7def20dc.css"
     ]
   },
   "resources/js/views/front/AddAnnouncement.vue": {
-    "file": "assets/AddAnnouncement.6544d4f4.js",
+    "file": "assets/AddAnnouncement.7a380048.js",
     "src": "resources/js/views/front/AddAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_announcementServices.f0479202.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_universityServices.9d9e034d.js",
-      "_DropZone.407f6221.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_announcementServices.79e4efd4.js",
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_currencyServices.e2864a01.js",
+      "_universityServices.28e4a053.js",
+      "_DropZone.3b75f778.js"
     ]
   },
   "resources/js/views/front/AddJob.vue": {
-    "file": "assets/AddJob.3c2bb262.js",
+    "file": "assets/AddJob.73a6e9e1.js",
     "src": "resources/js/views/front/AddJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_jobOfferServices.3dd14655.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_activityAreaServices.1e847502.js",
-      "_workDepartmentServices.e86840ee.js",
-      "_yearExperienceServices.fee9a03c.js",
-      "_languageServices.d69886a6.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_cityServices.60f8e1ce.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_currencyServices.e2864a01.js",
+      "_activityAreaServices.70380415.js",
+      "_workDepartmentServices.f238b3b2.js",
+      "_yearExperienceServices.6168a522.js",
+      "_languageServices.29091d9c.js",
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_cityServices.ba8ce71b.js"
     ]
   },
-  "_jobOfferServices.3dd14655.js": {
-    "file": "assets/jobOfferServices.3dd14655.js",
+  "_jobOfferServices.c65cb91c.js": {
+    "file": "assets/jobOfferServices.c65cb91c.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_activityAreaServices.1e847502.js": {
-    "file": "assets/activityAreaServices.1e847502.js",
+  "_activityAreaServices.70380415.js": {
+    "file": "assets/activityAreaServices.70380415.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_workDepartmentServices.e86840ee.js": {
-    "file": "assets/workDepartmentServices.e86840ee.js",
+  "_workDepartmentServices.f238b3b2.js": {
+    "file": "assets/workDepartmentServices.f238b3b2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_yearExperienceServices.fee9a03c.js": {
-    "file": "assets/yearExperienceServices.fee9a03c.js",
+  "_yearExperienceServices.6168a522.js": {
+    "file": "assets/yearExperienceServices.6168a522.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_languageServices.d69886a6.js": {
-    "file": "assets/languageServices.d69886a6.js",
+  "_languageServices.29091d9c.js": {
+    "file": "assets/languageServices.29091d9c.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_cityServices.60f8e1ce.js": {
-    "file": "assets/cityServices.60f8e1ce.js",
+  "_cityServices.ba8ce71b.js": {
+    "file": "assets/cityServices.ba8ce71b.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/SingleJob.vue": {
-    "file": "assets/SingleJob.63736765.js",
+    "file": "assets/SingleJob.c5fcafe7.js",
     "src": "resources/js/views/front/SingleJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_jobOfferServices.3dd14655.js",
-      "_BuildingOffice2Icon.70941f2e.js",
-      "_CalendarIcon.b116ac4d.js",
-      "_UserIcon.fd318caf.js",
-      "_UserCircleIcon.24350501.js",
-      "_PencilSquareIcon.1ac638ad.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_EnvelopeIcon.32f470b5.js",
-      "_GlobeEuropeAfricaIcon.35398b28.js",
-      "_Squares2X2Icon.e9f8af08.js",
-      "_BriefcaseIcon.ac2eb887.js",
-      "_MapPinIcon.a1260ab6.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_BuildingOffice2Icon.00a8fb51.js",
+      "_CalendarIcon.36da1348.js",
+      "_UserIcon.d0afcc78.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_PencilSquareIcon.e380f7b4.js",
+      "_EnvelopeIcon.905b77d7.js",
+      "_GlobeEuropeAfricaIcon.15b47878.js",
+      "_Squares2X2Icon.f9d21d27.js",
+      "_BriefcaseIcon.2a00e9dc.js",
+      "_MapPinIcon.ea51159d.js"
     ]
   },
-  "_Squares2X2Icon.e9f8af08.js": {
-    "file": "assets/Squares2X2Icon.e9f8af08.js",
+  "_Squares2X2Icon.f9d21d27.js": {
+    "file": "assets/Squares2X2Icon.f9d21d27.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/EditJob.vue": {
-    "file": "assets/EditJob.a1b21c15.js",
+    "file": "assets/EditJob.3554e65f.js",
     "src": "resources/js/views/front/EditJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_jobOfferServices.3dd14655.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_activityAreaServices.1e847502.js",
-      "_workDepartmentServices.e86840ee.js",
-      "_yearExperienceServices.fee9a03c.js",
-      "_languageServices.d69886a6.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_cityServices.60f8e1ce.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_currencyServices.e2864a01.js",
+      "_activityAreaServices.70380415.js",
+      "_workDepartmentServices.f238b3b2.js",
+      "_yearExperienceServices.6168a522.js",
+      "_languageServices.29091d9c.js",
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_cityServices.ba8ce71b.js"
     ]
   },
   "resources/js/views/front/EditPost.vue": {
-    "file": "assets/EditPost.4ee29ada.js",
+    "file": "assets/EditPost.fa5ec724.js",
     "src": "resources/js/views/front/EditPost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_postServices.9533a329.js",
-      "_continentServices.7b53bf4e.js",
-      "_zoneServices.f3fc5d70.js",
-      "_countryServices.40acb1e6.js",
-      "_ministryServices.17d1638d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_postServices.ec0b2ea2.js",
+      "_continentServices.7d39236e.js",
+      "_zoneServices.558e62e1.js",
+      "_countryServices.205b0384.js",
+      "_ministryServices.c3bacdfa.js"
     ]
   },
   "resources/js/views/front/Establishment.vue": {
-    "file": "assets/Establishment.ea601f98.js",
+    "file": "assets/Establishment.2b60e63b.js",
     "src": "resources/js/views/front/Establishment.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.751ca0f1.js",
-      "_businessSizeServices.8c7641a1.js",
-      "_countryServices.40acb1e6.js",
-      "_activityAreaServices.1e847502.js",
-      "_Profile.49748b31.js",
-      "_UserCircleIcon.24350501.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_PhotoIcon.b14bd024.js"
+      "_userServices.7438c7c8.js",
+      "_businessSizeServices.b1f918c7.js",
+      "_countryServices.205b0384.js",
+      "_activityAreaServices.70380415.js",
+      "_Profile.49a729df.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_PhotoIcon.576bb08e.js"
     ]
   },
-  "_userServices.751ca0f1.js": {
-    "file": "assets/userServices.751ca0f1.js",
+  "_userServices.7438c7c8.js": {
+    "file": "assets/userServices.7438c7c8.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_businessSizeServices.8c7641a1.js": {
-    "file": "assets/businessSizeServices.8c7641a1.js",
+  "_businessSizeServices.b1f918c7.js": {
+    "file": "assets/businessSizeServices.b1f918c7.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_Profile.49748b31.js": {
-    "file": "assets/Profile.49748b31.js",
+  "_Profile.49a729df.js": {
+    "file": "assets/Profile.49a729df.js",
     "imports": [
-      "_PhotoIcon.b14bd024.js",
+      "_PhotoIcon.576bb08e.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Particular.vue": {
-    "file": "assets/Particular.4583fb96.js",
+    "file": "assets/Particular.f3c7fad6.js",
     "src": "resources/js/views/front/Particular.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.751ca0f1.js",
-      "_languageServices.d69886a6.js",
-      "_activityAreaServices.1e847502.js",
-      "_countryServices.40acb1e6.js",
-      "_Profile.49748b31.js",
-      "_statusServices.1fafe741.js",
-      "_UserCircleIcon.24350501.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_PhotoIcon.b14bd024.js"
+      "_userServices.7438c7c8.js",
+      "_languageServices.29091d9c.js",
+      "_activityAreaServices.70380415.js",
+      "_countryServices.205b0384.js",
+      "_Profile.49a729df.js",
+      "_statusServices.b0d4bacb.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_PhotoIcon.576bb08e.js"
     ]
   },
-  "_statusServices.1fafe741.js": {
-    "file": "assets/statusServices.1fafe741.js",
+  "_statusServices.b0d4bacb.js": {
+    "file": "assets/statusServices.b0d4bacb.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/PoliticalInstitution.vue": {
-    "file": "assets/PoliticalInstitution.7ea9cd58.js",
+    "file": "assets/PoliticalInstitution.a416a9d9.js",
     "src": "resources/js/views/front/PoliticalInstitution.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.751ca0f1.js",
-      "_businessSizeServices.8c7641a1.js",
-      "_countryServices.40acb1e6.js",
-      "_Profile.49748b31.js",
-      "_UserCircleIcon.24350501.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_PhotoIcon.b14bd024.js"
+      "_userServices.7438c7c8.js",
+      "_businessSizeServices.b1f918c7.js",
+      "_countryServices.205b0384.js",
+      "_Profile.49a729df.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_PhotoIcon.576bb08e.js"
     ]
   },
   "resources/js/views/front/Job.vue": {
-    "file": "assets/Job.9be226f5.js",
+    "file": "assets/Job.29324e39.js",
     "src": "resources/js/views/front/Job.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.3dd14655.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_activityAreaServices.1e847502.js",
-      "_yearExperienceServices.fee9a03c.js",
-      "_languageServices.d69886a6.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_cityServices.60f8e1ce.js",
-      "_PhotoIcon.b14bd024.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_BuildingOffice2Icon.70941f2e.js",
-      "_MapPinIcon.a1260ab6.js",
-      "_FaceFrownIcon.27f13efd.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_currencyServices.e2864a01.js",
+      "_activityAreaServices.70380415.js",
+      "_yearExperienceServices.6168a522.js",
+      "_languageServices.29091d9c.js",
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_cityServices.ba8ce71b.js",
+      "_PhotoIcon.576bb08e.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_BuildingOffice2Icon.00a8fb51.js",
+      "_MapPinIcon.ea51159d.js"
     ]
   },
   "resources/js/views/front/Universities.vue": {
-    "file": "assets/Universities.3d0b5729.js",
+    "file": "assets/Universities.75d23510.js",
     "src": "resources/js/views/front/Universities.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.9d9e034d.js",
-      "_continentServices.7b53bf4e.js",
-      "_countryServices.40acb1e6.js",
-      "_cityServices.60f8e1ce.js",
-      "_zoneServices.f3fc5d70.js",
-      "_PhotoIcon.b14bd024.js",
-      "_FaceFrownIcon.27f13efd.js"
+      "_universityServices.28e4a053.js",
+      "_continentServices.7d39236e.js",
+      "_countryServices.205b0384.js",
+      "_cityServices.ba8ce71b.js",
+      "_zoneServices.558e62e1.js",
+      "_PhotoIcon.576bb08e.js"
     ]
   },
   "resources/js/views/front/SingleUniversity.vue": {
-    "file": "assets/SingleUniversity.6987dd51.js",
+    "file": "assets/SingleUniversity.fb1f7618.js",
     "src": "resources/js/views/front/SingleUniversity.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.9d9e034d.js",
-      "_announcementServices.f0479202.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_MegaphoneIcon.5cf9c9c1.js",
-      "_UserIcon.fd318caf.js"
+      "_universityServices.28e4a053.js",
+      "_announcementServices.79e4efd4.js",
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_MegaphoneIcon.ea31dba5.js",
+      "_UserIcon.d0afcc78.js"
     ]
   },
-  "_MegaphoneIcon.5cf9c9c1.js": {
-    "file": "assets/MegaphoneIcon.5cf9c9c1.js",
+  "_MegaphoneIcon.ea31dba5.js": {
+    "file": "assets/MegaphoneIcon.ea31dba5.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Announcement.vue": {
-    "file": "assets/Announcement.db12a926.js",
+    "file": "assets/Announcement.0b612f32.js",
     "src": "resources/js/views/front/Announcement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.f0479202.js",
-      "_universityServices.9d9e034d.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_continentServices.7b53bf4e.js",
-      "_countryServices.40acb1e6.js",
-      "_cityServices.60f8e1ce.js",
-      "_zoneServices.f3fc5d70.js",
-      "_PhotoIcon.b14bd024.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_MegaphoneIcon.5cf9c9c1.js",
-      "_UserIcon.fd318caf.js",
-      "_FaceFrownIcon.27f13efd.js"
+      "_announcementServices.79e4efd4.js",
+      "_universityServices.28e4a053.js",
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_continentServices.7d39236e.js",
+      "_countryServices.205b0384.js",
+      "_cityServices.ba8ce71b.js",
+      "_zoneServices.558e62e1.js",
+      "_PhotoIcon.576bb08e.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_MegaphoneIcon.ea31dba5.js",
+      "_UserIcon.d0afcc78.js"
     ]
   },
   "resources/js/views/front/Contact.vue": {
-    "file": "assets/Contact.68bbde8b.js",
+    "file": "assets/Contact.b8b04786.js",
     "src": "resources/js/views/front/Contact.vue",
     "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "resources/js/app.js"
     ]
   },
   "resources/js/views/front/ForgotPassword.vue": {
-    "file": "assets/ForgotPassword.26fd5f67.js",
+    "file": "assets/ForgotPassword.3ab17616.js",
     "src": "resources/js/views/front/ForgotPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_EnvelopeIcon.32f470b5.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_EnvelopeIcon.905b77d7.js"
     ]
   },
   "resources/js/views/front/ResetPassword.vue": {
-    "file": "assets/ResetPassword.c69d8995.js",
+    "file": "assets/ResetPassword.97312001.js",
     "src": "resources/js/views/front/ResetPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_LockClosedIcon.9b6387ff.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_LockClosedIcon.3edb1623.js"
     ]
   },
-  "_LockClosedIcon.9b6387ff.js": {
-    "file": "assets/LockClosedIcon.9b6387ff.js",
+  "_LockClosedIcon.3edb1623.js": {
+    "file": "assets/LockClosedIcon.3edb1623.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Login.vue": {
-    "file": "assets/Login.d2172f8e.js",
+    "file": "assets/Login.6f082357.js",
     "src": "resources/js/views/front/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_authServices.ea7c825e.js",
-      "_EnvelopeIcon.32f470b5.js",
-      "_LockClosedIcon.9b6387ff.js",
-      "_EyeIcon.8e8d3e68.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_authServices.4558a43f.js",
+      "_EnvelopeIcon.905b77d7.js",
+      "_LockClosedIcon.3edb1623.js",
+      "_EyeIcon.3bbe9401.js"
     ]
   },
-  "_EyeIcon.8e8d3e68.js": {
-    "file": "assets/EyeIcon.8e8d3e68.js",
+  "_EyeIcon.3bbe9401.js": {
+    "file": "assets/EyeIcon.3bbe9401.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Pack.vue": {
-    "file": "assets/Pack.5f1b1830.js",
+    "file": "assets/Pack.bf1fb772.js",
     "src": "resources/js/views/front/Pack.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_CheckCircleIcon.5f0caf2a.js"
+      "_CheckCircleIcon.2e9ad101.js"
     ]
   },
-  "_CheckCircleIcon.5f0caf2a.js": {
-    "file": "assets/CheckCircleIcon.5f0caf2a.js",
+  "_CheckCircleIcon.2e9ad101.js": {
+    "file": "assets/CheckCircleIcon.2e9ad101.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Register.vue": {
-    "file": "assets/Register.8b5b8e0f.js",
+    "file": "assets/Register.b19dc56a.js",
     "src": "resources/js/views/front/Register.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_authServices.ea7c825e.js",
-      "_UserIcon.fd318caf.js",
-      "_EnvelopeIcon.32f470b5.js",
-      "_LockClosedIcon.9b6387ff.js",
-      "_EyeIcon.8e8d3e68.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_authServices.4558a43f.js",
+      "_UserIcon.d0afcc78.js",
+      "_EnvelopeIcon.905b77d7.js",
+      "_LockClosedIcon.3edb1623.js",
+      "_EyeIcon.3bbe9401.js"
     ]
   },
   "resources/js/views/front/Profile.vue": {
-    "file": "assets/Profile.5cf79e56.js",
+    "file": "assets/Profile.3695cb2d.js",
     "src": "resources/js/views/front/Profile.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Report.f0e93fd5.js",
-      "_postServices.9533a329.js",
-      "_userServices.751ca0f1.js",
-      "_commentServices.67e290e8.js",
-      "_announcementServices.f0479202.js",
-      "_languageServices.d69886a6.js",
-      "_businessSizeServices.8c7641a1.js",
-      "_activityAreaServices.1e847502.js",
-      "_jobOfferServices.3dd14655.js",
-      "_legalStatusServices.e4a6482c.js",
-      "_countryServices.40acb1e6.js",
-      "_statusServices.1fafe741.js",
-      "_UserCircleIcon.24350501.js",
-      "_FaceFrownIcon.27f13efd.js",
-      "_announcementCommentServices.52d5c7f5.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_NewspaperIcon.7ccf8d94.js",
-      "_BookOpenIcon.c7a4addb.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
-      "_MegaphoneIcon.5cf9c9c1.js",
-      "_PencilSquareIcon.1ac638ad.js",
-      "_TrashIcon.2dacdc90.js",
-      "_Error.17d7fb0f.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_Report.9c194f4a.js",
+      "_categoryPersonalPostServices.7c702e20.js",
+      "_personalPostsServices.89d7607b.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_PencilSquareIcon.e380f7b4.js",
+      "_TrashIcon.e967ada5.js",
+      "_CalendarIcon.36da1348.js",
+      "_UserIcon.d0afcc78.js",
+      "_postServices.ec0b2ea2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js",
+      "_BookOpenIcon.1fe4bee7.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_announcementServices.79e4efd4.js",
+      "_jobOfferServices.c65cb91c.js",
+      "_commentServices.ba3d6fc9.js",
+      "_announcementCommentServices.7f49e639.js",
+      "_userServices.7438c7c8.js",
+      "_languageServices.29091d9c.js",
+      "_businessSizeServices.b1f918c7.js",
+      "_activityAreaServices.70380415.js",
+      "_legalStatusServices.d56ec888.js",
+      "_countryServices.205b0384.js",
+      "_statusServices.b0d4bacb.js",
+      "_NewspaperIcon.8451c1b0.js",
+      "_MegaphoneIcon.ea31dba5.js",
+      "_ClipboardIcon.7f515666.js"
     ]
   },
-  "_legalStatusServices.e4a6482c.js": {
-    "file": "assets/legalStatusServices.e4a6482c.js",
+  "_legalStatusServices.d56ec888.js": {
+    "file": "assets/legalStatusServices.d56ec888.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_NewspaperIcon.7ccf8d94.js": {
-    "file": "assets/NewspaperIcon.7ccf8d94.js",
+  "_NewspaperIcon.8451c1b0.js": {
+    "file": "assets/NewspaperIcon.8451c1b0.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BookOpenIcon.c7a4addb.js": {
-    "file": "assets/BookOpenIcon.c7a4addb.js",
+  "_BookOpenIcon.1fe4bee7.js": {
+    "file": "assets/BookOpenIcon.1fe4bee7.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_TrashIcon.2dacdc90.js": {
-    "file": "assets/TrashIcon.2dacdc90.js",
+  "_ClipboardIcon.7f515666.js": {
+    "file": "assets/ClipboardIcon.7f515666.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_TrashIcon.e967ada5.js": {
+    "file": "assets/TrashIcon.e967ada5.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_categoryPersonalPostServices.7c702e20.js": {
+    "file": "assets/categoryPersonalPostServices.7c702e20.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "_personalPostsServices.89d7607b.js": {
+    "file": "assets/personalPostsServices.89d7607b.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/SettingAccount.vue": {
-    "file": "assets/SettingAccount.86bb4a6b.js",
+    "file": "assets/SettingAccount.2630c26e.js",
     "src": "resources/js/views/front/SettingAccount.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.751ca0f1.js",
-      "_Error.17d7fb0f.js",
-      "_UserCircleIcon.24350501.js",
-      "_LockClosedIcon.9b6387ff.js",
-      "_TrashIcon.2dacdc90.js",
-      "_CheckCircleIcon.5f0caf2a.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_userServices.7438c7c8.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_LockClosedIcon.3edb1623.js",
+      "_TrashIcon.e967ada5.js",
+      "_CheckCircleIcon.2e9ad101.js"
     ]
   },
   "resources/js/views/front/NotFound.vue": {
-    "file": "assets/NotFound.62439a9e.js",
+    "file": "assets/NotFound.04c7b3ae.js",
     "src": "resources/js/views/front/NotFound.vue",
     "isDynamicEntry": true,
     "imports": [
-      "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/views/back/Login.vue": {
-    "file": "assets/Login.b403b1d3.js",
+    "file": "assets/Login.11e7fae7.js",
     "src": "resources/js/views/back/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_authServices.ea7c825e.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_authServices.4558a43f.js"
     ]
   },
   "resources/js/views/back/DashHome.vue": {
-    "file": "assets/DashHome.75e41c1f.js",
+    "file": "assets/DashHome.7c8a15d1.js",
     "src": "resources/js/views/back/DashHome.vue",
     "isDynamicEntry": true,
     "imports": [
-      "__plugin-vue_export-helper.cdc0426e.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/components/Sidebar.vue": {
-    "file": "assets/Sidebar.4833f35d.js",
+    "file": "assets/Sidebar.ad96c9fd.js",
     "src": "resources/js/components/Sidebar.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "__plugin-vue_export-helper.cdc0426e.js",
-      "_HomeIcon.218ac115.js",
-      "_UserGroupIcon.82ae11ef.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.107d255c.js",
-      "_NewspaperIcon.7ccf8d94.js",
-      "_GlobeEuropeAfricaIcon.35398b28.js",
-      "_Squares2X2Icon.e9f8af08.js",
-      "_BuildingOffice2Icon.70941f2e.js",
-      "_BriefcaseIcon.ac2eb887.js",
-      "_MegaphoneIcon.5cf9c9c1.js",
-      "_UserCircleIcon.24350501.js"
+      "_HomeIcon.a8537f81.js",
+      "_UserGroupIcon.388a0c5a.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.4146fe84.js",
+      "_NewspaperIcon.8451c1b0.js",
+      "_GlobeEuropeAfricaIcon.15b47878.js",
+      "_Squares2X2Icon.f9d21d27.js",
+      "_BuildingOffice2Icon.00a8fb51.js",
+      "_ClipboardIcon.7f515666.js",
+      "_BriefcaseIcon.2a00e9dc.js",
+      "_MegaphoneIcon.ea31dba5.js",
+      "_UserCircleIcon.65e2c685.js"
     ],
     "css": [
-      "assets/Sidebar.59083621.css"
+      "assets/Sidebar.c475bfb2.css"
     ]
   },
-  "_UserGroupIcon.82ae11ef.js": {
-    "file": "assets/UserGroupIcon.82ae11ef.js",
+  "_UserGroupIcon.388a0c5a.js": {
+    "file": "assets/UserGroupIcon.388a0c5a.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/back/Dashboard.vue": {
-    "file": "assets/Dashboard.95c4ff60.js",
+    "file": "assets/Dashboard.c9f14f12.js",
     "src": "resources/js/views/back/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_UserGroupIcon.82ae11ef.js",
-      "_NewspaperIcon.7ccf8d94.js",
-      "_MegaphoneIcon.5cf9c9c1.js",
-      "_BriefcaseIcon.ac2eb887.js",
-      "_UserCircleIcon.24350501.js",
-      "_BookOpenIcon.c7a4addb.js"
+      "_UserGroupIcon.388a0c5a.js",
+      "_NewspaperIcon.8451c1b0.js",
+      "_MegaphoneIcon.ea31dba5.js",
+      "_BriefcaseIcon.2a00e9dc.js",
+      "_UserCircleIcon.65e2c685.js",
+      "_BookOpenIcon.1fe4bee7.js"
     ]
   },
   "resources/js/views/back/OtherTools.vue": {
-    "file": "assets/OtherTools.e4e283f6.js",
+    "file": "assets/OtherTools.c3a0e067.js",
     "src": "resources/js/views/back/OtherTools.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_languageServices.d69886a6.js",
-      "_statusServices.1fafe741.js",
-      "_businessSizeServices.8c7641a1.js",
-      "_activityAreaServices.1e847502.js",
-      "_workDepartmentServices.e86840ee.js",
-      "_yearExperienceServices.fee9a03c.js",
-      "_legalStatusServices.e4a6482c.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_languageServices.29091d9c.js",
+      "_statusServices.b0d4bacb.js",
+      "_businessSizeServices.b1f918c7.js",
+      "_activityAreaServices.70380415.js",
+      "_workDepartmentServices.f238b3b2.js",
+      "_yearExperienceServices.6168a522.js",
+      "_legalStatusServices.d56ec888.js"
+    ]
+  },
+  "resources/js/views/back/CategoryPersonalBlog.vue": {
+    "file": "assets/CategoryPersonalBlog.262cc5a8.js",
+    "src": "resources/js/views/back/CategoryPersonalBlog.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_categoryPersonalPostServices.7c702e20.js"
     ]
   },
   "resources/js/views/back/posts/PostIndex.vue": {
-    "file": "assets/PostIndex.503d8300.js",
+    "file": "assets/PostIndex.462a2cd8.js",
     "src": "resources/js/views/back/posts/PostIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.9533a329.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js"
+      "_postServices.ec0b2ea2.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/posts/PostCreate.vue": {
-    "file": "assets/PostCreate.1682ceee.js",
+    "file": "assets/PostCreate.5ca5f302.js",
     "src": "resources/js/views/back/posts/PostCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_postServices.9533a329.js",
-      "_continentServices.7b53bf4e.js",
-      "_zoneServices.f3fc5d70.js",
-      "_countryServices.40acb1e6.js",
-      "_ministryServices.17d1638d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_postServices.ec0b2ea2.js",
+      "_continentServices.7d39236e.js",
+      "_zoneServices.558e62e1.js",
+      "_countryServices.205b0384.js",
+      "_ministryServices.c3bacdfa.js"
     ]
   },
   "resources/js/views/back/posts/PostEdit.vue": {
-    "file": "assets/PostEdit.5c5c2e8d.js",
+    "file": "assets/PostEdit.5e9fe281.js",
     "src": "resources/js/views/back/posts/PostEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_postServices.9533a329.js",
-      "_continentServices.7b53bf4e.js",
-      "_zoneServices.f3fc5d70.js",
-      "_countryServices.40acb1e6.js",
-      "_ministryServices.17d1638d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_postServices.ec0b2ea2.js",
+      "_continentServices.7d39236e.js",
+      "_zoneServices.558e62e1.js",
+      "_countryServices.205b0384.js",
+      "_ministryServices.c3bacdfa.js"
+    ]
+  },
+  "resources/js/views/back/personal_blog/PersonalBlogIndex.vue": {
+    "file": "assets/PersonalBlogIndex.081a491d.js",
+    "src": "resources/js/views/back/personal_blog/PersonalBlogIndex.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_personalPostsServices.89d7607b.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
+    ]
+  },
+  "resources/js/views/back/personal_blog/PersonalBlogCreate.vue": {
+    "file": "assets/PersonalBlogCreate.c3ff8613.js",
+    "src": "resources/js/views/back/personal_blog/PersonalBlogCreate.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_categoryPersonalPostServices.7c702e20.js",
+      "_personalPostsServices.89d7607b.js"
+    ]
+  },
+  "resources/js/views/back/personal_blog/PersonalBlogEdit.vue": {
+    "file": "assets/PersonalBlogEdit.546603a8.js",
+    "src": "resources/js/views/back/personal_blog/PersonalBlogEdit.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_categoryPersonalPostServices.7c702e20.js",
+      "_personalPostsServices.89d7607b.js"
     ]
   },
   "resources/js/views/back/continent/ContinentIndex.vue": {
-    "file": "assets/ContinentIndex.1590098b.js",
+    "file": "assets/ContinentIndex.33afbe90.js",
     "src": "resources/js/views/back/continent/ContinentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.7b53bf4e.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_continentServices.7d39236e.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/continent/ContinentCreate.vue": {
-    "file": "assets/ContinentCreate.17ac1b7f.js",
+    "file": "assets/ContinentCreate.25cafcf5.js",
     "src": "resources/js/views/back/continent/ContinentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_continentServices.7b53bf4e.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_continentServices.7d39236e.js"
     ]
   },
   "resources/js/views/back/continent/ContinentEdit.vue": {
-    "file": "assets/ContinentEdit.0c126d6d.js",
+    "file": "assets/ContinentEdit.2b354b8d.js",
     "src": "resources/js/views/back/continent/ContinentEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_continentServices.7b53bf4e.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_continentServices.7d39236e.js"
     ]
   },
   "resources/js/views/back/user/UserIndex.vue": {
-    "file": "assets/UserIndex.2a1a27f1.js",
+    "file": "assets/UserIndex.c25d3aa9.js",
     "src": "resources/js/views/back/user/UserIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.751ca0f1.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "_UserCircleIcon.24350501.js"
+      "_userServices.7438c7c8.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js",
+      "_UserCircleIcon.65e2c685.js"
     ]
   },
   "resources/js/views/back/user/UserCreate.vue": {
-    "file": "assets/UserCreate.019255fb.js",
+    "file": "assets/UserCreate.12edc95b.js",
     "src": "resources/js/views/back/user/UserCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_userServices.751ca0f1.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_userServices.7438c7c8.js"
     ]
   },
   "resources/js/views/back/user/UserEdit.vue": {
-    "file": "assets/UserEdit.8eacc070.js",
+    "file": "assets/UserEdit.0dbf2f23.js",
     "src": "resources/js/views/back/user/UserEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_userServices.751ca0f1.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_userServices.7438c7c8.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferIndex.vue": {
-    "file": "assets/JobOfferIndex.89898433.js",
+    "file": "assets/JobOfferIndex.5029b44c.js",
     "src": "resources/js/views/back/jobOffer/JobOfferIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.3dd14655.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "_BuildingOffice2Icon.70941f2e.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js",
+      "_BuildingOffice2Icon.00a8fb51.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferCreate.vue": {
-    "file": "assets/JobOfferCreate.3043bf5f.js",
+    "file": "assets/JobOfferCreate.e47e43c7.js",
     "src": "resources/js/views/back/jobOffer/JobOfferCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_jobOfferServices.3dd14655.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_activityAreaServices.1e847502.js",
-      "_workDepartmentServices.e86840ee.js",
-      "_yearExperienceServices.fee9a03c.js",
-      "_languageServices.d69886a6.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_cityServices.60f8e1ce.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_currencyServices.e2864a01.js",
+      "_activityAreaServices.70380415.js",
+      "_workDepartmentServices.f238b3b2.js",
+      "_yearExperienceServices.6168a522.js",
+      "_languageServices.29091d9c.js",
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_cityServices.ba8ce71b.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferEdit.vue": {
-    "file": "assets/JobOfferEdit.40792598.js",
+    "file": "assets/JobOfferEdit.b771b911.js",
     "src": "resources/js/views/back/jobOffer/JobOfferEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_jobOfferServices.3dd14655.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_activityAreaServices.1e847502.js",
-      "_workDepartmentServices.e86840ee.js",
-      "_yearExperienceServices.fee9a03c.js",
-      "_languageServices.d69886a6.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "_cityServices.60f8e1ce.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_jobOfferServices.c65cb91c.js",
+      "_currencyServices.e2864a01.js",
+      "_activityAreaServices.70380415.js",
+      "_workDepartmentServices.f238b3b2.js",
+      "_yearExperienceServices.6168a522.js",
+      "_languageServices.29091d9c.js",
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js",
+      "_cityServices.ba8ce71b.js"
     ]
   },
   "resources/js/views/back/comment/CommentIndex.vue": {
-    "file": "assets/CommentIndex.82cb80c8.js",
+    "file": "assets/CommentIndex.e0b67625.js",
     "src": "resources/js/views/back/comment/CommentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_commentServices.67e290e8.js",
-      "_Error.17d7fb0f.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_commentServices.ba3d6fc9.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/comment/CommentCreate.vue": {
-    "file": "assets/CommentCreate.1b4532f9.js",
+    "file": "assets/CommentCreate.8a966c76.js",
     "src": "resources/js/views/back/comment/CommentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_countryServices.40acb1e6.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_countryServices.205b0384.js"
     ]
   },
   "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue": {
-    "file": "assets/AnnouncementCommentIndex.2f6948f0.js",
+    "file": "assets/AnnouncementCommentIndex.354c8073.js",
     "src": "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementCommentServices.52d5c7f5.js",
-      "_Error.17d7fb0f.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_announcementCommentServices.7f49e639.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/announcement_comment/AnnouncementCommentCreate.vue": {
-    "file": "assets/AnnouncementCommentCreate.664ff7cb.js",
+    "file": "assets/AnnouncementCommentCreate.e3e45dd1.js",
     "src": "resources/js/views/back/announcement_comment/AnnouncementCommentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_countryServices.40acb1e6.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_countryServices.205b0384.js"
     ]
   },
   "resources/js/views/back/zone/ZoneIndex.vue": {
-    "file": "assets/ZoneIndex.c78fca0f.js",
+    "file": "assets/ZoneIndex.eee34961.js",
     "src": "resources/js/views/back/zone/ZoneIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.f3fc5d70.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_zoneServices.558e62e1.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/zone/ZoneCreate.vue": {
-    "file": "assets/ZoneCreate.c0a46fac.js",
+    "file": "assets/ZoneCreate.78d6d83f.js",
     "src": "resources/js/views/back/zone/ZoneCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js"
     ]
   },
   "resources/js/views/back/zone/ZoneEdit.vue": {
-    "file": "assets/ZoneEdit.adfdc99d.js",
+    "file": "assets/ZoneEdit.9997b0ef.js",
     "src": "resources/js/views/back/zone/ZoneEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_zoneServices.f3fc5d70.js",
-      "_continentServices.7b53bf4e.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_zoneServices.558e62e1.js",
+      "_continentServices.7d39236e.js"
     ]
   },
   "resources/js/views/back/country/CountryIndex.vue": {
-    "file": "assets/CountryIndex.5b4627c5.js",
+    "file": "assets/CountryIndex.022d7347.js",
     "src": "resources/js/views/back/country/CountryIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.40acb1e6.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_countryServices.205b0384.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/country/CountryCreate.vue": {
-    "file": "assets/CountryCreate.d5a77b79.js",
+    "file": "assets/CountryCreate.e2dbd873.js",
     "src": "resources/js/views/back/country/CountryCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_countryServices.40acb1e6.js",
-      "_continentServices.7b53bf4e.js",
-      "_zoneServices.f3fc5d70.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_countryServices.205b0384.js",
+      "_continentServices.7d39236e.js",
+      "_zoneServices.558e62e1.js"
     ]
   },
   "resources/js/views/back/country/CountryEdit.vue": {
-    "file": "assets/CountryEdit.626d3e57.js",
+    "file": "assets/CountryEdit.c360f36c.js",
     "src": "resources/js/views/back/country/CountryEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_countryServices.40acb1e6.js",
-      "_continentServices.7b53bf4e.js",
-      "_zoneServices.f3fc5d70.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_countryServices.205b0384.js",
+      "_continentServices.7d39236e.js",
+      "_zoneServices.558e62e1.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementIndex.vue": {
-    "file": "assets/AnnouncementIndex.7ea25bee.js",
+    "file": "assets/AnnouncementIndex.a29f6b71.js",
     "src": "resources/js/views/back/announcement/AnnouncementIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.f0479202.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "_MegaphoneIcon.5cf9c9c1.js"
+      "_announcementServices.79e4efd4.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js",
+      "_MegaphoneIcon.ea31dba5.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementCreate.vue": {
-    "file": "assets/AnnouncementCreate.6266f78c.js",
+    "file": "assets/AnnouncementCreate.801f224a.js",
     "src": "resources/js/views/back/announcement/AnnouncementCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_announcementServices.f0479202.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_universityServices.9d9e034d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_announcementServices.79e4efd4.js",
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_currencyServices.e2864a01.js",
+      "_universityServices.28e4a053.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementEdit.vue": {
-    "file": "assets/AnnouncementEdit.bba525de.js",
+    "file": "assets/AnnouncementEdit.82a18fad.js",
     "src": "resources/js/views/back/announcement/AnnouncementEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_announcementServices.f0479202.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_universityServices.9d9e034d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_announcementServices.79e4efd4.js",
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_currencyServices.e2864a01.js",
+      "_universityServices.28e4a053.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyIndex.vue": {
-    "file": "assets/CurrencyIndex.32197470.js",
+    "file": "assets/CurrencyIndex.4f13f116.js",
     "src": "resources/js/views/back/currency/CurrencyIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.4c2a2b9d.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_currencyServices.e2864a01.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyCreate.vue": {
-    "file": "assets/CurrencyCreate.9f939658.js",
+    "file": "assets/CurrencyCreate.6b2f4479.js",
     "src": "resources/js/views/back/currency/CurrencyCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_currencyServices.4c2a2b9d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_currencyServices.e2864a01.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyEdit.vue": {
-    "file": "assets/CurrencyEdit.06a1c77b.js",
+    "file": "assets/CurrencyEdit.9e073c59.js",
     "src": "resources/js/views/back/currency/CurrencyEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_currencyServices.4c2a2b9d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_currencyServices.e2864a01.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementIndex.vue": {
-    "file": "assets/CategoryAnnouncementIndex.e29b92e3.js",
+    "file": "assets/CategoryAnnouncementIndex.dde32787.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_categoryAnnouncementServices.8a41ed77.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementCreate.vue": {
-    "file": "assets/CategoryAnnouncementCreate.d0f465a8.js",
+    "file": "assets/CategoryAnnouncementCreate.cf5960a3.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_categoryAnnouncementServices.8a41ed77.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementEdit.vue": {
-    "file": "assets/CategoryAnnouncementEdit.b5b63e19.js",
+    "file": "assets/CategoryAnnouncementEdit.241d12fe.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_categoryAnnouncementServices.e1e07e65.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_categoryAnnouncementServices.8a41ed77.js"
     ]
   },
   "resources/js/views/back/city/CityIndex.vue": {
-    "file": "assets/CityIndex.edc9c9d6.js",
+    "file": "assets/CityIndex.e3c3d7bb.js",
     "src": "resources/js/views/back/city/CityIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.60f8e1ce.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_cityServices.ba8ce71b.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/city/CityCreate.vue": {
-    "file": "assets/CityCreate.94aab70c.js",
+    "file": "assets/CityCreate.d8881acf.js",
     "src": "resources/js/views/back/city/CityCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_cityServices.60f8e1ce.js",
-      "_countryServices.40acb1e6.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_cityServices.ba8ce71b.js",
+      "_countryServices.205b0384.js"
     ]
   },
   "resources/js/views/back/city/CityEdit.vue": {
-    "file": "assets/CityEdit.1a5f96c8.js",
+    "file": "assets/CityEdit.25c193ab.js",
     "src": "resources/js/views/back/city/CityEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_cityServices.60f8e1ce.js",
-      "_countryServices.40acb1e6.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_cityServices.ba8ce71b.js",
+      "_countryServices.205b0384.js"
     ]
   },
   "resources/js/views/back/university/UniversityIndex.vue": {
-    "file": "assets/UniversityIndex.52a0e8f4.js",
+    "file": "assets/UniversityIndex.39f6f9fa.js",
     "src": "resources/js/views/back/university/UniversityIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.9d9e034d.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js"
+      "_universityServices.28e4a053.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/university/UniversityCreate.vue": {
-    "file": "assets/UniversityCreate.d2f540c1.js",
+    "file": "assets/UniversityCreate.d2e83d62.js",
     "src": "resources/js/views/back/university/UniversityCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_universityServices.9d9e034d.js",
-      "_continentServices.7b53bf4e.js",
-      "_countryServices.40acb1e6.js",
-      "_cityServices.60f8e1ce.js",
-      "_zoneServices.f3fc5d70.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_universityServices.28e4a053.js",
+      "_continentServices.7d39236e.js",
+      "_countryServices.205b0384.js",
+      "_cityServices.ba8ce71b.js",
+      "_zoneServices.558e62e1.js"
     ]
   },
   "resources/js/views/back/university/UniversityEdit.vue": {
-    "file": "assets/UniversityEdit.e3eae03d.js",
+    "file": "assets/UniversityEdit.ebe3fd66.js",
     "src": "resources/js/views/back/university/UniversityEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_universityServices.9d9e034d.js",
-      "_continentServices.7b53bf4e.js",
-      "_countryServices.40acb1e6.js",
-      "_zoneServices.f3fc5d70.js",
-      "_cityServices.60f8e1ce.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_universityServices.28e4a053.js",
+      "_continentServices.7d39236e.js",
+      "_countryServices.205b0384.js",
+      "_zoneServices.558e62e1.js",
+      "_cityServices.ba8ce71b.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryIndex.vue": {
-    "file": "assets/MinistryIndex.d63d0e7a.js",
+    "file": "assets/MinistryIndex.bacb8ec4.js",
     "src": "resources/js/views/back/ministry/MinistryIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.17d1638d.js",
-      "_Error.17d7fb0f.js",
-      "_PlusCircleIcon.a5e331a6.js",
-      "_TrashIcon.2dacdc90.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_ministryServices.c3bacdfa.js",
+      "_PlusCircleIcon.ce1d843a.js",
+      "_TrashIcon.e967ada5.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryCreate.vue": {
-    "file": "assets/MinistryCreate.4920c87e.js",
+    "file": "assets/MinistryCreate.bc980601.js",
     "src": "resources/js/views/back/ministry/MinistryCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_ministryServices.17d1638d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_ministryServices.c3bacdfa.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryEdit.vue": {
-    "file": "assets/MinistryEdit.b52ee428.js",
+    "file": "assets/MinistryEdit.b32b384a.js",
     "src": "resources/js/views/back/ministry/MinistryEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Error.17d7fb0f.js",
-      "_ministryServices.17d1638d.js",
-      "__plugin-vue_export-helper.cdc0426e.js"
+      "_ministryServices.c3bacdfa.js"
     ]
-  },
-  "resources/js/components/Sidebar.css": {
-    "file": "assets/Sidebar.59083621.css",
-    "src": "resources/js/components/Sidebar.css"
   },
   "resources/js/components/Header.css": {
     "file": "assets/Header.93ae00a5.css",
@@ -1489,20 +1411,24 @@
     "file": "assets/swiper.8962dd2d.css",
     "src": "swiper.css"
   },
-  "DropZone.css": {
-    "file": "assets/DropZone.7def20dc.css",
-    "src": "DropZone.css"
+  "effect-fade.css": {
+    "file": "assets/effect-fade.8b6e9104.css",
+    "src": "effect-fade.css"
   },
   "resources/js/views/front/SingleAnnouncement.css": {
     "file": "assets/SingleAnnouncement.5ed6ea1c.css",
     "src": "resources/js/views/front/SingleAnnouncement.css"
   },
-  "resources/js/app.css": {
-    "file": "assets/app.ad3a3bda.css",
-    "src": "resources/js/app.css"
+  "DropZone.css": {
+    "file": "assets/DropZone.7def20dc.css",
+    "src": "DropZone.css"
   },
-  "effect-fade.css": {
-    "file": "assets/effect-fade.8b6e9104.css",
-    "src": "effect-fade.css"
+  "resources/js/components/Sidebar.css": {
+    "file": "assets/Sidebar.c475bfb2.css",
+    "src": "resources/js/components/Sidebar.css"
+  },
+  "resources/js/app.css": {
+    "file": "assets/app.8e12b4f6.css",
+    "src": "resources/js/app.css"
   }
 }
