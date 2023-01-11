@@ -378,7 +378,7 @@
             <Subscription :subcriptions="detail.subscriptions" />
         </div>
         <div
-        id="personal_post"
+            id="personal_post"
             class="py-8 lg:px-16"
             v-else-if="open.personalBlog && loading == 0"
         >
@@ -415,12 +415,9 @@ import useStatus from "@/services/statusServices.js";
 import {
     CogIcon,
     ExclamationCircleIcon,
-    TrashIcon,
-    FaceFrownIcon,
     PlusCircleIcon,
     MegaphoneIcon,
     PencilIcon,
-    PencilSquareIcon,
     NewspaperIcon,
     ChatBubbleOvalLeftEllipsisIcon,
     ChatBubbleLeftEllipsisIcon,
@@ -482,17 +479,6 @@ onMounted(async () => {
     try {
         loading.value = 1;
         setLoginUser();
-        if (props.redirect == "article") {
-            changeTab("article");
-        } else if (props.redirect == "propau") {
-            changeTab("propau");
-        }
-
-        if ("personal_post" in route.query) {
-            personalPost.value = route.query.personal_post;
-            changeTab("personalBlog");
-        }
-
         await getUser(props.id);
         await getDetail(props.id);
         loading.value = 0;
@@ -518,24 +504,10 @@ onMounted(async () => {
     }
 });
 
-
 watch(props, async (currentValue, oldValue) => {
     try {
         loading.value = 1;
         setLoginUser();
-        if (currentValue.redirect == "article") {
-            changeTab("article");
-        } else if (currentValue.redirect == "propau") {
-            changeTab("propau");
-        } else {
-            changeTab("profil");
-        }
-
-        if ("personal_post" in newsRoute.query) {
-        personalPost.value = newsRoute.query.personal_post;
-        changeTab("personalBlog");
-    }
-
         await getUser(currentValue.id);
         await getDetail(currentValue.id);
         loading.value = 0;
@@ -572,6 +544,18 @@ const setLoginUser = async () => {
         isFollow.value = loginUser.value.subscriptions.filter(
             (u) => u.subscription == props.id
         );
+    }
+    if ("redirect" in route.query) {
+        if (route.query.redirect == "article") {
+            changeTab("article");
+        } else if (route.query.redirect == "propau") {
+            changeTab("propau");
+        } else {
+            changeTab("profil");
+        }
+    } else if ("personal_post" in route.query) {
+        personalPost.value = route.query.personal_post;
+        changeTab("personalBlog");
     }
 };
 

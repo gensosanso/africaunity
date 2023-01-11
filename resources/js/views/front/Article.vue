@@ -6,7 +6,8 @@
             <h1
                 class="text-center text-5xl font-bold capitalize text-primary-blue"
             >
-                {{ $t("articles") }}
+                <span v-if="isSearchDate">{{ $t("articles") }} & PropAu</span>
+                <span v-else>{{ $t("articles") }}</span>
             </h1>
             <div class="flex justify-end px-6">
                 <router-link
@@ -41,9 +42,14 @@
                         }"
                     >
                         <img
+                            v-if="post.image"
                             class="h-44 w-full object-cover"
                             :src="post.image"
                             alt=""
+                        />
+                        <BookOpenIcon
+                            v-else
+                            class="h-44 w-full text-gray-500"
                         />
                     </router-link>
                     <div class="p-6">
@@ -306,27 +312,7 @@
                                 v-if="loading == 1"
                                 class="mt-3 inline-flex w-full cursor-wait items-center justify-center bg-blue-300 px-8 py-2 text-lg text-white"
                             >
-                                <svg
-                                    class="mr-3 h-5 w-5 animate-spin text-white"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <circle
-                                        class="opacity-25"
-                                        cx="12"
-                                        cy="12"
-                                        r="10"
-                                        stroke="currentColor"
-                                        stroke-width="4"
-                                    ></circle>
-                                    <path
-                                        class="opacity-75"
-                                        fill="currentColor"
-                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                    ></path>
-                                </svg>
-                                {{ $t("filter") }}...
+                                <Spin :size="'small'" />
                             </button>
                         </div>
                     </div>
@@ -337,7 +323,7 @@
 </template>
 
 <script setup>
-import { reactive, ref, onMounted, computed, onUnmounted } from "vue";
+import { reactive, ref, onMounted, computed, onUnmounted, watch } from "vue";
 import useCountries from "@/services/countryServices.js";
 import useZones from "@/services/zoneServices.js";
 import useContinents from "@/services/continentServices.js";
@@ -348,7 +334,7 @@ import {
     PlusCircleIcon,
     CalendarIcon,
     UserIcon,
-    FaceFrownIcon,
+    BookOpenIcon,
     ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/vue/24/solid";
 
@@ -359,7 +345,9 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 const { locale } = useI18n();
 const route = useRoute();
-const { posts, getPosts, filterPost, loading, page, isAll } = usePosts();
+const isSearchDate = ref(false);
+const { posts, getPosts, filterPost, loading, page, isAll, getPostsByDate } =
+    usePosts();
 const { countries, getCountries } = useCountries();
 const { zones, getZones } = useZones();
 const { continents, getContinents } = useContinents();
@@ -387,11 +375,15 @@ onMounted(async () => {
         filter.keywords = route.query.keywords;
         filter.country = route.query.country;
         filter.lang = route.query.lang;
+        isSearchDate.value = false;
         await filterPost({ ...filter });
+    } else if ("search_date" in route.query) {
+        getPostsByDate(route.query.search_date, localStorage.lang);
+        isSearchDate.value = true;
     } else {
         await getPosts("article", localStorage.lang);
+        isSearchDate.value = false;
     }
-    // console.log(posts.value[0].slug);
     await getContinents();
     await getZones();
     await getCountries();
@@ -402,10 +394,32 @@ onUnmounted(async () => {
     page.value = 1;
     window.removeEventListener("scroll", handleScroll);
 });
+
+watch(route, async function (newRoute, oldRoute) {
+    if ("lang" in newRoute.query) {
+        filter.continent = newRoute.query.continent;
+        filter.zone = newRoute.query.zone;
+        filter.ministry = newRoute.query.ministry;
+        filter.keywords = newRoute.query.keywords;
+        filter.country = newRoute.query.country;
+        filter.lang = newRoute.query.lang;
+        isSearchDate.value = false;
+        await filterPost({ ...filter });
+    } else if ("search_date" in newRoute.query) {
+        getPostsByDate(newRoute.query.search_date, localStorage.lang);
+        isSearchDate.value = true;
+    } else {
+        await getPosts("article", localStorage.lang);
+        isSearchDate.value = false;
+    }
+});
+
 const handleScroll = async (e) => {
     if (postsContainer.value) {
         let element = postsContainer.value;
-        if (
+        if ("search_date" in route.query) {
+            return;
+        } else if (
             element.getBoundingClientRect().bottom < window.innerHeight &&
             toGet.value &&
             !isAll.value &&
@@ -419,9 +433,11 @@ const handleScroll = async (e) => {
             page.value++;
             await getPosts("article", localStorage.lang);
             toGet.value = true;
+            isSearchDate.value = false;
         }
     }
 };
+
 const filteredZone = () => {
     zoneFiltered.value = zones.value.filter((zone) => {
         return zone.continent_id == filter.continent;
@@ -436,7 +452,6 @@ const filteredCountry = () => {
     });
     filter.country = "";
 };
-
 const PostsFilter = async () => {
     if (
         filter.country != "" ||
@@ -449,10 +464,10 @@ const PostsFilter = async () => {
     } else {
         page.value = 1;
         isAll.value = false;
+        isSearchDate.value = false;
         await getPosts("article", localStorage.lang);
     }
 };
-
 const changeLocale = async (lang) => {
     locale = lang;
     localStorage.lang = locale;

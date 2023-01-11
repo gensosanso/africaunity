@@ -47,9 +47,13 @@ const props = defineProps({
                     </router-link>
                     <div class=" flex space-x-3 items-center justify-center pb-2">
                         <router-link  class=" text-sm px-2 py-1 rounded-full border border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"  :to="{name:'compte',  params: {id : user.subscriber_detail.id , slug:'',
-                    redirect: 'article',}}"> {{ $t("articles") }}</router-link>
+                    },query: {
+                    redirect: 'article',
+                }}"> {{ $t("articles") }}</router-link>
                          <router-link  class=" text-sm px-2 py-1 rounded-full border border-primary-blue text-primary-blue hover:bg-primary-blue hover:text-white"  :to="{name:'compte',  params: {id : user.subscriber_detail.id , slug:'',
-                    redirect: 'article',}}"> Propau</router-link>
+                   },query: {
+                    redirect: 'propau',
+                }}"> Propau</router-link>
                     </div>
                 </div>
             </div>

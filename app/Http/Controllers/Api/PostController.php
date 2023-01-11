@@ -117,6 +117,11 @@ class PostController extends Controller
         return PostResource::collection(Post::where('user_id', $user)->orderBy('id', 'desc')->get());
     }
 
+    public function post_date($date)
+    {
+        return PostResource::collection(Post::whereDate('created_at', $date)->orderBy('id', 'desc')->get());
+    }
+
     public function post_caroussel($lang)
     {
         return PostResource::collection(Post::where([

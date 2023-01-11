@@ -75,6 +75,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get("/posts-all/{type}", [PostController::class, 'index']);
     Route::get("/posts-type/{type}/{lang}", [PostController::class, 'post_type']);
     Route::get("/posts-user/{user}", [PostController::class, 'post_user']);
+    Route::get("/posts-date/{date}/{lang}", [PostController::class, 'post_date']);
     Route::post("/posts-filter", [PostController::class, 'filter']);
     Route::apiResource('posts', PostController::class);
     Route::get("/posts2/{post}", [PostController::class, 'show2']);

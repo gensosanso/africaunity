@@ -450,6 +450,8 @@ const storePost = async () => {
                 params: {
                     slug: user.slug,
                     id: user.id,
+                },
+                query: {
                     redirect: "article",
                 },
             });
@@ -459,6 +461,8 @@ const storePost = async () => {
                 params: {
                     slug: user.slug,
                     id: user.id,
+                },
+                query: {
                     redirect: "propau",
                 },
             });

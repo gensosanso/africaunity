@@ -40,6 +40,36 @@ export default function usePosts() {
         }
     };
 
+    const getPostsByDate = async (date, lang) => {
+        errors.value = "";
+        try {
+            loading.value = true;
+            let response = await axios.get(
+                "/api/posts-date/" + date + "/" + lang,
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.token}`,
+                    },
+                }
+            );
+            posts.value = response.data.data;
+            loading.value = false;
+        } catch (e) {
+            if (e.response.status == 401) {
+                router.push({
+                    name: "login",
+                    params: {
+                        redirect: "not-login",
+                    },
+                });
+                window.localStorage.removeItem("token");
+                window.localStorage.removeItem("user");
+            } else {
+                errors.value = e.response.data.message;
+            }
+        }
+    };
+
     const getPostsUser = async (id) => {
         errors.value = "";
         try {
@@ -303,6 +333,7 @@ export default function usePosts() {
         getPostsAll,
         getPostsUser,
         articles,
+        getPostsByDate,
         propau,
     };
 }

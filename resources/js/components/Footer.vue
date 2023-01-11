@@ -24,7 +24,9 @@
                 <div
                     class="border-t-2 border-primary-blue py-4 text-justify lg:w-96"
                 >
-                    <p></p>
+                    <div>
+                        <Calendar />
+                    </div>
                 </div>
             </div>
         </div>
@@ -41,5 +43,6 @@
 </template>
 
 <script setup>
+import Calendar from "./PostCalendar.vue";
 const path = window.location.origin;
 </script>

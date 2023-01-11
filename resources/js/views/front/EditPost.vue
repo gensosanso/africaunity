@@ -444,6 +444,8 @@ const savePost = async () => {
                 params: {
                     name: user.firstname,
                     id: user.id,
+                },
+                query: {
                     redirect: "article",
                 },
             });
@@ -453,6 +455,8 @@ const savePost = async () => {
                 params: {
                     name: user.firstname,
                     id: user.id,
+                },
+                query: {
                     redirect: "propau",
                 },
             });

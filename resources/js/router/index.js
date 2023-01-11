@@ -339,7 +339,7 @@ const routes = [
         },
     },
     {
-        path: "/account/:id/:slug?/:redirect?",
+        path: "/account/:id/:slug?/",
         name: "compte",
         props: true,
         components: {
