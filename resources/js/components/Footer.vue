@@ -19,7 +19,7 @@
             </div>
             <div>
                 <h1 class="inline-block bg-primary-blue px-2 py-1 text-white">
-                    Other
+                    {{ $t("post-calendar") }}
                 </h1>
                 <div
                     class="border-t-2 border-primary-blue py-4 text-justify lg:w-96"

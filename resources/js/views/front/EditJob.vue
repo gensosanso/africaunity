@@ -19,7 +19,7 @@
             >
                 <div class="mt-4">
                     <div class="col-span-2">
-                        <label class="dark:text-gray-200 text-gray-700"
+                        <label class=" text-gray-700"
                             >{{ $t("title") }}
                             <span class="text-red-500">*</span>
                         </label>
@@ -28,7 +28,7 @@
                             v-model="jobOffer.title"
                             maxlength="50"
                             type="text"
-                            class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                         />
                         <span class="text-xs font-light text-gray-400"
                             >{{ jobOffer.title ? jobOffer.title.length : 0 }} of
@@ -41,7 +41,7 @@
                     >
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("continent") }}
                                 <span class="text-red-500">*</span>
@@ -74,7 +74,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("zoned") }}
                                 <span class="text-red-500">*</span>
@@ -111,7 +111,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("country") }}
                                 <span class="text-red-500">*</span>
@@ -148,7 +148,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("city") }}
                                 <span class="text-red-500">*</span>
@@ -186,7 +186,7 @@
                         class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
                     >
                         <div class="">
-                            <label class="dark:text-gray-200 text-gray-700"
+                            <label class=" text-gray-700"
                                 >{{ $t("location") }}
                                 <span class="text-red-500">*</span>
                             </label>
@@ -198,7 +198,7 @@
                             />
                         </div>
                         <div class="">
-                            <label class="dark:text-gray-200 text-gray-700"
+                            <label class=" text-gray-700"
                                 >{{ $t("start-date") }}
                                 <span class="text-red-500">*</span>
                             </label>
@@ -215,7 +215,7 @@
                         class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
                     >
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700"
+                            <label class=" text-gray-700"
                                 >{{ $t("company-name") }}
                                 <span class="text-red-500">*</span>
                             </label>
@@ -223,12 +223,12 @@
                                 required
                                 v-model="jobOffer.company_name"
                                 type="text"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
 
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700"
+                            <label class=" text-gray-700"
                                 >{{ $t("company-email") }}
                                 <span class="text-red-500">*</span>
                             </label>
@@ -236,23 +236,23 @@
                                 required
                                 v-model="jobOffer.company_email"
                                 type="email"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
 
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700">{{
+                            <label class=" text-gray-700">{{
                                 $t("company-website")
                             }}</label>
                             <input
                                 v-model="jobOffer.company_website"
                                 type="url"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
 
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700">{{
+                            <label class=" text-gray-700">{{
                                 $t("company-logo")
                             }}</label>
                             <div class="flex items-center space-x-4 py-4">
@@ -277,7 +277,7 @@
                                     ref="file"
                                     @change="handelFileObject()"
                                     type="file"
-                                    class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                    class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                                 />
                             </div>
                         </div>
@@ -286,7 +286,7 @@
                         class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3"
                     >
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700"
+                            <label class=" text-gray-700"
                                 >Min {{ $t("price") }}
                                 <span class="text-red-500">*</span>
                             </label>
@@ -294,12 +294,12 @@
                                 required
                                 v-model="jobOffer.min_price"
                                 type="text"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
 
                         <div>
-                            <label class="dark:text-gray-200 text-gray-700"
+                            <label class=" text-gray-700"
                                 >Max {{ $t("price") }}
                                 <span class="text-red-500">*</span>
                             </label>
@@ -307,13 +307,13 @@
                                 required
                                 v-model="jobOffer.max_price"
                                 type="text"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("currency") }}
                                 <span class="text-red-500">*</span>
@@ -336,7 +336,7 @@
                     </div>
 
                     <div class="col-span-2 mt-4">
-                        <label class="dark:text-gray-200 text-gray-700" for="es"
+                        <label class=" text-gray-700" for="es"
                             >{{ $t("language") }}
                             <span
                                 class="hidden text-xs font-light lg:inline-block"
@@ -373,7 +373,7 @@
                     >
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("size-company") }}
                                 <span class="text-red-500">*</span>
@@ -396,7 +396,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("level-study") }}
                                 <span class="text-red-500">*</span>
@@ -427,7 +427,7 @@
                         </div>
                     </div>
                     <div class="col-span-2 mt-4">
-                        <label class="dark:text-gray-200 text-gray-700" for="es"
+                        <label class=" text-gray-700" for="es"
                             >{{ $t("activity-area") }}
                             <span
                                 class="hidden text-xs font-light lg:inline-block"
@@ -464,7 +464,7 @@
                     >
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("work-dept") }}
                                 <span class="text-red-500">*</span>
@@ -498,7 +498,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("work-mode") }}
                                 <span class="text-red-500">*</span>
@@ -530,7 +530,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("offer-type") }}
                                 <span class="text-red-500">*</span>
@@ -562,7 +562,7 @@
 
                         <div>
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="es"
                                 >{{ $t("y-experience") }}
                                 <span class="text-red-500">*</span>
@@ -596,7 +596,7 @@
                     </div>
 
                     <div class="col-span-2 mt-4">
-                        <label class="dark:text-gray-200 text-gray-700" for="pt"
+                        <label class=" text-gray-700" for="pt"
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
@@ -605,7 +605,7 @@
                             type="text"
                             v-model="jobOffer.description"
                             id="pt"
-                            class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                            class=" mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                         >
                         </textarea>
                     </div>
@@ -625,26 +625,7 @@
                         disabled
                         class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                     >
-                        <svg
-                            class="h-5 w-5 animate-spin text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                class="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                stroke-width="4"
-                            ></circle>
-                            <path
-                                class="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
+                      <Spin :size="'small'" />
                     </button>
                 </div>
             </form>

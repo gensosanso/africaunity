@@ -10,9 +10,7 @@
     >
         <div class="lg:w-[70%]">
             <div class="py-6 lg:px-4" v-if="post.length != 0">
-                <div
-                    class="dark:bg-gray-800 overflow-hidden rounded-lg bg-white shadow-md"
-                >
+                <div class="overflow-hidden rounded-lg bg-white shadow-md">
                     <!-- Post -->
                     <img
                         class="h-96 w-full object-cover"
@@ -23,7 +21,7 @@
                     <div class="p-6">
                         <div>
                             <h1
-                                class="dark:text-white mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
+                                class="mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
                             >
                                 {{ post.title }}
                             </h1>
@@ -86,7 +84,7 @@
                                 </div>
                             </div>
                             <p
-                                class="dark:text-gray-400 my-4 mt-2 py-4 text-gray-600"
+                                class="my-4 mt-2 py-4 text-gray-600"
                                 v-html="post.content"
                             ></p>
                         </div>
@@ -114,7 +112,7 @@
                                         class="h-10 w-10 text-gray-700"
                                     />
                                     <span
-                                        class="dark:text-gray-200 mx-2 font-semibold text-gray-700"
+                                        class="mx-2 font-semibold text-gray-700"
                                         >{{ post.user.firstname }}</span
                                     >
                                 </router-link>
@@ -236,9 +234,7 @@
                     <Error v-if="errors != ''">{{ errors }}</Error>
                     <form @submit.prevent="storeComment()">
                         <div class="mt-4 px-8 py-4">
-                            <label
-                                class="dark:text-gray-200 text-gray-700"
-                                for="pt"
+                            <label class="text-gray-700" for="pt"
                                 >Laisser un Commentaire
                                 <span class="text-red-500">*</span></label
                             >
@@ -247,7 +243,7 @@
                                 required
                                 type="text"
                                 id="pt"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                                class="mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                             >
                             </textarea>
                             <div class="mt-6">

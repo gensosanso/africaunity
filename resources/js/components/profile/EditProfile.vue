@@ -108,6 +108,19 @@
                         of 500 Characters</span
                     >
                 </div>
+                <div class="relative col-span-2">
+                    <label class="text-gray-700">Curriculum vitæ</label>
+                    <input
+                        ref="file"
+                        @change="handelFileObject"
+                        accept="pdf"
+                        type="file"
+                        class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                    />
+                    <span class="text-xs font-light text-gray-400"
+                        >Veillez uploder votre cv
+                    </span>
+                </div>
                 <div
                     v-if="
                         user.type == 'business1' ||
@@ -192,7 +205,9 @@
                 <div class="col-span-2 grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div
                         class="relative"
-                        v-if="user.type == 'particular' || user.type == 'ip'"
+                        v-if="
+                            user.type != 'business1' && user.type != 'business2'
+                        "
                     >
                         <label class="text-gray-700">
                             <span>{{ $t("native-country") }}</span>
@@ -224,7 +239,7 @@
                     </div>
                     <div
                         :class="[
-                            user.type == 'particular' || user.type == 'ip'
+                            user.type != 'business1' && user.type != 'business2'
                                 ? ''
                                 : 'col-span-2',
                         ]"
@@ -550,27 +565,7 @@
                         type="submit"
                         class="mt-6 inline-flex w-full cursor-wait items-center justify-center bg-blue-300 px-8 py-2 text-lg text-white"
                     >
-                        <svg
-                            class="mr-3 h-5 w-5 animate-spin text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                class="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                stroke-width="4"
-                            ></circle>
-                            <path
-                                class="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
-                        {{ $t("save") }}...
+                        <Spin :size="'small'" />
                     </button>
                 </div>
             </div>
@@ -579,11 +574,6 @@
 </template>
 
 <script setup>
-import {
-    UserIcon,
-    LockClosedIcon,
-    EnvelopeIcon,
-} from "@heroicons/vue/24/solid";
 import { reactive, ref, onMounted } from "vue";
 
 const props = defineProps({
@@ -600,7 +590,7 @@ const props = defineProps({
 const area_activities = ref([]);
 const langs = ref([]);
 const loading = ref(0);
-
+const file = ref(null);
 onMounted(async () => {
     for (const item of props.detail.activity_areas) {
         area_activities.value.push(item.id);
@@ -610,20 +600,48 @@ onMounted(async () => {
     }
 });
 
+const handelFileObject = () => {
+    props.detail.cv_path = file.value.files[0];
+};
+
 const saveDetail = async () => {
     loading.value = 1;
-    props.detail.activity_areas = area_activities.value;
-    props.detail.languages = langs.value;
-    props.detail.hideEmail = props.user.hide_email;
-    props.detail.hidePhone = props.user.hide_phone;
-    props.detail.hideBirthday = props.user.hide_birthday;
-    props.detail.recruitmentAgency = props.user.recruitment_agency;
-    await axios.put("/api/details/" + props.detail.id, props.detail, {
+    let formData = new FormData();
+
+    formData.append("cv_path", props.detail.cv_path);
+    formData.append("activity_areas", area_activities.value);
+    formData.append("languages", langs.value);
+    formData.append("hideEmail", props.user.hide_email);
+    formData.append("hidePhone", props.user.hide_phone);
+    formData.append("hideBirthday", props.user.hide_birthday);
+    formData.append("recruitmentAgency", props.user.recruitment_agency);
+    formData.append("status_id", props.detail.status_id);
+    formData.append("social_object", props.detail.social_object);
+    formData.append("goal_attribution", props.detail.goal_attribution);
+    formData.append("presentation", props.detail.presentation);
+    formData.append("name_responsible", props.detail.name_responsible);
+    formData.append("sex", props.detail.sex ? props.detail.sex : 1);
+    formData.append("adress", props.detail.adress);
+    formData.append("phone_number", props.detail.phone_number);
+    formData.append("phone_number_2", props.detail.phone_number_2);
+    formData.append("navite_date", props.detail.navite_date);
+    formData.append("website", props.detail.website);
+    formData.append("youtube", props.detail.youtube);
+    formData.append("other_activity", props.detail.other_activity);
+    formData.append("search_partner", props.detail.search_partner);
+    formData.append("business_type_id", props.detail.business_type_id);
+    formData.append("business_size_id", props.detail.business_size_id);
+    formData.append("legal_status_id", props.detail.legal_status_id);
+    formData.append("native_country", props.detail.native_country);
+    formData.append("residence_country", props.detail.residence_country);
+    formData.append("_method", "PUT");
+
+    await axios.post("/api/details/" + props.detail.id, formData, {
         headers: {
             Authorization: `Bearer ${localStorage.token}`,
         },
     });
-    loading.value = 2;
+    loading.value = 0;
     location.reload();
 };
 </script>

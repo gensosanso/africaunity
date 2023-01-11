@@ -14,7 +14,7 @@
         <div class="lg:w-[65%]">
             <div class="py-6 px-4" v-if="jobOffer.length != 0">
                 <div
-                    class="dark:bg-gray-800 overflow-hidden rounded-lg bg-white shadow-md"
+                    class=" overflow-hidden rounded-lg bg-white shadow-md"
                 >
                     <!-- Job -->
                     <div class="flex items-center space-x-4 px-4">
@@ -52,7 +52,7 @@
                                 }}</span>
                             </a>
                             <h1
-                                class="dark:text-white mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
+                                class=" mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
                             >
                                 {{ jobOffer.title }}
                             </h1>
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <p
-                                class="dark:text-gray-400 my-4 mt-2 py-4 text-gray-600"
+                                class=" my-4 mt-2 py-4 text-gray-600"
                             >
                                 {{ jobOffer.description }}
                             </p>
@@ -120,7 +120,7 @@
                                         class="h-10 w-10 text-gray-700"
                                     />
                                     <span
-                                        class="dark:text-gray-200 mx-2 font-semibold text-gray-700"
+                                        class=" mx-2 font-semibold text-gray-700"
                                         >{{ jobOffer.user.firstname }}</span
                                     >
                                 </router-link>

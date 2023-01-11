@@ -69,7 +69,7 @@
             >
                 <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
                     <div class="col-span-2">
-                        <label class="dark:text-gray-200 text-gray-700"
+                        <label class="text-gray-700"
                             >{{ $t("title") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -78,7 +78,7 @@
                             v-model="post.title"
                             maxlength="50"
                             type="text"
-                            class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                         />
                         <span class="text-xs font-light text-gray-400"
                             >{{ post.title ? post.title.length : 0 }} of 50
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="col-span-2 lg:col-span-1">
-                        <label class="dark:text-gray-200 text-gray-700" for="es"
+                        <label class="text-gray-700" for="es"
                             >{{ $t("continent") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -117,7 +117,7 @@
                     </div>
 
                     <div class="col-span-2 lg:col-span-1">
-                        <label class="dark:text-gray-200 text-gray-700" for="pt"
+                        <label class="text-gray-700" for="pt"
                             >{{ $t("zoned") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -150,7 +150,7 @@
                         </select>
                     </div>
                     <div class="col-span-2 lg:col-span-1">
-                        <label class="dark:text-gray-200 text-gray-700" for="es"
+                        <label class="text-gray-700" for="es"
                             >{{ $t("country") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -183,7 +183,7 @@
                     </div>
 
                     <div class="col-span-2 lg:col-span-1">
-                        <label class="dark:text-gray-200 text-gray-700" for="pt"
+                        <label class="text-gray-700" for="pt"
                             >{{ $t("ministry") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -212,7 +212,7 @@
                     </div>
 
                     <div class="col-span-2" v-if="type == 'article'">
-                        <label class="dark:text-gray-200 text-gray-700" for="fr"
+                        <label class="text-gray-700" for="fr"
                             >{{ $t("thumbnails") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -236,13 +236,13 @@
                                 ref="file"
                                 @change="handelFileObject()"
                                 type="file"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                                class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
                     </div>
 
                     <div class="col-span-2">
-                        <label class="dark:text-gray-200 text-gray-700" for="pt"
+                        <label class="text-gray-700" for="pt"
                             >{{ $t("content") }}
                             <span class="text-red-500">*</span></label
                         >
@@ -260,7 +260,7 @@
                                 v-if="post.content"
                                 v-model="post.content"
                                 maxlength="2000"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                                class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                             >
                             </textarea>
                             <span
@@ -287,26 +287,7 @@
                         disabled
                         class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                     >
-                        <svg
-                            class="h-5 w-5 animate-spin text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                        >
-                            <circle
-                                class="opacity-25"
-                                cx="12"
-                                cy="12"
-                                r="10"
-                                stroke="currentColor"
-                                stroke-width="4"
-                            ></circle>
-                            <path
-                                class="opacity-75"
-                                fill="currentColor"
-                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                        </svg>
+                        <Spin :size="'small'" />
                     </button>
                     <Transition
                         enter-active-class=" transition-all  "

@@ -32,6 +32,7 @@ class DetailResource extends JsonResource
             'sex' => $this->sex,
             'name_responsible' => $this->name_responsible,
             'adress' => $this->adress,
+            'cv_path' => $this->cv_path,
             'phone_number' => $this->phone_number,
             'phone_number_2' => $this->phone_number_2,
             'navite_date' => $this->navite_date,

@@ -15,6 +15,7 @@ class Detail extends Model
         'goal_attribution',
         'presentation',
         'sex',
+        'cv_path',
         'name_responsible',
         'adress',
         'phone_number',

@@ -223,7 +223,7 @@
                     <form @submit.prevent="storeComment()">
                         <div class="mt-4 px-8 py-4">
                             <label
-                                class="dark:text-gray-200 text-gray-700"
+                                class=" text-gray-700"
                                 for="pt"
                                 >Laisser un Commentaire
                                 <span class="text-red-500">*</span></label
@@ -233,7 +233,7 @@
                                 required
                                 type="text"
                                 id="pt"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                                class=" mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                             >
                             </textarea>
                             <div class="mt-6">

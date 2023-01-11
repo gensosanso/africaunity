@@ -1,4 +1,6 @@
 <script setup>
+import { ArrowDownTrayIcon, EyeIcon } from '@heroicons/vue/24/solid';
+
 const props = defineProps({
     user: Object,
     detail: Object,
@@ -116,6 +118,33 @@ const url = window.location.href;
                 }}</label>
                 <p class="mt-1 rounded-lg border p-2 shadow">
                     {{ detail.goal_attribution }}
+                </p>
+            </div>
+            <div class="relative col-span-2 border-b py-2" v-if="user.type == 'particular'">
+                <label class="text-md py-1 font-semibold text-gray-700"
+                    >Curriculum vitæ</label
+                >
+                <p class="mt-1 rounded-lg border p-2 shadow flex items-center space-x-4 flex-wrap">
+                    <a
+                        :href="detail.cv_path"
+                        class="text-primary-blue hover:underline"
+                        target="_blank"
+                        >{{ detail.cv_path.replace("/uploads/cv/", "") }}</a
+                    >
+                    <div class=" flex items-center space-x-2">
+                        <span> <a
+                        :href="detail.cv_path"
+                        class="hover:text-primary-blue hover:underline"
+                        target="_blank"> <EyeIcon class=" w-5 h-5"/></a
+                    ></span>
+                        <span> <a
+                        :href="detail.cv_path"
+                        class="hover:text-primary-blue hover:underline"
+                        
+                        :download="user.email"
+                        target="_blank"> <ArrowDownTrayIcon class=" w-5 h-5"/></a
+                    ></span>
+                    </div>
                 </p>
             </div>
             <div

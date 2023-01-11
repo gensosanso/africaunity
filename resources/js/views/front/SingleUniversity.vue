@@ -2,9 +2,7 @@
     <div class="mx-auto min-h-screen w-full bg-white px-20 text-lg xl:w-[90%]">
         <div>
             <div class="py-6 px-4" v-if="university.length != 0">
-                <div
-                    class="dark:bg-gray-800 overflow-hidden rounded-lg bg-white shadow-md"
-                >
+                <div class="overflow-hidden rounded-lg bg-white shadow-md">
                     <!-- University -->
                     <img
                         class="h-96 w-full object-cover"
@@ -39,13 +37,13 @@
                                 }}</span>
                             </a>
                             <h1
-                                class="dark:text-white mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
+                                class="mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
                             >
                                 {{ university.name }}
                             </h1>
 
                             <p
-                                class="dark:text-gray-400 my-4 mt-2 py-4 text-gray-600"
+                                class="my-4 mt-2 py-4 text-gray-600"
                                 v-html="university.description"
                             ></p>
                         </div>
@@ -96,9 +94,7 @@
                 class="mt-4 grid grid-cols-1 gap-2 bg-gray-50 px-10 pb-8 pt-4 shadow lg:grid-cols-3"
             >
                 <div class="text-xs lg:text-sm">
-                    <label class="dark:text-gray-200 text-gray-700">{{
-                        $t("key-words")
-                    }}</label>
+                    <label class="text-gray-700">{{ $t("key-words") }}</label>
                     <input
                         type="text"
                         v-model="filterAds.searchKey"
@@ -131,7 +127,7 @@
                     v-if="filteredAnnouncement.length != 0"
                 >
                     <div
-                        class="dark:bg-gray-800 relative overflow-hidden rounded-lg shadow-lg"
+                        class="relative overflow-hidden rounded-lg shadow-lg"
                         v-for="announcement in filteredAnnouncement"
                         :key="announcement.id"
                     >
@@ -204,9 +200,7 @@
                                 </h1>
                             </router-link>
 
-                            <p
-                                class="dark:text-gray-400 mt-2 text-sm text-gray-600"
-                            >
+                            <p class="mt-2 text-sm text-gray-600">
                                 {{
                                     announcement.description.substring(0, 19) +
                                     "..."
