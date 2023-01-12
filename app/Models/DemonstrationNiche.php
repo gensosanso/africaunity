@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Zone extends Model
+class DemonstrationNiche extends Model
 {
     use HasFactory;
 
@@ -14,21 +14,10 @@ class Zone extends Model
         'name_en',
         'name_es',
         'name_pt',
-        'continent_id'
     ];
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class);
-    }
 
     public function demonstrations()
     {
         return $this->hasMany(Demonstration::class);
-    }
-
-    public function jobOffers()
-    {
-        return $this->hasMany(JobOffer::class);
     }
 }

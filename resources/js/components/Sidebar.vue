@@ -253,6 +253,65 @@
                     class="flex w-full flex-col items-center justify-start border-b border-gray-600 px-4"
                 >
                     <button
+                        @click="open.event = !open.event"
+                        class="flex w-full items-center justify-between space-x-14 py-2 text-left text-white focus:text-primary-blue focus:outline-none"
+                    >
+                        <p
+                            class="jusitfy-start flex w-full items-center text-base leading-4"
+                        >
+                            <CalendarDaysIcon class="mr-6 h-6 w-6" />
+                            <span class="whitespace-nowrap"> Event</span>
+                        </p>
+
+                        <ChevronDownIcon
+                            v-if="!open.personalBlog"
+                            class="h-10 w-10"
+                        />
+                        <ChevronUpIcon
+                            v-if="open.personalBlog"
+                            class="h-10 w-10"
+                        />
+                    </button>
+                    <div
+                        v-if="open.event"
+                        class="flex w-full flex-col items-start justify-start pb-1 md:w-auto"
+                    >
+                        <router-link
+                            :to="{
+                                name: 'admin.personal-post.index',
+                            }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <QueueListIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">All Event</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.event-type' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <Square3Stack3DIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Type</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.event-mode' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <TicketIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Mode</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.event-niche' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <ClockIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Niche</p>
+                        </router-link>
+                    </div>
+                </div>
+                <div
+                    class="flex w-full flex-col items-center justify-start border-b border-gray-600 px-4"
+                >
+                    <button
                         @click="open.university = !open.university"
                         class="flex w-full items-center justify-between space-x-14 py-2 text-left text-white focus:text-primary-blue focus:outline-none"
                     >
@@ -539,6 +598,10 @@ import {
     SwatchIcon,
     ArrowRightOnRectangleIcon,
     ClipboardIcon,
+    CalendarDaysIcon,
+    ClockIcon,
+    Square3Stack3DIcon,
+    TicketIcon,
 } from "@heroicons/vue/24/solid";
 import axios from "axios";
 import { reactive, ref, onMounted } from "vue";
@@ -579,6 +642,7 @@ const open = reactive({
     personalBlog: false,
     announcement: false,
     university: false,
+    event: false,
     job: false,
 });
 const loading = ref(0);

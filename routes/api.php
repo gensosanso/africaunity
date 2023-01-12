@@ -16,6 +16,10 @@ use App\Http\Controllers\Api\ContinentController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\DemonstrationController;
+use App\Http\Controllers\Api\DemonstrationModeController;
+use App\Http\Controllers\Api\DemonstrationNicheController;
+use App\Http\Controllers\Api\DemonstrationTypeController;
 use App\Http\Controllers\Api\DetailController;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\FollowerController;
@@ -81,6 +85,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get("/posts2/{post}", [PostController::class, 'show2']);
     Route::post("/post-report", [PostController::class, 'post_report']);
 
+    Route::post("/demonstrations-filter", [DemonstrationController::class, 'filter']);
+    Route::get("/demonstrations-user/{user}", [PostController::class, 'post_user']);
+    Route::apiResource('demonstrations', DemonstrationController::class);
+
     Route::apiResource('personalPosts', PersonalPostController::class);
     Route::get("/personalPosts-user/{user}", [PersonalPostController::class, 'post_user']);
     Route::get("/personalPosts-all", [PersonalPostController::class, 'all']);
@@ -131,7 +139,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::apiResource('details', DetailController::class);
 
     Route::apiResource('categoryAnnouncements', CategoryAnnouncementController::class);
+
     Route::apiResource('categoryPersonalPosts', CategoryPersonalPostController::class);
+
+    Route::apiResource('demonstrationTypes', DemonstrationTypeController::class);
+
+    Route::apiResource('demonstrationNiches', DemonstrationNicheController::class);
+
+    Route::apiResource('demonstrationModes', DemonstrationModeController::class);
 
     Route::apiResource('comments', CommentController::class);
     Route::delete("/comments/{comments}", [CommentController::class, 'delete']);

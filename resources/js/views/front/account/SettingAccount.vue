@@ -697,8 +697,7 @@
 
 <script setup>
 import { reactive, ref, onMounted } from "vue";
-import useUsers from "../../services/userServices.js";
-import Error from "../../components/Error.vue";
+import useUsers from "../../../services/userServices.js";
 import {
     UserCircleIcon,
     CheckCircleIcon,

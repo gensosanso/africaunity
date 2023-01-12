@@ -18,15 +18,28 @@ class Country extends Model
         'zone_id'
     ];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function universities(){
+    public function universities()
+    {
         return $this->hasMany(University::class);
     }
 
-    public function details(){
+    public function demonstrations()
+    {
+        return $this->hasMany(Demonstration::class);
+    }
+
+    public function jobOffers()
+    {
+        return $this->hasMany(JobOffer::class);
+    }
+
+    public function details()
+    {
         return $this->hasMany(Detail::class);
     }
 }

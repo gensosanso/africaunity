@@ -17,7 +17,18 @@ class City extends Model
         'country_id'
     ];
 
-    public function universities(){
+    public function universities()
+    {
         return $this->hasMany(University::class);
+    }
+
+    public function demonstrations()
+    {
+        return $this->hasMany(Demonstration::class);
+    }
+
+    public function jobOffers()
+    {
+        return $this->hasMany(JobOffer::class);
     }
 }

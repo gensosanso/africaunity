@@ -23,7 +23,7 @@ const routes = [
         path: "/articles",
         name: "articles",
         components: {
-            default: () => import("@/views/front/Article.vue"),
+            default: () => import("@/views/front/post/Article.vue"),
             header: Header,
             footer: Footer,
         },
@@ -36,7 +36,7 @@ const routes = [
         path: "/prop-au",
         name: "propau",
         components: {
-            default: () => import("@/views/front/PropAu.vue"),
+            default: () => import("@/views/front/post/PropAu.vue"),
             header: Header,
             footer: Footer,
         },
@@ -50,7 +50,7 @@ const routes = [
         name: "add.post",
         props: true,
         components: {
-            default: () => import("@/views/front/AddPost.vue"),
+            default: () => import("@/views/front/post/AddPost.vue"),
             header: Header,
             footer: Footer,
         },
@@ -64,7 +64,7 @@ const routes = [
         name: "show.post",
         props: true,
         components: {
-            default: () => import("@/views/front/SinglePost.vue"),
+            default: () => import("@/views/front/post/SinglePost.vue"),
             header: Header,
             footer: Footer,
         },
@@ -78,7 +78,8 @@ const routes = [
         name: "show.ads",
         props: true,
         components: {
-            default: () => import("@/views/front/SingleAnnouncement.vue"),
+            default: () =>
+                import("@/views/front/announcement/SingleAnnouncement.vue"),
             header: Header,
             footer: Footer,
         },
@@ -92,7 +93,8 @@ const routes = [
         name: "edit.ads",
         props: true,
         components: {
-            default: () => import("@/views/front/EditAnnouncement.vue"),
+            default: () =>
+                import("@/views/front/announcement/EditAnnouncement.vue"),
             header: Header,
             footer: Footer,
         },
@@ -106,7 +108,8 @@ const routes = [
         name: "add.ads",
         props: true,
         components: {
-            default: () => import("@/views/front/AddAnnouncement.vue"),
+            default: () =>
+                import("@/views/front/announcement/AddAnnouncement.vue"),
             header: Header,
             footer: Footer,
         },
@@ -120,7 +123,7 @@ const routes = [
         name: "add.job",
         props: true,
         components: {
-            default: () => import("@/views/front/AddJob.vue"),
+            default: () => import("@/views/front/job/AddJob.vue"),
             header: Header,
             footer: Footer,
         },
@@ -134,7 +137,7 @@ const routes = [
         name: "show.job",
         props: true,
         components: {
-            default: () => import("@/views/front/SingleJob.vue"),
+            default: () => import("@/views/front/job/SingleJob.vue"),
             header: Header,
             footer: Footer,
         },
@@ -148,7 +151,7 @@ const routes = [
         name: "edit.job",
         props: true,
         components: {
-            default: () => import("@/views/front/EditJob.vue"),
+            default: () => import("@/views/front/job/EditJob.vue"),
             header: Header,
             footer: Footer,
         },
@@ -162,7 +165,7 @@ const routes = [
         name: "edit.post",
         props: true,
         components: {
-            default: () => import("@/views/front/EditPost.vue"),
+            default: () => import("@/views/front/post/EditPost.vue"),
             header: Header,
             footer: Footer,
         },
@@ -175,7 +178,7 @@ const routes = [
         path: "/profiles/establishment",
         name: "establishment",
         components: {
-            default: () => import("@/views/front/Establishment.vue"),
+            default: () => import("@/views/front/profile/Establishment.vue"),
             header: Header,
             footer: Footer,
         },
@@ -188,7 +191,7 @@ const routes = [
         path: "/profiles/particular",
         name: "particular",
         components: {
-            default: () => import("@/views/front/Particular.vue"),
+            default: () => import("@/views/front/profile/Particular.vue"),
             header: Header,
             footer: Footer,
         },
@@ -201,7 +204,8 @@ const routes = [
         path: "/profiles/political-institution",
         name: "ip",
         components: {
-            default: () => import("@/views/front/PoliticalInstitution.vue"),
+            default: () =>
+                import("@/views/front/profile/PoliticalInstitution.vue"),
             header: Header,
             footer: Footer,
         },
@@ -214,7 +218,7 @@ const routes = [
         path: "/jobs",
         name: "jobs",
         components: {
-            default: () => import("@/views/front/Job.vue"),
+            default: () => import("@/views/front/job/Job.vue"),
             header: Header,
             footer: Footer,
         },
@@ -227,7 +231,7 @@ const routes = [
         path: "/universities",
         name: "universities",
         components: {
-            default: () => import("@/views/front/Universities.vue"),
+            default: () => import("@/views/front/university/Universities.vue"),
             header: Header,
             footer: Footer,
         },
@@ -241,7 +245,8 @@ const routes = [
         name: "show.university",
         props: true,
         components: {
-            default: () => import("@/views/front/SingleUniversity.vue"),
+            default: () =>
+                import("@/views/front/university/SingleUniversity.vue"),
             header: Header,
             footer: Footer,
         },
@@ -254,7 +259,8 @@ const routes = [
         path: "/ads",
         name: "ads",
         components: {
-            default: () => import("@/views/front/Announcement.vue"),
+            default: () =>
+                import("@/views/front/announcement/Announcement.vue"),
             header: Header,
             footer: Footer,
         },
@@ -263,6 +269,69 @@ const routes = [
             requiresAuth: true,
         },
     },
+
+    //
+    {
+        path: "/events",
+        name: "events",
+        components: {
+            default: () =>
+                import("@/views/front/demonstration/Demonstration.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " -  Evenements",
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/events/:id/:slug?",
+        name: "show.events",
+        props: true,
+        components: {
+            default: () =>
+                import("@/views/front/demonstration/SingleDemonstration.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: "",
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/events/:id/edit",
+        name: "edit.events",
+        props: true,
+        components: {
+            default: () =>
+                import("@/views/front/demonstration/EditDemonstration.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " - Editer un Evenement",
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/events/ads",
+        name: "add.events",
+        props: true,
+        components: {
+            default: () =>
+                import("@/views/front/demonstration/AddDemonstration.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " - Ajouter un Evenement",
+            requiresAuth: true,
+        },
+    },
+    //
+
     {
         path: "/contact",
         name: "contact",
@@ -279,7 +348,7 @@ const routes = [
         path: "/forgot-password",
         name: "forgot.password",
         components: {
-            default: () => import("@/views/front/ForgotPassword.vue"),
+            default: () => import("@/views/front/auth/ForgotPassword.vue"),
             header: Header,
             footer: Footer,
         },
@@ -291,7 +360,7 @@ const routes = [
         path: "/reset-password/:token",
         name: "reset.password",
         components: {
-            default: () => import("@/views/front/ResetPassword.vue"),
+            default: () => import("@/views/front/auth/ResetPassword.vue"),
             header: Header,
             footer: Footer,
         },
@@ -305,7 +374,7 @@ const routes = [
         name: "login",
         props: true,
         components: {
-            default: () => import("@/views/front/Login.vue"),
+            default: () => import("@/views/front/auth/Login.vue"),
             header: Header,
             footer: Footer,
         },
@@ -317,7 +386,7 @@ const routes = [
         path: "/pack",
         name: "pack",
         components: {
-            default: () => import("@/views/front/Pack.vue"),
+            default: () => import("@/views/front/auth/Pack.vue"),
             header: Header,
             footer: Footer,
         },
@@ -330,7 +399,7 @@ const routes = [
         name: "register",
         props: true,
         components: {
-            default: () => import("@/views/front/Register.vue"),
+            default: () => import("@/views/front/auth/Register.vue"),
             header: Header,
             footer: Footer,
         },
@@ -343,7 +412,7 @@ const routes = [
         name: "compte",
         props: true,
         components: {
-            default: () => import("@/views/front/Profile.vue"),
+            default: () => import("@/views/front/account/Profile.vue"),
             header: Header,
             footer: Footer,
         },
@@ -357,7 +426,7 @@ const routes = [
         name: "setting.account",
         props: true,
         components: {
-            default: () => import("@/views/front/SettingAccount.vue"),
+            default: () => import("@/views/front/account/SettingAccount.vue"),
             header: Header,
             footer: Footer,
         },
@@ -426,6 +495,31 @@ const routes = [
                 name: "admin.category-personal-blog",
                 meta: {
                     title: siteName + " - Category Personal Blog",
+                },
+            },
+
+            {
+                path: "event-niche",
+                component: () => import("@/views/back/DemonstrationNiche.vue"),
+                name: "admin.event-niche",
+                meta: {
+                    title: siteName + " - Event Niche",
+                },
+            },
+            {
+                path: "event-type",
+                component: () => import("@/views/back/DemonstrationType.vue"),
+                name: "admin.event-type",
+                meta: {
+                    title: siteName + " - Event Type",
+                },
+            },
+            {
+                path: "event-mode",
+                component: () => import("@/views/back/DemonstrationMode.vue"),
+                name: "admin.event-mode",
+                meta: {
+                    title: siteName + " - Event Mode",
                 },
             },
 

@@ -261,7 +261,7 @@ import useContinents from "@/services/continentServices.js";
 import useCountries from "@/services/countryServices.js";
 import useCities from "@/services/cityServices.js";
 import useZones from "@/services/zoneServices.js";
-import University from "../../components/skeleton/University.vue";
+import University from "../../../components/skeleton/University.vue";
 const {
     universities,
     getUniversities,

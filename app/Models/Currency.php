@@ -14,7 +14,13 @@ class Currency extends Model
         'symbol',
     ];
 
-    public function announcements(){
+    public function announcements()
+    {
         return $this->hasMany(Announcement::class);
+    }
+
+    public function jobOffers()
+    {
+        return $this->hasMany(JobOffer::class);
     }
 }

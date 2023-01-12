@@ -224,96 +224,127 @@
                 </div>
             </div>
         </div>
-        <div
-            class="no-scrollbar mt-20 flex items-center space-x-2 overflow-auto bg-menu px-5 py-3 lg:mt-0"
-        >
+        <div class="relative">
             <button
-                @click="changeTab('profil')"
-                :class="[
-                    open.profil
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
+                type="button"
+                @click="scrollLeft()"
+                class="absolute top-0 left-0 h-full bg-white/70 p-2"
             >
-                <IdentificationIcon class="h-5 w-5" />
-                <span class="hidden lg:block">{{ $t("profile") }}</span>
+                <ChevronLeftIcon class="h-6 w-6 text-menu" />
             </button>
             <button
-                v-if="user.type != 'business1'"
-                @click="changeTab('article')"
-                :class="[
-                    open.article
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
+                type="button"
+                @click="scrollRight()"
+                class="absolute top-0 right-0 h-full bg-white/70 p-2"
             >
-                <NewspaperIcon class="h-5 w-5" />
-                <span class="hidden lg:block">{{ $t("articles") }}</span>
+                <ChevronRightIcon class="h-6 w-6 text-menu" />
             </button>
-            <button
-                v-if="user.type != 'business1'"
-                @click="changeTab('propau')"
-                :class="[
-                    open.propau
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
+
+            <div
+                ref="nav"
+                class="no-scrollbar flex items-center space-x-2 overflow-auto bg-menu px-5 py-3 lg:mt-0"
             >
-                <BookOpenIcon class="h-5 w-5" />
-                <span class="hidden lg:block">{{ $t("propau") }}</span>
-            </button>
-            <button
-                @click="changeTab('comment')"
-                :class="[
-                    open.comment
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
-            >
-                <ChatBubbleOvalLeftEllipsisIcon class="h-5 w-5" />
-                <span class="hidden lg:block">{{ $t("comments") }}</span>
-            </button>
-            <button
-                v-if="user.type != 'particular' && user.type != 'business1'"
-                @click="changeTab('job')"
-                :class="[
-                    open.job
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
-            >
-                <ChatBubbleLeftEllipsisIcon class="h-5 w-5" />
-                <span class="hidden whitespace-nowrap lg:block">{{
-                    $t("my-jobs")
-                }}</span>
-            </button>
-            <button
-                v-if="user.type == 'particular' || user.type == 'admin'"
-                @click="changeTab('ads')"
-                :class="[
-                    open.ads
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
-            >
-                <MegaphoneIcon class="h-5 w-5" />
-                <span class="hidden whitespace-nowrap lg:block">{{
-                    $t("my-ads")
-                }}</span>
-            </button>
-            <button
-                @click="changeTab('personalBlog')"
-                :class="[
-                    open.personalBlog
-                        ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
-                        : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
-                ]"
-            >
-                <ClipboardIcon class="h-5 w-5" />
-                <span class="hidden whitespace-nowrap lg:block">{{
-                    $t("personal-blog")
-                }}</span>
-            </button>
+                <button
+                    @click="changeTab('profil')"
+                    :class="[
+                        open.profil
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <IdentificationIcon class="h-5 w-5" />
+                    <span class="hidden lg:block">{{ $t("profile") }}</span>
+                </button>
+                <button
+                    v-if="user.type != 'business1'"
+                    @click="changeTab('article')"
+                    :class="[
+                        open.article
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <NewspaperIcon class="h-5 w-5" />
+                    <span class="hidden lg:block">{{ $t("articles") }}</span>
+                </button>
+                <button
+                    v-if="user.type != 'business1'"
+                    @click="changeTab('propau')"
+                    :class="[
+                        open.propau
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <BookOpenIcon class="h-5 w-5" />
+                    <span class="hidden lg:block">{{ $t("propau") }}</span>
+                </button>
+                <button
+                    @click="changeTab('comment')"
+                    :class="[
+                        open.comment
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <ChatBubbleOvalLeftEllipsisIcon class="h-5 w-5" />
+                    <span class="hidden lg:block">{{ $t("comments") }}</span>
+                </button>
+                <button
+                    v-if="user.type != 'particular' && user.type != 'business1'"
+                    @click="changeTab('job')"
+                    :class="[
+                        open.job
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <ChatBubbleLeftEllipsisIcon class="h-5 w-5" />
+                    <span class="hidden whitespace-nowrap lg:block">{{
+                        $t("my-jobs")
+                    }}</span>
+                </button>
+                <button
+                    v-if="user.type == 'particular' || user.type == 'admin'"
+                    @click="changeTab('ads')"
+                    :class="[
+                        open.ads
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <MegaphoneIcon class="h-5 w-5" />
+                    <span class="hidden whitespace-nowrap lg:block">{{
+                        $t("my-ads")
+                    }}</span>
+                </button>
+                <button
+                    @click="changeTab('event')"
+                    :class="[
+                        open.event
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <CalendarDaysIcon class="h-5 w-5" />
+                    <span class="hidden whitespace-nowrap lg:block"
+                        >Evenement</span
+                    >
+                </button>
+                <button
+                    @click="changeTab('personalBlog')"
+                    :class="[
+                        open.personalBlog
+                            ? 'text-md flex items-center space-x-2 rounded-md bg-primary-blue px-2 py-1 text-white'
+                            : 'text-md flex items-center space-x-2 rounded-md px-2 py-1 text-white hover:bg-white/25',
+                    ]"
+                >
+                    <ClipboardIcon class="h-5 w-5" />
+                    <span class="hidden whitespace-nowrap lg:block">{{
+                        $t("personal-blog")
+                    }}</span>
+                </button>
+            </div>
         </div>
         <div v-if="loading == 1" class="p-28">
             <Spin />
@@ -368,9 +399,13 @@
                 :businessTypes="businessTypes"
             />
         </div>
+        <div class="py-8 lg:px-16" v-else-if="open.event && loading == 0">
+            <Demonstration :user="user" />
+        </div>
         <div class="py-8 lg:px-16" v-else-if="open.subscriber && loading == 0">
             <Subscriber :subscribers="detail.subscribers" />
         </div>
+
         <div
             class="py-8 lg:px-16"
             v-else-if="open.subscription && loading == 0"
@@ -402,6 +437,7 @@ import Subscription from "@/components/profile/Subscription.vue";
 import Ads from "@/components/profile/Ads.vue";
 import JobOffer from "@/components/profile/JobOffer.vue";
 import Comment from "@/components/profile/Comment.vue";
+import Demonstration from "@/components/profile/Demonstration.vue";
 
 import useUsers from "@/services/userServices.js";
 import useFollowers from "@/services/followerServices.js";
@@ -412,6 +448,11 @@ import useActivityAreas from "@/services/activityAreaServices.js";
 import useLegalStatuses from "@/services/legalStatusServices.js";
 import useCountries from "@/services/countryServices.js";
 import useStatus from "@/services/statusServices.js";
+import {
+    CalendarDaysIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
+} from "@heroicons/vue/24/solid";
 import {
     CogIcon,
     ExclamationCircleIcon,
@@ -462,6 +503,7 @@ const personalPost = ref(0);
 const loadingFollow = ref(false);
 const isFollow = ref(false);
 const openReport = ref(false);
+const nav = ref(null);
 const open = reactive({
     profil: true,
     article: false,
@@ -473,6 +515,7 @@ const open = reactive({
     subscription: false,
     subscriber: false,
     personalBlog: false,
+    event: false,
 });
 
 onMounted(async () => {
@@ -588,6 +631,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.profil = true;
             break;
         case "article":
@@ -599,6 +643,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.article = true;
             break;
         case "propau":
@@ -610,6 +655,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.propau = true;
             break;
         case "comment":
@@ -621,6 +667,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.comment = true;
             break;
         case "job":
@@ -632,6 +679,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.job = true;
             break;
         case "ads":
@@ -643,6 +691,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.ads = true;
             break;
         case "edit":
@@ -655,6 +704,7 @@ const changeTab = (type) => {
             open.subscription = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.edit = true;
             break;
         case "subscriber":
@@ -667,6 +717,7 @@ const changeTab = (type) => {
             open.edit = false;
             open.subscription = false;
             open.personalBlog = false;
+            open.event = false;
             open.subscriber = true;
             break;
         case "subscription":
@@ -679,6 +730,7 @@ const changeTab = (type) => {
             open.edit = false;
             open.subscriber = false;
             open.personalBlog = false;
+            open.event = false;
             open.subscription = true;
             break;
         case "personalBlog":
@@ -690,10 +742,31 @@ const changeTab = (type) => {
             open.ads = false;
             open.edit = false;
             open.subscriber = false;
-
+            open.event = false;
             open.subscription = false;
             open.personalBlog = true;
             break;
+        case "event":
+            open.job = false;
+            open.comment = false;
+            open.propau = false;
+            open.article = false;
+            open.profil = false;
+            open.ads = false;
+            open.edit = false;
+            open.subscriber = false;
+
+            open.subscription = false;
+            open.personalBlog = false;
+            open.event = true;
+            break;
     }
 };
+
+async function scrollLeft() {
+    nav.value.scrollLeft -= 100;
+}
+async function scrollRight() {
+    nav.value.scrollLeft += 100;
+}
 </script>

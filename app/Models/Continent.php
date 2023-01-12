@@ -16,11 +16,23 @@ class Continent extends Model
         'name_pt',
     ];
 
-    public function posts(){
+    public function posts()
+    {
         return $this->hasMany(Post::class);
     }
 
-    public function universities(){
+    public function demonstrations()
+    {
+        return $this->hasMany(Demonstration::class);
+    }
+
+    public function jobOffers()
+    {
+        return $this->hasMany(JobOffer::class);
+    }
+
+    public function universities()
+    {
         return $this->hasMany(University::class);
     }
 }
