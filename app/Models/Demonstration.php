@@ -19,6 +19,8 @@ class Demonstration extends Model
         'place_link',
         'enter_type',
         'price',
+        'phone',
+        'email',
         'start_date',
         'end_date',
         'user_id',
@@ -29,6 +31,7 @@ class Demonstration extends Model
         'zone_id',
         'continent_id',
         'country_id',
+        'currency_id',
     ];
 
 

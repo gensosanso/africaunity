@@ -333,7 +333,7 @@ const props = defineProps({
     },
 });
 const file = ref(null);
-const { locale } = useI18n();
+let { locale } = useI18n();
 const types = ["article", "propau"];
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 const { updatePost, getPost, post, errors, loading } = usePosts();

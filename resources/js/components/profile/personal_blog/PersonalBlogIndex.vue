@@ -1,5 +1,6 @@
 <script setup>
 import usePersonalPosts from "@/services/personalPostsServices.js";
+import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import { ref, onMounted, computed } from "vue";
 import {
     PencilSquareIcon,
@@ -18,12 +19,15 @@ const props = defineProps({
 const emits = defineEmits(["Update:modelValue", "create", "edit", "single"]);
 const { personalPosts, loading, destroyPersonalPost, getPersonalPostsUser } =
     usePersonalPosts();
+    const { categoryPersonalPosts, getCategoryPersonalPosts } =
+    useCategoryPersonalPosts();
 const searchKey = ref("");
 const theme = ref("");
 const loginUser = ref("");
 loginUser.value = localStorage.user ? JSON.parse(localStorage.user) : "";
 onMounted(async function () {
     await getPersonalPostsUser(props.user.id);
+    await getCategoryPersonalPosts();
 });
 
 const filteredPost = computed(() => {
@@ -33,7 +37,7 @@ const filteredPost = computed(() => {
                 post.title
                     .toLowerCase()
                     .includes(searchKey.value.toLowerCase()) &&
-                post.language == theme.value
+                post.category_personal_post_id == theme.value
             );
         } else {
             return post.title
@@ -99,6 +103,7 @@ function goToEdit(id) {
                             </div>
                             <input
                                 type="text"
+                                v-model="searchKey"
                                 id="table-search"
                                 class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Search"
@@ -107,13 +112,28 @@ function goToEdit(id) {
                     </div>
                     <div>
                         <select
+                        v-model="theme"
                             class="form-select block w-full rounded-md border border-gray-200 bg-gray-50 py-2 pr-8 pl-4 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                         >
-                            <option value="">Select Language</option>
-                            <option value="fr">{{ $t("fr") }}</option>
-                            <option value="en">{{ $t("en") }}</option>
-                            <option value="es">{{ $t("es") }}</option>
-                            <option value="pt">{{ $t("pt") }}</option>
+                            <option value="">Select Category</option>
+                            <option
+                                v-for="categoryPersonalPost in categoryPersonalPosts"
+                                :key="categoryPersonalPost.id"
+                                :value="categoryPersonalPost.id"
+                            >
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    categoryPersonalPost.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    categoryPersonalPost.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    categoryPersonalPost.name_es
+                                }}</span>
+                                <span v-else>{{
+                                    categoryPersonalPost.name_pt
+                                }}</span>
+                            </option>
                         </select>
                     </div>
                 </div>

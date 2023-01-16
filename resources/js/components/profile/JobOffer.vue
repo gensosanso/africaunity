@@ -19,7 +19,7 @@ const deleteJobOffer = async (id) => {
     const deleteId = [id];
     if (confirm("I you Sure ?")) {
         await destroyJobOffer(deleteId);
-        await getJobOffersUser(props.id);
+        await getJobOffersUser(props.user.id);
     }
 };
 
@@ -27,7 +27,7 @@ const mark = async (id) => {
     const deleteId = [id];
     if (confirm("I you Sure ?")) {
         await markFilled(deleteId);
-        await getJobOffersUser(props.id);
+        await getJobOffersUser(props.user.id);
     }
 };
 
@@ -126,7 +126,7 @@ const filteredJob = computed(() => {
                                 <router-link
                                     :to="{
                                         name: 'show.job',
-                                        params: { id: jobOffer.id },
+                                        params: { id: jobOffer.id , slug: jobOffer.slug },
                                     }"
                                     class="hover:underline"
                                     >{{ jobOffer.title }}</router-link
@@ -158,18 +158,14 @@ const filteredJob = computed(() => {
                                         }"
                                         class="text-primary-blue hover:underline"
                                     >
-                                        <!-- <PencilSquareIcon
-                                                    class="h-5 w-5 hover:text-blue-700 cursor-pointer text-blue-400"
-                                                /> -->
+                                     
                                         {{ $t("modify") }}
                                     </router-link>
                                     <button
                                         @click="deleteJobOffer(jobOffer.id)"
                                         class="ml-3 text-red-600 hover:underline"
                                     >
-                                        <!-- <TrashIcon
-                                                    class="h-5 w-5 hover:text-red-700 cursor-pointer text-red-400"
-                                                /> -->
+                                    
                                         <span>
                                             {{ $t("delete") }}
                                         </span>
@@ -178,9 +174,7 @@ const filteredJob = computed(() => {
                                         @click="mark(jobOffer.id)"
                                         class="relative ml-3 text-purple-600 hover:underline"
                                     >
-                                        <!-- <CheckCircleIcon
-                                                    class="h-5 w-5 hover:text-purple-700 cursor-pointer text-purple-400"
-                                                /> -->
+                                  
                                         <span v-if="jobOffer.status != 3">
                                             {{ $t("mark-provided") }}
                                         </span>

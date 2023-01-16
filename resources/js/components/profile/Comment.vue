@@ -47,8 +47,8 @@ const deleteComment = async (id, type) => {
         type == "post"
             ? await destroyComment(deleteId)
             : await destroyAnnouncementComment(deleteId);
-        await getCommentsUser(props.id);
-        await getAnnouncementCommentsUser(props.id);
+        await getCommentsUser(props.user.id);
+        await getAnnouncementCommentsUser(props.user.id);
     }
 };
 
@@ -71,8 +71,8 @@ const saveComment = async () => {
     modifyComment.user_id = "";
     modifyComment.post_id = "";
     modifyComment.announcement_id = "";
-    await getCommentsUser(props.id);
-    await getAnnouncementCommentsUser(props.id);
+    await getCommentsUser(props.user.id);
+    await getAnnouncementCommentsUser(props.user.id);
 };
 
 const filteredComment = computed(() => {

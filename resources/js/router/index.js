@@ -316,7 +316,7 @@ const routes = [
         },
     },
     {
-        path: "/events/ads",
+        path: "/add/events",
         name: "add.events",
         props: true,
         components: {

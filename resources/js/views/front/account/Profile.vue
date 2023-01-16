@@ -96,6 +96,7 @@
                                     <button
                                         type="button"
                                         @click="changeTab('subscription')"
+                                        class=" hover:border-primary-blue border rounded-full border-white py-1 px-2"
                                         v-if="detail.subscriptions"
                                     >
                                         <span
@@ -116,6 +117,7 @@
                                     </button>
                                     <button
                                         type="button"
+                                        class=" hover:border-primary-blue border rounded-full border-white py-1 px-2"
                                         @click="changeTab('subscriber')"
                                         v-if="detail.subscribers"
                                     >

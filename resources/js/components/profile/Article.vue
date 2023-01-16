@@ -41,7 +41,7 @@ const deletePost = async (id) => {
     const deleteId = [id];
     if (confirm("I you Sure ?")) {
         await destroyPost(deleteId);
-        await getPostsUser(props.id);
+        await getPostsUser(props.user.id);
     }
 };
 </script>
@@ -106,7 +106,7 @@ const deletePost = async (id) => {
                         <router-link
                             :to="{
                                 name: 'show.post',
-                                params: { id: post.id },
+                                params: { id: post.id, slug: post.slug  },
                             }"
                             ><img
                                 :src="post.image"
@@ -119,7 +119,7 @@ const deletePost = async (id) => {
                         <router-link
                             :to="{
                                 name: 'show.post',
-                                params: { id: post.id },
+                                params: { id: post.id , slug: post.slug },
                             }"
                             class="text-2xl font-bold text-gray-800"
                         >
@@ -147,7 +147,7 @@ const deletePost = async (id) => {
                             <router-link
                                 :to="{
                                     name: 'show.post',
-                                    params: { id: post.id },
+                                    params: { id: post.id , slug: post.slug },
                                 }"
                                 class="text-sm font-bold text-primary-blue hover:underline"
                                 >{{ $t("read-more") }}

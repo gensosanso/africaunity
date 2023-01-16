@@ -343,7 +343,7 @@ import Article from "@/components/skeleton/Article.vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
-const { locale } = useI18n();
+let { locale } = useI18n();
 const route = useRoute();
 const isSearchDate = ref(false);
 const { posts, getPosts, filterPost, loading, page, isAll, getPostsByDate } =

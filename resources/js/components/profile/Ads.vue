@@ -4,7 +4,6 @@ import { onMounted, ref, computed } from "vue";
 
 import {
     TrashIcon,
-    FaceFrownIcon,
     PlusCircleIcon,
     PencilSquareIcon,
 } from "@heroicons/vue/24/solid";
@@ -121,7 +120,7 @@ const filteredAnnouncement = computed(() => {
                                 <router-link
                                     :to="{
                                         name: 'show.ads',
-                                        params: { id: announcement.id },
+                                        params: { id: announcement.id, slug: announcement.slug  },
                                     }"
                                     class="hover:underline"
                                     >{{ announcement.title }}</router-link

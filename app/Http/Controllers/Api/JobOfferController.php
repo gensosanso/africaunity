@@ -210,7 +210,7 @@ class JobOfferController extends Controller
             'description' => 'required|string',
             'location' => 'required|string',
             'company_name' => 'required|string',
-            'company_email' => 'required|string',
+            'company_email' => 'required|string|email',
             'company_website' => '',
             'min_price' => 'required|string',
             'max_price' => 'string|required',

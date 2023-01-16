@@ -23,6 +23,26 @@ class DemonstrationRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+        'title' => 'required|string|between:1,50',
+        'description' => 'required|string',
+        'hourly'=> 'required|string',
+        'place_link'=> 'required|string',
+        'enter_type'=> 'required|string',
+        'price'=> 'required|string',
+        'phone'=> 'required|string',
+        'email'=> 'required|string|email',
+        'start_date'=> 'required|date',
+        'end_date'=> 'required|date',
+        'user_id'=> 'required|integer',
+        'demonstration_type_id'=> 'integer|required',
+        'demonstration_mode_id'=> 'integer|required',
+        'demonstration_niche_id'=> 'integer|required',
+        'city_id'=> 'integer|required',
+        'zone_id'=> 'integer|required',
+        'continent_id'=> 'integer|required',
+        'country_id'=> 'integer|required',
+        'currency_id'=> 'nullable|integer',
+        ];
     }
 }
