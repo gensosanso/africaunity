@@ -21,13 +21,13 @@
                 @mouseleave="open.profile = false"
                 class="relative px-3 py-2 uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
             >
-                <label
+                <span
                     @mouseover="open.profile = true"
                     class="flex cursor-pointer items-center justify-center"
                 >
                     {{ $t("profile") }}
                     <ChevronDownIcon class="ml-2 h-5 w-5" />
-                </label>
+                </span>
                 <div
                     v-show="open.profile"
                     class="absolute left-0 z-40 mt-2 flex w-60 flex-col bg-menu py-2"
@@ -67,10 +67,38 @@
                 {{ $t("univerities") }}
             </router-link>
             <router-link
+            @mouseleave="open.event = false"
                 :to="{ name: 'ads' }"
-                class="px-3 py-2 uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
+                class="px-3 py-2 relative uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
             >
-                {{ $t("ads-s") }}
+            <span  @mouseover="open.event = true"
+                    class="flex cursor-pointer items-center justify-center">{{ $t("ads-s") }}  <ChevronDownIcon class="ml-2 h-5 w-5" /></span>
+                    <div
+                    v-show="open.event"
+                    class="absolute left-0 z-40 mt-2 flex w-60 flex-col bg-menu py-2"
+                >
+                    <router-link
+                        :to="{ name: 'events', query: {
+                    date: `${currYear}-${currMonth + 1}-${
+                        currdate
+                    }`,
+                    enterType: '',
+                    continent: '',
+                    country: '',
+                    zone: '',
+                    city: '',
+                    eventType: '',
+                    eventMode: '',
+                    eventNiche: [],
+                }, }"
+                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
+                    >
+                        Evenements
+                    </router-link>
+
+     
+                </div>
+                
             </router-link>
 
             <router-link
@@ -242,11 +270,11 @@
                     {{ $t("articles") }}
                 </a>
 
-                <div class="relative py-2 pl-6 uppercase text-menu">
-                    <label class="flex cursor-pointer items-center">
+                <div class="relative py-2 px-3 uppercase text-menu">
+                    <span class="flex cursor-pointer items-center">
                         {{ $t("profile") }}
                         <ChevronDownIcon class="ml-2 h-5 w-5" />
-                    </label>
+                    </span>
                     <div class="mt-2 flex flex-col py-2">
                         <a
                             href="#"
@@ -289,13 +317,25 @@
                     {{ $t("univerities") }}
                 </a>
 
-                <a
+
+                <div class="relative py-2 px-3 uppercase text-menu">
+                    <a
                     href="#"
-                    @click.prevent="changeRoute('ads')"
-                    class="px-3 py-2 uppercase text-menu transition-colors duration-200 hover:bg-primary-blue hover:text-white"
-                >
-                    {{ $t("ads") }}
-                </a>
+                    @click.prevent="changeRoute('ads')" class="flex cursor-pointer items-center">
+                        {{ $t("ads") }}
+                        <ChevronDownIcon class="ml-2 h-5 w-5" />
+                    </a>
+                    <div class="mt-2 flex flex-col py-2">
+                        <a
+                            href="#"
+                            @click.prevent="changeRoute('events')"
+                            class="px-3 py-2 text-sm uppercase text-menu transition-colors duration-200 hover:bg-primary-blue hover:text-white"
+                        >
+                            Evenements
+                        </a>
+                        </div></div>
+
+             
 
                 <a
                     href="#"
@@ -373,7 +413,7 @@
                     {{ $t("login") }} / {{ $t("register") }}
                 </a>
 
-                <div class="relative py-2 pl-6 uppercase text-menu">
+                <div class="relative py-2 px-3 uppercase text-menu">
                     <label class="flex cursor-pointer items-center">
                         <span v-if="$i18n.locale == 'fr'">
                             {{ $t("fr") }}
@@ -477,6 +517,11 @@ const token = ref("");
 const errors = ref("");
 const loading = ref(0);
 const url = window.location.origin;
+
+let date = new Date(),
+    currYear = date.getFullYear(),
+    currdate = date.getDate(),
+    currMonth = date.getMonth();
 onMounted(async () => {
     if (localStorage.token) {
         user.value = JSON.parse(localStorage.user);
@@ -486,6 +531,7 @@ onMounted(async () => {
 const open = reactive({
     lang: false,
     profile: false,
+    event: false,
     search: false,
     menu: false,
     logout: false,

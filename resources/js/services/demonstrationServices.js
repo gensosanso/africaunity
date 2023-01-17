@@ -7,64 +7,6 @@ export default function useDemonstrations() {
     const demonstration = ref([]);
     const errors = ref("");
     const loading = ref(0);
-  
-    const getDemonstrationsAll = async (type) => {
-        errors.value = "";
-        try {
-            loading.value = true;
-            let response = await axios.get("/api/demonstrations-all/" + type, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.token}`,
-                },
-            });
-            demonstrations.value = response.data.data;
-            loading.value = false;
-        } catch (e) {
-            if (e.response.status == 401) {
-                router.push({
-                    name: "login",
-                    params: {
-                        redirect: "not-login",
-                    },
-                });
-
-                window.localStorage.removeItem("token");
-                window.localStorage.removeItem("user");
-            } else {
-                errors.value = e.response.data.message;
-            }
-        }
-    };
-
-    const getDemonstrationsByDate = async (date, lang) => {
-        errors.value = "";
-        try {
-            loading.value = true;
-            let response = await axios.get(
-                "/api/demonstrations-date/" + date + "/" + lang,
-                {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.token}`,
-                    },
-                }
-            );
-            demonstrations.value = response.data.data;
-            loading.value = false;
-        } catch (e) {
-            if (e.response.status == 401) {
-                router.push({
-                    name: "login",
-                    params: {
-                        redirect: "not-login",
-                    },
-                });
-                window.localStorage.removeItem("token");
-                window.localStorage.removeItem("user");
-            } else {
-                errors.value = e.response.data.message;
-            }
-        }
-    };
 
     const getDemonstrationsUser = async (id) => {
         errors.value = "";
@@ -127,8 +69,6 @@ export default function useDemonstrations() {
         }
     };
 
-   
-
     const getDemonstration = async (id) => {
         errors.value = "";
         try {
@@ -154,9 +94,7 @@ export default function useDemonstrations() {
                 errors.value = e.response.data.message;
             }
         }
-    };
-
-  
+    };  
 
     const createDemonstration = async (data) => {
         errors.value = "";
@@ -183,7 +121,7 @@ export default function useDemonstrations() {
     const filterDemonstration = async (data) => {
         errors.value = "";
         try {
-            loading.value = 3;
+            loading.value = 1;
             let response = await axios.post("/api/demonstrations-filter", data, {
                 headers: {
                     Authorization: `Bearer ${localStorage.token}`,
@@ -261,9 +199,6 @@ export default function useDemonstrations() {
         createDemonstration,
         updateDemonstration,
         destroyDemonstration,
-        getDemonstrationsAll,
         getDemonstrationsUser,
-        getDemonstrationsByDate,
-       
     };
 }

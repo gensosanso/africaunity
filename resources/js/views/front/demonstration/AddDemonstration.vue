@@ -591,7 +591,7 @@ const filteredZone = () => {
 };
 
 const handelFileObject = async () => {
-    demonstration.company_logo = file.value.files[0];
+    demonstration.image = file.value.files[0];
 };
 
 function previewImage(file) {

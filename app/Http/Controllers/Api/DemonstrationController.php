@@ -8,6 +8,7 @@ use App\Http\Resources\DemonstrationResource;
 use App\Models\Demonstration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\Builder;
 
 class DemonstrationController extends Controller
 {
@@ -21,17 +22,54 @@ class DemonstrationController extends Controller
         return DemonstrationResource::collection(Demonstration::latest()->get());
     }
 
-    public function byDate($date)
-    {
-        return DemonstrationResource::collection(Demonstration::whereDate('created_at', $date)->orderBy('id', 'desc')->get());
-    }
 
     public function demonstration_user($user) {
         
         return DemonstrationResource::collection(Demonstration::where('user_id', $user)->orderBy('id', 'desc')->get());
     }
 
-    public function filter(Request $request){}
+    public function filter(Request $request){
+       $demonstrations = Demonstration::where('status', '<>', 3);
+
+       if ($request->city_id  != "") {
+        $city = $request->city_id;
+        $demonstrations = $demonstrations->with(['city' => function ($query) use ($city) {
+            $query->where('id', $city);
+        }])->whereHas('city', function (Builder $query) use ($city) {
+            $query->where('id', $city);
+        });
+    }
+
+    if ($request->zone_id  != "") {
+        $zone = $request->zone_id;
+        $demonstrations = $demonstrations->with(['zone' => function ($query) use ($zone) {
+            $query->where('id', $zone);
+        }])->whereHas('zone', function (Builder $query) use ($zone) {
+            $query->where('id', $zone);
+        });
+    }
+
+    if ($request->continent_id  != "") {
+        $continent = $request->continent_id;
+        $demonstrations = $demonstrations->with(['continent' => function ($query) use ($continent) {
+            $query->where('id', $continent);
+        }])->whereHas('continent', function (Builder $query) use ($continent) {
+            $query->where('id', $continent);
+        });
+    }
+
+    if ($request->country_id  != "") {
+        $country = $request->country_id;
+        $demonstrations = $demonstrations->with(['country' => function ($query) use ($country) {
+            $query->where('id', $country);
+        }])->whereHas('country', function (Builder $query) use ($country) {
+            $query->where('id', $country);
+        });
+    }
+
+
+    return DemonstrationResource::collection($demonstrations->get());
+    }
 
     /**
      * Store a newly created resource in storage.

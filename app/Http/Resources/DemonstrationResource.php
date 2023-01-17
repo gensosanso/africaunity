@@ -31,7 +31,7 @@ class DemonstrationResource extends JsonResource
             'hourly' => $this->hourly,
             'place_link' => $this->place_link,
             'start_date' => $this->start_date,
-            'end_date' => $this->start_date,
+            'end_date' => $this->end_date,
             'email' => $this->email,
             'phone' => $this->phone,
             'enter_type' => $this->enter_type,

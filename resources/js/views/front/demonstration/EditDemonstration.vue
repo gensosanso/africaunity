@@ -420,7 +420,6 @@
                                 :alt="demonstration.title"
                             />
                             <input
-                                
                                 ref="file"
                                 @change="handelFileObject()"
                                 accept="image/*"
@@ -593,7 +592,7 @@ const filteredZone = () => {
 };
 
 const handelFileObject = async () => {
-    demonstration.company_logo = file.value.files[0];
+    demonstration.value.image = file.value.files[0];
 };
 
 function previewImage(file) {

@@ -107,6 +107,7 @@ async function setItemsDays() {
 </script>
 
 <template>
+    <div id="postcalendar">
     <div class="wrapper">
         <header>
             <p class="current-date" ref="currentDate"></p>
@@ -132,25 +133,26 @@ async function setItemsDays() {
             <ul class="days" ref="daysTag"></ul>
         </div>
     </div>
+</div>
 </template>
 
 <style>
-.wrapper {
+#postcalendar .wrapper {
     width: 100%;
     background: #fff;
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
-.wrapper header {
+#postcalendar .wrapper header {
     display: flex;
     align-items: center;
     padding: 25px 30px 10px;
     justify-content: space-between;
 }
-header .icons {
+#postcalendar  header .icons {
     display: flex;
 }
-header .icons span {
+#postcalendar  header .icons span {
     height: 38px;
     width: 38px;
     margin: 0 1px;
@@ -165,50 +167,51 @@ header .icons span {
     justify-content: center;
     align-items: center;
 }
-.icons span:last-child {
+#postcalendar  .icons span:last-child {
     margin-right: -10px;
 }
-header .icons span:hover {
+
+#postcalendar  header .icons span:hover {
     background: #f2f2f2;
 }
-header .current-date {
+#postcalendar  header .current-date {
     font-size: 1.25rem;
     font-weight: 500;
 }
-.calendar {
+#postcalendar  .calendar {
     padding: 15px;
 }
-.calendar ul {
+#postcalendar  .calendar ul {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     text-align: center;
 }
-.calendar .days {
+#postcalendar  .calendar .days {
     margin-bottom: 5px;
 }
-.calendar li {
+#postcalendar  .calendar li {
     color: #333;
     width: calc(100% / 7);
     font-size: 0.875rem;
 }
-.calendar .weeks li {
+#postcalendar .calendar .weeks li {
     font-weight: 500;
     cursor: default;
 }
-.calendar .days li {
+#postcalendar  .calendar .days li {
     z-index: 1;
     cursor: pointer;
     position: relative;
     margin-top: 20px;
 }
-.days li.inactive {
+#postcalendar  .days li.inactive {
     color: #aaa;
 }
-.days li.active {
+#postcalendar  .days li.active {
     color: #fff;
 }
-.days li::before {
+#postcalendar  .days li::before {
     position: absolute;
     content: "";
     left: 50%;
@@ -219,10 +222,10 @@ header .current-date {
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
-.days li.active::before {
+#postcalendar  .days li.active::before {
     background: #289dcc;
 }
-.days li:not(.active):hover::before {
+#postcalendar  .days li:not(.active):hover::before {
     background: #f2f2f2;
 }
 </style>
