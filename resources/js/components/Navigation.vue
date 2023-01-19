@@ -66,40 +66,30 @@
             >
                 {{ $t("univerities") }}
             </router-link>
-            <router-link
-            @mouseleave="open.event = false"
+            <div class="relative px-3 py-2  uppercase text-white transition-colors duration-200 hover:bg-primary-blue " @mouseleave="open.event = false" >
+                <router-link
                 :to="{ name: 'ads' }"
-                class="px-3 py-2 relative uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
-            >
-            <span  @mouseover="open.event = true"
-                    class="flex cursor-pointer items-center justify-center">{{ $t("ads-s") }}  <ChevronDownIcon class="ml-2 h-5 w-5" /></span>
+                class="flex cursor-pointer items-center justify-center"
+                @mouseover="open.event = true"
+                >
+                    <span class="">{{ $t("ads-s") }} </span> <ChevronDownIcon class="ml-2 h-5 w-5" />
+
+                </router-link>
                     <div
                     v-show="open.event"
                     class="absolute left-0 z-40 mt-2 flex w-60 flex-col bg-menu py-2"
-                >
-                    <router-link
-                        :to="{ name: 'events', query: {
-                    date: `${currYear}-${currMonth + 1}-${
-                        currdate
-                    }`,
-                    enterType: '',
-                    continent: '',
-                    country: '',
-                    zone: '',
-                    city: '',
-                    eventType: '',
-                    eventMode: '',
-                    eventNiche: [],
-                }, }"
-                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
+                    >
+                    <a 
+                        :href="`/events?date=${currYear}-${currMonth + 1}-${currdate}&enterType=&continent=&country=&zone=&city=&eventType=&eventMode=`" 
+                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"    
                     >
                         Evenements
-                    </router-link>
-
-     
+                    </a>
                 </div>
                 
-            </router-link>
+            
+            </div>
+            
 
             <router-link
                 :to="{ name: 'jobs' }"

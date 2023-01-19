@@ -18,7 +18,7 @@ const filterData = reactive({
     enter_type: '',
     demonstration_type_id: '',
     demonstration_mode_id: '',
-    demonstration_niche: [],
+    demonstration_niche_id: '',
 });
 onMounted(async function() {
     if('date' in route.query){
@@ -30,10 +30,10 @@ onMounted(async function() {
     filterData.enter_type = route.query.enterType;
     filterData.demonstration_type_id = route.query.eventType;
     filterData.demonstration_mode_id = route.query.eventMode;
-    filterData.demonstration_niche = route.query.eventNiche;
+    filterData.demonstration_niche_id = route.query.eventNiche;
     }
-
     await filterDemonstration({...filterData});
+    
 });
 watch(route, async function (newRoute, oldRoute) {
     if('date' in newRoute.query)  {filterData.date = newRoute.query.date;
@@ -44,7 +44,7 @@ watch(route, async function (newRoute, oldRoute) {
     filterData.enter_type = newRoute.query.enterType;
     filterData.demonstration_type_id = newRoute.query.eventType;
     filterData.demonstration_mode_id = newRoute.query.eventMode;
-    filterData.demonstration_niche = newRoute.query.eventNiche;}
+    filterData.demonstration_niche_id = newRoute.query.eventNiche;}
     await filterDemonstration({...filterData});
 });
 </script>
@@ -75,7 +75,7 @@ watch(route, async function (newRoute, oldRoute) {
                 </h1>
                 <p class="mt-2 text-gray-900">Choisir un jour</p>
             </div>
-            <EventCalendar :eventNiche="filterData.demonstration_niche" :zone="filterData.zone_id" :eventType="filterData.demonstration_type_id" :city="filterData.city_id" :continent="filterData.continent_id" :country="filterData.country_id" :date="filterData.date" :enterType="filterData.enter_type" :eventMode="filterData.demonstration_mode_id" />
+            <EventCalendar :eventNiche="filterData.demonstration_niche_id" :zone="filterData.zone_id" :eventType="filterData.demonstration_type_id" :city="filterData.city_id" :continent="filterData.continent_id" :country="filterData.country_id" :date="filterData.date" :enterType="filterData.enter_type" :eventMode="filterData.demonstration_mode_id" />
         </div>
         <div class=" lg:w-[70%] w-full">
             <div class=" py-6 bg-primary-blue text-white px-4">
@@ -86,13 +86,25 @@ watch(route, async function (newRoute, oldRoute) {
             <Loader v-if="loading == 1" />
             <div v-else-if="demonstrations.length != 0" class=" space-y-6">
                 <div v-for="demonstration in demonstrations" :key="demonstration.id" class="md:flex border-b space-y-2 py-4">
-                    <div class="md:w-[20%] flex items-center justify-center min-h-[15rem] bg-gray-50">
+                    <router-link :to="{
+                            name:'show.events',
+                            params:{
+                                id: demonstration.id,
+                                slug: demonstration.slug
+                            }
+                        }" class="md:w-[20%] flex items-center justify-center min-h-[15rem] bg-gray-50">
                         <img v-if="demonstration.image" :src="demonstration.image" class=" object-cover w-full h-60" alt=""/>
                         <CalendarIcon  v-else class="h-20 text-gray-600" />
-                    </div>
+                    </router-link>
                     <div class="md:w-[60%] px-4 flex flex-col md:justify-between">
                         <div class="text-left">
-                            <h1 class=" text-3xl font-bold uppercase whitespace-normal">{{ demonstration.title }}</h1>
+                            <router-link :to="{
+                            name:'show.events',
+                            params:{
+                                id: demonstration.id,
+                                slug: demonstration.slug
+                            }
+                        }" class=" text-3xl font-bold uppercase whitespace-normal hover:underline">{{ demonstration.title }}</router-link>
                         <p class="mt-1 text-lg">
 
                             <span v-if="demonstration.start_date == demonstration.end_date">{{
@@ -126,7 +138,7 @@ watch(route, async function (newRoute, oldRoute) {
                         <p class="text-sm text-gray-500"> <span>{{ demonstration.email }}</span> - <span> {{ demonstration.phone }}</span></p>
                         </div>
                         <div class="flex space-x-2 my-6 md:my-0">
-                            <router-link :to="{
+                            <router-link v-if="demonstration.user" :to="{
                                 name:'compte',
                                 params: {
                                             slug: demonstration.user.slug,
@@ -143,8 +155,30 @@ watch(route, async function (newRoute, oldRoute) {
                             </router-link >
                             <div class="">
                                 <p>
-                                    <span class=" text-primary-blue">{{ demonstration.demonstration_mode.name_fr }}  </span> - 
-                                    <span class=" font-medium"> {{ demonstration.demonstration_type.name_fr }} </span> - 
+                                    <span v-if="demonstration.demonstration_mode" class=" text-primary-blue"> <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.demonstration_mode.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.demonstration_mode.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.demonstration_mode.name_es
+                            }}</span>
+                            <span v-else>{{
+                                demonstration.demonstration_mode.name_pt
+                            }}</span> </span> - 
+                                    <span v-if="demonstration.demonstration_type" class=" font-medium"> <span v-if="$i18n.locale == 'en'">{{
+                                    demonstration.demonstration_type.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    demonstration.demonstration_type.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    demonstration.demonstration_type.name_es
+                                }}</span>
+                                <span v-else>{{
+                                    demonstration.demonstration_type.name_pt
+                                }}</span> </span> - 
                                     <span class="text-red-500"> {{ demonstration.hourly }} </span>
                                 </p>
                                 <p>
@@ -160,9 +194,15 @@ watch(route, async function (newRoute, oldRoute) {
                             <span v-if="demonstration.enter_type === 'free'" class=" text-red-500">Gratuite</span>
                             <span v-else class=" text-primary-blue">
                              <span>  {{ demonstration.price }} </span>
-                             <span>   {{ demonstration.currency.symbol }}</span></span> 
+                             <span v-if="demonstration.currency">   {{ demonstration.currency.symbol }}</span></span> 
                         </p>
-                        <button class=" rounded-full border-primary-blue px-3 text-sm py-2 text-primary-blue border hover:bg-primary-blue hover:text-white ">En Savoir plus</button>
+                        <router-link :to="{
+                            name:'show.events',
+                            params:{
+                                id: demonstration.id,
+                                slug: demonstration.slug
+                            }
+                        }" class=" rounded-full border-primary-blue px-3 text-sm py-2 text-primary-blue border hover:bg-primary-blue hover:text-white ">En Savoir plus</router-link>
                     </div>
                 </div>
             </div>

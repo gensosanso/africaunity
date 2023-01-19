@@ -42,7 +42,7 @@ const filterData = reactive({
     enter_type: '',
     demonstration_type_id: '',
     demonstration_mode_id: '',
-    demonstration_niche: [],
+    demonstration_niche_id: '',
 });
 const daysTag = ref(null);
 const currentDate = ref(null);
@@ -79,7 +79,7 @@ onMounted(async function () {
     filterData.enter_type = props.enterType;
     filterData.demonstration_type_id = props.eventType;
     filterData.demonstration_mode_id = props.eventMode;
-    filterData.demonstration_niche = props.eventNiche ? props.eventNiche : [];
+    filterData.demonstration_niche_id = props.eventNiche;
 
     renderCalendar();
     setItemsDays();
@@ -118,7 +118,7 @@ watch(props, async function (newProps, oldProps) {
     filterData.enter_type = newProps.enterType;
     filterData.demonstration_type_id = newProps.eventType;
     filterData.demonstration_mode_id = newProps.eventMode;
-    filterData.demonstration_niche = newProps.eventNiche ? newProps.eventNiche : [];
+    filterData.demonstration_niche_id = newProps.eventNiche ;
 
     renderCalendar();
     setItemsDays();
@@ -212,7 +212,7 @@ async function setItemsDays() {
                     city:filterData.city_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
-                    eventNiche:filterData.demonstration_niche,
+                    eventNiche:filterData.demonstration_niche_id,
                 },
             });
         });
@@ -235,7 +235,7 @@ async function setItemsDays() {
                     city:filterData.city_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
-                    eventNiche:filterData.demonstration_niche,
+                    eventNiche:filterData.demonstration_niche_id,
                 },
             });
         });
@@ -258,7 +258,7 @@ async function setItemsDays() {
                     city:filterData.city_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
-                    eventNiche:filterData.demonstration_niche,
+                    eventNiche:filterData.demonstration_niche_id,
                 },
             });
         });
@@ -277,18 +277,9 @@ async function filter () {
                     city:filterData.city_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
-                    eventNiche:filterData.demonstration_niche,
+                    eventNiche:filterData.demonstration_niche_id,
                 },
             });
-}
-
-const toogleEventNiche = (id) => {
-    if(filterData.demonstration_niche.includes(id)){
-        filterData.demonstration_niche.splice(filterData.demonstration_niche.findIndex((element) => element == id), 1)
-    }else{
-        filterData.demonstration_niche.push(id);
-    }
-    filter();
 }
 
 const filteredCity = () => {
@@ -354,6 +345,7 @@ const filteredZone = () => {
         <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">Type d'evenement</label>
         <select name="" id="" v-model="filterData.demonstration_type_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+           <option value=""></option>
             <option
                                     v-for="demonstrationType in demonstrationTypes"
                                     :key="demonstrationType.id"
@@ -376,6 +368,7 @@ const filteredZone = () => {
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">Mode</label>
         <select name="" id="" v-model="filterData.demonstration_mode_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
             <option
                                     v-for="demonstrationMode in demonstrationModes"
                                     :key="demonstrationMode.id"
@@ -397,10 +390,15 @@ const filteredZone = () => {
 
         <div class="mt-4">
             <label for="" class=" text-sm text-gray-500">Créneau</label>
-            <div class="flex flex-wrap items-center mt-1 space-x-2 ">
-                <label v-for="demonstrationNiche,index in demonstrationNiches" :key="index" :for="`chkniche_${index}`" class="flex my-1 items-center space-x-2 p-2 text-sm bg-gray-100 text-gray-800 cursor-pointer">
-                    <span><input type="checkbox" :id="`chkniche_${index}`" :name="`chkniche_${index}`" :checked="filterData.demonstration_niche.includes(`${demonstrationNiche.id}`)" @change="toogleEventNiche(demonstrationNiche.id)" class=" outline-hidden right-0 form-checkbox"></span>
-                    <span v-if="$i18n.locale == 'en'">{{
+            <select name="" id=""  v-model="filterData.demonstration_niche_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+                <option value=""></option>
+                <option
+                                   
+                                    v-for="demonstrationNiche in demonstrationNiches"
+                                    :key="demonstrationNiche.id"
+                                    :value="demonstrationNiche.id"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
                                         demonstrationNiche.name_en
                                     }}</span>
                                     <span v-else-if="$i18n.locale == 'fr'">{{
@@ -410,13 +408,16 @@ const filteredZone = () => {
                                         demonstrationNiche.name_es
                                     }}</span>
                                     <span v-else>{{ demonstrationNiche.name_pt }}</span>
-                </label>
-            </div>
+                                </option>
+                             
+        </select>
+          
         </div>
 
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">Type d'entrée</label>
         <select name="" id="" v-model="filterData.enter_type" @change="filter" class="form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
             <option value="paying">Payant</option>
             <option value="free">Gratuite</option>
         </select>
@@ -425,6 +426,7 @@ const filteredZone = () => {
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">{{ $t("continent") }}</label>
         <select name="" id="" v-model="filterData.continent_id"   @change="filteredZone()" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
             <option
                                     v-for="continent in continents"
                                     :key="continent.id"
@@ -446,6 +448,7 @@ const filteredZone = () => {
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">{{ $t("zoned") }}</label>
         <select name="" id="" v-model="filterData.zone_id" @change="filteredCountry()" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
             <option
                                     v-if="zoneFiltered.length != 0"
                                     v-for="zone in zoneFiltered"
@@ -472,6 +475,7 @@ const filteredZone = () => {
         <label for="" class=" text-sm text-gray-500">{{ $t("country") }}</label>
         <select name="" id=""  @change="filteredCity()"
                                 v-model="filterData.country_id" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+                                <option value=""></option>
                                 <option
                                     v-if="countryFiltered.length != 0"
                                     v-for="country in countryFiltered"
@@ -497,6 +501,7 @@ const filteredZone = () => {
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">{{ $t("city") }}</label>
         <select name="" id=""  v-model="filterData.city_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
             <option
                                     v-if="cityfiltered.length != 0"
                                     v-for="city in cityfiltered"

@@ -2,55 +2,49 @@
     <div
         class="mx-auto flex min-h-screen w-full flex-col bg-white p-4 text-lg md:space-y-2 lg:flex-row lg:space-x-2 xl:w-[90%]"
     >
-        <div class="lg:w-[70%]">
-            <div class="py-6 px-4" v-if="announcement.length != 0">
-                <div class="overflow-hidden rounded-lg bg-white shadow-md">
-                    <!-- Announcement -->
-                    <img
-                        v-if="
-                            announcement.image.length == 1 &&
-                            announcement.image[0]
-                        "
-                        class="h-96 w-full object-cover"
-                        :src="announcement.image[0]"
-                        alt=""
-                    />
-
-                    <Swiper
-                        v-else-if="announcement.image.length > 1"
-                        class="h-96 w-full"
-                        :centeredSlides="true"
-                        :autoplay="{ delay: 5000, disableOnInteraction: false }"
-                        :pagination="{
-                            clickable: true,
-                        }"
-                        :navigation="true"
-                        :modules="modules"
-                    >
-                        <SwiperSlide
-                            class="relative h-full w-full"
-                            v-for="(image, index) in announcement.image"
-                            :key="index"
-                        >
-                            <img
-                                class="h-full w-full object-cover"
-                                :src="image"
-                                alt=""
-                            />
-                        </SwiperSlide>
-                    </Swiper>
+        <div class="lg:w-[65%]">
+            <div class="py-6 px-4" v-if="demonstration.length != 0">
+                <div
+                    class=" overflow-hidden rounded-lg bg-white shadow-md"
+                >
+                    <!-- Job -->
+                    <div class="flex items-center space-x-4 px-4">
+                        <img
+                            v-if="demonstration.image"
+                            :src="demonstration.image"
+                            alt=""
+                            class="h-72 w-full rounded-lg object-cover"
+                        />
+                        <CalendarIcon
+                            v-else
+                            class="h-28 w-28 text-gray-500"
+                        />
+                       
+                    </div>
                     <div class="p-6">
                         <div>
                             <a
                                 href="#"
-                                class="rounded bg-primary-blue py-1 px-2 text-xs capitalize text-white"
+                                class="rounded bg-primary-blue py-1 px-2 text-sm capitalize text-white"
+                                v-if="demonstration.demonstration_type"
                             >
-                                {{ announcement.category.name }}
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    demonstration.demonstration_type.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    demonstration.demonstration_type.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    demonstration.demonstration_type.name_es
+                                }}</span>
+                                <span v-else>{{
+                                    demonstration.demonstration_type.name_pt
+                                }}</span>
                             </a>
                             <h1
-                                class="mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
+                                class=" mt-2 block transform text-3xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600"
                             >
-                                {{ announcement.title }}
+                                {{ demonstration.title }}
                             </h1>
                             <div
                                 class="mt-2 flex space-x-2 text-xs text-gray-500"
@@ -58,15 +52,32 @@
                                 <div class="flex space-x-1">
                                     <CalendarIcon class="h-4 w-4" />
                                     <a href="#" class="hover:text-primary-blue">
-                                        {{
+                                        <span v-if="demonstration.start_date == demonstration.end_date">{{
                                             new Date(
-                                                announcement.date
+                                                demonstration.start_date
                                             ).toLocaleDateString(locale, {
                                                 day: "numeric",
                                                 year: "numeric",
                                                 month: "long",
                                             })
-                                        }}</a
+                                        }}</span>
+                                        <span v-else>Du {{
+                                            new Date(
+                                                demonstration.start_date
+                                            ).toLocaleDateString(locale, {
+                                                day: "numeric",
+                                                year: "numeric",
+                                                month: "long",
+                                            })
+                                        }} Au {{
+                                            new Date(
+                                                demonstration.end_date
+                                            ).toLocaleDateString(locale, {
+                                                day: "numeric",
+                                                year: "numeric",
+                                                month: "long",
+                                            })
+                                        }}</span></a
                                     >
                                 </div>
                                 <div class="flex space-x-1">
@@ -75,19 +86,21 @@
                                         :to="{
                                             name: 'compte',
                                             params: {
-                                                slug: announcement.user.slug,
-                                                id: announcement.user.id,
+                                                slug: demonstration.user.slug,
+                                                id: demonstration.user.id,
                                             },
                                         }"
                                         class="hover:text-primary-blue"
                                         >{{
-                                            announcement.user.firstname
+                                            demonstration.user.firstname
                                         }}</router-link
                                     >
                                 </div>
                             </div>
-                            <p class="my-4 mt-2 py-4 text-gray-600">
-                                {{ announcement.description }}
+                            <p
+                                class=" my-4 mt-2 py-4 text-gray-600"
+                            >
+                                {{ demonstration.description }}
                             </p>
                         </div>
 
@@ -97,16 +110,16 @@
                                     :to="{
                                         name: 'compte',
                                         params: {
-                                            slug: announcement.user.slug,
-                                            id: announcement.user.id,
+                                            slug: demonstration.user.slug,
+                                            id: demonstration.user.id,
                                         },
                                     }"
                                     class="flex items-center"
                                 >
                                     <img
-                                        v-if="announcement.user.avatar"
+                                        v-if="demonstration.user.avatar"
                                         class="h-16 w-16 rounded-full object-cover shadow"
-                                        :src="announcement.user.avatar"
+                                        :src="demonstration.user.avatar"
                                     />
 
                                     <UserCircleIcon
@@ -114,20 +127,20 @@
                                         class="h-10 w-10 text-gray-700"
                                     />
                                     <span
-                                        class="mx-2 font-semibold text-gray-700"
-                                        >{{ announcement.user.firstname }}</span
+                                        class=" mx-2 font-semibold text-gray-700"
+                                        >{{ demonstration.user.firstname }}</span
                                     >
                                 </router-link>
 
                                 <div class="flex items-center">
                                     <div
                                         class="ml-3"
-                                        v-if="user.id == announcement.user.id"
+                                        v-if="user.id == demonstration.user.id"
                                     >
                                         <router-link
                                             :to="{
-                                                name: 'edit.ads',
-                                                params: { id: announcement.id },
+                                                name: 'edit.events',
+                                                params: { id: demonstration.id },
                                             }"
                                         >
                                             <PencilSquareIcon
@@ -138,6 +151,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="flex items-center space-x-3 px-2 py-4">
                             <a
                                 :href="
@@ -158,266 +172,211 @@
                             </a>
                         </div>
                     </div>
-                    <!-- Comments -->
-                    <div
-                        class="mt-4 px-8 py-4"
-                        v-if="announcementComments.length != 0"
-                    >
-                        <div
-                            class="flex border-b py-4"
-                            v-for="comment in announcementComments"
-                            :key="comment.id"
-                        >
-                            <div>
-                                <router-link
-                                    :to="{
-                                        name: 'compte',
-                                        params: {
-                                            slug: comment.user.slug,
-                                            id: comment.user.id,
-                                        },
-                                    }"
-                                >
-                                    <div
-                                        class="h-10 w-10 overflow-hidden rounded-full shadow md:h-20 md:w-20"
-                                    >
-                                        <img
-                                            :src="comment.user.avatar"
-                                            class="h-full w-full bg-cover object-cover"
-                                            alt=""
-                                            v-if="comment.user.avatar"
-                                        />
-                                        <UserCircleIcon
-                                            v-else
-                                            class="h-full w-full text-gray-500"
-                                        />
-                                    </div>
-                                    <h1
-                                        class="mt-2 text-center text-xs font-bold hover:underline lg:text-sm"
-                                    >
-                                        {{ comment.user.firstname }}
-                                    </h1>
-                                </router-link>
-                                <h3
-                                    class="text-center text-xs font-light lg:text-sm"
-                                >
-                                    {{
-                                        new Date(
-                                            comment.date
-                                        ).toLocaleDateString(locale, {
-                                            day: "numeric",
-                                            year: "numeric",
-                                            month: "long",
-                                        })
-                                    }}
-                                </h3>
-                            </div>
-
-                            <div class="ml-2 w-full p-2 text-xs lg:text-lg">
-                                {{ comment.content }}
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Add Comment -->
-                    <Error v-if="errorsCmtAds != ''">{{ errorsCmtAds }}</Error>
-                    <form @submit.prevent="storeComment()">
-                        <div class="mt-4 px-8 py-4">
-                            <label
-                                class=" text-gray-700"
-                                for="pt"
-                                >Laisser un Commentaire
-                                <span class="text-red-500">*</span></label
-                            >
-                            <textarea
-                                v-model="comment.content"
-                                required
-                                type="text"
-                                id="pt"
-                                class=" mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                            >
-                            </textarea>
-                            <div class="mt-6">
-                                <input
-                                    type="hidden"
-                                    v-model="comment.announcement_id"
-                                />
-                                <button
-                                    v-if="loadingC == 0"
-                                    type="submit"
-                                    class="text-md w-full rounded bg-primary-blue px-6 py-4 leading-5 text-white focus:outline-none"
-                                >
-                                    {{ $t("save") }}
-                                </button>
-                                <button
-                                    v-if="loadingC == 1"
-                                    type="submit"
-                                    disabled
-                                    class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
-                                >
-                                    <Spin :size="'small'" />
-                                </button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
             <div v-else-if="loading == 1" class="p-28">
-                <svg
-                    class="mx-auto h-16 w-16 animate-spin"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                >
-                    <circle
-                        class="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        stroke-width="4"
-                    ></circle>
-                    <path
-                        class="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                </svg>
+                <Spin />
             </div>
             <NoContent v-else />
         </div>
-        <div class="bg-white py-5 lg:w-[30%]">
+        <div class="bg-white py-5 lg:w-[35%]">
             <div class="space-y-3 rounded-md py-5 px-10 shadow">
                 <h1 class="text-2xl font-bold text-primary-blue">
-                    {{ $t("details") }}
+                    Job {{ $t("details") }}
                 </h1>
-                <div
-                    class="flex items-center space-x-2 text-gray-500"
-                    v-if="announcement.university"
-                >
-                    <MapPinIcon class="h-8 w-8" />
-                    <span>{{ announcement.university.name }}</span>
-                </div>
-                <div
-                    class="flex items-center space-x-2 text-gray-500"
-                    v-if="announcement.email"
-                >
-                    <EnvelopeIcon class="h-8 w-8" />
-                    <span>{{ announcement.email }}</span>
-                </div>
-                <div
-                    class="flex items-center space-x-2 text-gray-500"
-                    v-if="announcement.phone"
-                >
-                    <PhoneIcon class="h-8 w-8" />
-                    <span>{{ announcement.phone }} </span>
-                </div>
-                <div
-                    class="flex items-center space-x-2 text-gray-500"
-                    v-if="
-                        announcement.website && announcement.website != 'null'
-                    "
-                >
-                    <GlobeEuropeAfricaIcon class="h-8 w-8" />
-                    <span>{{ announcement.website }} </span>
-                </div>
-                <div
-                    class="flex items-center space-x-2 text-gray-500"
-                    v-if="announcement.adress && announcement.adress != 'null'"
-                >
-                    <BriefcaseIcon class="h-8 w-8" />
-                    <span>{{ announcement.adress }} </span>
-                </div>
-                <div
-                    class="flex items-center space-x-2 text-gray-500"
-                    v-if="announcement.currency && announcement.price != 'null'"
-                >
-                    <BanknotesIcon class="h-8 w-8" />
-                    <span
-                        >{{ announcement.price }}
-                        {{ announcement.currency.symbol }}
+                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                    <EnvelopeIcon class="h-6 w-6" />
+                    <span>
+                        {{ demonstration.email }}
                     </span>
                 </div>
-            </div>
-            <div class="mt-4 rounded-md py-5 shadow">
-                <Error v-if="errors != ''">{{ errors }}</Error>
-                <div
-                    v-if="loadingC == 2"
-                    class="bg-green-50 py-4 px-2 text-green-700"
-                >
-                    <p>
-                        {{ $t("msg-contact-sucess") }}
-                    </p>
+                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                    <PhoneIcon class="h-6 w-6" />
+                    <span>
+                        {{ demonstration.phone }}
+                    </span>
                 </div>
-                <form v-else @submit.prevent="sendContact()">
-                    <div class="px-8">
-                        <label
-                            class="text-xl font-bold text-primary-blue"
-                            for="pt"
-                            >{{ $t("contact-ads") }}
-                            <span class="text-red-500">*</span></label
-                        >
-                        <textarea
-                            v-model="contact.content"
-                            required
-                            type="text"
-                            id="pt"
-                            class="mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                        >
-                        </textarea>
-
-                        <div class="mt-6">
-                            <input type="hidden" />
-                            <button
-                                v-if="loadingC == 0"
-                                type="submit"
-                                class="text-md w-full rounded bg-primary-blue px-6 py-4 leading-5 text-white focus:outline-none"
-                            >
-                                {{ $t("send") }}
-                            </button>
-                            <button
-                                v-if="loadingC == 1"
-                                type="submit"
-                                disabled
-                                class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
-                            >
-                                {{ $t("send") }}...
-                                <svg
-                                    class="h-5 w-5 animate-spin text-white"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <circle
-                                        class="opacity-25"
-                                        cx="12"
-                                        cy="12"
-                                        r="10"
-                                        stroke="currentColor"
-                                        stroke-width="4"
-                                    ></circle>
-                                    <path
-                                        class="opacity-75"
-                                        fill="currentColor"
-                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                    ></path>
-                                </svg>
-                            </button>
-                        </div>
+                <div class="grid gap-2 text-sm lg:grid-cols-2">
+                    <div
+                        class="flex items-center space-x-2 text-gray-500"
+                        v-if="demonstration.continent"
+                    >
+                        <GlobeEuropeAfricaIcon class="h-6 w-6" />
+                        <span>
+                            <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.continent.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.continent.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.continent.name_es
+                            }}</span>
+                            <span v-else>{{ demonstration.continent.name_pt }}</span>
+                        </span>
                     </div>
-                </form>
+                    <div
+                        class="flex items-center space-x-2 text-gray-500"
+                        v-if="demonstration.zone"
+                    >
+                        <MapIcon class="h-6 w-6" />
+                        <span>
+                            <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.zone.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.zone.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.zone.name_es
+                            }}</span>
+                            <span v-else>{{ demonstration.zone.name_pt }}</span>
+                        </span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 text-gray-500"
+                        v-if="demonstration.country"
+                    >
+                        <FlagIcon class="h-6 w-6" />
+                        <span>
+                            <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.country.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.country.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.country.name_es
+                            }}</span>
+                            <span v-else>{{ demonstration.country.name_pt }}</span>
+                        </span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 text-gray-500"
+                        v-if="demonstration.city"
+                    >
+                        <BuildingOffice2Icon class="h-6 w-6" />
+                        <span>
+                            <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.city.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.city.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.city.name_es
+                            }}</span>
+                            <span v-else>{{ demonstration.city.name_pt }}</span>
+                        </span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 text-gray-500"
+                        v-if="demonstration.demonstration_mode"
+                    >
+                        <ComputerDesktopIcon class="h-6 w-6" />
+                        <span>
+                            <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.demonstration_mode.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.demonstration_mode.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.demonstration_mode.name_es
+                            }}</span>
+                            <span v-else>{{
+                                demonstration.demonstration_mode.name_pt
+                            }}</span>
+                        </span>
+                    </div>
+                    <div
+                        class="flex items-center space-x-2 text-gray-500"
+
+                    >
+                        <BanknotesIcon class="h-6 w-6" />
+                        <span class="flex items-center space-x-2">
+                            <span>
+                                <span v-if="demonstration.enter_type == 'free'">Gratuit</span>
+                            </span>
+                            <span v-if="demonstration.price &&  demonstration.currency">
+                            {{ demonstration.price + demonstration.currency.symbol }}
+                        </span>
+                        </span>
+                        
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                    <ClockIcon class="h-6 w-6" />
+                    <span class="flex space-x-2 py-1">
+                        <span v-if="demonstration.demonstration_niche">
+                            <span v-if="$i18n.locale == 'en'">{{
+                                demonstration.demonstration_niche.name_en
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'fr'">{{
+                                demonstration.demonstration_niche.name_fr
+                            }}</span>
+                            <span v-else-if="$i18n.locale == 'es'">{{
+                                demonstration.demonstration_niche.name_es
+                            }}</span>
+                            <span v-else>{{
+                                demonstration.demonstration_niche.name_pt
+                            }}</span>
+                        </span> - 
+                        <span>{{ demonstration.hourly }}</span>
+                    </span>
+                </div>
+                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                    <CalendarIcon class="h-6 w-6" />
+                    <span class="text-sm text-gray-500">
+                        <span v-if="demonstration.start_date == demonstration.end_date">{{
+                                            new Date(
+                                                demonstration.start_date
+                                            ).toLocaleDateString(locale, {
+                                                day: "numeric",
+                                                year: "numeric",
+                                                month: "long",
+                                            })
+                                        }}</span>
+                                        <span v-else>Du {{
+                                            new Date(
+                                                demonstration.start_date
+                                            ).toLocaleDateString(locale, {
+                                                day: "numeric",
+                                                year: "numeric",
+                                                month: "long",
+                                            })
+                                        }} Au {{
+                                            new Date(
+                                                demonstration.end_date
+                                            ).toLocaleDateString(locale, {
+                                                day: "numeric",
+                                                year: "numeric",
+                                                month: "long",
+                                            })
+                                        }}</span>
+                                        </span
+                    >
+                </div>
+                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                        <MapPinIcon class="h-6 w-6" />
+                        <span>
+                            {{ demonstration.place_link }}
+                        </span>
+                    </div>
             </div>
         </div>
     </div>
 </template>
 
 <script setup>
-import { reactive, ref, onMounted } from "vue";
-import Error from "@/components/Error.vue";
+import { reactive, ref, onMounted, onBeforeMount } from "vue";
 import {
-    PlusCircleIcon,
+    ComputerDesktopIcon,
+    MapIcon,
+    FlagIcon,
     CalendarIcon,
     UserCircleIcon,
-    FaceFrownIcon,
     MapPinIcon,
     PencilSquareIcon,
     UserIcon,
@@ -425,82 +384,25 @@ import {
     PhoneIcon,
     GlobeEuropeAfricaIcon,
     BanknotesIcon,
-    BriefcaseIcon,
+    BuildingOffice2Icon,
+ClockIcon,
 } from "@heroicons/vue/24/solid";
-import useAnnouncements from "@/services/announcementServices.js";
-import { useRouter } from "vue-router";
+import useDemonstrations from "@/services/demonstrationServices.js";
+
 import { useI18n } from "vue-i18n";
-import { Swiper, SwiperSlide } from "swiper/vue";
-import useAnnouncementComments from "@/services/announcementCommentServices.js";
-import { Pagination, Navigation, Autoplay } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-const modules = [Autoplay, Navigation, Pagination];
 const { locale } = useI18n();
-const router = useRouter();
+const { demonstration, getDemonstration, loading, errors } = useDemonstrations();
+const user = localStorage.user ? JSON.parse(localStorage.user) : "";
+
+const url = window.location.href;
 const props = defineProps({
-    id: {
-        required: true,
-        type: String,
-    },
+    id: String,
     slug: {
         required: false,
         type: String,
     },
 });
-
-const url = window.location.href;
-const {
-    createAnnouncementComment,
-    errorsCmtAds,
-    announcementComments,
-    getAnnouncementCommentsPost,
-} = useAnnouncementComments();
-const { announcement, getAnnouncement2, loading, errors } = useAnnouncements();
-const user = localStorage.user ? JSON.parse(localStorage.user) : "";
-const loadingC = ref(0);
-const comment = reactive({
-    user_id: user.id,
-    announcement_id: "",
-    content: "",
+onBeforeMount(async () => {
+    await getDemonstration(props.id);
 });
-onMounted(async () => {
-    await getAnnouncement2(props.id);
-    await getAnnouncementCommentsPost(props.id);
-    comment.announcement_id = announcement.value.id;
-});
-
-const contact = reactive({
-    user: user.id,
-    ads: props.id,
-    content: "",
-});
-
-const storeComment = async () => {
-    loadingC.value = 1;
-    await createAnnouncementComment({ ...comment });
-    loadingC.value = 0;
-    comment.content = "";
-    await getAnnouncementCommentsPost(props.id);
-};
-
-const sendContact = async () => {
-    errors.value = "";
-    try {
-        loadingC.value = 1;
-        await axios.post("/api/announcement-send-contact", contact, {
-            headers: {
-                Authorization: `Bearer ${localStorage.token}`,
-            },
-        });
-        loadingC.value = 2;
-    } catch (e) {
-        if (e.response.status == 422) {
-            loadingC.value = 0;
-            for (const key in e.response.data.errors)
-                errors.value += e.response.data.errors[key][0] + "\n";
-        }
-    }
-};
 </script>
