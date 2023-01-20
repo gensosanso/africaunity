@@ -37,12 +37,43 @@ export default function useDemonstrations() {
         }
     };
 
-    const getDemonstrations = async (eDate, lang) => {
+
+    const markedDemonstration = async (id) => {
+        errors.value = "";
+        try {
+            loading.value = true;
+            let response = await axios.get("/api/demonstrations-mark/" + id, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`,
+                },
+            });
+           
+            demonstrations.value = response.data.data;
+
+            loading.value = false;
+        } catch (e) {
+            if (e.response.status == 401) {
+                router.push({
+                    name: "login",
+                    params: {
+                        redirect: "not-login",
+                    },
+                });
+                window.localStorage.removeItem("token");
+                window.localStorage.removeItem("user");
+            } else {
+                errors.value = e.response.data.message;
+            }
+        }
+    };
+
+
+    const getDemonstrations = async () => {
         errors.value = "";
         loading.value = true;
         try {
             let response = await axios.get(
-                "/api/demonstrations-type/" + eDate ,
+                "/api/demonstrations/" ,
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.token}`,
@@ -194,6 +225,7 @@ export default function useDemonstrations() {
         demonstration,
         errors,
         loading,
+        markedDemonstration,
         getDemonstrations,
         getDemonstration,
         createDemonstration,

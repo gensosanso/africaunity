@@ -2,14 +2,14 @@
     <div class="mx-auto min-h-screen w-full bg-white py-4 lg:px-20 xl:w-[90%]">
         <div class="w-full space-y-4 py-5 text-center">
             <h1 class="text-4xl font-bold capitalize text-primary-blue">
-                {{ $tc("add", 1) }} Evenement
+                {{ $tc("add", 1) }} {{ $tc("events", 1) }}
             </h1>
         </div>
 
         <section class="mx-auto w-full rounded-md bg-white p-6 shadow-xl">
             <Error v-if="errors != ''">{{ errors }}</Error>
             <h1 class="text-xl font-semibold">
-                {{ $tc("add", 1) }} Evenement
+                {{ $tc("add", 1) }} {{ $tc("events", 1) }}
             </h1>
             <h2 class="text-md font-light text-gray-700">
                 {{ $t("good-msg-post") }} !
@@ -48,7 +48,7 @@
 
                     <div>
                             <label class="text-gray-700" for="pt"
-                                >Type d'evenement
+                                >{{ $t("event-type") }}
                                 <span class="text-red-500">*</span></label
                             >
                             <select
@@ -79,7 +79,7 @@
 
                         <div>
                             <label class="text-gray-700" for="pt"
-                                >Mode
+                                >{{ $t("event-mode") }}
                                 <span class="text-red-500">*</span></label
                             >
                             <select
@@ -106,9 +106,7 @@
                                     <span v-else>{{ demonstrationMode.name_pt }}</span>
                                 </option> 
                             </select>
-                        </div>
-
-                        
+                        </div>                    
 
                         <div>
                             <label
@@ -251,7 +249,7 @@
 
                         <div class="sm:col-span-2">
                             <label class="text-gray-700" for="pt"
-                                >Lieu/lien
+                                >{{ $t("location-link") }}
                                 <span class="text-red-500">*</span></label
                             >
                             <input
@@ -263,7 +261,7 @@
                         </div>
 
                         <div class=" sm:col-span-2">
-                            <label class="text-gray-700">Type d'entree <span class="text-red-500">*</span></label>
+                            <label class="text-gray-700">{{ $t("enter-type") }}<span class="text-red-500">*</span></label>
                             <select
                                 required
                                 v-model="demonstration.enter_type"
@@ -313,7 +311,7 @@
                         
 
                         <div>
-                            <label class="text-gray-700">Date de début  <span class="text-red-500">*</span></label>
+                            <label class="text-gray-700">{{ $t("start-date") }} <span class="text-red-500">*</span></label>
                             <input
                                 v-model="demonstration.start_date"
                                 type="date"
@@ -323,7 +321,7 @@
                         </div>
 
                         <div>
-                            <label class="text-gray-700">Date de fin  <span class="text-red-500">*</span></label>
+                            <label class="text-gray-700">{{ $t("end-date") }} <span class="text-red-500">*</span></label>
                             <input
                                 v-model="demonstration.end_date"
                                 type="date"
@@ -334,7 +332,7 @@
 
 
                         <div>
-                            <label class="text-gray-700">Créneau  <span class="text-red-500">*</span></label>
+                            <label class="text-gray-700">{{ $t("niche") }}  <span class="text-red-500">*</span></label>
                             <select
                                 required
                                 v-model="demonstration.demonstration_niche_id"
@@ -360,7 +358,7 @@
                         </div>
 
                         <div>
-                            <label class="text-gray-700">Heure  <span class="text-red-500">*</span></label>
+                            <label class="text-gray-700">{{ $t("hour") }}  <span class="text-red-500">*</span></label>
                             <input
                                 v-model="demonstration.hourly"
                                 type="time"
@@ -368,8 +366,6 @@
                                 class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
-                    
-                    
 
                         <div>
                             <label class="text-gray-700"
@@ -396,7 +392,6 @@
                                 class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
-
                         
                     </div>
                     <div class="sm:col-span-2 mt-4">

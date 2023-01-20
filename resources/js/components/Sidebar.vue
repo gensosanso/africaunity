@@ -278,7 +278,7 @@
                     >
                         <router-link
                             :to="{
-                                name: 'admin.personal-post.index',
+                                name: 'admin.event.index',
                             }"
                             class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
                         >

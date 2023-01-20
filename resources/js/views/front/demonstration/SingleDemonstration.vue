@@ -7,7 +7,6 @@
                 <div
                     class=" overflow-hidden rounded-lg bg-white shadow-md"
                 >
-                    <!-- Job -->
                     <div class="flex items-center space-x-4 px-4">
                         <img
                             v-if="demonstration.image"
@@ -61,7 +60,7 @@
                                                 month: "long",
                                             })
                                         }}</span>
-                                        <span v-else>Du {{
+                                        <span v-else> {{ $t("of") }} {{
                                             new Date(
                                                 demonstration.start_date
                                             ).toLocaleDateString(locale, {
@@ -69,7 +68,7 @@
                                                 year: "numeric",
                                                 month: "long",
                                             })
-                                        }} Au {{
+                                        }}  {{ $t("at") }} {{
                                             new Date(
                                                 demonstration.end_date
                                             ).toLocaleDateString(locale, {
@@ -77,8 +76,8 @@
                                                 year: "numeric",
                                                 month: "long",
                                             })
-                                        }}</span></a
-                                    >
+                                        }}</span>
+                                        </a>
                                 </div>
                                 <div class="flex space-x-1">
                                     <UserIcon class="h-4 w-4" />
@@ -182,7 +181,7 @@
         <div class="bg-white py-5 lg:w-[35%]">
             <div class="space-y-3 rounded-md py-5 px-10 shadow">
                 <h1 class="text-2xl font-bold text-primary-blue">
-                    Job {{ $t("details") }}
+                     {{ $t("event-detail") }}
                 </h1>
                 <div class="flex items-center space-x-2 text-sm text-gray-500">
                     <EnvelopeIcon class="h-6 w-6" />
@@ -338,7 +337,7 @@
                                                 month: "long",
                                             })
                                         }}</span>
-                                        <span v-else>Du {{
+                                        <span v-else> {{ $t("of") }} {{
                                             new Date(
                                                 demonstration.start_date
                                             ).toLocaleDateString(locale, {
@@ -346,7 +345,7 @@
                                                 year: "numeric",
                                                 month: "long",
                                             })
-                                        }} Au {{
+                                        }}  {{ $t("at") }} {{
                                             new Date(
                                                 demonstration.end_date
                                             ).toLocaleDateString(locale, {

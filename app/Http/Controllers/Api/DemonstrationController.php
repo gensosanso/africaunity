@@ -36,7 +36,6 @@ class DemonstrationController extends Controller
 
        if ($request->date  != "") {
         $date = Carbon::createFromFormat('Y-m-d', $request->date);
-      /*   $demonstrations->whereDate('start_date', $date); */
        $demonstrations->where(function ($query) use ($date) {
             $query->whereDate('start_date', '<=' , $date)->whereDate('end_date', '>=', $date);
         }); 
@@ -116,6 +115,12 @@ class DemonstrationController extends Controller
         
 
         return DemonstrationResource::collection($demonstrations->get());
+    }
+
+    public function demonstration_mark(Demonstration $demonstration) {
+        $demonstration->status = $demonstration->status == 3 ? 1 : 3;
+        $demonstration->save();
+        return new DemonstrationResource($demonstration);
     }
 
     /**

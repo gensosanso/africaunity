@@ -269,8 +269,6 @@ const routes = [
             requiresAuth: true,
         },
     },
-
-    //
     {
         path: "/events",
         name: "events",
@@ -330,8 +328,6 @@ const routes = [
             requiresAuth: true,
         },
     },
-    //
-
     {
         path: "/contact",
         name: "contact",
@@ -550,7 +546,6 @@ const routes = [
                     title: siteName + " - Edit Post",
                 },
             },
-
             {
                 path: "personal-posts",
                 component: () =>
@@ -581,6 +576,39 @@ const routes = [
                     title: siteName + " - Edit Post",
                 },
             },
+
+
+            {
+                path: "events",
+                component: () =>
+                    import("@/views/back/demonstration/DemonstrationIndex.vue"),
+                props: true,
+                name: "admin.event.index",
+                meta: {
+                    title: siteName + " - Events",
+                },
+            },
+            {
+                path: "events/create",
+                component: () =>
+                    import("@/views/back/demonstration/DemonstrationCreate.vue"),
+                props: true,
+                name: "admin.event.create",
+                meta: {
+                    title: siteName + " - Create Event",
+                },
+            },
+            {
+                path: "events/edit/:id",
+                component: () =>
+                    import("@/views/back/demonstration/DemonstrationEdit.vue"),
+                props: true,
+                name: "admin.event.edit",
+                meta: {
+                    title: siteName + " - Edit Event",
+                },
+            },
+
 
             {
                 path: "continent",

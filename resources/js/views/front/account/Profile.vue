@@ -330,7 +330,7 @@
                 >
                     <CalendarDaysIcon class="h-5 w-5" />
                     <span class="hidden whitespace-nowrap lg:block"
-                        >Evenement</span
+                        > {{ $tc("events", 2) }}</span
                     >
                 </button>
                 <button

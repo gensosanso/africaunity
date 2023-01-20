@@ -53,7 +53,7 @@ watch(route, async function (newRoute, oldRoute) {
         <h1
             class="py-2 text-center text-5xl font-bold capitalize text-primary-blue"
         >
-            Evenements
+        {{ $tc("events", 2) }}
         </h1>
         <div class="flex justify-end px-6">
                 <router-link
@@ -63,7 +63,7 @@ watch(route, async function (newRoute, oldRoute) {
                     class="flex items-center justify-start space-x-3 rounded bg-primary-blue px-3 py-2 text-white"
                 >
                 <PlusCircleIcon class="h-6 w-6" />
-                    <p class="text-base leading-4">{{ $t("add") }} Evenement</p>
+                    <p class="text-base leading-4">{{ $t("add") }} {{ $tc("events", 1) }} </p>
                 </router-link>
             </div>
        <div class=" flex mt-8 lg:flex-row flex-col-reverse lg:space-x-4 space-x-0 pb-10 ">
@@ -71,9 +71,9 @@ watch(route, async function (newRoute, oldRoute) {
             <div class=" border-b px-4 py-2">
                 <h1 class="font-medium text-3xl flex space-x-2 uppercase">
                     <span> <CalendarDaysIcon class="h-8 w-8 text-primary-blue" /></span>
-                <span>Quand</span>
+                <span>{{ $t("when") }}</span>
                 </h1>
-                <p class="mt-2 text-gray-900">Choisir un jour</p>
+                <p class="mt-2 text-gray-900">{{ $t("choose-day") }}</p>
             </div>
             <EventCalendar :eventNiche="filterData.demonstration_niche_id" :zone="filterData.zone_id" :eventType="filterData.demonstration_type_id" :city="filterData.city_id" :continent="filterData.continent_id" :country="filterData.country_id" :date="filterData.date" :enterType="filterData.enter_type" :eventMode="filterData.demonstration_mode_id" />
         </div>
@@ -116,7 +116,7 @@ watch(route, async function (newRoute, oldRoute) {
                                                 month: "long",
                                             })
                                         }}</span>
-                                        <span v-else>Du {{
+                                        <span v-else> {{ $t("of") }} {{
                                             new Date(
                                                 demonstration.start_date
                                             ).toLocaleDateString(locale, {
@@ -124,7 +124,7 @@ watch(route, async function (newRoute, oldRoute) {
                                                 year: "numeric",
                                                 month: "long",
                                             })
-                                        }} Au {{
+                                        }}  {{ $t("at") }} {{
                                             new Date(
                                                 demonstration.end_date
                                             ).toLocaleDateString(locale, {
@@ -182,7 +182,7 @@ watch(route, async function (newRoute, oldRoute) {
                                     <span class="text-red-500"> {{ demonstration.hourly }} </span>
                                 </p>
                                 <p>
-                                <span class="font-medium">Lien/Lieu : </span>
+                                <span class="font-medium">{{ $t("location-link") }}: </span>
                                 <span>{{ demonstration.place_link }}</span>
                             </p>
                             </div>
@@ -191,7 +191,7 @@ watch(route, async function (newRoute, oldRoute) {
                     <div class="md:w-[20%] flex flex-col md:justify-between items-start md:items-end md:px-8 px-4  pb-10">
                         <p class=" text-xl font-medium mb-4 md:mb-0">
                             <span class=" font-bold">Entrée : </span>
-                            <span v-if="demonstration.enter_type === 'free'" class=" text-red-500">Gratuite</span>
+                            <span v-if="demonstration.enter_type === 'free'" class=" text-red-500">{{ $t("free") }}</span>
                             <span v-else class=" text-primary-blue">
                              <span>  {{ demonstration.price }} </span>
                              <span v-if="demonstration.currency">   {{ demonstration.currency.symbol }}</span></span> 
@@ -202,7 +202,7 @@ watch(route, async function (newRoute, oldRoute) {
                                 id: demonstration.id,
                                 slug: demonstration.slug
                             }
-                        }" class=" rounded-full border-primary-blue px-3 text-sm py-2 text-primary-blue border hover:bg-primary-blue hover:text-white ">En Savoir plus</router-link>
+                        }" class=" rounded-full border-primary-blue px-3 text-sm py-2 text-primary-blue border hover:bg-primary-blue hover:text-white ">{{ $t("read-more") }}</router-link>
                     </div>
                 </div>
             </div>

@@ -343,7 +343,7 @@ const filteredZone = () => {
     </div>
     <div class=" px-4">
         <div class="mt-4">
-        <label for="" class=" text-sm text-gray-500">Type d'evenement</label>
+        <label for="" class=" text-sm text-gray-500">{{ $t("event-type") }}</label>
         <select name="" id="" v-model="filterData.demonstration_type_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
            <option value=""></option>
             <option
@@ -366,7 +366,7 @@ const filteredZone = () => {
     </div>
 
     <div class="mt-4">
-        <label for="" class=" text-sm text-gray-500">Mode</label>
+        <label for="" class=" text-sm text-gray-500">{{ $t("event-mode") }}</label>
         <select name="" id="" v-model="filterData.demonstration_mode_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
             <option value=""></option>
             <option
@@ -389,7 +389,7 @@ const filteredZone = () => {
     </div>
 
         <div class="mt-4">
-            <label for="" class=" text-sm text-gray-500">Créneau</label>
+            <label for="" class=" text-sm text-gray-500">{{ $t("niche") }}</label>
             <select name="" id=""  v-model="filterData.demonstration_niche_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
                 <option value=""></option>
                 <option
@@ -415,7 +415,7 @@ const filteredZone = () => {
         </div>
 
     <div class="mt-4">
-        <label for="" class=" text-sm text-gray-500">Type d'entrée</label>
+        <label for="" class=" text-sm text-gray-500">{{ $t("enter-type") }}</label>
         <select name="" id="" v-model="filterData.enter_type" @change="filter" class="form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
             <option value=""></option>
             <option value="paying">Payant</option>

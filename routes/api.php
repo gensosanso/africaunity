@@ -87,6 +87,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::post("/demonstrations-filter", [DemonstrationController::class, 'filter']);
     Route::get("/demonstrations-user/{user}", [DemonstrationController::class, 'demonstration_user']);
+    Route::get("/demonstrations-mark/{demonstration}", [DemonstrationController::class, 'demonstration_mark']);
     Route::apiResource('demonstrations', DemonstrationController::class);
 
     Route::apiResource('personalPosts', PersonalPostController::class);

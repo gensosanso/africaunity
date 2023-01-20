@@ -90,16 +90,6 @@
                                         : item.title.substring(0, 29) + "..."
                                 }}
                             </template>
-                            <template #item-ministry.name_en="item">
-                                {{
-                                    item.ministry.name_en <= 30
-                                        ? item.ministry.name_en
-                                        : item.ministry.name_en.substring(
-                                              0,
-                                              29
-                                          ) + "..."
-                                }}
-                            </template>
                             <template #item-id="item">
                                 <div>
                                     <router-link
@@ -179,7 +169,6 @@ const headers = [
     { text: "Title", value: "title" },
     { text: "Author", value: "user.firstname" },
     { text: "SubTheme", value: "subtheme" },
-    { text: "Category", value: "category_personal_post.name" },
     { text: "ACTION", value: "id" },
 ];
 </script>

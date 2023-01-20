@@ -6,12 +6,14 @@ import {
     TrashIcon,
     PlusCircleIcon,
     PencilSquareIcon,
+ArrowPathIcon,
 } from "@heroicons/vue/24/solid";
 import NoContent from "../utils/NoContent.vue";
+import { CheckCircleIcon } from '@heroicons/vue/24/solid';
 const props = defineProps({
     user: Object,
 });
-const { demonstrations, getDemonstrationsUser, destroyDemonstration, loading } =
+const { demonstrations, getDemonstrationsUser, destroyDemonstration,markedDemonstration, loading } =
     useDemonstrations();
 const searchAds = ref("");
 const loginUser = ref("");
@@ -26,6 +28,11 @@ const deleteDemonstration = async (id) => {
         await destroyDemonstration(deleteId);
         await getDemonstrationsUser(props.user.id);
     }
+};
+
+const markDemonstration = async (id) => {
+    await markedDemonstration(id);
+    await getDemonstrationsUser(props.user.id);
 };
 
 const filteredDemonstration = computed(() => {
@@ -82,7 +89,7 @@ const filteredDemonstration = computed(() => {
                 >
                     <PlusCircleIcon class="h-6 w-6" />
                     <p class="text-base leading-4">
-                        {{ $tc("add", 1) }} evenement
+                        {{ $tc("add", 1) }}  {{ $tc("events", 1) }}
                     </p>
                 </router-link>
             </div>
@@ -94,7 +101,7 @@ const filteredDemonstration = computed(() => {
                                 scope="col"
                                 class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
-                                Evenements
+                            {{ $tc("events", 2) }}
                             </th>
                             <th
                                 v-if="user.id == loginUser.id"
@@ -136,21 +143,44 @@ const filteredDemonstration = computed(() => {
                                             name: 'edit.events',
                                             params: { id: demonstration.id },
                                         }"
-                                        class="text-primary-blue hover:underline"
+                                        class="text-primary-blue hover:underline relative group"
                                     >
                                         <PencilSquareIcon
                                             class="h-5 w-5 cursor-pointer text-blue-400 hover:text-blue-700"
                                         />
+                                        <span class=" absolute px-2 py-1 text-white z-10 rounded-full bg-black/70 -top-6 text-xs group-hover:block hidden">
+                                            {{ $t("modify") }}  </span>
                                     </router-link>
+                                    <button
+                                        @click="
+                                            markDemonstration(demonstration.id)
+                                        "
+                                        class="ml-3 text-purple-600 hover:underline relative group"
+                                    >
+                                        <CheckCircleIcon
+                                            v-if="demonstration.status != 3"
+                                            class="h-5 w-5 cursor-pointer text-purple-400 hover:text-purple-700"
+                                        />
+                                        <ArrowPathIcon
+                                            v-else
+                                            class="h-5 w-5 cursor-pointer text-purple-400 hover:text-purple-700"
+                                        />
+                                        <span class=" absolute px-2 py-1 text-white z-10 rounded-full bg-black/70 -top-6 text-xs group-hover:block hidden">
+                                            <span v-if="demonstration.status != 3">{{ $t("mark-provided") }}</span>
+                                            <span v-else>{{ $t("mark-progress") }}</span>
+                                        </span>
+                                    </button>
                                     <button
                                         @click="
                                             deleteDemonstration(demonstration.id)
                                         "
-                                        class="ml-3 text-red-600 hover:underline"
+                                        class="ml-3 text-red-600 hover:underline relative group"
                                     >
                                         <TrashIcon
                                             class="h-5 w-5 cursor-pointer text-red-400 hover:text-red-700"
                                         />
+                                        <span class=" absolute px-2 py-1 text-white z-10 rounded-full bg-black/70 -top-6 text-xs group-hover:block hidden">
+                                            {{ $t("delete") }}  </span>
                                     </button>
                                 </div>
                             </td>
