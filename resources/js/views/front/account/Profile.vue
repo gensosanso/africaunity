@@ -226,25 +226,19 @@
                 </div>
             </div>
         </div>
-        <div class="relative">
+        <div class="relative flex">
             <button
                 type="button"
                 @click="scrollLeft()"
-                class="absolute top-0 left-0 h-full bg-white/70 p-2"
+                class="bg-menu p-2 block text-white"
             >
-                <ChevronLeftIcon class="h-6 w-6 text-menu" />
+                <ChevronLeftIcon class="h-6 w-6" />
             </button>
-            <button
-                type="button"
-                @click="scrollRight()"
-                class="absolute top-0 right-0 h-full bg-white/70 p-2"
-            >
-                <ChevronRightIcon class="h-6 w-6 text-menu" />
-            </button>
+            
 
             <div
                 ref="nav"
-                class="no-scrollbar flex items-center space-x-2 overflow-auto bg-menu px-5 py-3 lg:mt-0"
+                class="no-scrollbar flex items-center space-x-2 w-full overflow-auto bg-menu px-5 py-3 lg:mt-0"
             >
                 <button
                     @click="changeTab('profil')"
@@ -321,6 +315,7 @@
                     }}</span>
                 </button>
                 <button
+                    v-if="user.type == 'ip' || user.type == 'business2' || user.type == 'admin'"
                     @click="changeTab('event')"
                     :class="[
                         open.event
@@ -347,6 +342,14 @@
                     }}</span>
                 </button>
             </div>
+
+            <button
+                type="button"
+                @click="scrollRight()"
+                class="bg-menu p-2 block text-white"
+            >
+                <ChevronRightIcon class="h-6 w-6" />
+            </button>
         </div>
         <div v-if="loading == 1" class="p-28">
             <Spin />

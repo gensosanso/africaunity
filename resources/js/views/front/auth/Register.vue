@@ -75,7 +75,7 @@
                 >
                     {{ $t("already-signup") }}
                     <router-link
-                        class="text-[#242A56] hover:underline"
+                        class="text-[#242A56] hover:underline font-bold"
                         :to="{ name: 'login' }"
                     >
                         {{ $t("login") }}
@@ -86,7 +86,7 @@
                         {{ $t("register") }}
                     </h1>
                     <Error v-if="errors != ''">{{ errors }}</Error>
-                    <div v-if="loading == 2" class="py-4">
+                    <div v-if="loading == 2" class="py-4 text-justify">
                         <p>
                             {{ $t("msg-a-register") }}
                         </p>

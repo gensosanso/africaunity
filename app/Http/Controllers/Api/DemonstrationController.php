@@ -76,6 +76,24 @@ class DemonstrationController extends Controller
             });
         }
 
+        if ($request->ministry_id  != "") {
+            $ministry = $request->ministry_id;
+            $demonstrations = $demonstrations->with(['ministry' => function ($query) use ($ministry) {
+                $query->where('id', $ministry);
+            }])->whereHas('ministry', function (Builder $query) use ($ministry) {
+                $query->where('id', $ministry);
+            });
+        }
+
+        if ($request->activity_area_id  != "") {
+            $activityArea = $request->activity_area_id;
+            $demonstrations = $demonstrations->with(['activityArea' => function ($query) use ($activityArea) {
+                $query->where('id', $activityArea);
+            }])->whereHas('activityArea', function (Builder $query) use ($activityArea) {
+                $query->where('id', $activityArea);
+            });
+        }
+
         if ($request->city_id  != "") {
             $city = $request->city_id;
             $demonstrations = $demonstrations->with(['city' => function ($query) use ($city) {
@@ -175,10 +193,36 @@ class DemonstrationController extends Controller
             ]);
             $filename = '/uploads/events/' . time() . '.' . $request->file('image')->extension();
             $request->file('image')->storePubliclyAs('public', $filename);
+            if (File::exists(public_path(substr($demonstration->image, 1, null)))) {
+                File::delete(public_path(substr($demonstration->image, 1, null)));
+            }
             $fields['image'] = $filename;
         }
 
-        $demonstration->update($fields);
+        $demonstration->update([
+            'title' => $fields['title'],
+            'description' => $fields['description'],
+            'image' => $request->file('image')? $fields['image'] : $demonstration->image ,
+            'hourly' => $fields['hourly'],
+            'place_link' => $fields['place_link'],
+            'enter_type' => $fields['enter_type'],
+            'price' => $fields['price'],
+            'phone' => $fields['phone'],
+            'email' => $fields['email'],
+            'start_date' => $fields['start_date'],
+            'end_date' => $fields['end_date'],
+            'user_id' => $fields['user_id'],
+            'demonstration_type_id' => $fields['demonstration_type_id'],
+            'demonstration_mode_id' => $fields['demonstration_mode_id'],
+            'demonstration_niche_id' => $fields['demonstration_niche_id'],
+            'city_id' => $fields['city_id'],
+            'zone_id' => $fields['zone_id'],
+            'continent_id' => $fields['continent_id'],
+            'country_id' => $fields['country_id'],
+            'currency_id' => $fields['currency_id'] == 'null' ? null : $fields['currency_id'],
+            'ministry_id' => $fields['ministry_id'] == 'null' ? null : $fields['ministry_id'],
+            'activity_area_id' => $fields['activity_area_id'] == 'null' ? null : $fields['activity_area_id']
+        ]);
 
         return new DemonstrationResource($demonstration);
     }

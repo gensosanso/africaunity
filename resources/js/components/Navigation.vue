@@ -80,7 +80,7 @@
                     class="absolute left-0 z-40 mt-2 flex w-60 flex-col bg-menu py-2"
                     >
                     <a 
-                        :href="`/events?date=${currYear}-${currMonth + 1}-${currdate}&enterType=&continent=&country=&zone=&city=&eventType=&eventMode=`" 
+                        :href="`/events?date=${currYear}-${currMonth + 1}-${currdate}&enterType=&continent=&country=&zone=&city=&ministry=&activityArea=&eventType=&eventMode=`" 
                         class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"    
                     >
                         Evenements
@@ -317,8 +317,7 @@
                     </a>
                     <div class="mt-2 flex flex-col py-2">
                         <a
-                            href="#"
-                            @click.prevent="changeRoute('events')"
+                        :href="`/events?date=${currYear}-${currMonth + 1}-${currdate}&enterType=&continent=&country=&zone=&city=&ministry=&activityArea=&eventType=&eventMode=`" 
                             class="px-3 py-2 text-sm uppercase text-menu transition-colors duration-200 hover:bg-primary-blue hover:text-white"
                         >
                             Evenements

@@ -6,7 +6,7 @@
                 <span v-else>{{ $tc("add", 2) }}</span> {{ props.type }}
             </h1>
             <h2 class="text-md text-gray-700">
-                {{ $t("your") }} {{ type }} {{ $t("add-desc-1") }}
+                {{ $t("your") }} {{ type }} <span v-if="props.type == 'article'">{{ $t("add-desc-1") }}</span> <span v-else>{{ $tc("add-desc-1", 2) }}</span>
             </h2>
             <div
                 class="flex flex-col items-center justify-center lg:flex-row lg:space-x-3"
@@ -150,7 +150,7 @@
                                 <span v-else>{{ zone.name_pt }}</span>
                             </option>
                             <option v-else value="null">
-                                Select {{ $t("continent") }}
+                                Requires {{ $t("continent") }}
                             </option>
                         </select>
                     </div>
@@ -182,7 +182,7 @@
                                 <span v-else>{{ country.name_pt }}</span>
                             </option>
                             <option v-else value="null">
-                                Select {{ $t("zoned") }}
+                                Requires {{ $t("zoned") }}
                             </option>
                         </select>
                     </div>
@@ -215,15 +215,6 @@
                                 <span v-else>{{ ministry.name_pt }}</span>
                             </option>
                         </select>
-                        <!-- <SelectFilter
-                            v-model="selectedMinistries"
-                            :data="ministries"
-                            :placeholder="'Select Ministry'"
-                            :required="true"
-                            :resetField="true"
-                            :multiple="false"
-                            :className="'form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue'"
-                        /> -->
                     </div>
 
                     <div class="col-span-2" v-if="type == 'article'">
@@ -275,12 +266,12 @@
                             <textarea
                                 required
                                 v-model="post.content"
-                                maxlength="2000"
+                                maxlength="1000"
                                 class=" mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                             >
                             </textarea>
                             <span class="text-xs font-light text-gray-400"
-                                >{{ post.content.length }} of 2000
+                                >{{ post.content.length }} of 1000
                                 Characters</span
                             >
                         </div>

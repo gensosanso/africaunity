@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\ActivityArea;
 use App\Models\City;
 use App\Models\Continent;
 use App\Models\Country;
@@ -9,6 +10,7 @@ use App\Models\Currency;
 use App\Models\DemonstrationMode;
 use App\Models\DemonstrationNiche;
 use App\Models\DemonstrationType;
+use App\Models\Ministry;
 use App\Models\User;
 use App\Models\Zone;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -46,6 +48,10 @@ class DemonstrationResource extends JsonResource
             'zone_id' => $this->zone_id,
             'continent_id' => $this->continent_id,
             'country_id' => $this->country_id,
+            'ministry_id' => $this->ministry_id,
+            'activity_area_id' => $this->activity_area_id,
+            'ministry' => new MinistryResource(Ministry::find($this->ministry_id)),
+            'activity_area' => new ActivityAreaResource(ActivityArea::find($this->activity_area_id)),
             'demonstration_type' => new DemonstrationTypeResource(DemonstrationType::find($this->demonstration_type_id)),
             'demonstration_mode' => new DemonstrationModeResource(DemonstrationMode::find($this->demonstration_mode_id)),
             'demonstration_niche' => new DemonstrationNicheResource(DemonstrationNiche::find($this->demonstration_niche_id)),

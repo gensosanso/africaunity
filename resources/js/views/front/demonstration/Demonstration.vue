@@ -15,6 +15,8 @@ const filterData = reactive({
     zone_id: '',
     city_id: '',
     continent_id: '',
+    ministry_id: '',
+    activity_area_id: '',
     enter_type: '',
     demonstration_type_id: '',
     demonstration_mode_id: '',
@@ -26,6 +28,8 @@ onMounted(async function() {
     filterData.country_id = route.query.country;
     filterData.zone_id = route.query.zone;
     filterData.city_id = route.query.city;
+    filterData.ministry_id = route.query.ministry;
+    filterData.activity_area_id = route.query.activityArea;
     filterData.continent_id = route.query.continent;
     filterData.enter_type = route.query.enterType;
     filterData.demonstration_type_id = route.query.eventType;
@@ -41,6 +45,8 @@ watch(route, async function (newRoute, oldRoute) {
     filterData.zone_id = newRoute.query.zone;
     filterData.city_id = newRoute.query.city;
     filterData.continent_id = newRoute.query.continent;
+    filterData.ministry_id = newRoute.query.ministry;
+    filterData.activity_area_id = newRoute.query.activityArea;
     filterData.enter_type = newRoute.query.enterType;
     filterData.demonstration_type_id = newRoute.query.eventType;
     filterData.demonstration_mode_id = newRoute.query.eventMode;
@@ -75,12 +81,12 @@ watch(route, async function (newRoute, oldRoute) {
                 </h1>
                 <p class="mt-2 text-gray-900">{{ $t("choose-day") }}</p>
             </div>
-            <EventCalendar :eventNiche="filterData.demonstration_niche_id" :zone="filterData.zone_id" :eventType="filterData.demonstration_type_id" :city="filterData.city_id" :continent="filterData.continent_id" :country="filterData.country_id" :date="filterData.date" :enterType="filterData.enter_type" :eventMode="filterData.demonstration_mode_id" />
+            <EventCalendar :ministry="filterData.ministry_id" :activityArea="filterData.activity_area_id" :eventNiche="filterData.demonstration_niche_id" :zone="filterData.zone_id" :eventType="filterData.demonstration_type_id" :city="filterData.city_id" :continent="filterData.continent_id" :country="filterData.country_id" :date="filterData.date" :enterType="filterData.enter_type" :eventMode="filterData.demonstration_mode_id" />
         </div>
         <div class=" lg:w-[70%] w-full">
             <div class=" py-6 bg-primary-blue text-white px-4">
-                <h1 class=" text-2xl"> <span class=" font-bold text-3xl">{{ demonstrations.length }}</span>   
-                <span v-if="demonstrations.length  > 1">Evenements trouvés</span><span v-else>Evenement trouvé</span>
+                <h1 class=" text-2xl"> <span class=" font-bold text-3xl">{{ demonstrations.length }}</span>&nbsp;  
+                <span v-if="demonstrations.length  > 1">{{ $tc("events", 2) }}&nbsp;{{ $tc("found", 2) }}</span><span v-else>{{ $tc("events", 1) }}&nbsp;{{ $tc("found", 1) }}</span>
                 </h1>
             </div>
             <Loader v-if="loading == 1" />
@@ -145,7 +151,7 @@ watch(route, async function (newRoute, oldRoute) {
                                             id: demonstration.user.id,
                                         },
                             }" class="relative group min-w-[3rem]">
-                                <span class=" absolute bg-black/70  hidden group-hover:block rounded-full top-12 left-0 text-xs px-3 py-0.5 text-white" v-if="demonstration.user">{{ demonstration.user.firstname }}{{ demonstration.user.lastname }}</span>
+                                <span class=" absolute bg-black/70  hidden group-hover:block rounded-full top-12 left-0 text-xs px-3 py-0.5 text-white" v-if="demonstration.user">{{ demonstration.user.firstname }}&nbsp;{{ demonstration.user.lastname }}</span>
                                 <img  v-if="demonstration.user.avatar" class="h-10 w-10 rounded-full object-cover" :src="demonstration.user.avatar" alt="">
                                 <div  v-else class="h-10 w-10 rounded-full " >
                                     <UserCircleIcon

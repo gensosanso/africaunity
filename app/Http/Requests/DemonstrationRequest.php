@@ -42,7 +42,9 @@ class DemonstrationRequest extends FormRequest
         'zone_id'=> 'integer|required',
         'continent_id'=> 'integer|required',
         'country_id'=> 'integer|required',
-        'currency_id'=> 'nullable|integer',
+        'currency_id'=> 'nullable|string',
+        'ministry_id'=> 'nullable|string',
+        'activity_area_id'=> 'nullable|string',
         ];
     }
 }

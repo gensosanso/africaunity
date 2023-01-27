@@ -32,6 +32,8 @@ class Demonstration extends Model
         'continent_id',
         'country_id',
         'currency_id',
+        'ministry_id',
+        'activity_area_id',
     ];
 
 
@@ -58,6 +60,16 @@ class Demonstration extends Model
     public function country()
     {
         return $this->belongsTo(Country::class);
+    }
+
+    public function ministry()
+    {
+        return $this->belongsTo(Ministry::class);
+    }
+
+    public function activityArea()
+    {
+        return $this->belongsTo(ActivityArea::class);
     }
 
     public function continent()

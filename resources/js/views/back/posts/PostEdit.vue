@@ -91,7 +91,7 @@
                                     {{ zone.name_en }}
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("continent") }}
+                                    Requires {{ $t("continent") }}
                                 </option>
                             </select>
                         </div>
@@ -115,7 +115,7 @@
                                     {{ country.name_en }}
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("zoned") }}
+                                    Requires {{ $t("zoned") }}
                                 </option>
                             </select>
                         </div>

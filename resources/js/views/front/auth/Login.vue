@@ -42,7 +42,7 @@
                 <div class="md:text-md p-4 text-center text-sm text-gray-500">
                     {{ $t("no-signup") }}
                     <router-link
-                        class="text-[#242A56] hover:underline"
+                        class="text-[#242A56] hover:underline font-bold"
                         :to="{ name: 'pack' }"
                     >
                         {{ $t("register") }}

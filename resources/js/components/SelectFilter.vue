@@ -166,7 +166,7 @@ onClickOutside(itemModal, () => {
             
         /> -->
         <span
-            :class="className + ' cursor-pointer'"
+            :class="className + ' cursor-pointer min-h-[2.75rem]'"
             @click="open = !open"
             @keydown.enter="changeValue(filteredData[0])"
         >

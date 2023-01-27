@@ -1,8 +1,11 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
+import usePosts from "@/services/postServices.js";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/vue/24/solid";
 
+
+const { posts, getPostsAll,} = usePosts();
 const daysTag = ref(null);
 const currentDate = ref(null);
 const router = useRouter();
@@ -47,7 +50,15 @@ const renderCalendar = () => {
             currYear === new Date().getFullYear()
                 ? "active"
                 : "";
-        liTag += `<li class="${isToday} days-items">${i}</li>`;
+             let size =  posts.value.filter((post) =>{
+                let cmdate = (currMonth + 1 < 10) && (i < 10) ? `${currYear}-0${currMonth + 1}-0${i}` 
+                            : (currMonth + 1 < 10) ? `${currYear}-0${currMonth + 1}-${i}` 
+                            : (i < 10) ? `${currYear}-${currMonth + 1}-0${i}` : `${currYear}-${currMonth + 1}-${i}` ;
+            return   post.date === cmdate;
+            });
+             
+            let havePub = size.length > 0  ? "have-pub" : "";
+        liTag += `<li class="${isToday} ${havePub} days-items">${i}</li>`;
     }
 
     for (let i = lastDayofMonth; i < 6; i++) {
@@ -58,7 +69,7 @@ const renderCalendar = () => {
 };
 
 async function nextMonth() {
-    currMonth = currMonth + 1;
+   currMonth =  currMonth + 1;
     if (currMonth < 0 || currMonth > 11) {
         date = new Date(currYear, currMonth);
         currYear = date.getFullYear();
@@ -72,6 +83,7 @@ async function nextMonth() {
 
 async function prevMonth() {
     currMonth = currMonth - 1;
+    console.log(currMonth)
     if (currMonth < 0 || currMonth > 11) {
         date = new Date(currYear, currMonth);
         currYear = date.getFullYear();
@@ -84,12 +96,13 @@ async function prevMonth() {
 }
 
 onMounted(async function () {
+    await getPostsAll('article');
     renderCalendar();
     setItemsDays();
 });
 
 async function setItemsDays() {
-    let days_items = document.getElementsByClassName("days-items");
+    let days_items = document.querySelectorAll("#postcalendar .days-items");
     for (let i = 0; i < days_items.length; i++) {
         days_items[i].addEventListener("click", function (e) {
             e.preventDefault();
@@ -146,21 +159,21 @@ async function setItemsDays() {
 #postcalendar .wrapper header {
     display: flex;
     align-items: center;
-    padding: 25px 30px 10px;
+    padding: 10px 30px 10px;
     justify-content: space-between;
 }
 #postcalendar  header .icons {
     display: flex;
 }
 #postcalendar  header .icons span {
-    height: 38px;
-    width: 38px;
+    height: 30px;
+    width: 30px;
     margin: 0 1px;
     cursor: pointer;
     color: #878787;
     text-align: center;
     line-height: 38px;
-    font-size: 1.9rem;
+    font-size: 1.5rem;
     user-select: none;
     border-radius: 50%;
     display: flex;
@@ -175,7 +188,7 @@ async function setItemsDays() {
     background: #f2f2f2;
 }
 #postcalendar  header .current-date {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 #postcalendar  .calendar {
@@ -216,16 +229,20 @@ async function setItemsDays() {
     content: "";
     left: 50%;
     top: 50%;
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     z-index: -1;
     border-radius: 50%;
     transform: translate(-50%, -50%);
 }
 #postcalendar  .days li.active::before {
-    background: #289dcc;
+    background: #289dcc !important;
+}
+#postcalendar  .days li.have-pub::before {
+    
+    background: #f2f2f2;
 }
 #postcalendar  .days li:not(.active):hover::before {
-    background: #f2f2f2;
+    background: rgb(223, 223, 223);
 }
 </style>

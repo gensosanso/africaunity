@@ -5,7 +5,7 @@
                 {{ $t("edit") }} {{ type }}
             </h1>
             <h2 class="text-md text-gray-700">
-                {{ $t("your") }} {{ type }} {{ $t("add-desc-1") }}
+                {{ $t("your") }} {{ type }} <span v-if="props.type == 'article'">{{ $t("add-desc-1") }}</span> <span v-else>{{ $tc("add-desc-1", 2) }}</span>
             </h2>
             <div
                 class="flex flex-col items-center justify-center lg:flex-row lg:space-x-3"
@@ -145,7 +145,7 @@
                                 <span v-else>{{ zone.name_pt }}</span>
                             </option>
                             <option v-else value="null">
-                                Select {{ $t("continent") }}
+                                Requires {{ $t("continent") }}
                             </option>
                         </select>
                     </div>
@@ -177,7 +177,7 @@
                                 <span v-else>{{ country.name_pt }}</span>
                             </option>
                             <option v-else value="null">
-                                Select {{ $t("zoned") }}
+                                Requires {{ $t("zoned") }}
                             </option>
                         </select>
                     </div>

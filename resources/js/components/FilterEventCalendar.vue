@@ -6,6 +6,8 @@ import useZones from "@/services/zoneServices.js";
 import useCities from "@/services/cityServices.js";
 import useCountries from "@/services/countryServices.js";
 import useContinents from "@/services/continentServices.js";
+import useMinistries from "@/services/ministryServices.js";
+import useActivityAreas from "@/services/activityAreaServices.js";
 import useDemonstrationModes from "@/services/demonstrationModeServices.js";
 import useDemonstrationTypes from "@/services/demonstrationTypeServices.js";
 import useDemonstrationNiches from "@/services/demonstrationNicheServices.js";
@@ -14,6 +16,8 @@ const props = defineProps({
     date: [String, Date],
     enterType: [String],
     continent: [String, Number],
+    ministry: [String, Number],
+    activityArea: [String, Number],
     zone: [String, Number],
     country: [String, Number],
     city: [String, Number],
@@ -29,6 +33,8 @@ const { zones, getZones } = useZones();
 const { cities, getCities } = useCities();
 const { countries, getCountries } = useCountries();
 const { continents, getContinents } = useContinents();
+const { ministries, getMinistries } = useMinistries();
+const { activityAreas, getActivityAreas } = useActivityAreas();
 const { demonstrationTypes, getDemonstrationTypes } = useDemonstrationTypes();
 const { demonstrationModes, getDemonstrationModes } = useDemonstrationModes();
 const { demonstrationNiches, getDemonstrationNiches } = useDemonstrationNiches();
@@ -36,6 +42,8 @@ const { demonstrationNiches, getDemonstrationNiches } = useDemonstrationNiches()
 const filterData = reactive({
     date: '',
     country_id: '',
+    ministry_id: '',
+    activity_area_id: '',
     zone_id: '',
     city_id: '',
     continent_id: '',
@@ -77,6 +85,8 @@ onMounted(async function () {
     filterData.city_id = props.city;
     filterData.continent_id = props.continent;
     filterData.enter_type = props.enterType;
+    filterData.ministry_id = props.ministry;
+    filterData.activity_area_id = props.activityArea;
     filterData.demonstration_type_id = props.eventType;
     filterData.demonstration_mode_id = props.eventMode;
     filterData.demonstration_niche_id = props.eventNiche;
@@ -87,6 +97,8 @@ onMounted(async function () {
     await getDemonstrationTypes();
     await getDemonstrationModes();
     await getDemonstrationNiches();
+    await getMinistries();
+    await getActivityAreas();
     await getContinents();
     await getZones();
     await getCountries();
@@ -116,6 +128,8 @@ watch(props, async function (newProps, oldProps) {
     filterData.city_id = newProps.city;
     filterData.continent_id = newProps.continent;
     filterData.enter_type = newProps.enterType;
+    filterData.ministry_id = newProps.ministry;
+    filterData.activity_area_id = newProps.activityArea;
     filterData.demonstration_type_id = newProps.eventType;
     filterData.demonstration_mode_id = newProps.eventMode;
     filterData.demonstration_niche_id = newProps.eventNiche ;
@@ -195,7 +209,7 @@ async function prevMonth() {
 }
 
 async function setItemsDays() {
-    let days_items = document.getElementsByClassName("days-items");
+    let days_items = document.querySelectorAll("#eventcalendar .days-items");
     for (let i = 0; i < days_items.length; i++) {
         days_items[i].addEventListener("click", function (e) {
             e.preventDefault();
@@ -210,6 +224,8 @@ async function setItemsDays() {
                     country: filterData.country_id,
                     zone: filterData.zone_id,
                     city:filterData.city_id,
+                    ministry:filterData.ministry_id,
+                    activityArea:filterData.activity_area_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
                     eventNiche:filterData.demonstration_niche_id,
@@ -218,7 +234,7 @@ async function setItemsDays() {
         });
     }
 
-    let nop_days_items = document.getElementsByClassName("nop-days-items");
+    let nop_days_items = document.querySelectorAll("#eventcalendar .nop-days-items");
     for (let i = 0; i < nop_days_items.length; i++) {
         nop_days_items[i].addEventListener("click", function (e) {
             e.preventDefault();
@@ -233,6 +249,8 @@ async function setItemsDays() {
                     country: filterData.country_id,
                     zone: filterData.zone_id,
                     city:filterData.city_id,
+                    ministry:filterData.ministry_id,
+                    activityArea:filterData.activity_area_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
                     eventNiche:filterData.demonstration_niche_id,
@@ -241,7 +259,7 @@ async function setItemsDays() {
         });
     }
 
-    let nob_days_items = document.getElementsByClassName("nob-days-items");
+    let nob_days_items = document.querySelectorAll("#eventcalendar .nob-days-items");
     for (let i = 0; i < nob_days_items.length; i++) {
         nob_days_items[i].addEventListener("click", function (e) {
             e.preventDefault();
@@ -256,6 +274,8 @@ async function setItemsDays() {
                     country: filterData.country_id,
                     zone: filterData.zone_id,
                     city:filterData.city_id,
+                    ministry:filterData.ministry_id,
+                    activityArea:filterData.activity_area_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
                     eventNiche:filterData.demonstration_niche_id,
@@ -275,6 +295,8 @@ async function filter () {
                     country: filterData.country_id,
                     zone: filterData.zone_id,
                     city:filterData.city_id,
+                    ministry:filterData.ministry_id,
+                    activityArea:filterData.activity_area_id,
                     eventType:filterData.demonstration_type_id,
                     eventMode:filterData.demonstration_mode_id,
                     eventNiche:filterData.demonstration_niche_id,
@@ -388,38 +410,38 @@ const filteredZone = () => {
         </select>
     </div>
 
-        <div class="mt-4">
-            <label for="" class=" text-sm text-gray-500">{{ $t("niche") }}</label>
-            <select name="" id=""  v-model="filterData.demonstration_niche_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
-                <option value=""></option>
-                <option
-                                   
-                                    v-for="demonstrationNiche in demonstrationNiches"
-                                    :key="demonstrationNiche.id"
-                                    :value="demonstrationNiche.id"
-                                >
-                                    <span v-if="$i18n.locale == 'en'">{{
-                                        demonstrationNiche.name_en
-                                    }}</span>
-                                    <span v-else-if="$i18n.locale == 'fr'">{{
-                                        demonstrationNiche.name_fr
-                                    }}</span>
-                                    <span v-else-if="$i18n.locale == 'es'">{{
-                                        demonstrationNiche.name_es
-                                    }}</span>
-                                    <span v-else>{{ demonstrationNiche.name_pt }}</span>
-                                </option>
-                             
-        </select>
-          
-        </div>
+    <div class="mt-4">
+        <label for="" class=" text-sm text-gray-500">{{ $t("niche") }}</label>
+        <select name="" id=""  v-model="filterData.demonstration_niche_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
+            <option
+                                
+                                v-for="demonstrationNiche in demonstrationNiches"
+                                :key="demonstrationNiche.id"
+                                :value="demonstrationNiche.id"
+                            >
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    demonstrationNiche.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    demonstrationNiche.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    demonstrationNiche.name_es
+                                }}</span>
+                                <span v-else>{{ demonstrationNiche.name_pt }}</span>
+                            </option>
+                            
+    </select>
+        
+    </div>
 
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">{{ $t("enter-type") }}</label>
         <select name="" id="" v-model="filterData.enter_type" @change="filter" class="form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
             <option value=""></option>
-            <option value="paying">Payant</option>
-            <option value="free">Gratuite</option>
+            <option value="paying">{{ $t("paying") }}</option>
+            <option value="free">{{ $t("free") }}</option>
         </select>
     </div>
     
@@ -467,7 +489,7 @@ const filteredZone = () => {
                                     <span v-else>{{ zone.name_pt }}</span>
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("continent") }}
+                                    Requires {{ $t("continent") }}
                                 </option>
         </select>
     </div>
@@ -494,7 +516,7 @@ const filteredZone = () => {
                                     <span v-else>{{ country.name_pt }}</span>
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("zoned") }}
+                                    Requires {{ $t("zoned") }}
                                 </option>
         </select>
     </div>
@@ -520,7 +542,53 @@ const filteredZone = () => {
                                     <span v-else>{{ city.name_pt }}</span>
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("country") }}
+                                    Requires {{ $t("country") }}
+                                </option>
+        </select>
+    </div>
+    <div class="mt-4">
+        <label for="" class=" text-sm text-gray-500">{{ $t("ministry") }}</label>
+        <select name="" id=""  v-model="filterData.ministry_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
+            <option
+                                    v-if="ministries.length != 0"
+                                    v-for="ministry in ministries"
+                                    :key="ministry.id"
+                                    :value="ministry.id"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        ministry.name_en
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        ministry.name_fr
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        ministry.name_es
+                                    }}</span>
+                                    <span v-else>{{ ministry.name_pt }}</span>
+                                </option>
+        </select>
+    </div>
+    <div class="mt-4">
+        <label for="" class=" text-sm text-gray-500">{{ $t("activity-area") }}</label>
+        <select name="" id=""  v-model="filterData.activity_area_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+            <option value=""></option>
+            <option
+                                    v-if="activityAreas.length != 0"
+                                    v-for="activityArea in activityAreas"
+                                    :key="activityArea.id"
+                                    :value="activityArea.id"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        activityArea.name_en
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        activityArea.name_fr
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        activityArea.name_es
+                                    }}</span>
+                                    <span v-else>{{ activityArea.name_pt }}</span>
                                 </option>
         </select>
     </div>

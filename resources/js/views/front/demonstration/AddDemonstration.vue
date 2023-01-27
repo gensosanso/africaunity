@@ -171,7 +171,7 @@
                                     <span v-else>{{ zone.name_pt }}</span>
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("continent") }}
+                                    Requires {{ $t("continent") }}
                                 </option>
                             </select>
                         </div>
@@ -207,7 +207,7 @@
                                     <span v-else>{{ country.name_pt }}</span>
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("zoned") }}
+                                    Requires {{ $t("zoned") }}
                                 </option>
                             </select>
                         </div>
@@ -242,10 +242,66 @@
                                     <span v-else>{{ city.name_pt }}</span>
                                 </option>
                                 <option v-else value="null">
-                                    Select {{ $t("country") }}
+                                    Requires {{ $t("country") }}
                                 </option>
                             </select>
                         </div>
+
+                        <div class="">
+                        <label class=" text-gray-700" for="es"
+                            >{{ $t("activity-area") }}
+                        </label>
+                        <select
+                            v-model="demonstration.activity_area_id"
+                            class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                        >
+                            <option
+                                v-for="activityArea in activityAreas"
+                                :key="activityArea.id"
+                                :value="activityArea.id"
+                            >
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    activityArea.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    activityArea.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    activityArea.name_es
+                                }}</span>
+                                <span v-else>{{ activityArea.name_pt }}</span>
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <label class=" text-gray-700" for="pt"
+                            >{{ $t("ministry")
+                            }}</label
+                        >
+
+                        <select
+                            v-model="demonstration.ministry_id"
+                            class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                        >
+                            <option
+                                v-for="ministry in ministries"
+                                :key="ministry.id"
+                                :value="ministry.id"
+                            >
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    ministry.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    ministry.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    ministry.name_es
+                                }}</span>
+                                <span v-else>{{ ministry.name_pt }}</span>
+                            </option>
+                        </select>
+                    </div>
 
                         <div class="sm:col-span-2">
                             <label class="text-gray-700" for="pt"
@@ -468,8 +524,10 @@ import { reactive, ref, onMounted } from "vue";
 import useZones from "@/services/zoneServices.js";
 import useCities from "@/services/cityServices.js";
 import useCountries from "@/services/countryServices.js";
+import useMinistries from "@/services/ministryServices.js";
 import useCurrencies from "@/services/currencyServices.js";
 import useContinents from "@/services/continentServices.js";
+import useActivityAreas from "@/services/activityAreaServices.js";
 import useDemonstrations from "@/services/demonstrationServices.js";
 import useDemonstrationModes from "@/services/demonstrationModeServices.js";
 import useDemonstrationTypes from "@/services/demonstrationTypeServices.js";
@@ -485,6 +543,8 @@ const { cities, getCities } = useCities();
 const { countries, getCountries } = useCountries();
 const { currencies, getCurrencies } = useCurrencies();
 const { continents, getContinents } = useContinents();
+const { ministries, getMinistries } = useMinistries();
+const { activityAreas, getActivityAreas } = useActivityAreas();
 const { errors, loading, createDemonstration} = useDemonstrations();
 const { demonstrationTypes, getDemonstrationTypes } = useDemonstrationTypes();
 const { demonstrationModes, getDemonstrationModes } = useDemonstrationModes();
@@ -496,6 +556,8 @@ onMounted(async () => {
     await getDemonstrationTypes();
     await getDemonstrationModes();
     await getDemonstrationNiches();
+    await getActivityAreas();
+    await getMinistries();
     await getCurrencies();
     await getContinents();
     await getZones();
@@ -524,6 +586,8 @@ const demonstration = reactive({
     zone_id: "",
     continent_id: "",
     country_id: "",
+    ministry_id: "",
+    activity_area_id: "",
 });
 
 
@@ -549,6 +613,8 @@ const storeDemonstration = async () => {
     formData.append("zone_id", demonstration.zone_id);
     formData.append("continent_id", demonstration.continent_id);
     formData.append("country_id", demonstration.country_id);
+    formData.append("ministry_id", demonstration.ministry_id);
+    formData.append("activity_area_id", demonstration.activity_area_id);
     await createDemonstration(formData);
     if (errors.value == "") {
         router.push({

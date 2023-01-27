@@ -31,7 +31,7 @@ class PostController extends Controller
             ['status', 1],
             ['type', $type],
             ['language', $lang]
-        ])->orderBy('id', 'desc')->paginate(8));
+        ])->orderBy('id', 'desc')->orderBy('image', 'asc')->paginate(8));
     }
 
     public function filter(Request $request)
@@ -153,7 +153,7 @@ class PostController extends Controller
         if ($request->type == 'propau') {
             $fileds = $request->validate([
                 'title' => 'required|string|between:1,50',
-                'content' => 'required|string',
+                'content' => 'required|string|between:1,1000',
                 'type' => 'required|string',
                 'language' => 'required|string',
                 'user_id' => 'integer|required',

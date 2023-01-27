@@ -97,7 +97,7 @@ function goBack() {
         </div>
         <section class="mx-auto w-full rounded-md bg-white p-6 shadow-xl">
             <Error v-if="errors != ''">{{ errors }}</Error>
-            <h1 class="text-xl font-semibold">{{ $tc("add", 2) }} Post</h1>
+            <h1 class="text-xl font-semibold">{{ $tc("add", 1) }} Post</h1>
             <h2 class="text-md font-light text-gray-700">
                 {{ $t("good-msg-post") }} !
             </h2>
