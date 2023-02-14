@@ -111,7 +111,6 @@
                             disabled
                             class="dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex w-full items-center justify-center rounded-lg bg-blue-300 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
                         >
-                            {{ $t("send") }}...
                             <Spin :size="'small'" />
                         </button>
                     </form>
@@ -176,6 +175,8 @@ const sendApply = async () => {
             loadingC.value = 0;
             for (const key in e.response.data.errors)
                 errors.value += e.response.data.errors[key][0] + "\n";
+        }else {
+            errors.value = e.response.data.message;
         }
     }
 };

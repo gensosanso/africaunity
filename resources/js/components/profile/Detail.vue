@@ -120,11 +120,11 @@ const url = window.location.href;
                     {{ detail.goal_attribution }}
                 </p>
             </div>
-            <div class="relative col-span-2 border-b py-2" v-if="user.type == 'particular'">
+            <div class="relative col-span-2 border-b py-2" v-if="user.type == 'particular' && detail.cv_path">
                 <label class="text-md py-1 font-semibold text-gray-700"
                     >Curriculum vitæ</label
                 >
-                <p class="mt-1 rounded-lg border p-2 shadow flex items-center space-x-4 flex-wrap">
+                <p  class="mt-1 rounded-lg border p-2 shadow flex items-center space-x-4 flex-wrap">
                     <a
                         :href="detail.cv_path"
                         class="text-primary-blue hover:underline"

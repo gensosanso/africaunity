@@ -421,7 +421,7 @@
                         }}</span
                     >
                 </div>
-                <div v-if="user.type == 'particular'">
+                <div v-if="user.type == 'particular' || user.type == 'admin'">
                     <button
                         type="button"
                         @click="toogleModal()"

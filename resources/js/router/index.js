@@ -454,7 +454,7 @@ const routes = [
 
     // Admin routes
     {
-        path: "/admin",
+        path: "/gnosolutions-connect",
         name: "admin",
         components: {
             default: () => import("@/views/back/DashHome.vue"),
@@ -464,7 +464,6 @@ const routes = [
             requiresAuth: true,
             isAdmin: true,
         },
-        name: "admin",
         children: [
             {
                 path: "",
