@@ -15,9 +15,17 @@ class ZoneController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(string $lang)
     {
-        return ZoneResource::collection(Zone::latest()->get());
+        if($lang == 'pt'){
+            return ZoneResource::collection(Zone::orderBy('name_pt', 'asc')->get());
+        }elseif ($lang == 'es') {
+            return ZoneResource::collection(Zone::orderBy('name_es', 'asc')->get());
+        }elseif ($lang == 'en') {
+            return ZoneResource::collection(Zone::orderBy('name_en', 'asc')->get());
+        }else {
+            return ZoneResource::collection(Zone::orderBy('name_fr', 'asc')->get());
+        }
     }
 
     /**

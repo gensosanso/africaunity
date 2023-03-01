@@ -32,7 +32,7 @@ class JobOfferController extends Controller
 
         if ($request->searchKey != "") {
             $searchKey = $request->searchKey;
-            $jobs = $jobs->whereRaw('LOWER(`title`) LIKE ?', ['%' . trim(strtolower($searchKey)) . '%']);
+            $jobs = $jobs->whereRaw('LOWER(`title`) LIKE ? OR LOWER(`description`) LIKE ?', ['%' . trim(strtolower($searchKey)) . '%', '%' . trim(strtolower($searchKey)) . '%']);
         }
 
         if ($request->recruitment_agency != "") {
@@ -209,6 +209,7 @@ class JobOfferController extends Controller
             'title' => 'required|string|between:1,50',
             'description' => 'required|string',
             'location' => 'required|string',
+            'reference' => 'required|string',
             'company_name' => 'required|string',
             'company_email' => 'required|string|email',
             'company_website' => '',
@@ -234,6 +235,7 @@ class JobOfferController extends Controller
             'title' => $fileds['title'],
             'description' => $fileds['description'],
             'location' => $fileds['location'],
+            'reference' => $fileds['reference'],
             'company_name' => $fileds['company_name'],
             'company_email' => $fileds['company_email'],
             'company_website' => $fileds['company_website'],
@@ -300,6 +302,7 @@ class JobOfferController extends Controller
             'title' => 'required|string|between:1,50',
             'description' => 'required|string',
             'location' => 'required|string',
+            'reference' => 'required|string',
             'company_name' => 'required|string',
             'company_email' => 'required|string',
             'company_website' => '',
@@ -325,6 +328,7 @@ class JobOfferController extends Controller
             'title' => $fileds['title'],
             'description' => $fileds['description'],
             'location' => $fileds['location'],
+            'reference' => $fileds['reference'],
             'company_name' => $fileds['company_name'],
             'company_email' => $fileds['company_email'],
             'company_website' => $fileds['company_website'],

@@ -92,8 +92,8 @@ class DetailController extends Controller
             'residence_country' => $request->residence_country == 'null' ? null : $request->residence_country,
         ]);
 
-        $detail->activity_areas()->sync(explode(',', $request->activity_areas));
-        $detail->languages()->sync(explode(',', $request->languages));
+        if($request->activity_areas){$detail->activity_areas()->sync(explode(',', $request->activity_areas));}
+        if($request->languages){$detail->languages()->sync(explode(',', $request->languages));}
 
         $user = User::find($detail->user_id);
         $user->hide_email = $request->hideEmail === 'true' || $request->hideEmail === true ? 1 : 0;

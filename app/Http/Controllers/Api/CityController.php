@@ -15,9 +15,17 @@ class CityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(string $lang)
     {
-        return CityResource::collection(City::latest()->get());
+        if($lang == 'pt'){
+            return CityResource::collection(City::orderBy('name_pt', 'asc')->get());
+        }elseif ($lang == 'es') {
+            return CityResource::collection(City::orderBy('name_es', 'asc')->get());
+        }elseif ($lang == 'en') {
+            return CityResource::collection(City::orderBy('name_en', 'asc')->get());
+        }else {
+            return CityResource::collection(City::orderBy('name_fr', 'asc')->get());
+        }
     }
 
     /**

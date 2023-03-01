@@ -322,9 +322,8 @@
                         >
                             Evenements
                         </a>
-                        </div></div>
-
-             
+                        </div>
+                </div>
 
                 <a
                     href="#"

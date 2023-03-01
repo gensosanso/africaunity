@@ -10,7 +10,7 @@
                 </div>
 
                 <div
-                    class="-mx-6 mt-16 grid gap-6 px-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:grid-cols-4"
+                    class="mx-auto max-w-6xl mt-16 grid gap-6 px-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3"
                 >
                     <div
                         class="transform rounded-lg px-6 py-4 shadow transition-colors duration-200 hover:bg-gray-50"
@@ -110,7 +110,7 @@
                         </router-link>
                     </div>
 
-                    <div
+                    <!--   <div
                         class="transform rounded-lg px-6 py-4 shadow transition-colors duration-200 hover:bg-gray-50"
                     >
                         <div class="text-center">
@@ -201,7 +201,8 @@
                         >
                             {{ $t("register") }}
                         </router-link>
-                    </div>
+                    </div>-->
+
                     <div
                         class="transform rounded-lg bg-primary-blue px-6 py-4 shadow transition-colors duration-200"
                     >

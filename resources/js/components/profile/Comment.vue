@@ -1,6 +1,7 @@
 <script setup>
 import useComments from "@/services/commentServices.js";
 import useAnnouncementComments from "@/services/announcementCommentServices.js";
+import useJobOfferComments from "@/services/jobOfferCommentServices.js";
 
 import { onMounted, ref, computed, reactive } from "vue";
 import {
@@ -16,11 +17,16 @@ const props = defineProps({
 const searchComment = ref("");
 const {
     updateAnnouncementComment,
-    errorsCmtAds,
     destroyAnnouncementComment,
     announcementComments,
     getAnnouncementCommentsUser,
 } = useAnnouncementComments();
+const {
+    updateJobOfferComment,
+    destroyJobOfferComment,
+    jobOfferComments,
+    getJobOfferCommentsUser,
+} = useJobOfferComments();
 const { comments, getCommentsUser, destroyComment, updateComment } =
     useComments();
 const loginUser = ref("");
@@ -30,6 +36,7 @@ const modifyComment = reactive({
     user_id: "",
     post_id: "",
     announcement_id: "",
+    job_offer_id: "",
     content: "",
 });
 const loading = ref(0);
@@ -38,6 +45,7 @@ onMounted(async function () {
     loading.value = 1;
     await getCommentsUser(props.user.id);
     await getAnnouncementCommentsUser(props.user.id);
+    await getJobOfferCommentsUser(props.user.id);
     loading.value = 0;
 });
 
@@ -46,9 +54,12 @@ const deleteComment = async (id, type) => {
     if (confirm("I you Sure ?")) {
         type == "post"
             ? await destroyComment(deleteId)
+            :  type == "job" ?
+                await destroyJobOfferComment(deleteId)
             : await destroyAnnouncementComment(deleteId);
         await getCommentsUser(props.user.id);
         await getAnnouncementCommentsUser(props.user.id);
+        await getJobOfferCommentsUser(props.user.id);
     }
 };
 
@@ -57,6 +68,7 @@ const selectComment = (comment) => {
     modifyComment.content = comment.content;
     modifyComment.user_id = comment.user.id;
     modifyComment.post_id = comment.post ? comment.post.id : "";
+    modifyComment.job_offer_id = comment.jobOffer ? comment.jobOffer.id : "";
     modifyComment.announcement_id = comment.announcement
         ? comment.announcement.id
         : "";
@@ -65,22 +77,31 @@ const selectComment = (comment) => {
 const saveComment = async () => {
     modifyComment.post_id
         ? await updateComment(modifyComment)
+        : modifyComment.job_offer_id ?
+            await updateJobOfferComment(modifyComment)
         : await updateAnnouncementComment(modifyComment);
     modifyComment.id = "";
     modifyComment.content = "";
     modifyComment.user_id = "";
     modifyComment.post_id = "";
     modifyComment.announcement_id = "";
+    modifyComment.job_offer_id = "";
     await getCommentsUser(props.user.id);
     await getAnnouncementCommentsUser(props.user.id);
+    await getJobOfferCommentsUser(props.user.id);
 };
 
 const filteredComment = computed(() => {
     return comments.value
         .concat(announcementComments.value)
+        .concat(jobOfferComments.value)
         .filter((comment) => {
             return comment.post
                 ? comment.post.title
+                      .toLowerCase()
+                      .includes(searchComment.value.toLowerCase())
+                : comment.jobOffer ?
+                    comment.jobOffer.title
                       .toLowerCase()
                       .includes(searchComment.value.toLowerCase())
                 : comment.announcement.title
@@ -132,7 +153,7 @@ const filteredComment = computed(() => {
                                 scope="col"
                                 class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
-                                {{ $t("articles") }} & {{ $t("propau") }} & Ads
+                                {{ $t("articles") }} & {{ $t("propau") }} & Ads && Jobs
                             </th>
                             <th
                                 scope="col"
@@ -172,6 +193,20 @@ const filteredComment = computed(() => {
                                     }"
                                     class="hover:underline"
                                     >{{ comment.post.title }}</router-link
+                                >
+                                <router-link
+                                    v-else-if="comment.jobOffer"
+                                    :to="{
+                                        name: 'show.job',
+                                        params: {
+                                            id: comment.jobOffer.id,
+                                            slug: comment.jobOffer.slug,
+                                        },
+                                    }"
+                                    class="hover:underline"
+                                    >{{
+                                        comment.jobOffer.title
+                                    }}</router-link
                                 >
                                 <router-link
                                     v-else
@@ -246,7 +281,9 @@ const filteredComment = computed(() => {
                                         @click="
                                             deleteComment(
                                                 comment.id,
-                                                comment.post ? 'post' : 'ads'
+                                                comment.post ? 'post' 
+                                                : comment.jobOffer ? 'job'
+                                                : 'ads'
                                             )
                                         "
                                         class="ml-3 text-red-600 hover:underline"

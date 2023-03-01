@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
+
 
 export default function useContinents() {
     const router = useRouter();
@@ -8,11 +10,12 @@ export default function useContinents() {
     const continent = ref([]);
     const errors = ref("");
     const loading = ref(0);
+    const { locale } = useI18n();
 
     const getContinents = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get("/api/continents", {
+        let response = await axios.get(`/api/continents/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },

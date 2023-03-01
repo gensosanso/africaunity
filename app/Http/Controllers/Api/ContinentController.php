@@ -15,10 +15,17 @@ class ContinentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(string $lang)
     {
-        return ContinentResource::collection(Continent::latest()->get());
-        // return ContinentResource::collection(Continent::paginate(2));
+        if($lang == 'pt'){
+            return ContinentResource::collection(Continent::orderBy('name_pt', 'asc')->get());
+        }elseif ($lang == 'es') {
+            return ContinentResource::collection(Continent::orderBy('name_es', 'asc')->get());
+        }elseif ($lang == 'en') {
+            return ContinentResource::collection(Continent::orderBy('name_en', 'asc')->get());
+        }else {
+            return ContinentResource::collection(Continent::orderBy('name_fr', 'asc')->get());
+        }
     }
 
     /**

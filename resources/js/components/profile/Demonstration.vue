@@ -82,6 +82,7 @@ const filteredDemonstration = computed(() => {
                     </div>
                 </div>
                 <router-link
+                v-if="user.id == loginUser.id"
                     :to="{
                         name: 'add.events',
                     }"

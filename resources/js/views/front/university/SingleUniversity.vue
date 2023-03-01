@@ -59,7 +59,7 @@
             </h1>
             <div class="flex justify-end px-6">
                 <router-link
-                    v-if="user.type == 'particular'"
+                    v-if="user.type == 'particular' || user.type == 'admin'"
                     :to="{
                         name: 'add.ads',
                     }"

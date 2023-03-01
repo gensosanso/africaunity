@@ -34,13 +34,17 @@ const filteredPost = computed(() => {
     return personalPosts.value.filter((post) => {
         if (theme.value != "") {
             return (
-                post.title
+               (post.title
                     .toLowerCase()
-                    .includes(searchKey.value.toLowerCase()) &&
+                    .includes(searchKey.value.toLowerCase()) || post.content
+                .toLowerCase()
+                .includes(searchKey.value.toLowerCase())) &&
                 post.category_personal_post_id == theme.value
             );
         } else {
             return post.title
+                .toLowerCase()
+                .includes(searchKey.value.toLowerCase()) || post.content
                 .toLowerCase()
                 .includes(searchKey.value.toLowerCase());
         }

@@ -310,9 +310,7 @@
                     ]"
                 >
                     <MegaphoneIcon class="h-5 w-5" />
-                    <span class="hidden whitespace-nowrap lg:block">{{
-                        $t("my-ads")
-                    }}</span>
+                    <span class="hidden whitespace-nowrap lg:block">{{ $t("ads-s") }} {{ $tc("student", 1) }}</span>
                 </button>
                 <button
                     v-if="user.type == 'ip' || user.type == 'business2' || user.type == 'admin'"

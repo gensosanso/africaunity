@@ -166,7 +166,7 @@ const filteredZoneA = () => {
         <h1
             class="py-2 text-center text-5xl font-bold capitalize text-primary-blue"
         >
-            {{ $t("ads") }}
+            {{ $t("ads-s") }} {{ $tc("student", 1) }}
         </h1>
         <div class="py-8 lg:px-16">
             <div

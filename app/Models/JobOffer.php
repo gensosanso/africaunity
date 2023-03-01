@@ -13,6 +13,7 @@ class JobOffer extends Model
         'status',
         'title',
         'description',
+        'reference',
         'location',
         'company_name',
         'company_email',

@@ -137,7 +137,7 @@
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="es"
-                                >{{ $t("language") }}
+                                >{{ $t("language") + ' ' + $tc("of", 2) + ' ' + $t("work") }}
                             </label>
                             <select
                                 @change="jobsFilter()"

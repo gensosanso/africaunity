@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 export default function useZones() {
     const router = useRouter();
@@ -8,11 +9,12 @@ export default function useZones() {
     const zone = ref([]);
     const errors = ref("");
     const loading = ref(0);
+    const { locale } = useI18n();
 
     const getZones = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get("/api/zones", {
+        let response = await axios.get(`/api/zones/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },

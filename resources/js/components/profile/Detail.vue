@@ -129,7 +129,7 @@ const url = window.location.href;
                         :href="detail.cv_path"
                         class="text-primary-blue hover:underline"
                         target="_blank"
-                        >{{ detail.cv_path.replace("/uploads/cv/", "") }}</a
+                        >{{ user.firstname + ' ' +  user.lastname }}</a
                     >
                     <div class=" flex items-center space-x-2">
                         <span> <a
@@ -392,7 +392,7 @@ const url = window.location.href;
                     <p class="mt-1 rounded-lg border p-2 shadow">
                         <a
                             target="_blank"
-                            class="block py-1 italic text-primary-blue hover:underline"
+                            class="block py-1 italic text-primary-blue hover:underline break-words"
                             :href="detail.website"
                             >{{ detail.website }}</a
                         >

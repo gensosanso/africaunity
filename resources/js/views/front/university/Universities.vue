@@ -5,7 +5,22 @@
         >
             {{ $t("univerities") }}
         </h1>
+        
         <div class="py-8 lg:px-16">
+            <div class="flex justify-end py-4">
+                <router-link
+                    :to="{
+                        name: 'add.ads',
+                    }"
+                    v-if="user.type == 'particular' || user.type == 'admin'"
+                    class="flex items-center justify-start space-x-3 rounded bg-primary-blue px-3 py-2 text-white"
+                >
+                    <PlusCircleIcon class="h-6 w-6" />
+                    <p class="text-base leading-4">
+                        {{ $tc("add", 2) }} {{ $t("ads") }}
+                    </p>
+                </router-link>
+            </div>
             <div
                 class="grid grid-cols-1 gap-2 bg-gray-50 px-10 pb-8 pt-4 shadow lg:grid-cols-4"
             >
@@ -255,7 +270,7 @@
 
 <script setup>
 import { reactive, ref, onMounted, computed, onUnmounted } from "vue";
-import { FaceFrownIcon } from "@heroicons/vue/24/solid";
+import { FaceFrownIcon, PlusCircleIcon } from '@heroicons/vue/24/solid';
 import useUniversities from "@/services/universityServices.js";
 import useContinents from "@/services/continentServices.js";
 import useCountries from "@/services/countryServices.js";
@@ -279,6 +294,7 @@ const countryFilteredU = ref([]);
 const cityfilteredU = ref([]);
 const universityContainer = ref(null);
 const toGet = ref(true);
+const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 onMounted(async () => {
     window.addEventListener("scroll", handleScroll);
     await getUniversities();

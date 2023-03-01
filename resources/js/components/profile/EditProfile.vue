@@ -96,7 +96,8 @@
                         $t("presentation")
                     }}</label>
                     <textarea
-                        maxlength="500"
+                        :maxlength="user.type == 'business1' ||
+                        user.type == 'business2' ? '2500' :'500'"
                         v-model="detail.presentation"
                         class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                     >
@@ -105,10 +106,11 @@
                         >{{
                             detail.presentation ? detail.presentation.length : 0
                         }}
-                        of 500 Characters</span
+                        of <span v-if="user.type == 'business1' ||
+                        user.type == 'business2'">2500</span> <span v-else>500</span>  Characters</span
                     >
                 </div>
-                <div class="relative col-span-2">
+                <div class="relative col-span-2" v-if="user.type == 'particular'" >
                     <label class="text-gray-700">Curriculum vitæ</label>
                     <input
                         ref="file"
@@ -118,7 +120,7 @@
                         class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                     />
                     <span class="text-xs font-light text-gray-400"
-                        >Veillez uploder votre cv
+                        >Veuillez uploader votre cv (pdf | 5mo max)
                     </span>
                 </div>
                 <div

@@ -18,24 +18,45 @@
                 enctype="multipart/form-data"
             >
                 <div class="mt-4">
-                    <div class="col-span-2">
-                        <label class=" text-gray-700"
-                            >{{ $t("title") }}
-                            <span class="text-red-500">*</span>
-                        </label>
-                        <input
-                            required
-                            v-model="jobOffer.title"
-                            maxlength="50"
-                            type="text"
-                            class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
-                        />
-                        <span class="text-xs font-light text-gray-400"
-                            >{{ jobOffer.title ? jobOffer.title.length : 0 }} of
-                            50 Characters</span
-                        >
-                    </div>
+                    <div
+                        class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
+                    >
+                        <div class="col-span-1">
+                            <label class=" text-gray-700"
+                                >{{ $t("title") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.title"
+                                maxlength="50"
+                                type="text"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                            <span class="text-xs font-light text-gray-400"
+                                >{{ jobOffer.title ? jobOffer.title.length : 0 }} of
+                                50 Characters</span
+                            >
+                        </div>
 
+                        <div class="col-span-1">
+                            <label class=" text-gray-700"
+                                >Reference
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <input
+                                required
+                                v-model="jobOffer.reference"
+                                maxlength="10"
+                                type="text"
+                                class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            />
+                            <span class="text-xs font-light text-gray-400"
+                                >{{ jobOffer.reference ? jobOffer.reference.length : 0 }} of
+                                10 Characters</span
+                            >
+                        </div>
+                    </div>
                     <div
                         class="col-span-2 mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2"
                     >
@@ -275,6 +296,9 @@
                                     class=" block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                                 />
                             </div>
+                            <span class="text-xs font-light text-gray-500"
+                                    >(Format: png, jpg, jpeg, webp | max: 500*500)</span
+                                >
                         </div>
                     </div>
                     <div
@@ -331,7 +355,7 @@
 
                     <div class="col-span-2 mt-4">
                         <label class=" text-gray-700" for="es"
-                            >{{ $t("language") }}
+                            >{{ $t("language") + ' ' + $tc("of", 2) + ' ' + $t("work") }}
                             <span
                                 class="hidden text-xs font-light lg:inline-block"
                                 >({{ $t("maintain-crtl") }})</span
@@ -679,6 +703,7 @@ const jobOffer = reactive({
     size_company_id: "",
     offer_type_id: "",
     level_study_id: "",
+    reference: "",
     city_id: "",
     zone_id: "",
     continent_id: "",
@@ -700,6 +725,7 @@ onMounted(async () => {
             jobOffer.description = dJob.value.description;
             jobOffer.start_date = dJob.value.start_date;
             jobOffer.location = dJob.value.location;
+            jobOffer.reference = dJob.value.reference;
             jobOffer.company_name = dJob.value.company_name;
             jobOffer.company_email = dJob.value.company_email;
             jobOffer.company_logo = dJob.value.company_logo;
@@ -775,6 +801,7 @@ const storeJobOffer = async () => {
     formData.append("title", jobOffer.title);
     formData.append("description", jobOffer.description);
     formData.append("location", jobOffer.location);
+    formData.append("reference", jobOffer.reference);
     formData.append("company_name", jobOffer.company_name);
     formData.append("company_email", jobOffer.company_email);
     formData.append("company_website", jobOffer.company_website);

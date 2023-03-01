@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useI18n } from "vue-i18n";
 
 export default function useCities() {
     const router = useRouter();
@@ -8,11 +9,12 @@ export default function useCities() {
     const city = ref([]);
     const errors = ref("");
     const loading = ref(0);
+    const { locale } = useI18n();
 
     const getCities = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get("/api/cities", {
+        let response = await axios.get(`/api/cities/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },

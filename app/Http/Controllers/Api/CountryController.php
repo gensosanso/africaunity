@@ -15,9 +15,17 @@ class CountryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(string $lang)
     {
-        return CountryResource::collection(Country::latest()->get());
+        if($lang == 'pt'){
+            return CountryResource::collection(Country::orderBy('name_pt', 'asc')->get());
+        }elseif ($lang == 'es') {
+            return CountryResource::collection(Country::orderBy('name_es', 'asc')->get());
+        }elseif ($lang == 'en') {
+            return CountryResource::collection(Country::orderBy('name_en', 'asc')->get());
+        }else {
+            return CountryResource::collection(Country::orderBy('name_fr', 'asc')->get());
+        }
     }
 
     /**

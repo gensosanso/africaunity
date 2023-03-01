@@ -24,6 +24,7 @@ use App\Http\Controllers\Api\DetailController;
 use App\Http\Controllers\Api\EmailVerificationController;
 use App\Http\Controllers\Api\FollowerController;
 use App\Http\Controllers\Api\ForgotPasswordController;
+use App\Http\Controllers\Api\JobOfferCommentController;
 use App\Http\Controllers\Api\JobOfferController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\LegalStatusController;
@@ -52,15 +53,17 @@ Route::get("/posts-caroussel/{lang}", [PostController::class, 'post_caroussel'])
 
 Route::get("/posts-home/{lang}/{ministry}", [PostController::class, 'post_home']);
 
-Route::get("/continents", [ContinentController::class, 'index']);
+Route::get("/continents/{lang}", [ContinentController::class, 'index']);
 
 Route::post('/forgot-password', [ForgotPasswordController::class, 'index'])->middleware('guest')->name('password.request');
 Route::get("/reset-password", [ForgotPasswordController::class, 'verif']);
 Route::post("/reset-password", [ForgotPasswordController::class, 'reset'])->middleware('guest')->name('password.reset');
 
-Route::get("/zones", [ZoneController::class, 'index']);
+Route::get("/zones/{lang}", [ZoneController::class, 'index']);
 
-Route::get("/countries", [CountryController::class, 'index']);
+Route::get("/countries/{lang}", [CountryController::class, 'index']);
+
+Route::get("/cities/{lang}", [CityController::class, 'index']);
 
 Route::get("/ministries", [MinistryController::class, 'index']);
 Route::get("/ministries-home", [MinistryController::class, 'ministry_home']);
@@ -72,11 +75,12 @@ Route::post('email/verification-notification', [EmailVerificationController::cla
 
 Route::post('send-contact', [ContactController::class, 'store'])->name('contact');
 
+Route::get("/posts-all/{type}", [PostController::class, 'index']);
+
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get("/dash-data", [DashboardController::class, 'index']);
 
-    Route::get("/posts-all/{type}", [PostController::class, 'index']);
     Route::get("/posts-type/{type}/{lang}", [PostController::class, 'post_type']);
     Route::get("/posts-user/{user}", [PostController::class, 'post_user']);
     Route::get("/posts-date/{date}/{lang}", [PostController::class, 'post_date']);
@@ -103,8 +107,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post("/users-delete-user", [UserController::class, 'deleteUser']);
     Route::post("/users-filter", [UserController::class, 'filter']);
     Route::post("/users-report", [UserController::class, 'user_report']);
-
-    Route::apiResource('cities', CityController::class);
 
     Route::apiResource('universities', UniversityController::class);
     Route::get('/university/all', [UniversityController::class, 'all']);
@@ -158,6 +160,10 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get('announcement-comments-post/{id}', [AnnouncementCommentController::class, 'comment_announcement']);
     Route::get('announcement-comments-user/{id}', [AnnouncementCommentController::class, 'comment_user']);
 
+    Route::apiResource('jobOffer-comments', JobOfferCommentController::class);
+    Route::get('jobOffer-comments-post/{id}', [JobOfferCommentController::class, 'comment_jobOffer']);
+    Route::get('jobOffer-comments-user/{id}', [JobOfferCommentController::class, 'comment_user']);
+
     Route::apiResource('jobOffers', JobOfferController::class);
     Route::get('jobOffers-user/{id}', [JobOfferController::class, 'jobOffers_user']);
     Route::get('jobOffers-front', [JobOfferController::class, 'jobOffers_front']);
@@ -188,6 +194,13 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get("/countries/{country}", [CountryController::class, 'show']);
     Route::put("/countries/{country}", [CountryController::class, 'update']);
     Route::delete("/countries/{country}", [CountryController::class, 'destroy']);
+
+    Route::post("/cities", [CityController::class, 'store']);
+    Route::get("/cities/{city}", [CityController::class, 'show']);
+    Route::put("/cities/{city}", [CityController::class, 'update']);
+    Route::delete("/cities/{city}", [CityController::class, 'destroy']);
+
+    //Route::apiResource('cities', CityController::class);
 
     Route::post("/ministries", [MinistryController::class, 'store']);
     Route::get("/ministries/{ministry}", [MinistryController::class, 'show']);
