@@ -24,6 +24,7 @@ const { personalPosts, loading, destroyPersonalPost, getPersonalPostsUser } =
 const searchKey = ref("");
 const theme = ref("");
 const loginUser = ref("");
+const langPost = ref("");
 loginUser.value = localStorage.user ? JSON.parse(localStorage.user) : "";
 onMounted(async function () {
     await getPersonalPostsUser(props.user.id);
@@ -32,7 +33,27 @@ onMounted(async function () {
 
 const filteredPost = computed(() => {
     return personalPosts.value.filter((post) => {
-        if (theme.value != "") {
+        
+         if (theme.value != "" && langPost.value != "") {
+            return (
+               (post.title
+                    .toLowerCase()
+                    .includes(searchKey.value.toLowerCase()) || post.content
+                .toLowerCase()
+                .includes(searchKey.value.toLowerCase())) &&
+                post.category_personal_post_id == theme.value &&
+                post.language == langPost.value
+            );
+        }else if (langPost.value != "") {
+            return (
+               (post.title
+                    .toLowerCase()
+                    .includes(searchKey.value.toLowerCase()) || post.content
+                .toLowerCase()
+                .includes(searchKey.value.toLowerCase())) &&
+                post.language == langPost.value
+            );
+        }else if (theme.value != "") {
             return (
                (post.title
                     .toLowerCase()
@@ -85,10 +106,14 @@ function goToEdit(id) {
             >
                 {{ $t("personal-blog") }}
             </h1>
-            <div class="mt-8 items-center justify-between md:flex">
-                <div class="items-center space-x-2 md:flex">
-                    <div>
-                        <div class="relative">
+
+
+            <div
+                class="mt-8 flex flex-col-reverse items-center justify-between px-6 py-2 space-x-4 w-full lg:flex-row"
+            >
+                <div class="items-center lg:w-5/6 w-full space-y-2 lg:space-y-0 space-x-0 lg:space-x-2 flex lg:flex-row flex-col">
+                    <div class="">
+                        <div class="relative lg:w-auto w-full">
                             <div
                                 class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                             >
@@ -107,41 +132,52 @@ function goToEdit(id) {
                             </div>
                             <input
                                 type="text"
-                                v-model="searchKey"
                                 id="table-search"
+                                v-model="searchKey"
                                 class="block w-80 rounded-lg border border-gray-300 bg-gray-50 p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="Search"
                             />
                         </div>
                     </div>
-                    <div>
+                    <div class="lg:w-1/4 w-full">
                         <select
-                        v-model="theme"
+                            v-model="langPost"
                             class="form-select block w-full rounded-md border border-gray-200 bg-gray-50 py-2 pr-8 pl-4 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                         >
-                            <option value="">Select Category</option>
-                            <option
-                                v-for="categoryPersonalPost in categoryPersonalPosts"
-                                :key="categoryPersonalPost.id"
-                                :value="categoryPersonalPost.id"
-                            >
-                                <span v-if="$i18n.locale == 'en'">{{
-                                    categoryPersonalPost.name_en
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'fr'">{{
-                                    categoryPersonalPost.name_fr
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'es'">{{
-                                    categoryPersonalPost.name_es
-                                }}</span>
-                                <span v-else>{{
-                                    categoryPersonalPost.name_pt
-                                }}</span>
-                            </option>
+                            <option value="">Select Language</option>
+                            <option value="fr">{{ $t("fr") }}</option>
+                            <option value="en">{{ $t("en") }}</option>
+                            <option value="es">{{ $t("es") }}</option>
+                            <option value="pt">{{ $t("pt") }}</option>
                         </select>
                     </div>
+                    <div class="lg:w-1/4 w-full">
+                        <select
+                        v-model="theme"
+                        class="form-select block w-full rounded-md border border-gray-200 bg-gray-50 py-2 pr-8 pl-4 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                                >
+                                    <option value="">Select theme</option>
+                                    <option
+                                        v-for="category in categoryPersonalPosts"
+                                        :key="category.id"
+                                        :value="category.id"
+                                    >
+                                        <span v-if="$i18n.locale == 'en'">{{
+                                            category.name_en
+                                        }}</span>
+                                        <span v-else-if="$i18n.locale == 'fr'">{{
+                                            category.name_fr
+                                        }}</span>
+                                        <span v-else-if="$i18n.locale == 'es'">{{
+                                            category.name_es
+                                        }}</span>
+                                        <span v-else>{{ category.name_pt }}</span>
+                                    </option>
+                                </select>
+                    </div>
                 </div>
-                <button
+                <div class="lg:w-2/6 w-full justify-center flex lg:justify-end ">
+                    <button
                     type="button"
                     v-if="user.id == loginUser.id"
                     @click="goToCreate()"
@@ -150,7 +186,10 @@ function goToEdit(id) {
                     <PlusCircleIcon class="h-6 w-6" />
                     <p class="text-base leading-4">{{ $tc("add", 1) }} Post</p>
                 </button>
+                </div>
+            
             </div>
+
             <div
                 class="grid gap-8 px-6 py-8 lg:grid-cols-2"
                 v-if="filteredPost.length != 0"

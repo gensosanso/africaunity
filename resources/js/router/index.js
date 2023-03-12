@@ -20,6 +20,19 @@ const routes = [
         },
     },
     {
+        path: "/blog",
+        name: "blog",
+        components: {
+            default: () => import("@/views/front/Blog.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " - Blog",
+            requiresAuth: true,
+        },
+    },
+    {
         path: "/articles",
         name: "articles",
         components: {

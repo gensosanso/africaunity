@@ -47,7 +47,7 @@ class ApplyJobNotification extends Notification
                     ->line('New Apply from your job: '.$this->job->title)
                     ->line('Name : '.$this->data['name'])
                     ->line('Email : '.$this->data['email'])
-                    ->line('cv : ')
+                    ->line('cv : (en piece jointe)')
                     ->attach( public_path($this->data['cv']))
                     ->line('Message : '.$this->data['message'])
                     ->line('Thank you for using our application!');

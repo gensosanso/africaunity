@@ -95,8 +95,9 @@
                             </div>
                             <p
                                 class=" my-4 mt-2 py-4 text-gray-600"
+                                v-html="jobOffer.description"
                             >
-                                {{ jobOffer.description }}
+                                
                             </p>
                         </div>
 

@@ -24,8 +24,6 @@ class JobOfferController extends Controller
         return JobOfferResource::collection(JobOffer::latest()->get());
     }
 
-
-
     public function filter(Request $request)
     {
         $jobs = JobOffer::where('status', '<>', 3);
@@ -45,8 +43,11 @@ class JobOfferController extends Controller
         }
 
         if ($request->min_price != "") {
-            $price = $request->min_price;
-            $jobs = $jobs->where('min_price', '>=', $price)->where('max_price', '<=', $price);
+            $price = intval($request->min_price);
+            $jobs = $jobs->where([
+                ['max_price', '>=', $price],
+                ['min_price', '<=', $price],
+                ]);
         }
 
         if ($request->offer_type != "") {
@@ -150,7 +151,14 @@ class JobOfferController extends Controller
 
     public function jobOffers_front()
     {
-        return JobOfferResource::collection(JobOffer::where('status', '<>', 3)->orderBy('id', 'desc')->paginate(8));
+
+        $jobs = JobOffer::join('users', 'user_id', '=', 'users.id')
+                        ->where('job_offers.status', '<>', 3)
+                        ->orderBy('users.type', 'desc')
+                        ->orderBy('job_offers.id', 'desc')
+                        ->select('job_offers.*');
+
+        return JobOfferResource::collection($jobs->paginate(10));
     }
 
     public function jobOffers_home()
@@ -171,14 +179,14 @@ class JobOfferController extends Controller
             'message' => 'required|string',
             'email' => 'required|email',
             'name' => 'string|required',
-            'cv' => 'required|mimes:pdf'
+            'cv' => 'required|mimes:pdf|max:40000'
         ]);
 
         $job = JobOffer::find($request->job);
         $applyUser = User::find($request->user);
         $authorUser = User::find($job->user_id);
 
-        $filename = '/uploads/' . $job->title . '_' . $applyUser->firstname . '_' . time() . '.' . $request->file('cv')->extension();
+        $filename = '/uploads/cv/' . str_replace(" ", "_", $job->title ). '_' . str_replace(" ", "_", $applyUser->firstname) . '_' . time() . '.' . $request->file('cv')->extension();
         $request->file('cv')->storePubliclyAs('public', $filename);
 
 
@@ -197,12 +205,6 @@ class JobOfferController extends Controller
         return response($response, 201);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $fileds = $request->validate([
@@ -273,12 +275,7 @@ class JobOfferController extends Controller
         return new JobOfferResource($jobOffer);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\JobOffer  $jobOffer
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(JobOffer $jobOffer)
     {
         return new JobOfferResource($jobOffer);
@@ -289,13 +286,7 @@ class JobOfferController extends Controller
         return new JobOfferResource2($jobOffer);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JobOffer  $jobOffer
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, JobOffer $jobOffer)
     {
         $fileds = $request->validate([
@@ -369,12 +360,7 @@ class JobOfferController extends Controller
         return new JobOfferResource($jobOffer);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\JobOffer  $jobOffer
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($jobOffers)
     {
         $jobOffers = json_decode($jobOffers);

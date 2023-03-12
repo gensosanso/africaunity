@@ -239,7 +239,6 @@ async function setItemsDays() {
     background: #289dcc !important;
 }
 #postcalendar  .days li.have-pub::before {
-    
     background: #f2f2f2;
 }
 #postcalendar  .days li:not(.active):hover::before {

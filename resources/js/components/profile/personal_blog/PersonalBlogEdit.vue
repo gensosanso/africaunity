@@ -3,6 +3,9 @@ import { ChevronLeftIcon } from "@heroicons/vue/24/solid";
 import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import usePersonalPosts from "@/services/personalPostsServices.js";
 import { ref, onMounted } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { locale } = useI18n();
 const { getPersonalPost, updatePersonalPost, errors, loading, personalPost } =
     usePersonalPosts();
 const { categoryPersonalPosts, getCategoryPersonalPosts } =
@@ -46,6 +49,7 @@ const savePost = async () => {
     formData.append("image", personalPost.value.image);
     formData.append("title", personalPost.value.title);
     formData.append("subtheme", personalPost.value.subtheme);
+    formData.append("language", locale.value);
     formData.append("user_id", personalPost.value.user_id);
     formData.append("content", personalPost.value.content);
     formData.append(
@@ -62,6 +66,11 @@ const savePost = async () => {
 
 const handelFileObject = () => {
     personalPost.value.image = file.value.files[0];
+};
+
+const changeLocale = (lang) => {
+    locale.value = lang;
+    localStorage.lang = locale.value;
 };
 
 function previewImage(file) {
@@ -90,6 +99,55 @@ function goBack() {
             <span>Back</span>
         </button>
         <section class="mx-auto w-full rounded-md bg-white p-6 shadow-xl">
+            <div
+                class="flex flex-col items-center justify-center lg:flex-row lg:space-x-3 mb-4"
+            >
+                <h1 class="font-semibold">{{ $t("select-lang") }} :</h1>
+                <div
+                    class="mt-3 inline-flex w-full justify-center space-x-3 text-xs lg:mt-0 lg:text-sm"
+                >
+                    <button
+                        :class="[
+                            $i18n.locale != 'fr'
+                                ? 'rounded-md bg-menu px-3 py-1 text-white'
+                                : 'rounded-md bg-primary-blue px-3 py-1 text-white',
+                        ]"
+                        @click.prevent="changeLocale('fr')"
+                    >
+                        {{ $t("fr") }}
+                    </button>
+                    <button
+                        :class="[
+                            $i18n.locale != 'en'
+                                ? 'rounded-md bg-menu px-3 py-1 text-white'
+                                : 'rounded-md bg-primary-blue px-3 py-1 text-white',
+                        ]"
+                        @click.prevent="changeLocale('en')"
+                    >
+                        {{ $t("en") }}
+                    </button>
+                    <button
+                        :class="[
+                            $i18n.locale != 'es'
+                                ? 'rounded-md bg-menu px-3 py-1 text-white'
+                                : 'rounded-md bg-primary-blue px-3 py-1 text-white',
+                        ]"
+                        @click.prevent="changeLocale('es')"
+                    >
+                        {{ $t("es") }}
+                    </button>
+                    <button
+                        :class="[
+                            $i18n.locale != 'pt'
+                                ? 'rounded-md bg-menu px-3 py-1 text-white'
+                                : 'rounded-md bg-primary-blue px-3 py-1 text-white',
+                        ]"
+                        @click.prevent="changeLocale('pt')"
+                    >
+                        {{ $t("pt") }}
+                    </button>
+                </div>
+            </div>
             <Error v-if="errors != ''">{{ errors }}</Error>
             <h1 class="text-xl font-semibold">{{ $tc("add", 2) }} Post</h1>
             <h2 class="text-md font-light text-gray-700">
@@ -225,7 +283,6 @@ function goBack() {
                         disabled
                         class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
                     >
-                        {{ $t("save") }}...
                         <Spin :size="'small'" />
                     </button>
                     <Transition

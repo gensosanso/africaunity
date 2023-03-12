@@ -378,8 +378,8 @@ onMounted(async () => {
         isSearchDate.value = false;
         await filterPost({ ...filter });
     } else if ("search_date" in route.query) {
-      /*  getPostsByDate(route.query.search_date, localStorage.lang);
-        isSearchDate.value = true;*/
+        getPostsByDate(route.query.search_date, localStorage.lang);
+        isSearchDate.value = true;
     } else {
         await getPosts("article", localStorage.lang);
         isSearchDate.value = false;

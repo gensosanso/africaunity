@@ -43,7 +43,7 @@ class UserController extends Controller
                 ['status', '<>', 3]
             ]);
         }
-        return UserResource2::collection($users->paginate(9));
+        return UserResource2::collection($users->orderBy('id', 'desc')->orderBy('avatar', 'desc')->paginate(9));
     }
 
     public function filter(Request $request)

@@ -11,9 +11,12 @@ import useActivityAreas from "@/services/activityAreaServices.js";
 import useDemonstrationModes from "@/services/demonstrationModeServices.js";
 import useDemonstrationTypes from "@/services/demonstrationTypeServices.js";
 import useDemonstrationNiches from "@/services/demonstrationNicheServices.js";
+import useDemonstrations from "@/services/demonstrationServices.js";
+
 
 const props = defineProps({
     date: [String, Date],
+    profile: [String],
     enterType: [String],
     continent: [String, Number],
     ministry: [String, Number],
@@ -35,12 +38,14 @@ const { countries, getCountries } = useCountries();
 const { continents, getContinents } = useContinents();
 const { ministries, getMinistries } = useMinistries();
 const { activityAreas, getActivityAreas } = useActivityAreas();
+const { demonstrations, getDemonstrations } = useDemonstrations();
 const { demonstrationTypes, getDemonstrationTypes } = useDemonstrationTypes();
 const { demonstrationModes, getDemonstrationModes } = useDemonstrationModes();
 const { demonstrationNiches, getDemonstrationNiches } = useDemonstrationNiches();
 
 const filterData = reactive({
     date: '',
+    profile: '',
     country_id: '',
     ministry_id: '',
     activity_area_id: '',
@@ -80,6 +85,7 @@ onMounted(async function () {
     currMonth = date.getMonth();
 
     filterData.date = props.date;
+    filterData.profile = props.profile;
     filterData.country_id = props.country;
     filterData.zone_id = props.zone;
     filterData.city_id = props.city;
@@ -90,6 +96,8 @@ onMounted(async function () {
     filterData.demonstration_type_id = props.eventType;
     filterData.demonstration_mode_id = props.eventMode;
     filterData.demonstration_niche_id = props.eventNiche;
+
+    await getDemonstrations();
 
     renderCalendar();
     setItemsDays();
@@ -123,6 +131,7 @@ watch(props, async function (newProps, oldProps) {
     currMonth = date.getMonth();
 
     filterData.date = newProps.date;
+    filterData.profile = newProps.profile;
     filterData.country_id = newProps.country;
     filterData.zone_id = newProps.zone;
     filterData.city_id = newProps.city;
@@ -172,7 +181,19 @@ const renderCalendar = () => {
             currYear === date.getFullYear()
                 ? "active"
                 : "";
-        liTag += `<li class="${isToday} days-items">${i}</li>`;
+
+
+                let size =  demonstrations.value.filter((demonstration) =>{
+                let cmdate = (currMonth + 1 < 10) && (i < 10) ? `${currYear}-0${currMonth + 1}-0${i}` 
+                            : (currMonth + 1 < 10) ? `${currYear}-0${currMonth + 1}-${i}` 
+                            : (i < 10) ? `${currYear}-${currMonth + 1}-0${i}` : `${currYear}-${currMonth + 1}-${i}` ;
+                        return   demonstration.start_date <= cmdate && demonstration.end_date >= cmdate;
+                });
+             
+            let havePub = size.length > 0  ? "have-pub" : "";
+
+
+        liTag += `<li class="${isToday} ${havePub} days-items">${i}</li>`;
     }
 
     for (let i = lastDayofMonth; i < 6; i++) {
@@ -290,6 +311,7 @@ async function filter () {
                 name: "events",
                 query: {
                     date: filterData.date,
+                    profile: filterData.profile,
                     enterType: filterData.enter_type,
                     continent: filterData.continent_id,
                     country: filterData.country_id,
@@ -337,6 +359,7 @@ const filteredZone = () => {
 
 <template>
     <div id="eventcalendar">
+
     <div class="wrapper">
         <header>
             
@@ -363,7 +386,19 @@ const filteredZone = () => {
             <ul class="days" ref="daysTag"></ul>
         </div>
     </div>
-    <div class=" px-4">
+
+    <div class="px-4">
+
+        <div class="mt-4">
+        <label for="" class=" text-sm text-gray-500">{{ $t("profile") }}</label>
+        <select name="" id="" v-model="filterData.profile" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
+           <option value=""></option>
+           <option value="particular">{{ $t("particular") }}</option>
+           <option value="business2">{{ $t("establishment") }}</option>
+           <option value="ip">{{ $t("ip") }}</option>  
+        </select>
+        </div>
+
         <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">{{ $t("event-type") }}</label>
         <select name="" id="" v-model="filterData.demonstration_type_id" @change="filter" class=" form-select block mt-1 !border-gray-200 text-gray-800 rounded text-sm  outline-0 ring-0 w-full">
@@ -385,7 +420,7 @@ const filteredZone = () => {
                                     <span v-else>{{ demonstrationType.name_pt }}</span>
                                 </option>
         </select>
-    </div>
+        </div>
 
     <div class="mt-4">
         <label for="" class=" text-sm text-gray-500">{{ $t("event-mode") }}</label>
@@ -692,6 +727,12 @@ const filteredZone = () => {
 }
 #eventcalendar  .days li.active::before {
     background: #289dcc;
+}
+#eventcalendar  .days li.active.have-pub::before {
+    background: #289dcc;
+}
+#eventcalendar  .days li.have-pub::before {
+    background: #f2f2f2;
 }
 #eventcalendar  .days li:not(.active):hover::before {
     background: #f2f2f2;

@@ -27,11 +27,17 @@ class PostController extends Controller
 
     public function post_type($type, $lang)
     {
-        return PostResource::collection(Post::where([
-            ['status', 1],
-            ['type', $type],
-            ['language', $lang]
-        ])->orderBy('id', 'desc')->orderBy('image', 'asc')->paginate(8));
+        $posts = Post::join('users', 'user_id', '=', 'users.id')
+                        ->where([
+                            ['posts.status', 1],
+                            ['posts.type', $type],
+                            ['posts.language', $lang]
+                        ])
+                        ->orderBy('users.type', 'desc')
+                        ->orderBy('posts.id', 'desc')
+                        ->select('posts.*');
+
+        return PostResource::collection($posts->paginate(8));
     }
 
     public function filter(Request $request)

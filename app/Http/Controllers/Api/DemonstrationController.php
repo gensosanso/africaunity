@@ -34,17 +34,17 @@ class DemonstrationController extends Controller
        $demonstrations = Demonstration::where('status', '<>', 3);
 
 
-       if ($request->date  != "") {
-        $date = Carbon::createFromFormat('Y-m-d', $request->date);
-       $demonstrations->where(function ($query) use ($date) {
-            $query->whereDate('start_date', '<=' , $date)->whereDate('end_date', '>=', $date);
-        }); 
+        if ($request->date  != "") {
+            $date = Carbon::createFromFormat('Y-m-d', $request->date);
+            $demonstrations->where(function ($query) use ($date) {
+                $query->whereDate('start_date', '<=' , $date)->whereDate('end_date', '>=', $date);
+            }); 
         } 
        
 
         if($request->enter_type != "") {
-        $enter_type =  $request->enter_type;
-        $demonstrations->where('enter_type', $enter_type);
+            $enter_type =  $request->enter_type;
+            $demonstrations->where('enter_type', $enter_type);
         }
 
         if($request->demonstration_niche_id != ""){
@@ -53,8 +53,7 @@ class DemonstrationController extends Controller
                 $query->where('id', $demonstration_niche);
             }])->whereHas('demonstrationNiche', function (Builder $query) use ($demonstration_niche) {
                 $query->where('id', $demonstration_niche);
-            });
-            
+            }); 
         }
 
         if( $request->demonstration_mode_id != "") {
@@ -64,10 +63,10 @@ class DemonstrationController extends Controller
             }])->whereHas('demonstrationMode', function (Builder $query) use ($demonstration_mode) {
                 $query->where('id', $demonstration_mode);
             });
-            }
+        }
 
         
-            if( $request->demonstration_type_id != "") {
+        if( $request->demonstration_type_id != "") {
             $demonstration_type = $request->demonstration_type_id;
             $demonstrations = $demonstrations->with(['demonstrationType' => function ($query) use ($demonstration_type) {
                 $query->where('id', $demonstration_type);
@@ -127,6 +126,15 @@ class DemonstrationController extends Controller
                 $query->where('id', $country);
             }])->whereHas('country', function (Builder $query) use ($country) {
                 $query->where('id', $country);
+            });
+        }
+
+        if ($request->profile  != "") {
+            $profile = $request->profile;
+            $demonstrations = $demonstrations->with(['user' => function ($query) use ($profile) {
+                $query->where('type', $profile);
+            }])->whereHas('user', function (Builder $query) use ($profile) {
+                $query->where('type', $profile);
             });
         }
 

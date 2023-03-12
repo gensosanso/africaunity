@@ -312,7 +312,7 @@
                     >
                         <div>
                             <label class=" text-gray-700"
-                                >Min {{ $t("price") }}
+                                >{{ $t("salary") }}  Min
                                 <span class="text-red-500">*</span>
                             </label>
                             <input
@@ -325,7 +325,7 @@
 
                         <div>
                             <label class=" text-gray-700"
-                                >Max {{ $t("price") }}
+                                >{{ $t("salary") }} Max 
                                 <span class="text-red-500">*</span>
                             </label>
                             <input
@@ -628,7 +628,7 @@
                         <textarea
                             required
                             type="text"
-                            v-model="jobOffer.description"
+                            ref="textarea"
                             id="pt"
                             class=" mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                         >
@@ -652,6 +652,21 @@
                     >
                       <Spin :size="'small'" />
                     </button>
+                    <Transition
+                        enter-active-class=" transition-all  "
+                        enter-from-class=" opacity-0  -translate-y-10"
+                        enter-to-class="  opacity-1 translate-y-0"
+                        leave-active-class=""
+                        leave-from-class=""
+                        leave-to-class=""
+                    >
+                        <span
+                            v-if="msgClick != ''"
+                            class="text-xs font-light italic"
+                        >
+                            {{ msgClick }}
+                        </span>
+                    </Transition>
                 </div>
             </form>
         </section>
@@ -702,40 +717,54 @@ const { continents, getContinents } = useContinents();
 const { cities, getCities } = useCities();
 const clanguages = ref([]);
 const cactivityAreas = ref([]);
-
+const msgClick = ref("");
+const nbClick = ref(0);
+const textarea = ref("");
 const zoneFiltered = ref([]);
 const countryFiltered = ref([]);
 const cityfiltered = ref([]);
 
-const filteredCity = () => {
+const filteredCity = (reset = true) => {
     cityfiltered.value = cities.value.filter((city) => {
         return city.country_id == jobOffer.value.country.id;
     });
-    jobOffer.value.city.id = "";
+    if(reset) {jobOffer.value.city.id = "";}
 };
 
-const filteredCountry = () => {
+const filteredCountry = (reset = true) => {
     countryFiltered.value = countries.value.filter((country) => {
         return country.zone_id == jobOffer.value.zone.id;
     });
-    jobOffer.value.country.id = "";
+    if(reset){jobOffer.value.country.id = "";
     jobOffer.value.city.id = "";
-    cityfiltered.value = [];
+    cityfiltered.value = [];}
 };
 
-const filteredZone = () => {
+const filteredZone = (reset = true) => {
     zoneFiltered.value = zones.value.filter((zone) => {
         return zone.continent_id == jobOffer.value.continent.id;
     });
-    jobOffer.value.zone.id = "";
+    if(reset) {jobOffer.value.zone.id = "";
     jobOffer.value.country.id = "";
     jobOffer.value.city.id = "";
     cityfiltered.value = [];
-    countryFiltered.value = [];
+    countryFiltered.value = [];}
 };
 
 onMounted(async () => {
     await getJobOffer(props.id);
+
+    textarea.value.value =  jobOffer.value.description;
+    sceditor.create(textarea.value, {
+            format: "xhtml",
+            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
+            height: 400,
+            toolbarExclude:
+                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
+            icons: "material",
+        });
+    textarea.value.value =  jobOffer.description;
+    nbClick.value++;
 
     for (const item of jobOffer.value.activity_areas) {
         cactivityAreas.value.push(item.id);
@@ -747,6 +776,14 @@ onMounted(async () => {
     await getCurrencies();
     await getContinents();
     await getZones();
+    filteredZone(false);
+
+    await getCountries();
+    filteredCountry(false);
+
+    await getCities();
+    filteredCity(false);
+
     await getYearExperiences();
     await getWorkModes();
     await getWorkDepartments();
@@ -755,24 +792,19 @@ onMounted(async () => {
     await getOfferTypes();
     await getActivityAreas();
     await getLanguages();
-    await getCountries();
-    await getCities();
 
-    zoneFiltered.value = zones.value.filter((zone) => {
-        return zone.continent_id == jobOffer.value.continent.id;
-    });
-
-    countryFiltered.value = countries.value.filter((country) => {
-        return country.zone_id == jobOffer.value.zone.id;
-    });
-
-    cityfiltered.value = cities.value.filter((city) => {
-        return city.country_id == jobOffer.value.country.id;
-    });
     jobOffer.value.company_logo = "";
 });
 
 const saveJobOffer = async () => {
+    jobOffer.value.description = textarea.value.value;
+    if (nbClick.value == 1) {
+        nbClick.value++;
+        msgClick.value = "please click again";
+        console.log(jobOffer.value.max_price);
+        return;
+    }
+
     let formData = new FormData();
     formData.append("title", jobOffer.value.title);
     formData.append("description", jobOffer.value.description);

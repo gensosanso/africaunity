@@ -360,7 +360,7 @@
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="es"
-                                >{{ $t("price") }}
+                                >{{ $t("salary") }} Min.
                             </label>
                             <input
                                 v-model="filterJob.min_price"
@@ -663,6 +663,7 @@ const jobsFilter = async () => {
         filterJob.recruitment_agency ||
         !filterJob.recruitment_agency
     ) {
+        filterJob.min_price = filterJob.min_price.trim().replaceAll(' ', '')
         await filterJobs({ ...filterJob });
     } else {
         page.value = 1;

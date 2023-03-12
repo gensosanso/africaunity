@@ -33,6 +33,11 @@ class PersonalPostController extends Controller
         return PersonalPostResource::collection(PersonalPost::where('user_id', $user)->orderBy('id', 'desc')->get());
     }
 
+    public function post_lang($lang)
+    {
+        return PersonalPostResource::collection(PersonalPost::where('language', $lang)->orderBy('id', 'desc')->get());
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,11 +49,12 @@ class PersonalPostController extends Controller
         $fileds = $request->validated();
         $filename = '/uploads/' . time() . '.' . $request->file('image')->extension();
         $request->file('image')->storePubliclyAs('public', $filename);
-
+       
         $data = [
             'title' => $fileds['title'],
             'content' => $fileds['content'],
             'subtheme' => $fileds['subtheme'],
+            'language' => $fileds['language'],
             'user_id' => $fileds['user_id'],
             'category_personal_post_id' => $fileds['category_personal_post_id'],
             'image' => $filename
@@ -82,6 +88,7 @@ class PersonalPostController extends Controller
         $fileds = $request->validate([
             'title' => 'required|string|between:1,50',
             'content' => 'required|string',
+            'language' => 'required|string',
             'subtheme' => 'nullable|string',
             'user_id' => 'integer|required',
             'category_personal_post_id' => 'integer|required',
@@ -89,6 +96,7 @@ class PersonalPostController extends Controller
         $data = [
             'title' => $fileds['title'],
             'content' => $fileds['content'],
+            'language' => $fileds['language'],
             'subtheme' => $fileds['subtheme'],
             'user_id' => $fileds['user_id'],
             'category_personal_post_id' => $fileds['category_personal_post_id'],

@@ -16,7 +16,14 @@ class AnnouncementController extends Controller
 {
     public function index()
     {
-        return AnnouncementResource::collection(Announcement::orderBy('id')->paginate(8));
+        $announcements = Announcement::join('users', 'user_id', '=', 'users.id')
+                        ->where('announcements.status', '<>', 3)
+                        ->orderBy('users.type', 'desc')
+                        ->orderBy('announcements.id', 'desc')
+                        ->select('announcements.*');
+        
+        
+        return AnnouncementResource::collection($announcements->paginate(8));
     }
 
     public function all()

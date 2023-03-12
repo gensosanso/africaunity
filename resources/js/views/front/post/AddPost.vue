@@ -362,7 +362,7 @@ const post = reactive({
     title: "",
     type: props.type,
     user_id: user.id,
-    language: "fr",
+    language: locale.value,
     content: "",
     image: "",
     continent_id: "",
@@ -385,7 +385,7 @@ onMounted(async () => {
                 "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
             icons: "material",
         });
-        textarea.value.value == "";
+        textarea.value.value = "";
     }
     nbClick.value++;
 

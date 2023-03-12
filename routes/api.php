@@ -96,6 +96,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::apiResource('personalPosts', PersonalPostController::class);
     Route::get("/personalPosts-user/{user}", [PersonalPostController::class, 'post_user']);
+    Route::get("/personalPosts-lang/{lang}", [PersonalPostController::class, 'post_lang']);
     Route::get("/personalPosts-all", [PersonalPostController::class, 'all']);
 
     Route::apiResource('users', UserController::class);

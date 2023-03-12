@@ -143,20 +143,6 @@
                                 class="flex items-center space-x-2 py-1 lg:py-0"
                                 v-if="user.id == loginUser.id"
                             >
-                                <router-link
-                                    :to="{
-                                        name: 'add.post',
-                                        params: { type: 'article' },
-                                    }"
-                                    class="flex items-center space-x-2 rounded-xl bg-primary-blue py-2 px-2 text-sm text-white shadow-md lg:px-4"
-                                    v-if="user.type != 'business1'"
-                                >
-                                    <PlusCircleIcon class="h-5 w-5" />
-                                    <span class="hidden lg:block"
-                                        >{{ $t("add") }}
-                                        {{ $t("article") }}</span
-                                    >
-                                </router-link>
                                 <button
                                     type="button"
                                     @click="changeTab('edit')"
@@ -238,7 +224,7 @@
 
             <div
                 ref="nav"
-                class="no-scrollbar flex items-center space-x-2 w-full overflow-auto bg-menu px-5 py-3 lg:mt-0"
+                class="no-scrollbar flex items-center space-x-2 w-full overflow-auto bg-menu px-5 py-3 lg:mt-0 transition-all"
             >
                 <button
                     @click="changeTab('profil')"
@@ -252,7 +238,6 @@
                     <span class="hidden lg:block">{{ $t("profile") }}</span>
                 </button>
                 <button
-                    v-if="user.type != 'business1'"
                     @click="changeTab('article')"
                     :class="[
                         open.article
@@ -264,7 +249,6 @@
                     <span class="hidden lg:block">{{ $t("articles") }}</span>
                 </button>
                 <button
-                    v-if="user.type != 'business1'"
                     @click="changeTab('propau')"
                     :class="[
                         open.propau
@@ -287,7 +271,7 @@
                     <span class="hidden lg:block">{{ $t("comments") }}</span>
                 </button>
                 <button
-                    v-if="user.type != 'particular' && user.type != 'business1'"
+                    v-if="user.type != 'particular'"
                     @click="changeTab('job')"
                     :class="[
                         open.job
@@ -313,7 +297,6 @@
                     <span class="hidden whitespace-nowrap lg:block">{{ $t("ads-s") }} {{ $tc("student", 1) }}</span>
                 </button>
                 <button
-                    v-if="user.type == 'ip' || user.type == 'business2' || user.type == 'admin'"
                     @click="changeTab('event')"
                     :class="[
                         open.event

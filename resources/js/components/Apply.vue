@@ -71,7 +71,7 @@
                         </div>
                         <div class="">
                             <label class="dark:text-gray-200 text-gray-700"
-                                >CV(pdf)
+                                >CV(Pdf | max: 5mo)
                                 <span class="text-red-500">*</span></label
                             >
                             <input
@@ -153,6 +153,10 @@ const loadingC = ref(0);
 const errors = ref("");
 const file = ref(null);
 const sendApply = async () => {
+    if(apply.cv.size > 5000000){
+        errors.value = "Votre fichier est très volimineux";
+        return;
+    }
     let formData = new FormData();
     formData.append("user", apply.user);
     formData.append("job", apply.job);
@@ -162,7 +166,7 @@ const sendApply = async () => {
     formData.append("cv", apply.cv);
 
     errors.value = "";
-    try {
+ /*   try {
         loadingC.value = 1;
         await axios.post("/api/jobOffers-apply", formData, {
             headers: {
@@ -178,7 +182,7 @@ const sendApply = async () => {
         }else {
             errors.value = e.response.data.message;
         }
-    }
+    }*/
 };
 
 const handelFileObject = async () => {

@@ -55,17 +55,22 @@ const selectItem = reactive({
     name: "",
 });
 
+function toNormalForm(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+
 const filteredData = computed(() => {
-    let data = props.data.filter((item) =>
-        item.name.toLowerCase().includes(search.value.toLowerCase())
+    let data = props.data.filter((item) => 
+        toNormalForm(item.name.toLowerCase()).includes(toNormalForm(search.value.toLowerCase()))
     );
+    console.log(data);
     if (data.length != 0) {
         subCategory.value = props.subCategory;
         return data;
     } else if (props.subCategory) {
         subCategory.value = false;
         data = props.data.filter((item) =>
-            item.name.toLowerCase().includes(search.value.toLowerCase())
+        toNormalForm(item.name.toLowerCase()).includes(toNormalForm(search.value.toLowerCase()))
         );
         if (data.length != 0) {
             return data;
@@ -75,9 +80,9 @@ const filteredData = computed(() => {
                 if (props.data[i].children.length != 0) {
                     props.data[i].children.forEach((element) => {
                         if (
-                            element.name
-                                .toLowerCase()
-                                .includes(search.value.toLowerCase())
+                            toNormalForm(element.name
+                                .toLowerCase())
+                                .includes(toNormalForm(search.value.toLowerCase()))
                         ) {
                             data.push(element);
                         }

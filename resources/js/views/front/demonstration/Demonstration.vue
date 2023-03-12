@@ -12,6 +12,7 @@ const { demonstrations, errors, loading, filterDemonstration } = useDemonstratio
 const filterData = reactive({
     date: '',
     country_id: '',
+    profile: '',
     zone_id: '',
     city_id: '',
     continent_id: '',
@@ -25,6 +26,7 @@ const filterData = reactive({
 onMounted(async function() {
     if('date' in route.query){
         filterData.date = route.query.date;
+    filterData.profile = route.query.profile;
     filterData.country_id = route.query.country;
     filterData.zone_id = route.query.zone;
     filterData.city_id = route.query.city;
@@ -41,6 +43,7 @@ onMounted(async function() {
 });
 watch(route, async function (newRoute, oldRoute) {
     if('date' in newRoute.query)  {filterData.date = newRoute.query.date;
+    filterData.profile = newRoute.query.profile;
     filterData.country_id = newRoute.query.country;
     filterData.zone_id = newRoute.query.zone;
     filterData.city_id = newRoute.query.city;

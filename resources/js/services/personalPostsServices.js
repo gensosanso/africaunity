@@ -37,6 +37,34 @@ export default function usePersonalPosts() {
         }
     };
 
+    const getPersonalPostsLang = async (lang) => {
+        errors.value = "";
+        try {
+            loading.value = true;
+            let response = await axios.get("/api/personalPosts-lang/" + lang, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`,
+                },
+            });
+            personalPosts.value = response.data.data;
+
+            loading.value = false;
+        } catch (e) {
+            if (e.response.status == 401) {
+                router.push({
+                    name: "login",
+                    params: {
+                        redirect: "not-login",
+                    },
+                });
+                window.localStorage.removeItem("token");
+                window.localStorage.removeItem("user");
+            } else {
+                errors.value = e.response.data.message;
+            }
+        }
+    };
+
     const getPersonalPostsUser = async (id) => {
         errors.value = "";
         try {
@@ -237,7 +265,7 @@ export default function usePersonalPosts() {
         personalPost,
         errors,
         loading,
-
+        getPersonalPostsLang,
         getPersonalPosts,
         getPersonalPost,
         createPersonalPost,

@@ -53,11 +53,11 @@
                     IP ({{ $t("pack") }} {{ $t("politic") }}) ?
                 </router-link>
                 <router-link
-                    v-if="type != 'business1'"
-                    :to="{ name: 'register', params: { type: 'business1' } }"
+                    v-if="type != 'business2'"
+                    :to="{ name: 'register', params: { type: 'business2' } }"
                     class="text-primary-blue hover:underline"
                 >
-                    PB ({{ $t("pack") }} PRO) ?
+                    PB ({{ $t("pack") }} Business) ?
                 </router-link>
                 <router-link
                     v-if="type != 'particular'"

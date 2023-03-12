@@ -26,6 +26,7 @@ class PersonalPostResource extends JsonResource
             'status' => $this->status,
             'subtheme' => $this->subtheme,
             'user_id' => $this->user_id,
+            'language' => $this->language,
             'date' => $this->created_at->format('Y-m-d'),
             'category_personal_post_id' => $this->category_personal_post_id,
             'user' => new UserResource2(User::find($this->user_id)),

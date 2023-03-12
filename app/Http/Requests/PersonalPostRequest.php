@@ -27,6 +27,7 @@ class PersonalPostRequest extends FormRequest
             'title' => 'required|string|between:1,50',
             'content' => 'required|string',
             'subtheme' => '',
+            'language' => 'required|string',
             'user_id' => 'integer|required',
             'category_personal_post_id' => 'integer|required',
             'image' => 'required|mimes:png,jpg,jpeg,gif|dimensions:min_width=100,min_height=200'

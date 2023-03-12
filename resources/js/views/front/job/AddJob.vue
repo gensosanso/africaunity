@@ -306,7 +306,7 @@
                     >
                         <div>
                             <label class=" text-gray-700"
-                                >Min {{ $t("price") }}
+                                >{{ $t("salary") }} Min
                                 <span class="text-red-500">*</span>
                             </label>
                             <input
@@ -319,7 +319,7 @@
 
                         <div>
                             <label class=" text-gray-700"
-                                >Max {{ $t("price") }}
+                                >{{ $t("salary") }} Max
                                 <span class="text-red-500">*</span>
                             </label>
                             <input
@@ -615,7 +615,7 @@
                         <textarea
                             required
                             type="text"
-                            v-model="jobOffer.description"
+                            ref="textarea"
                             id="pt"
                             class=" mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
                         >
@@ -639,6 +639,21 @@
                     >
                         <Spin :size="'small'" />
                     </button>
+                    <Transition
+                        enter-active-class=" transition-all  "
+                        enter-from-class=" opacity-0  -translate-y-10"
+                        enter-to-class="  opacity-1 translate-y-0"
+                        leave-active-class=""
+                        leave-from-class=""
+                        leave-to-class=""
+                    >
+                        <span
+                            v-if="msgClick != ''"
+                            class="text-xs font-light italic"
+                        >
+                            {{ msgClick }}
+                        </span>
+                    </Transition>
                 </div>
             </form>
         </section>
@@ -662,8 +677,10 @@ import useCountries from "@/services/countryServices.js";
 import useZones from "@/services/zoneServices.js";
 import useContinents from "@/services/continentServices.js";
 import useCities from "@/services/cityServices.js";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
+
 const router = useRouter();
+const route = useRoute();
 
 const props = defineProps({
     duplicate: String,
@@ -684,6 +701,7 @@ const { zones, getZones } = useZones();
 const { continents, getContinents } = useContinents();
 const { cities, getCities } = useCities();
 const { createJobOffer, errors, loading } = useJobOffers();
+
 const jobOffer = reactive({
     title: "",
     description: "",
@@ -711,7 +729,9 @@ const jobOffer = reactive({
     languages: [],
     activityAreas: [],
 });
-const dJob = ref("");
+const msgClick = ref("");
+const nbClick = ref(0);
+const textarea = ref("");
 const file = ref(null);
 const zoneFiltered = ref([]);
 const countryFiltered = ref([]);
@@ -720,45 +740,68 @@ const cityfiltered = ref([]);
 onMounted(async () => {
     if (props.duplicate) {
         try {
-            dJob.value = JSON.parse(props.duplicate);
-            jobOffer.title = dJob.value.title;
-            jobOffer.description = dJob.value.description;
-            jobOffer.start_date = dJob.value.start_date;
-            jobOffer.location = dJob.value.location;
-            jobOffer.reference = dJob.value.reference;
-            jobOffer.company_name = dJob.value.company_name;
-            jobOffer.company_email = dJob.value.company_email;
-            jobOffer.company_logo = dJob.value.company_logo;
-            jobOffer.min_price = dJob.value.min_price;
-            jobOffer.max_price = dJob.value.max_price;
-            jobOffer.currency_id = dJob.value.currency.id;
-            jobOffer.year_experience_id = dJob.value.year_experience.id;
-            jobOffer.work_department_id = dJob.value.work_department.id;
-            jobOffer.work_mode_id = dJob.value.work_mode.id;
-            jobOffer.size_company_id = dJob.value.size_company.id;
-            jobOffer.offer_type_id = dJob.value.offer_type.id;
-            jobOffer.level_study_id = dJob.value.level_study.id;
-            jobOffer.city_id = dJob.value.city.id;
-            jobOffer.zone_id = dJob.value.zone.id;
-            jobOffer.continent_id = dJob.value.continent.id;
-            jobOffer.country_id = dJob.value.country.id;
+            jobOffer.title = route.query.title;
+            jobOffer.description = route.query.description;
+            jobOffer.start_date = route.query.start_date;
+            jobOffer.location = route.query.location;
+            jobOffer.reference = route.query.reference;
+            jobOffer.company_name = route.query.company_name;
+            jobOffer.company_email = route.query.company_email;
+            jobOffer.company_logo = route.query.company_logo;
+            jobOffer.min_price = route.query.min_price.trim().replaceAll(' ', '');
+            jobOffer.max_price = route.query.max_price.trim().replaceAll(' ', '');
+            jobOffer.currency_id = route.query.currency_id;
+            jobOffer.year_experience_id = route.query.year_experience_id;
+            jobOffer.work_department_id = route.query.work_department_id;
+            jobOffer.work_mode_id = route.query.work_mode_id;
+            jobOffer.size_company_id = route.query.size_company_id;
+            jobOffer.offer_type_id = route.query.offer_type_id;
+            jobOffer.level_study_id = route.query.level_study_id;
+            jobOffer.city_id = route.query.city_id;
+            jobOffer.zone_id = route.query.zone_id;
+            jobOffer.continent_id = route.query.continent_id;
+            jobOffer.country_id = route.query.country_id;
 
-            for (const item of dJob.value.activity_areas) {
+            let activity_areas  = JSON.parse(route.query.activity_areas);
+            let languages  = JSON.parse(route.query.languages);
+
+           for (const item of activity_areas) {
                 jobOffer.activityAreas.push(item.id);
             }
-            for (const item of dJob.value.languages) {
+
+            for (const item of languages) {
                 jobOffer.languages.push(item.id);
             }
+
         } catch (e) {
             router.push({ name: "home" });
         }
-    }
 
+    }
+    textarea.value.value =  props.duplicate ? jobOffer.description : "";
+    sceditor.create(textarea.value, {
+            format: "xhtml",
+            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
+            height: 400,
+            toolbarExclude:
+                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
+            icons: "material",
+        });
+    textarea.value.value = props.duplicate ? jobOffer.description : "";
+    nbClick.value++;
+    
     await getCurrencies();
     await getContinents();
+
     await getZones();
+    filteredZone(false);
+
     await getCountries();
+    filteredCountry(false);
+
     await getCities();
+    filteredCity(false);
+
     await getYearExperiences();
     await getWorkModes();
     await getWorkDepartments();
@@ -767,36 +810,45 @@ onMounted(async () => {
     await getOfferTypes();
     await getActivityAreas();
     await getLanguages();
+
 });
 
-const filteredCity = () => {
+const filteredCity = (reset = true) => {
     cityfiltered.value = cities.value.filter((city) => {
         return city.country_id == jobOffer.country_id;
     });
-    jobOffer.city_id = "";
+    if(reset){jobOffer.city_id = "";}
 };
 
-const filteredCountry = () => {
+const filteredCountry = (reset = true) => {
     countryFiltered.value = countries.value.filter((country) => {
         return country.zone_id == jobOffer.zone_id;
     });
-    jobOffer.country_id = "";
+   if(reset){ jobOffer.country_id = "";
     jobOffer.city_id = "";
-    cityfiltered.value = [];
+    cityfiltered.value = [];}
 };
 
-const filteredZone = () => {
+const filteredZone = (reset = true) => {
     zoneFiltered.value = zones.value.filter((zone) => {
         return zone.continent_id == jobOffer.continent_id;
     });
-    jobOffer.zone_id = "";
+    if(reset){jobOffer.zone_id = "";
     jobOffer.country_id = "";
     jobOffer.city_id = "";
     cityfiltered.value = [];
-    countryFiltered.value = [];
+    countryFiltered.value = [];}
 };
 
 const storeJobOffer = async () => {
+
+    jobOffer.description = textarea.value.value;
+    if (nbClick.value == 1) {
+        nbClick.value++;
+        msgClick.value = "please click again";
+        return;
+    }
+
     let formData = new FormData();
     formData.append("title", jobOffer.title);
     formData.append("description", jobOffer.description);
@@ -807,8 +859,8 @@ const storeJobOffer = async () => {
     formData.append("company_website", jobOffer.company_website);
     formData.append("start_date", jobOffer.start_date);
     formData.append("company_logo", jobOffer.company_logo);
-    formData.append("min_price", jobOffer.min_price);
-    formData.append("max_price", jobOffer.max_price);
+    formData.append("min_price", jobOffer.min_price.trim().replaceAll(' ', ''));
+    formData.append("max_price", jobOffer.max_price.trim().replaceAll(' ', ''));
     formData.append("user_id", jobOffer.user_id);
     formData.append("currency_id", jobOffer.currency_id);
     formData.append("year_experience_id", jobOffer.year_experience_id);
