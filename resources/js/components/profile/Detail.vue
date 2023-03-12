@@ -391,6 +391,7 @@ const url = window.location.href;
                     </label>
                     <p class="mt-1 rounded-lg border p-2 shadow">
                         <a
+                        v-if="detail.website"
                             target="_blank"
                             class="block py-1 italic text-primary-blue hover:underline break-words"
                             :href="'https://' + detail.website.replaceAll('https://','').replaceAll('http://','')"
@@ -404,6 +405,7 @@ const url = window.location.href;
                     </label>
                     <p class="mt-1 rounded-lg border p-2 shadow">
                         <a
+                            v-if="detail.youtube"
                             target="_blank"
                             class="block py-1 italic hover:underline"
                             :href="'https://' + detail.youtube.replaceAll('https://','').replaceAll('http://','')"
