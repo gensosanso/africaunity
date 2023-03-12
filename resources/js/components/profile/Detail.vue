@@ -393,7 +393,7 @@ const url = window.location.href;
                         <a
                             target="_blank"
                             class="block py-1 italic text-primary-blue hover:underline break-words"
-                            :href="detail.website"
+                            :href="'https://' + detail.website.replaceAll('https://','').replaceAll('http://','')"
                             >{{ detail.website }}</a
                         >
                     </p>
@@ -406,7 +406,7 @@ const url = window.location.href;
                         <a
                             target="_blank"
                             class="block py-1 italic hover:underline"
-                            :href="detail.youtube"
+                            :href="'https://' + detail.youtube.replaceAll('https://','').replaceAll('http://','')"
                             >Youtube</a
                         >
                     </p>
