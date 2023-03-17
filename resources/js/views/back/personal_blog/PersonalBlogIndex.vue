@@ -169,6 +169,7 @@ const headers = [
     { text: "Title", value: "title" },
     { text: "Author", value: "user.firstname" },
     { text: "SubTheme", value: "subtheme" },
+    { text: "language", value: "language" },
     { text: "ACTION", value: "id" },
 ];
 </script>

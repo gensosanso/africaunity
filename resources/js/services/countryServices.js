@@ -14,7 +14,7 @@ export default function useCountries() {
     const getCountries = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get(`/api/countries/${locale.value}`, {
+        let response = await axios.get(`/api/countries/language/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },

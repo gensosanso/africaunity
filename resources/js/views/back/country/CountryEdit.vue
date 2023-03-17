@@ -151,7 +151,7 @@
 </template>
 
 <script setup>
-import { reactive, onMounted, computed } from "vue";
+import { reactive, onMounted, ref, computed } from "vue";
 import Error from "@/components/Error.vue";
 import useCountries from "@/services/countryServices.js";
 import useContinents from "@/services/continentServices.js";
@@ -167,10 +167,12 @@ const props = defineProps({
 const { continents, getContinents } = useContinents();
 const { zones, getZones } = useZones();
 const { updateCountry, getCountry, errors, loading, country } = useCountries();
+
 onMounted(async () => {
     await getCountry(props.id);
     await getContinents();
     await getZones();
+    
 });
 
 const saveCountry = async () => {
@@ -178,12 +180,8 @@ const saveCountry = async () => {
 };
 
 const filteredZone = computed(() => {
-    if (country.zone) {
         return zones.value.filter((zone) => {
-            return zone.continent_id == country.zone.continent_id;
+            return zone.continent_id == country?.value.zone?.continent_id;
         });
-    } else {
-        return [];
-    }
 });
 </script>

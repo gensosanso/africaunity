@@ -33,8 +33,8 @@ class PostController extends Controller
                             ['posts.type', $type],
                             ['posts.language', $lang]
                         ])
-                        ->orderBy('users.type', 'desc')
                         ->orderBy('posts.id', 'desc')
+                        ->orderBy('users.type', 'desc')                        
                         ->select('posts.*');
 
         return PostResource::collection($posts->paginate(8));

@@ -132,7 +132,7 @@
                 
                 <div class="text-center border-t w-full py-3 space-y-3 text-xs" v-if="showDetail.id == user.id && showDetail.state == true">
 
-                    <p class="leading-3">
+                    <p class="leading-3" v-if="!user.hide_email">
                         <h1 class="font-semibold text-sm">{{ $t('adresse') + ' ' + $t('email') }}</h1>
                         <h2 class="font-light text-primary-blue">
                             {{ user.email }}

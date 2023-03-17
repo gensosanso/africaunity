@@ -110,6 +110,7 @@ const { updateContinent, getContinent, errors, loading, continent } =
     useContinents();
 onMounted(async () => {
     await getContinent(props.id);
+    console.log(continent.value);
 });
 loading.value = 0;
 

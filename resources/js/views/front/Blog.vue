@@ -49,7 +49,7 @@
                             @change="changeLocale()"
                             class="form-select block w-full rounded-md border border-gray-200 bg-gray-50 py-2 pr-8 pl-4 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                         >
-                            <option value="">Select Language</option>
+                            <option value="" disabled>Select Language</option>
                             <option value="fr">{{ $t("fr") }}</option>
                             <option value="en">{{ $t("en") }}</option>
                             <option value="es">{{ $t("es") }}</option>

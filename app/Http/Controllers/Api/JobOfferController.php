@@ -154,8 +154,8 @@ class JobOfferController extends Controller
 
         $jobs = JobOffer::join('users', 'user_id', '=', 'users.id')
                         ->where('job_offers.status', '<>', 3)
-                        ->orderBy('users.type', 'desc')
                         ->orderBy('job_offers.id', 'desc')
+                        ->orderBy('users.type', 'desc')
                         ->select('job_offers.*');
 
         return JobOfferResource::collection($jobs->paginate(10));

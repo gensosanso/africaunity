@@ -53,17 +53,17 @@ Route::get("/posts-caroussel/{lang}", [PostController::class, 'post_caroussel'])
 
 Route::get("/posts-home/{lang}/{ministry}", [PostController::class, 'post_home']);
 
-Route::get("/continents/{lang}", [ContinentController::class, 'index']);
+Route::get("/continents/language/{lang}", [ContinentController::class, 'index']);
 
 Route::post('/forgot-password', [ForgotPasswordController::class, 'index'])->middleware('guest')->name('password.request');
 Route::get("/reset-password", [ForgotPasswordController::class, 'verif']);
 Route::post("/reset-password", [ForgotPasswordController::class, 'reset'])->middleware('guest')->name('password.reset');
 
-Route::get("/zones/{lang}", [ZoneController::class, 'index']);
+Route::get("/zones/language/{lang}", [ZoneController::class, 'index']);
 
-Route::get("/countries/{lang}", [CountryController::class, 'index']);
+Route::get("/countries/language/{lang}", [CountryController::class, 'index']);
 
-Route::get("/cities/{lang}", [CityController::class, 'index']);
+Route::get("/cities/language/{lang}", [CityController::class, 'index']);
 
 Route::get("/ministries", [MinistryController::class, 'index']);
 Route::get("/ministries-home", [MinistryController::class, 'ministry_home']);
@@ -200,8 +200,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get("/cities/{city}", [CityController::class, 'show']);
     Route::put("/cities/{city}", [CityController::class, 'update']);
     Route::delete("/cities/{city}", [CityController::class, 'destroy']);
-
-    //Route::apiResource('cities', CityController::class);
 
     Route::post("/ministries", [MinistryController::class, 'store']);
     Route::get("/ministries/{ministry}", [MinistryController::class, 'show']);

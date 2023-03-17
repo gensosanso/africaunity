@@ -14,7 +14,7 @@ export default function useCities() {
     const getCities = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get(`/api/cities/${locale.value}`, {
+        let response = await axios.get(`/api/cities/language/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },

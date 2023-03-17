@@ -326,16 +326,17 @@
                         :href="`/events?date=${currYear}-${currMonth + 1}-${currdate}&profile=&enterType=&continent=&country=&zone=&city=&ministry=&activityArea=&eventType=&eventMode=`" 
                             class="px-3 py-2 text-sm uppercase text-menu transition-colors duration-200 hover:bg-primary-blue hover:text-white"
                         >
-                            Evenements
+                        Evenements
                         </a>
                         <a
-                            href="#"
+                        href="#"
                             @click.prevent="changeRoute('blog')"
-                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
-                    >
+                            class="px-3 py-2 text-sm uppercase text-menu transition-colors duration-200 hover:bg-primary-blue hover:text-white"
+                        >
                         Blog
-                    </a>
-                        </div>
+                        </a>
+                        
+                    </div>
                 </div>
 
                 <a

@@ -46,6 +46,7 @@ const savePost = async () => {
     formData.append("title", personalPost.value.title);
     formData.append("subtheme", personalPost.value.subtheme);
     formData.append("user_id", personalPost.value.user_id);
+    formData.append("language", personalPost.value.language);
     formData.append("content", personalPost.value.content);
     formData.append(
         "category_personal_post_id",
@@ -107,6 +108,24 @@ function loadImage(file) {
                             Characters</span
                         >
                     </div>
+
+                    <div class="col-span-2">
+                            <label
+                                class="dark:text-gray-200 text-gray-700"
+                                for="en"
+                                >Language</label
+                            >
+                            <select
+                                required
+                                v-model="personalPost.language"
+                                class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                            >
+                                <option value="fr">French</option>
+                                <option value="en">English</option>
+                                <option value="es">Espanol</option>
+                                <option value="pt">Portugues</option>
+                            </select>
+                        </div>
 
                     <div class="col-span-2">
                         <label class="dark:text-gray-200 text-gray-700" for="es"

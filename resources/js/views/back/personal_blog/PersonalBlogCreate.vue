@@ -3,6 +3,9 @@ import { useRouter } from "vue-router";
 import { reactive, ref, onMounted } from "vue";
 import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import usePersonalPosts from "@/services/personalPostsServices.js";
+import { useI18n } from "vue-i18n";
+
+const { locale } = useI18n();
 const { createPersonalPost, errors, loading } = usePersonalPosts();
 const { categoryPersonalPosts, getCategoryPersonalPosts } =
     useCategoryPersonalPosts();
@@ -19,6 +22,7 @@ const post = reactive({
     content: "",
     image: "",
     subtheme: "",
+    language: "fr",
     category_personal_post_id: "",
 });
 
@@ -50,6 +54,7 @@ const storePost = async () => {
     formData.append("title", post.title);
     formData.append("subtheme", post.subtheme);
     formData.append("user_id", post.user_id);
+    formData.append("language", post.language);
     formData.append("content", post.content);
     formData.append(
         "category_personal_post_id",
@@ -107,6 +112,24 @@ function loadImage(file) {
                             >{{ post.title.length }} of 50 Characters</span
                         >
                     </div>
+
+                    <div class="col-span-2">
+                            <label
+                                class="dark:text-gray-200 text-gray-700"
+                                for="en"
+                                >Language</label
+                            >
+                            <select
+                                required
+                                v-model="post.language"
+                                class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                            >
+                                <option value="fr">French</option>
+                                <option value="en">English</option>
+                                <option value="es">Espanol</option>
+                                <option value="pt">Portugues</option>
+                            </select>
+                        </div>
 
                     <div class="col-span-2">
                         <label class="dark:text-gray-200 text-gray-700" for="es"

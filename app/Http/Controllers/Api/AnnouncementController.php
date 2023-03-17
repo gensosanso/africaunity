@@ -18,8 +18,8 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::join('users', 'user_id', '=', 'users.id')
                         ->where('announcements.status', '<>', 3)
-                        ->orderBy('users.type', 'desc')
                         ->orderBy('announcements.id', 'desc')
+                        ->orderBy('users.type', 'desc')
                         ->select('announcements.*');
         
         

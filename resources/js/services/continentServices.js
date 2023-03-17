@@ -15,7 +15,7 @@ export default function useContinents() {
     const getContinents = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get(`/api/continents/${locale.value}`, {
+        let response = await axios.get(`/api/continents/language/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },

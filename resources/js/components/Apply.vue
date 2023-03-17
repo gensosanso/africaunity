@@ -166,7 +166,7 @@ const sendApply = async () => {
     formData.append("cv", apply.cv);
 
     errors.value = "";
- /*   try {
+   try {
         loadingC.value = 1;
         await axios.post("/api/jobOffers-apply", formData, {
             headers: {
@@ -182,7 +182,7 @@ const sendApply = async () => {
         }else {
             errors.value = e.response.data.message;
         }
-    }*/
+    }
 };
 
 const handelFileObject = async () => {

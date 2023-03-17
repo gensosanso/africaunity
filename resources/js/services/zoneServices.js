@@ -14,7 +14,7 @@ export default function useZones() {
     const getZones = async () => {
         errors.value = "";
         loading.value = true;
-        let response = await axios.get(`/api/zones/${locale.value}`, {
+        let response = await axios.get(`/api/zones/language/${locale.value}`, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
