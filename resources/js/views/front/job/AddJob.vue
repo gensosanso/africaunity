@@ -262,7 +262,7 @@
                             }}</label>
                             <input
                                 v-model="jobOffer.company_website"
-                                type="url"
+                                type="text"
                                 class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
@@ -573,7 +573,39 @@
                             </select>
                         </div>
 
-                        <div>
+
+                        <div >
+                            <label
+                                class=" text-gray-700"
+                                for="es"
+                                >{{ $t("contract-type") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                required
+                                v-model="jobOffer.contract_type_id"
+                                class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                            >
+                                <option
+                                    v-for="contractType in contractTypes"
+                                    :key="contractType.id"
+                                    :value="contractType.id"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        contractType.name_en
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        contractType.name_fr
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        contractType.name_es
+                                    }}</span>
+                                    <span v-else>{{ contractType.name_pt }}</span>
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="sm:col-span-2 mt-4">
                             <label
                                 class=" text-gray-700"
                                 for="es"
@@ -608,18 +640,11 @@
                     </div>
 
                     <div class="col-span-2 mt-4">
-                        <label class=" text-gray-700" for="pt"
+                        <label class=" text-gray-700 mb-2" for="pt"
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
-                        <textarea
-                            required
-                            type="text"
-                            ref="textarea"
-                            id="pt"
-                            class=" mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                        >
-                        </textarea>
+                        <RichText v-model="jobOffer.description"/>
                     </div>
                 </div>
 
@@ -639,21 +664,6 @@
                     >
                         <Spin :size="'small'" />
                     </button>
-                    <Transition
-                        enter-active-class=" transition-all  "
-                        enter-from-class=" opacity-0  -translate-y-10"
-                        enter-to-class="  opacity-1 translate-y-0"
-                        leave-active-class=""
-                        leave-from-class=""
-                        leave-to-class=""
-                    >
-                        <span
-                            v-if="msgClick != ''"
-                            class="text-xs font-light italic"
-                        >
-                            {{ msgClick }}
-                        </span>
-                    </Transition>
                 </div>
             </form>
         </section>
@@ -669,6 +679,7 @@ import useActivityAreas from "@/services/activityAreaServices.js";
 import useSizeCompanies from "@/services/sizeCompanyServices.js";
 import useLevelStudies from "@/services/levelStudyServices.js";
 import useOfferTypes from "@/services/offerTypeServices.js";
+import useContractTypes from "@/services/contractTypeServices.js";
 import useWorkDepartments from "@/services/workDepartmentServices.js";
 import useWorkModes from "@/services/workModeServices.js";
 import useYearExperiences from "@/services/yearExperienceServices.js";
@@ -678,6 +689,7 @@ import useZones from "@/services/zoneServices.js";
 import useContinents from "@/services/continentServices.js";
 import useCities from "@/services/cityServices.js";
 import { useRouter, useRoute } from "vue-router";
+import RichText from "@/components/RichText.vue";
 
 const router = useRouter();
 const route = useRoute();
@@ -693,6 +705,7 @@ const { activityAreas, getActivityAreas } = useActivityAreas();
 const { sizeCompanies, getSizeCompanies } = useSizeCompanies();
 const { levelStudies, getLevelStudies } = useLevelStudies();
 const { offerTypes, getOfferTypes } = useOfferTypes();
+const { contractTypes, getContractTypes } = useContractTypes();
 const { workDepartments, getWorkDepartments } = useWorkDepartments();
 const { workModes, getWorkModes } = useWorkModes();
 const { yearExperiences, getYearExperiences } = useYearExperiences();
@@ -704,7 +717,7 @@ const { createJobOffer, errors, loading } = useJobOffers();
 
 const jobOffer = reactive({
     title: "",
-    description: "",
+    description: " ",
     location: "",
     company_name: "",
     company_email: user.email,
@@ -717,6 +730,7 @@ const jobOffer = reactive({
     start_date: "",
     year_experience_id: "",
     work_department_id: "",
+    contract_type_id: "",
     work_mode_id: "",
     size_company_id: "",
     offer_type_id: "",
@@ -729,9 +743,7 @@ const jobOffer = reactive({
     languages: [],
     activityAreas: [],
 });
-const msgClick = ref("");
-const nbClick = ref(0);
-const textarea = ref("");
+
 const file = ref(null);
 const zoneFiltered = ref([]);
 const countryFiltered = ref([]);
@@ -752,6 +764,7 @@ onMounted(async () => {
             jobOffer.max_price = route.query.max_price.trim().replaceAll(' ', '');
             jobOffer.currency_id = route.query.currency_id;
             jobOffer.year_experience_id = route.query.year_experience_id;
+            jobOffer.contract_type_id = route.query.contract_type_id;
             jobOffer.work_department_id = route.query.work_department_id;
             jobOffer.work_mode_id = route.query.work_mode_id;
             jobOffer.size_company_id = route.query.size_company_id;
@@ -778,17 +791,6 @@ onMounted(async () => {
         }
 
     }
-    textarea.value.value =  props.duplicate ? jobOffer.description : "";
-    sceditor.create(textarea.value, {
-            format: "xhtml",
-            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-            height: 400,
-            toolbarExclude:
-                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-            icons: "material",
-        });
-    textarea.value.value = props.duplicate ? jobOffer.description : "";
-    nbClick.value++;
     
     await getCurrencies();
     await getContinents();
@@ -808,6 +810,7 @@ onMounted(async () => {
     await getLevelStudies();
     await getSizeCompanies();
     await getOfferTypes();
+    await getContractTypes();
     await getActivityAreas();
     await getLanguages();
 
@@ -842,13 +845,6 @@ const filteredZone = (reset = true) => {
 
 const storeJobOffer = async () => {
 
-    jobOffer.description = textarea.value.value;
-    if (nbClick.value == 1) {
-        nbClick.value++;
-        msgClick.value = "please click again";
-        return;
-    }
-
     let formData = new FormData();
     formData.append("title", jobOffer.title);
     formData.append("description", jobOffer.description);
@@ -864,6 +860,7 @@ const storeJobOffer = async () => {
     formData.append("user_id", jobOffer.user_id);
     formData.append("currency_id", jobOffer.currency_id);
     formData.append("year_experience_id", jobOffer.year_experience_id);
+    formData.append("contract_type_id", jobOffer.contract_type_id);
     formData.append("work_department_id", jobOffer.work_department_id);
     formData.append("work_mode_id", jobOffer.work_mode_id);
     formData.append("size_company_id", jobOffer.size_company_id);

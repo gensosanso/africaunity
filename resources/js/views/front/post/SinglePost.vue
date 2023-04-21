@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                             <p
-                                class="my-4 mt-2 py-4 text-gray-600"
+                                class="my-4 mt-2 py-4 text-gray-600 break-words"
                                 v-html="post.content"
                             ></p>
                         </div>

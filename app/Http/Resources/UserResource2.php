@@ -21,7 +21,7 @@ class UserResource2 extends JsonResource
             'id' => $this->id,
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
-            'slug' => $this->lastname ? Str::slug("$this->firstname  $this->lastname") : Str::slug("$this->firstname"),
+            'slug' => $this->lastname && $this->lastname  != 'null'  ? Str::slug("$this->firstname  $this->lastname") : Str::slug("$this->firstname"),
             'status' => $this->status,
             'email' => $this->email,
             'hide_email' => $this->hide_email,

@@ -246,13 +246,7 @@
                             >{{ $t("content") }}
                             <span class="text-red-500">*</span></label
                         >
-                        <textarea
-                            required
-                            v-if="type == 'article'"
-                            ref="textarea"
-                            class="h-96 w-full"
-                        >
-                        </textarea>
+                        <RichText :key="keyComponent" v-if="type == 'article'" v-model="post.content"/>
 
                         <div v-else>
                             <textarea
@@ -289,21 +283,6 @@
                     >
                         <Spin :size="'small'" />
                     </button>
-                    <Transition
-                        enter-active-class=" transition-all  "
-                        enter-from-class=" opacity-0  -translate-y-10"
-                        enter-to-class="  opacity-1 translate-y-0"
-                        leave-active-class=""
-                        leave-from-class=""
-                        leave-to-class=""
-                    >
-                        <span
-                            v-if="msgClick != ''"
-                            class="text-xs font-light italic"
-                        >
-                            {{ msgClick }}
-                        </span>
-                    </Transition>
                 </div>
             </form>
         </section>
@@ -321,6 +300,7 @@ import useMinistries from "@/services/ministryServices.js";
 
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
 const router = useRouter();
 const props = defineProps({
     type: {
@@ -341,12 +321,10 @@ const { continents, getContinents } = useContinents();
 const { zones, getZones } = useZones();
 const { countries, getCountries } = useCountries();
 const { ministries, getMinistries } = useMinistries();
-const textarea = ref("");
 
-const nbClick = ref(0);
-const msgClick = ref("");
 const zoneFiltered = ref([]);
 const countryFiltered = ref([]);
+const keyComponent = ref(0);
 
 const filteredZone = () => {
     zoneFiltered.value = zones.value.filter((zone) => {
@@ -364,23 +342,11 @@ const filteredCountry = () => {
 };
 onMounted(async () => {
     await getPost(props.id);
+    keyComponent.value++;
 
     if (!types.includes(props.type)) {
         router.push({ name: "home" });
     }
-
-    if (props.type == "article") {
-        textarea.value.value = post.value.content;
-        sceditor.create(textarea.value, {
-            format: "bbcode",
-            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-            height: 400,
-            toolbarExclude:
-                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-            icons: "material",
-        });
-    }
-    nbClick.value++;
 
     await getContinents();
     await getZones();
@@ -395,15 +361,6 @@ onMounted(async () => {
 });
 
 const savePost = async () => {
-    if (props.type == "article") {
-        post.value.content = textarea.value.value;
-        if (nbClick.value == 1) {
-            nbClick.value++;
-            msgClick.value = "please click again";
-            return;
-        }
-    }
-
     let formData = new FormData();
     formData.append("image", post.value.image);
     formData.append("title", post.value.title);
@@ -450,8 +407,8 @@ const handelFileObject = async () => {
     post.value.image = file.value.files[0];
 };
 const changeLocale = (lang) => {
-    locale = lang;
-    localStorage.lang = locale;
+    locale.value = lang;
+    localStorage.lang = locale.value;
 };
 function previewImage(file) {
     return URL.createObjectURL(file);

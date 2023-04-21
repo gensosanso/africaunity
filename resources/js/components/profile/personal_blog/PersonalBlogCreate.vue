@@ -4,6 +4,7 @@ import { reactive, ref, onMounted } from "vue";
 import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import usePersonalPosts from "@/services/personalPostsServices.js";
 import { useI18n } from "vue-i18n";
+import RichText from '@/components/RichText.vue';
 
 const { locale } = useI18n();
 const { createPersonalPost, errors, loading } = usePersonalPosts();
@@ -14,9 +15,7 @@ const props = defineProps({
 });
 
 const emits = defineEmits(["back"]);
-const nbClick = ref(0);
-const textarea = ref("");
-const msgClick = ref("");
+
 const file = ref(null);
 const post = reactive({
     title: "",
@@ -29,28 +28,11 @@ const post = reactive({
 });
 
 onMounted(async () => {
-    sceditor.create(textarea.value, {
-        format: "xhtml",
-        style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-        height: 400,
-        toolbarExclude:
-            "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-        icons: "material",
-    });
-    textarea.value.value == "";
-
-    nbClick.value++;
-
     await getCategoryPersonalPosts();
 });
 
 const storePost = async () => {
-    post.content = textarea.value.value;
-    if (nbClick.value == 1) {
-        nbClick.value++;
-        msgClick.value = "please click again";
-        return;
-    }
+    
     let formData = new FormData();
     formData.append("image", post.image);
     formData.append("title", post.title);
@@ -265,8 +247,7 @@ function goBack() {
                             >{{ $t("content") }}
                             <span class="text-red-500">*</span></label
                         >
-                        <textarea required ref="textarea" class="h-96 w-full">
-                        </textarea>
+                        <RichText  v-model="post.content"/>
                     </div>
                 </div>
 
@@ -286,21 +267,6 @@ function goBack() {
                     >
                         <Spin :size="'small'" />
                     </button>
-                    <Transition
-                        enter-active-class=" transition-all  "
-                        enter-from-class=" opacity-0  -translate-y-10"
-                        enter-to-class="  opacity-1 translate-y-0"
-                        leave-active-class=""
-                        leave-from-class=""
-                        leave-to-class=""
-                    >
-                        <span
-                            v-if="msgClick != ''"
-                            class="text-xs font-light italic"
-                        >
-                            {{ msgClick }}
-                        </span>
-                    </Transition>
                 </div>
             </form>
         </section>

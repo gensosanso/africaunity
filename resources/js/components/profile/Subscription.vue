@@ -39,7 +39,8 @@ const props = defineProps({
                     <h4
                         class="text-gray-700 font-bold capitalize "
                     >
-                        {{ user.subscription_detail.firstname }} {{ user.subscription_detail.lastname }}
+                        {{ user.subscription_detail.firstname }} 
+                        {{ user.subscription_detail.lastname  && user.subscription_detail.lastname != 'null' ? user.subscription_detail.lastname : ''}}
                     </h4>
                     <p class="leading-3">
                         <h2 class="font-light text-sm text-primary-blue">

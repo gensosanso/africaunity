@@ -486,14 +486,7 @@
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
-                        <textarea
-                            required
-                            type="text"
-                            v-model="demonstration.description"
-                            id="pt"
-                            class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                        >
-                        </textarea>
+                        <RichText  v-model="demonstration.description"/>
                     </div>
                 </div>
                 <div class="mt-6">
@@ -532,6 +525,7 @@ import useDemonstrations from "@/services/demonstrationServices.js";
 import useDemonstrationModes from "@/services/demonstrationModeServices.js";
 import useDemonstrationTypes from "@/services/demonstrationTypeServices.js";
 import useDemonstrationNiches from "@/services/demonstrationNicheServices.js";
+import RichText from '@/components/RichText.vue';
 
 const file = ref(null);
 const router = useRouter();

@@ -20,16 +20,20 @@ const show = reactive({
 });
 
 onMounted(async function () {
-    if (props.post != 0) {
+    if (props.post != 0 && props.post != 'create') {
         currentPost.value = props.post;
         changeView("single");
+    }else if(props.post === 'create'){
+        changeView("create");
     }
 });
 
 watch(props, async function (newProps, oldProps) {
-    if (newProps.post != 0) {
+    if (newProps.post != 0 && newProps.post != 'create') {
         currentPost.value = newProps.post;
         changeView("single");
+    }else if(newProps.post === 'create'){
+        changeView("create");
     }
 });
 

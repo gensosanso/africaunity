@@ -13,12 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('personal_post_comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name_fr');
-            $table->string('name_en')->nullable();
-            $table->string('name_es')->nullable();
-            $table->string('name_pt')->nullable();
+            $table->longText('content');
+            $table->integer('status')->default(1);
+            $table->integer('parent')->nullable();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('personal_post_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('personal_post_comments');
     }
 };

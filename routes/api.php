@@ -13,9 +13,11 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CommentController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\ContinentController;
+use App\Http\Controllers\Api\ContractTypeController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\CurrencyController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\DemonstrationCommentController;
 use App\Http\Controllers\Api\DemonstrationController;
 use App\Http\Controllers\Api\DemonstrationModeController;
 use App\Http\Controllers\Api\DemonstrationNicheController;
@@ -31,6 +33,7 @@ use App\Http\Controllers\Api\LegalStatusController;
 use App\Http\Controllers\Api\LevelStudyController;
 use App\Http\Controllers\Api\MinistryController;
 use App\Http\Controllers\Api\OfferTypeController;
+use App\Http\Controllers\Api\PersonalPostCommentController;
 use App\Http\Controllers\Api\PersonalPostController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\SizeCompanyController;
@@ -123,6 +126,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::apiResource('businessSizes', BusinessSizeController::class);
 
     Route::apiResource('offerTypes', OfferTypeController::class);
+    
+    Route::apiResource('contractTypes', ContractTypeController::class);
 
     Route::apiResource('yearExperiences', YearExperienceController::class);
 
@@ -164,6 +169,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::apiResource('jobOffer-comments', JobOfferCommentController::class);
     Route::get('jobOffer-comments-post/{id}', [JobOfferCommentController::class, 'comment_jobOffer']);
     Route::get('jobOffer-comments-user/{id}', [JobOfferCommentController::class, 'comment_user']);
+
+    Route::apiResource('demonstration-comments', DemonstrationCommentController::class);
+    Route::get('demonstration-comments-post/{id}', [DemonstrationCommentController::class, 'comment_demonstration']);
+    Route::get('demonstration-comments-user/{id}', [DemonstrationCommentController::class, 'comment_user']);
+
+    Route::apiResource('personalPost-comments', PersonalPostCommentController::class);
+    Route::get('personalPost-comments-post/{id}', [PersonalPostCommentController::class, 'comment_personalPost']);
+    Route::get('personalPost-comments-user/{id}', [PersonalPostCommentController::class, 'comment_user']);
 
     Route::apiResource('jobOffers', JobOfferController::class);
     Route::get('jobOffers-user/{id}', [JobOfferController::class, 'jobOffers_user']);

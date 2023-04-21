@@ -137,6 +137,40 @@
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="es"
+                                >{{ $t("contract-type") }}
+                            </label>
+                            <select
+                                @change="jobsFilter()"
+                                v-model="filterJob.contract_type"
+                                class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                            >
+                                <option value="">--------------</option>
+                                <option
+                                    v-for="contractType in contractTypes"
+                                    :key="contractType.id"
+                                    :value="contractType.id"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        contractType.name_en
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        contractType.name_fr
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        contractType.name_es
+                                    }}</span>
+                                    <span v-else>{{ contractType.name_pt }}</span>
+                                </option>
+                            </select>
+                        </div>
+
+                       
+                    </div>
+                    <div class="grid grid-cols-1 gap-2 lg:grid-cols-3">
+                        <div>
+                            <label
+                                class="dark:text-gray-200 text-gray-700"
+                                for="es"
                                 >{{ $t("language") + ' ' + $tc("of", 2) + ' ' + $t("work") }}
                             </label>
                             <select
@@ -163,8 +197,6 @@
                                 </option>
                             </select>
                         </div>
-                    </div>
-                    <div class="grid grid-cols-1 gap-2 lg:grid-cols-2">
                         <div>
                             <label
                                 class="dark:text-gray-200 text-gray-700"
@@ -544,6 +576,7 @@ import useOfferTypes from "@/services/offerTypeServices.js";
 // import useWorkDepartments from "@/services/workDepartmentServices.js";
 import useWorkModes from "@/services/workModeServices.js";
 import useYearExperiences from "@/services/yearExperienceServices.js";
+import useContractTypes from "@/services/contractTypeServices.js";
 import useLanguages from "@/services/languageServices.js";
 import useCountries from "@/services/countryServices.js";
 import useZones from "@/services/zoneServices.js";
@@ -559,6 +592,7 @@ const { activityAreas, getActivityAreas } = useActivityAreas();
 // const { sizeCompanies, getSizeCompanies } = useSizeCompanies();
 const { levelStudies, getLevelStudies } = useLevelStudies();
 const { offerTypes, getOfferTypes } = useOfferTypes();
+const { contractTypes, getContractTypes } = useContractTypes();
 // const { workDepartments, getWorkDepartments } = useWorkDepartments();
 const { workModes, getWorkModes } = useWorkModes();
 const { yearExperiences, getYearExperiences } = useYearExperiences();
@@ -582,6 +616,7 @@ onMounted(async () => {
     await getZones();
     await getYearExperiences();
     await getWorkModes();
+    await getContractTypes();
     // await getWorkDepartments();
     await getLevelStudies();
     // await getSizeCompanies();
@@ -614,6 +649,7 @@ const handleScroll = async (e) => {
             filterJob.year_experience == "" &&
             filterJob.level_study == "" &&
             filterJob.min_price == "" &&
+            filterJob.contract_type == "" &&
             filterJob.currency == ""
         ) {
             toGet.value = false;
@@ -633,6 +669,7 @@ const filterJob = reactive({
     city: "",
     work_mode: "",
     offer_type: "",
+    contract_type: "",
     language: "",
     year_experience: "",
     level_study: "",
@@ -648,6 +685,7 @@ const toogleFilter = () => {
 const jobsFilter = async () => {
     if (
         filterJob.country != "" ||
+        filterJob.contract_type != "" ||
         filterJob.continent != "" ||
         filterJob.zone != "" ||
         filterJob.activity_area != "" ||

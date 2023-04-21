@@ -51,6 +51,20 @@
                                     jobOffer.offer_type.name_pt
                                 }}</span>
 
+                                &nbsp;-&nbsp;
+                                <span v-if="$i18n.locale == 'en'">{{
+                                    jobOffer.contract_type.name_en
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                    jobOffer.contract_type.name_fr
+                                }}</span>
+                                <span v-else-if="$i18n.locale == 'es'">{{
+                                    jobOffer.contract_type.name_es
+                                }}</span>
+                                <span v-else>{{
+                                    jobOffer.contract_type.name_pt
+                                }}</span>
+
                                 <span>&nbsp; #{{ jobOffer.reference}}</span> 
                             </a>
 
@@ -94,7 +108,7 @@
                                 </div>
                             </div>
                             <p
-                                class=" my-4 mt-2 py-4 text-gray-600"
+                                class=" my-4 mt-2 py-4 text-gray-600 break-words"
                                 v-html="jobOffer.description"
                             >
                                 

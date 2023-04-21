@@ -270,7 +270,7 @@
                                     class="form-input mt-3 block w-full border-gray-400 px-3 placeholder:text-gray-400 focus:border-primary-blue focus:ring-primary-blue"
                                 />
                                 <span class="text-xs font-light text-gray-500"
-                                    >(Format: png, jpg, jpeg, gif)</span
+                                    >(Format: png, jpg, jpeg, gif) | (size: 160*160)</span
                                 >
                             </div>
 
@@ -285,7 +285,7 @@
                                     class="form-input mt-3 block w-full border-gray-400 px-3 placeholder:text-gray-400 focus:border-primary-blue focus:ring-primary-blue"
                                 />
                                 <span class="text-xs font-light text-gray-500"
-                                    >(Format: png, jpg, jpeg, gif)</span
+                                    >(Format: png, jpg, jpeg, gif) | (size: 1500*250)</span
                                 >
                             </div>
 

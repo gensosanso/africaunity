@@ -177,18 +177,11 @@
                     </div>
 
                     <div class="col-span-2 mt-4">
-                        <label class="text-gray-700" for="pt"
+                        <label class="text-gray-700 mb-2" for="pt"
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
-                        <textarea
-                            required
-                            type="text"
-                            v-model="announcement.description"
-                            id="pt"
-                            class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                        >
-                        </textarea>
+                        <RichText  v-model="announcement.description"/>
                     </div>
                 </div>
                 <div class="mt-6">
@@ -223,6 +216,7 @@ import useUniversities from "@/services/universityServices.js";
 import { useRouter } from "vue-router";
 import SelectFilter from "@/components/SelectFilter.vue";
 import DropZone from "@/components/media/DropZone.vue";
+import RichText from '@/components/RichText.vue';
 const router = useRouter();
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 const { categoryAnnouncements, getCategoryAnnouncements } =

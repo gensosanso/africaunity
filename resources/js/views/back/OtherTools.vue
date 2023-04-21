@@ -355,6 +355,7 @@ import useActivityAreas from "@/services/activityAreaServices.js";
 import useSizeCompanies from "@/services/sizeCompanyServices.js";
 import useLevelStudies from "@/services/levelStudyServices.js";
 import useOfferTypes from "@/services/offerTypeServices.js";
+import useContractTypes from "@/services/contractTypeServices.js";
 import useWorkDepartments from "@/services/workDepartmentServices.js";
 import useWorkModes from "@/services/workModeServices.js";
 import useYearExperiences from "@/services/yearExperienceServices.js";
@@ -433,6 +434,14 @@ const {
     errorsOT,
 } = useOfferTypes();
 const {
+    contractTypes,
+    getContractTypes,
+    createContractType,
+    destroyContractType,
+    updateContractType,
+    errorsCT,
+} = useContractTypes();
+const {
     workDepartments,
     getWorkDepartments,
     createWorkDepartment,
@@ -474,6 +483,7 @@ const others = [
     "Work Mode",
     "Level Studies",
     "Offer Type",
+    "Contract Type",
     "Size Company",
     "Status",
 ];
@@ -576,6 +586,14 @@ const storeItem = async () => {
             }
             break;
         case 10:
+            await createContractType({ ...item });
+            errors.value = errorsCT.value;
+            if (errors.value == "") {
+                await getContractTypes();
+                items.value = contractTypes.value;
+            }
+            break;
+        case 11:
             await createSizeCompany({ ...item });
             errors.value = errorsSC.value;
             if (errors.value == "") {
@@ -583,7 +601,7 @@ const storeItem = async () => {
                 items.value = sizeCompanies.value;
             }
             break;
-        case 11:
+        case 12:
             await createStatus({ ...item });
             errors.value = errorsStatus.value;
             if (errors.value == "") {
@@ -683,6 +701,14 @@ const saveItem = async () => {
             }
             break;
         case 10:
+            await updateContractType(id.value, item);
+            errors.value = errorsCT.value;
+            if (errors.value == "") {
+                await getContractTypes();
+                items.value = contractTypes.value;
+            }
+            break;
+        case 11:
             await updateSizeCompany(id.value, item);
             errors.value = errorsSC.value;
             if (errors.value == "") {
@@ -690,7 +716,7 @@ const saveItem = async () => {
                 items.value = sizeCompanies.value;
             }
             break;
-        case 11:
+        case 12:
             await updateStatus(id.value, item);
             errors.value = errorsStatus.value;
             if (errors.value == "") {
@@ -784,7 +810,7 @@ const deleteItem = async (id) => {
                     items.value = levelStudies.value;
                 }
                 break;
-            case 10:
+            case 9:
                 await destroyOfferType(id);
                 errors.value = errorsOT.value;
                 if (errors.value == "") {
@@ -792,7 +818,15 @@ const deleteItem = async (id) => {
                     items.value = offerTypes.value;
                 }
                 break;
-            case 9:
+            case 10:
+                await destroyContractType(id);
+                errors.value = errorsCT.value;
+                if (errors.value == "") {
+                    await getContractTypes();
+                    items.value = contractTypes.value;
+                }
+                break;
+            case 11:
                 await destroySizeCompany(id);
                 errors.value = errorsSC.value;
                 if (errors.value == "") {
@@ -800,7 +834,7 @@ const deleteItem = async (id) => {
                     items.value = sizeCompanies.value;
                 }
                 break;
-            case 11:
+            case 12:
                 await destroyStatus(id);
                 errors.value = errorsStatus.value;
                 if (errors.value == "") {
@@ -887,13 +921,20 @@ const changeOther = async () => {
             }
             break;
         case 10:
+            await getContractTypes();
+            errors.value = errorsCT.value;
+            if (errors.value == "") {
+                items.value = contractTypes.value;
+            }
+            break;
+        case 11:
             await getSizeCompanies();
             errors.value = errorsSC.value;
             if (errors.value == "") {
                 items.value = sizeCompanies.value;
             }
             break;
-        case 11:
+        case 12:
             await getStatus();
             errors.value = errorsStatus.value;
             if (errors.value == "") {

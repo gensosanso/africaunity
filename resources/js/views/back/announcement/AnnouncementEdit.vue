@@ -155,12 +155,7 @@
                                 for="fr"
                                 >Image</label
                             >
-                            <input
-                                ref="file"
-                                @change="handelFileObject()"
-                                type="file"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
-                            />
+                            <DropZone v-model="files" :multiple="true" />
                         </div>
 
                         <div class="col-span-2">
@@ -169,14 +164,7 @@
                                 for="pt"
                                 >Description</label
                             >
-                            <textarea
-                                required
-                                type="text"
-                                v-model="announcement.description"
-                                id="pt"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                            >
-                            </textarea>
+                            <RichText :key="keyComponent" v-model="announcement.description"/>
                         </div>
                     </div>
                     <div class="mt-6 flex justify-end">
@@ -210,6 +198,8 @@ import usecategoryAnnouncements from "@/services/categoryAnnouncementServices.js
 import useCurrencies from "@/services/currencyServices.js";
 import useUniversities from "@/services/universityServices.js";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
+import DropZone from '@/components/media/DropZone.vue';
 const router = useRouter();
 
 const props = defineProps({
@@ -218,7 +208,7 @@ const props = defineProps({
         type: String,
     },
 });
-const file = ref(null);
+const files = ref([]);
 const loadUniv = ref(false);
 const { updateAnnouncement, getAnnouncement, announcement, errors, loading } =
     useAnnouncements();
@@ -226,10 +216,12 @@ const { categoryAnnouncements, getCategoryAnnouncements } =
     usecategoryAnnouncements();
 const { currencies, getCurrencies } = useCurrencies();
 const { universities, getAllUniversities } = useUniversities();
-
+const keyComponent = ref(0);
 onMounted(async () => {
     loadUniv.value = true;
     await getAnnouncement(props.id);
+    files.value = announcement.value.image;
+    keyComponent.value++;
     await getCategoryAnnouncements();
     await getCurrencies();
     let univId = announcement.value.university_id;
@@ -241,26 +233,7 @@ onMounted(async () => {
 });
 
 const saveAnnouncement = async () => {
-    let formData = new FormData();
-    formData.append("image", announcement.value.image);
-    formData.append("title", announcement.value.title);
-    formData.append("description", announcement.value.description);
-    formData.append("price", announcement.value.price);
-    formData.append("adress", announcement.value.adress);
-    formData.append("website", announcement.value.website);
-    formData.append("email", announcement.value.email);
-    formData.append("phone", announcement.value.phone);
-    formData.append("user_id", announcement.value.user_id);
-    formData.append(
-        "category_announcement_id",
-        announcement.value.category_announcement_id
-    );
-    formData.append("currency_id", announcement.value.currency_id);
-    formData.append("university_id", announcement.value.university_id);
-    formData.append("_method", "PUT");
-
-    await updateAnnouncement(formData, props.id);
-
+    await updateAnnouncement({ ...announcement.value }, props.id);
     if (errors.value == "") {
         router.push({ name: "admin.announcement.index" });
     }

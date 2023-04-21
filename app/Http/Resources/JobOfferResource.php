@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Models\City;
 use App\Models\Continent;
+use App\Models\ContractType;
 use App\Models\Country;
 use App\Models\Currency;
 use App\Models\JobOffer;
@@ -43,6 +44,7 @@ class JobOfferResource extends JsonResource
             'min_price' => $this->min_price,
             'max_price' => $this->max_price,
             'user' => new UserResource2(User::find($this->user_id)),
+            'contract_type' => new ContractTypeResource(ContractType::find($this->contract_type_id)),
             'currency' => new CurrencyResource(Currency::find($this->currency_id)),
             'year_experience' => new YearExperienceResource(YearExperience::find($this->year_experience_id)),
             'work_department' => new WorkDepartmentResource(WorkDepartment::find($this->work_department_id)),

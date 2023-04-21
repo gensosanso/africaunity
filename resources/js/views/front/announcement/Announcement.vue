@@ -372,7 +372,7 @@ const filteredZoneA = () => {
                     v-else-if="announcements.length != 0"
                 >
                     <div
-                        class="dark:bg-gray-800 relative overflow-hidden rounded-lg shadow-lg"
+                        class="dark:bg-gray-800 relative overflow-hidden rounded-lg shadow-lg flex flex-col"
                         v-for="announcement in announcements"
                         :key="announcement.id"
                     >
@@ -384,6 +384,7 @@ const filteredZoneA = () => {
                                     slug: announcement.slug,
                                 },
                             }"
+                            class="block"
                         >
                             <div class="relative">
                                 <div
@@ -408,7 +409,7 @@ const filteredZoneA = () => {
                                 </div>
                             </div>
                         </router-link>
-                        <div class="space-y-2 px-4 py-2">
+                        <div class="space-y-2 px-4 py-2 grow">
                             <a
                                 href="#"
                                 class="mt-2 rounded bg-primary-blue py-1 px-2 text-xs capitalize text-white"
@@ -430,29 +431,14 @@ const filteredZoneA = () => {
                                         slug: announcement.slug,
                                     },
                                 }"
+                                class="block grow"
                             >
                                 <h1
-                                    class="text-2xl font-bold capitalize text-gray-800 hover:underline"
+                                    class="text-2xl font-bold capitalize my-4 text-gray-800 hover:underline"
                                 >
-                                    {{
-                                        announcement.title.length <= 20
-                                            ? announcement.title
-                                            : announcement.title.substring(
-                                                  0,
-                                                  19
-                                              ) + "..."
-                                    }}
+                                    {{ announcement.title }}
                                 </h1>
                             </router-link>
-
-                            <p
-                                class="dark:text-gray-400 mt-2 text-sm text-gray-600"
-                            >
-                                {{
-                                    announcement.description.substring(0, 19) +
-                                    "..."
-                                }}
-                            </p>
                         </div>
                         <div
                             class="flex h-10 items-center justify-between bg-gray-900 px-4 py-2"

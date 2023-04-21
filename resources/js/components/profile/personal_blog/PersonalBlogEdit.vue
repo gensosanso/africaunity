@@ -4,6 +4,7 @@ import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js
 import usePersonalPosts from "@/services/personalPostsServices.js";
 import { ref, onMounted } from "vue";
 import { useI18n } from "vue-i18n";
+import RichText from '@/components/RichText.vue';
 
 const { locale } = useI18n();
 const { getPersonalPost, updatePersonalPost, errors, loading, personalPost } =
@@ -11,9 +12,7 @@ const { getPersonalPost, updatePersonalPost, errors, loading, personalPost } =
 const { categoryPersonalPosts, getCategoryPersonalPosts } =
     useCategoryPersonalPosts();
 const emits = defineEmits(["back"]);
-const nbClick = ref(0);
-const textarea = ref(null);
-const msgClick = ref("");
+const keyComponent = ref(0);
 const file = ref(null);
 const props = defineProps({
     user: Object,
@@ -22,29 +21,12 @@ const props = defineProps({
 
 onMounted(async () => {
     await getPersonalPost(props.id);
-
-    textarea.value.value = personalPost.value.content;
-
-    sceditor.create(textarea.value, {
-        format: "xhtml",
-        style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-        height: 400,
-        toolbarExclude:
-            "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-        icons: "material",
-    });
-
-    nbClick.value++;
+    keyComponent.value++;
     await getCategoryPersonalPosts();
 });
 
 const savePost = async () => {
-    personalPost.value.content = textarea.value.value;
-    if (nbClick.value == 1) {
-        nbClick.value++;
-        msgClick.value = "please click again";
-        return;
-    }
+    
     let formData = new FormData();
     formData.append("image", personalPost.value.image);
     formData.append("title", personalPost.value.title);
@@ -264,8 +246,7 @@ function goBack() {
                             >{{ $t("content") }}
                             <span class="text-red-500">*</span></label
                         >
-                        <textarea required ref="textarea" class="h-96 w-full">
-                        </textarea>
+                        <RichText :key="keyComponent" v-model="personalPost.content"/>
                     </div>
                 </div>
 
@@ -285,21 +266,6 @@ function goBack() {
                     >
                         <Spin :size="'small'" />
                     </button>
-                    <Transition
-                        enter-active-class=" transition-all  "
-                        enter-from-class=" opacity-0  -translate-y-10"
-                        enter-to-class="  opacity-1 translate-y-0"
-                        leave-active-class=""
-                        leave-from-class=""
-                        leave-to-class=""
-                    >
-                        <span
-                            v-if="msgClick != ''"
-                            class="text-xs font-light italic"
-                        >
-                            {{ msgClick }}
-                        </span>
-                    </Transition>
                 </div>
             </form>
         </section>

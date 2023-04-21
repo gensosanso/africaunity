@@ -63,7 +63,6 @@ const filteredData = computed(() => {
     let data = props.data.filter((item) => 
         toNormalForm(item.name.toLowerCase()).includes(toNormalForm(search.value.toLowerCase()))
     );
-    console.log(data);
     if (data.length != 0) {
         subCategory.value = props.subCategory;
         return data;

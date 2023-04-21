@@ -155,12 +155,9 @@
                                 for="fr"
                                 >Image</label
                             >
-                            <input
-                                required
-                                ref="file"
-                                @change="handelFileObject()"
-                                type="file"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
+                            <DropZone
+                                v-model="announcement.image"
+                                :multiple="true"
                             />
                         </div>
 
@@ -170,14 +167,7 @@
                                 for="pt"
                                 >Description</label
                             >
-                            <textarea
-                                required
-                                type="text"
-                                v-model="announcement.description"
-                                id="pt"
-                                class="dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 dark:focus:border-blue-300 mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                            >
-                            </textarea>
+                            <RichText  v-model="announcement.description"/>
                         </div>
                     </div>
 
@@ -212,6 +202,8 @@ import usecategoryAnnouncements from "@/services/categoryAnnouncementServices.js
 import useCurrencies from "@/services/currencyServices.js";
 import useUniversities from "@/services/universityServices.js";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
+import DropZone from '@/components/media/DropZone.vue';
 const router = useRouter();
 const file = ref(null);
 const user = JSON.parse(localStorage.user);
@@ -232,7 +224,7 @@ const announcement = reactive({
     user_id: user.id,
     description: "",
     price: "",
-    image: "",
+    image: [],
     adress: "",
     website: "",
     email: "",
@@ -244,24 +236,7 @@ const announcement = reactive({
 const { createAnnouncement, errors, loading } = useAnnouncements();
 
 const storeAnnouncement = async () => {
-    let formData = new FormData();
-    formData.append("image", announcement.image);
-    formData.append("title", announcement.title);
-    formData.append("description", announcement.description);
-    formData.append("price", announcement.price);
-    formData.append("adress", announcement.adress);
-    formData.append("website", announcement.website);
-    formData.append("email", announcement.email);
-    formData.append("phone", announcement.phone);
-    formData.append("user_id", announcement.user_id);
-    formData.append(
-        "category_announcement_id",
-        announcement.category_announcement_id
-    );
-    formData.append("currency_id", announcement.currency_id);
-    formData.append("university_id", announcement.university_id);
-
-    await createAnnouncement(formData);
+    await createAnnouncement({ ...announcement });
     if (errors.value == "") {
         router.push({
             name: "admin.announcement.index",

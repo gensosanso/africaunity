@@ -82,7 +82,22 @@
                     </div>
                 </div>
                 <div class="lg:w-2/6 w-full justify-center flex lg:justify-end ">
-                    
+                    <router-link
+                    :to="{
+                    name: 'compte',
+                    params: { slug: user.slug, id: user.id },
+                    query: {
+                        'personal_post': 'create'
+                    },
+                    hash: '#personal_post'
+                }"
+                    class="flex items-center justify-start space-x-3 rounded bg-primary-blue px-3 py-2 text-white"
+                >
+                    <PlusCircleIcon class="h-6 w-6" />
+                    <p class="text-base leading-4">
+                        {{ $tc("add", 1) }} Post
+                    </p>
+                </router-link>
                 </div>
             
             </div>
@@ -218,10 +233,10 @@ import usePersonalPosts from "@/services/personalPostsServices.js";
 import useCategoryPersonalPosts from "@/services/categoryPersonalPostServices.js";
 import { ref, onMounted, computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { BookOpenIcon, UserIcon, CalendarIcon } from '@heroicons/vue/24/solid';
+import { BookOpenIcon, UserIcon, CalendarIcon, PlusCircleIcon } from '@heroicons/vue/24/solid';
 
 const { locale } = useI18n();
-
+const user = ref(JSON.parse(localStorage.user));
 const { personalPosts, loading, getPersonalPostsLang } =
     usePersonalPosts();
     const { categoryPersonalPosts, getCategoryPersonalPosts } =

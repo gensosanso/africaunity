@@ -86,9 +86,10 @@
                                     >
                                 </div>
                             </div>
-                            <p class="my-4 mt-2 py-4 text-gray-600">
-                                {{ announcement.description }}
-                            </p>
+                            <p
+                                class="my-4 mt-2 py-4 text-gray-600 break-words"
+                                v-html="announcement.description"
+                            ></p>
                         </div>
 
                         <div class="mt-4">

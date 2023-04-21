@@ -1682,37 +1682,37 @@
       "_ministryServices.b6ba7987.js"
     ]
   },
+  "swiper.css": {
+    "file": "assets/swiper.8962dd2d.css",
+    "src": "swiper.css"
+  },
   "effect-fade.css": {
     "file": "assets/effect-fade.8b6e9104.css",
     "src": "effect-fade.css"
-  },
-  "resources/js/components/Sidebar.css": {
-    "file": "assets/Sidebar.98895d3d.css",
-    "src": "resources/js/components/Sidebar.css"
-  },
-  "resources/js/components/Footer.css": {
-    "file": "assets/Footer.9b9fdd11.css",
-    "src": "resources/js/components/Footer.css"
-  },
-  "resources/js/views/front/demonstration/Demonstration.css": {
-    "file": "assets/Demonstration.8216b339.css",
-    "src": "resources/js/views/front/demonstration/Demonstration.css"
-  },
-  "resources/js/views/front/announcement/SingleAnnouncement.css": {
-    "file": "assets/SingleAnnouncement.5ed6ea1c.css",
-    "src": "resources/js/views/front/announcement/SingleAnnouncement.css"
-  },
-  "resources/js/components/Header.css": {
-    "file": "assets/Header.2284a442.css",
-    "src": "resources/js/components/Header.css"
   },
   "DropZone.css": {
     "file": "assets/DropZone.7def20dc.css",
     "src": "DropZone.css"
   },
-  "swiper.css": {
-    "file": "assets/swiper.8962dd2d.css",
-    "src": "swiper.css"
+  "resources/js/views/front/demonstration/Demonstration.css": {
+    "file": "assets/Demonstration.8216b339.css",
+    "src": "resources/js/views/front/demonstration/Demonstration.css"
+  },
+  "resources/js/components/Header.css": {
+    "file": "assets/Header.2284a442.css",
+    "src": "resources/js/components/Header.css"
+  },
+  "resources/js/views/front/announcement/SingleAnnouncement.css": {
+    "file": "assets/SingleAnnouncement.5ed6ea1c.css",
+    "src": "resources/js/views/front/announcement/SingleAnnouncement.css"
+  },
+  "resources/js/components/Footer.css": {
+    "file": "assets/Footer.9b9fdd11.css",
+    "src": "resources/js/components/Footer.css"
+  },
+  "resources/js/components/Sidebar.css": {
+    "file": "assets/Sidebar.98895d3d.css",
+    "src": "resources/js/components/Sidebar.css"
   },
   "resources/js/app.css": {
     "file": "assets/app.150d0ead.css",

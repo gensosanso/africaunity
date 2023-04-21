@@ -268,7 +268,7 @@
                             }}</label>
                             <input
                                 v-model="jobOffer.company_website"
-                                type="url"
+                                type="text"
                                 class=" mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40"
                             />
                         </div>
@@ -585,7 +585,38 @@
                             </select>
                         </div>
 
-                        <div>
+                        <div >
+                            <label
+                                class=" text-gray-700"
+                                for="es"
+                                >{{ $t("contract-type") }}
+                                <span class="text-red-500">*</span>
+                            </label>
+                            <select
+                                required
+                                v-model="jobOffer.contract_type.id"
+                                class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                            >
+                                <option
+                                    v-for="contractType in contractTypes"
+                                    :key="contractType.id"
+                                    :value="contractType.id"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        contractType.name_en
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        contractType.name_fr
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        contractType.name_es
+                                    }}</span>
+                                    <span v-else>{{ contractType.name_pt }}</span>
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="sm:col-span-2 mt-4">
                             <label
                                 class=" text-gray-700"
                                 for="es"
@@ -621,18 +652,11 @@
                     </div>
 
                     <div class="col-span-2 mt-4">
-                        <label class=" text-gray-700" for="pt"
+                        <label class=" text-gray-700 mb-2" for="pt"
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
-                        <textarea
-                            required
-                            type="text"
-                            ref="textarea"
-                            id="pt"
-                            class=" mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                        >
-                        </textarea>
+                        <RichText :key="keyComponent" v-model="jobOffer.description"/>
                     </div>
                 </div>
 
@@ -652,21 +676,7 @@
                     >
                       <Spin :size="'small'" />
                     </button>
-                    <Transition
-                        enter-active-class=" transition-all  "
-                        enter-from-class=" opacity-0  -translate-y-10"
-                        enter-to-class="  opacity-1 translate-y-0"
-                        leave-active-class=""
-                        leave-from-class=""
-                        leave-to-class=""
-                    >
-                        <span
-                            v-if="msgClick != ''"
-                            class="text-xs font-light italic"
-                        >
-                            {{ msgClick }}
-                        </span>
-                    </Transition>
+                    
                 </div>
             </form>
         </section>
@@ -682,6 +692,7 @@ import useActivityAreas from "@/services/activityAreaServices.js";
 import useSizeCompanies from "@/services/sizeCompanyServices.js";
 import useLevelStudies from "@/services/levelStudyServices.js";
 import useOfferTypes from "@/services/offerTypeServices.js";
+import useContractTypes from "@/services/contractTypeServices.js";
 import useWorkDepartments from "@/services/workDepartmentServices.js";
 import useWorkModes from "@/services/workModeServices.js";
 import useYearExperiences from "@/services/yearExperienceServices.js";
@@ -691,6 +702,7 @@ import useZones from "@/services/zoneServices.js";
 import useContinents from "@/services/continentServices.js";
 import useCities from "@/services/cityServices.js";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
 const router = useRouter();
 
 const props = defineProps({
@@ -708,6 +720,7 @@ const { activityAreas, getActivityAreas } = useActivityAreas();
 const { sizeCompanies, getSizeCompanies } = useSizeCompanies();
 const { levelStudies, getLevelStudies } = useLevelStudies();
 const { offerTypes, getOfferTypes } = useOfferTypes();
+const { contractTypes, getContractTypes } = useContractTypes();
 const { workDepartments, getWorkDepartments } = useWorkDepartments();
 const { workModes, getWorkModes } = useWorkModes();
 const { yearExperiences, getYearExperiences } = useYearExperiences();
@@ -717,12 +730,10 @@ const { continents, getContinents } = useContinents();
 const { cities, getCities } = useCities();
 const clanguages = ref([]);
 const cactivityAreas = ref([]);
-const msgClick = ref("");
-const nbClick = ref(0);
-const textarea = ref("");
 const zoneFiltered = ref([]);
 const countryFiltered = ref([]);
 const cityfiltered = ref([]);
+const keyComponent = ref(0);
 
 const filteredCity = (reset = true) => {
     cityfiltered.value = cities.value.filter((city) => {
@@ -753,19 +764,8 @@ const filteredZone = (reset = true) => {
 
 onMounted(async () => {
     await getJobOffer(props.id);
-
-    textarea.value.value =  jobOffer.value.description;
-    sceditor.create(textarea.value, {
-            format: "xhtml",
-            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-            height: 400,
-            toolbarExclude:
-                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-            icons: "material",
-        });
-    textarea.value.value =  jobOffer.description;
-    nbClick.value++;
-
+    keyComponent.value++;
+    
     for (const item of jobOffer.value.activity_areas) {
         cactivityAreas.value.push(item.id);
     }
@@ -790,6 +790,7 @@ onMounted(async () => {
     await getLevelStudies();
     await getSizeCompanies();
     await getOfferTypes();
+    await getContractTypes();
     await getActivityAreas();
     await getLanguages();
 
@@ -797,14 +798,6 @@ onMounted(async () => {
 });
 
 const saveJobOffer = async () => {
-    jobOffer.value.description = textarea.value.value;
-    if (nbClick.value == 1) {
-        nbClick.value++;
-        msgClick.value = "please click again";
-        console.log(jobOffer.value.max_price);
-        return;
-    }
-
     let formData = new FormData();
     formData.append("title", jobOffer.value.title);
     formData.append("description", jobOffer.value.description);
@@ -820,6 +813,7 @@ const saveJobOffer = async () => {
     formData.append("user_id", jobOffer.value.user.id);
     formData.append("currency_id", jobOffer.value.currency.id);
     formData.append("year_experience_id", jobOffer.value.year_experience.id);
+    formData.append("contract_type_id", jobOffer.value.contract_type.id);
     formData.append("work_department_id", jobOffer.value.work_department.id);
     formData.append("work_mode_id", jobOffer.value.work_mode.id);
     formData.append("size_company_id", jobOffer.value.size_company.id);

@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('details', function (Blueprint $table) {
-            $table->foreignId('status_id')->nullable()->constrained()->nullOnDelete();
+        Schema::create('contract_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_fr');
+            $table->string('name_en')->nullable();
+            $table->string('name_es')->nullable();
+            $table->string('name_pt')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('contract_types');
     }
 };

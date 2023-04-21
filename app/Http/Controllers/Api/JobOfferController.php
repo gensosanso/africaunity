@@ -86,6 +86,15 @@ class JobOfferController extends Controller
             });
         }
 
+        if ($request->contract_type != "") {
+            $contract_type = $request->contract_type;
+            $jobs = $jobs->with(['contract_type' => function ($query) use ($contract_type) {
+                $query->where('id', $contract_type);
+            }])->whereHas('contract_type', function (Builder $query) use ($contract_type) {
+                $query->where('id', $contract_type);
+            });
+        }
+
         if ($request->city != "") {
             $city = $request->city;
             $jobs = $jobs->with(['city' => function ($query) use ($city) {
@@ -222,6 +231,7 @@ class JobOfferController extends Controller
             'year_experience_id' => 'integer|required',
             'work_department_id' => 'integer|required',
             'work_mode_id' => 'integer|required',
+            'contract_type_id' => 'integer|required',
             'size_company_id' => 'integer|required',
             'offer_type_id' => 'integer|required',
             'level_study_id' => 'integer|required',
@@ -247,6 +257,7 @@ class JobOfferController extends Controller
             'currency_id' => $fileds['currency_id'],
             'year_experience_id' => $fileds['year_experience_id'],
             'work_department_id' => $fileds['work_department_id'],
+            'contract_type_id' => $fileds['contract_type_id'],
             'work_mode_id' => $fileds['work_mode_id'],
             'start_date' => $fileds['start_date'],
             'size_company_id' => $fileds['size_company_id'],
@@ -302,6 +313,7 @@ class JobOfferController extends Controller
             'max_price' => 'string|required',
             'user_id' => 'integer|required',
             'currency_id' => 'integer|required',
+            'contract_type_id' => 'integer|required',
             'year_experience_id' => 'integer|required',
             'work_department_id' => 'integer|required',
             'work_mode_id' => 'integer|required',
@@ -328,6 +340,7 @@ class JobOfferController extends Controller
             'user_id' => $fileds['user_id'],
             'currency_id' => $fileds['currency_id'],
             'year_experience_id' => $fileds['year_experience_id'],
+            'contract_type_id' => $fileds['contract_type_id'],
             'work_department_id' => $fileds['work_department_id'],
             'work_mode_id' => $fileds['work_mode_id'],
             'size_company_id' => $fileds['size_company_id'],

@@ -5,8 +5,11 @@ import {
     UserIcon,
 } from "@heroicons/vue/24/solid";
 import usePersonalPosts from "@/services/personalPostsServices.js";
-import { onMounted } from "vue";
+import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from "vue-i18n";
+import usePersonalPostComments from "@/services/personalPostCommentServices";
+import Error from '@/components/Error.vue';
+import { UserCircleIcon } from '@heroicons/vue/24/solid';
 const { locale } = useI18n();
 const props = defineProps({
     id: {
@@ -14,7 +17,21 @@ const props = defineProps({
         type: String,
     },
 });
+
 const { getPersonalPost, errors, personalPost, loading } = usePersonalPosts();
+const {
+    createPersonalPostComment,
+    errorsCmtAds,
+    personalPostComments,
+    getPersonalPostCommentsPost,
+} = usePersonalPostComments();
+const user = localStorage.user ? JSON.parse(localStorage.user) : "";
+const loadingC = ref(0);
+const comment = reactive({
+    user_id: user.id,
+    personal_post_id: "",
+    content: "",
+});
 const emits = defineEmits(["back"]);
 function goBack() {
     emits("back");
@@ -22,7 +39,16 @@ function goBack() {
 const url = window.location.href + `?personal_post=${props.id}#personal_post`;
 onMounted(async () => {
     await getPersonalPost(props.id);
+    await getPersonalPostCommentsPost(props.id);
+    comment.personal_post_id = personalPost.value.id;
 });
+const storeComment = async () => {
+    loadingC.value = 1;
+    await createPersonalPostComment({ ...comment });
+    loadingC.value = 0;
+    comment.content = "";
+    await getPersonalPostCommentsPost(props.id);
+};
 </script>
 
 <template>
@@ -153,6 +179,102 @@ onMounted(async () => {
                         </a>
                     </div>
                 </div>
+               <!-- Comments -->
+               <div class="mt-4 px-8 py-4" v-if="personalPostComments.length != 0">
+                        <div
+                            class="flex border-b py-4"
+                            v-for="comment in personalPostComments"
+                            :key="comment.id"
+                        >
+                            <div>
+                                <router-link
+                                    :to="{
+                                        name: 'compte',
+                                        params: {
+                                            slug: comment.user.slug,
+                                            id: comment.user.id,
+                                        },
+                                    }"
+                                >
+                                    <div
+                                        class="h-10 w-10 overflow-hidden rounded-full shadow md:h-20 md:w-20"
+                                    >
+                                        <img
+                                            :src="comment.user.avatar"
+                                            class="h-full w-full bg-cover object-cover"
+                                            alt=""
+                                            v-if="comment.user.avatar"
+                                        />
+                                        <UserCircleIcon
+                                            v-else
+                                            class="h-full w-full text-gray-500"
+                                        />
+                                    </div>
+                                    <h1
+                                        class="mt-2 text-center text-xs font-bold hover:underline lg:text-sm"
+                                    >
+                                        {{ comment.user.firstname }}
+                                    </h1>
+                                </router-link>
+                                <h3
+                                    class="text-center text-xs font-light lg:text-sm"
+                                >
+                                    {{
+                                        new Date(
+                                            comment.date
+                                        ).toLocaleDateString(locale, {
+                                            day: "numeric",
+                                            year: "numeric",
+                                            month: "long",
+                                        })
+                                    }}
+                                </h3>
+                            </div>
+
+                            <div class="ml-2 w-full p-2 text-xs lg:text-lg">
+                                {{ comment.content }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Comment -->
+                    <Error v-if="errors != ''">{{ errors }}</Error>
+                    <form @submit.prevent="storeComment()">
+                        <div class="mt-4 px-8 py-4">
+                            <label class="text-gray-700" for="pt"
+                                >Laisser un Commentaire
+                                <span class="text-red-500">*</span></label
+                            >
+                            <textarea
+                                v-model="comment.content"
+                                required
+                                type="text"
+                                id="pt"
+                                class="mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                            >
+                            </textarea>
+                            <div class="mt-6">
+                                <input
+                                    type="hidden"
+                                    v-model="comment.post_id"
+                                />
+                                <button
+                                    v-if="loadingC == 0"
+                                    type="submit"
+                                    class="text-md w-full rounded bg-primary-blue px-6 py-4 leading-5 text-white focus:outline-none"
+                                >
+                                    {{ $t("save") }}
+                                </button>
+                                <button
+                                    v-if="loadingC == 1"
+                                    type="submit"
+                                    disabled
+                                    class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
+                                >
+                                    <Spin :size="'small'" />
+                                </button>
+                            </div>
+                        </div>
+                    </form>
             </div>
         </div>
         <div v-else-if="loading == 1" class="p-28">

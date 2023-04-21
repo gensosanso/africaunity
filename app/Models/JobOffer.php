@@ -28,6 +28,7 @@ class JobOffer extends Model
         'work_mode_id',
         'size_company_id',
         'offer_type_id',
+        'contract_type_id',
         'level_study_id',
         'city_id',
         'zone_id',
@@ -69,6 +70,11 @@ class JobOffer extends Model
     public function offer_type()
     {
         return $this->belongsTo(OfferType::class);
+    }
+
+    public function contract_type()
+    {
+        return $this->belongsTo(ContractType::class);
     }
 
     public function size_company()

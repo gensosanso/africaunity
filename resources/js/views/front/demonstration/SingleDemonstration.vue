@@ -97,10 +97,9 @@
                                 </div>
                             </div>
                             <p
-                                class=" my-4 mt-2 py-4 text-gray-600"
-                            >
-                                {{ demonstration.description }}
-                            </p>
+                                class="my-4 mt-2 py-4 text-gray-600 break-words"
+                                v-html="demonstration.description"
+                            ></p>
                         </div>
 
                         <div class="mt-4">
@@ -171,6 +170,102 @@
                             </a>
                         </div>
                     </div>
+                    <!-- Comments -->
+                    <div class="mt-4 px-8 py-4" v-if="demonstrationComments.length != 0">
+                        <div
+                            class="flex border-b py-4"
+                            v-for="comment in demonstrationComments"
+                            :key="comment.id"
+                        >
+                            <div>
+                                <router-link
+                                    :to="{
+                                        name: 'compte',
+                                        params: {
+                                            slug: comment.user.slug,
+                                            id: comment.user.id,
+                                        },
+                                    }"
+                                >
+                                    <div
+                                        class="h-10 w-10 overflow-hidden rounded-full shadow md:h-20 md:w-20"
+                                    >
+                                        <img
+                                            :src="comment.user.avatar"
+                                            class="h-full w-full bg-cover object-cover"
+                                            alt=""
+                                            v-if="comment.user.avatar"
+                                        />
+                                        <UserCircleIcon
+                                            v-else
+                                            class="h-full w-full text-gray-500"
+                                        />
+                                    </div>
+                                    <h1
+                                        class="mt-2 text-center text-xs font-bold hover:underline lg:text-sm"
+                                    >
+                                        {{ comment.user.firstname }}
+                                    </h1>
+                                </router-link>
+                                <h3
+                                    class="text-center text-xs font-light lg:text-sm"
+                                >
+                                    {{
+                                        new Date(
+                                            comment.date
+                                        ).toLocaleDateString(locale, {
+                                            day: "numeric",
+                                            year: "numeric",
+                                            month: "long",
+                                        })
+                                    }}
+                                </h3>
+                            </div>
+
+                            <div class="ml-2 w-full p-2 text-xs lg:text-lg">
+                                {{ comment.content }}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add Comment -->
+                    <Error v-if="errors != ''">{{ errors }}</Error>
+                    <form @submit.prevent="storeComment()">
+                        <div class="mt-4 px-8 py-4">
+                            <label class="text-gray-700" for="pt"
+                                >Laisser un Commentaire
+                                <span class="text-red-500">*</span></label
+                            >
+                            <textarea
+                                v-model="comment.content"
+                                required
+                                type="text"
+                                id="pt"
+                                class="mt-2 block h-60 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
+                            >
+                            </textarea>
+                            <div class="mt-6">
+                                <input
+                                    type="hidden"
+                                    v-model="comment.post_id"
+                                />
+                                <button
+                                    v-if="loadingC == 0"
+                                    type="submit"
+                                    class="text-md w-full rounded bg-primary-blue px-6 py-4 leading-5 text-white focus:outline-none"
+                                >
+                                    {{ $t("save") }}
+                                </button>
+                                <button
+                                    v-if="loadingC == 1"
+                                    type="submit"
+                                    disabled
+                                    class="text-md flex w-full items-center justify-center rounded bg-blue-300 px-6 py-4 leading-5 text-white focus:outline-none"
+                                >
+                                    <Spin :size="'small'" />
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
             <div v-else-if="loading == 1" class="p-28">
@@ -387,12 +482,22 @@ import {
 ClockIcon,
 } from "@heroicons/vue/24/solid";
 import useDemonstrations from "@/services/demonstrationServices.js";
-
+import useDemonstrationComments from "@/services/demonstrationCommentServices.js";
 import { useI18n } from "vue-i18n";
+import Error from '@/components/Error.vue';
+
+
 const { locale } = useI18n();
+const {
+    createDemonstrationComment,
+    errorsCmtAds,
+    demonstrationComments,
+    getDemonstrationCommentsPost,
+} = useDemonstrationComments();
 const { demonstration, getDemonstration, loading, errors } = useDemonstrations();
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 
+const loadingC = ref(0);
 const url = window.location.href;
 const props = defineProps({
     id: String,
@@ -401,7 +506,22 @@ const props = defineProps({
         type: String,
     },
 });
+const comment = reactive({
+    user_id: user.id,
+    demonstration_id: "",
+    content: "",
+});
 onBeforeMount(async () => {
     await getDemonstration(props.id);
+    await getDemonstrationCommentsPost(props.id);
+    comment.demonstration_id = demonstration.value.id;
 });
+
+const storeComment = async () => {
+    loadingC.value = 1;
+    await createDemonstrationComment({ ...comment });
+    loadingC.value = 0;
+    comment.content = "";
+    await getDemonstrationCommentsPost(props.id);
+};
 </script>

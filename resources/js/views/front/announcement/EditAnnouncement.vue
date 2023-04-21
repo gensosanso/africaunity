@@ -179,14 +179,7 @@
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
-                        <textarea
-                            required
-                            type="text"
-                            v-model="announcement.description"
-                            id="pt"
-                            class="mt-2 block h-32 w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring focus:ring-primary-blue focus:ring-opacity-40"
-                        >
-                        </textarea>
+                        <RichText :key="keyComponent" v-model="announcement.description"/>
                     </div>
                 </div>
                 <div class="mt-6">
@@ -220,6 +213,7 @@ import useCurrencies from "@/services/currencyServices.js";
 import useUniversities from "@/services/universityServices.js";
 import DropZone from "@/components/media/DropZone.vue";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
 const router = useRouter();
 
 const props = defineProps({
@@ -229,6 +223,7 @@ const props = defineProps({
     },
 });
 const files = ref([]);
+const keyComponent = ref(0);
 const { updateAnnouncement, getAnnouncement, announcement, errors, loading } =
     useAnnouncements();
 const { categoryAnnouncements, getCategoryAnnouncements } =
@@ -239,8 +234,8 @@ const loadUniv = ref(false);
 onMounted(async () => {
     loadUniv.value = true;
     await getAnnouncement(props.id);
+    keyComponent.value++;
     files.value = announcement.value.image;
-    console.log(announcement.value.image);
     await getCurrencies();
     await getCategoryAnnouncements();
     let univId = announcement.value.university_id;

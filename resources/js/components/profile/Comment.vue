@@ -2,6 +2,8 @@
 import useComments from "@/services/commentServices.js";
 import useAnnouncementComments from "@/services/announcementCommentServices.js";
 import useJobOfferComments from "@/services/jobOfferCommentServices.js";
+import useDemonstrationComments from "@/services/demonstrationCommentServices.js";
+import usePersonalPostComments from "@/services/personalPostCommentServices.js";
 
 import { onMounted, ref, computed, reactive } from "vue";
 import {
@@ -27,6 +29,18 @@ const {
     jobOfferComments,
     getJobOfferCommentsUser,
 } = useJobOfferComments();
+const {
+    updatePersonalPostComment,
+    destroyPersonalPostComment,
+    personalPostComments,
+    getPersonalPostCommentsUser,
+} = usePersonalPostComments();
+const {
+    updateDemonstrationComment,
+    destroyDemonstrationComment,
+    demonstrationComments,
+    getDemonstrationCommentsUser,
+} = useDemonstrationComments();
 const { comments, getCommentsUser, destroyComment, updateComment } =
     useComments();
 const loginUser = ref("");
@@ -37,6 +51,8 @@ const modifyComment = reactive({
     post_id: "",
     announcement_id: "",
     job_offer_id: "",
+    demonstration_id: "",
+    personal_post_id: "",
     content: "",
 });
 const loading = ref(0);
@@ -46,6 +62,8 @@ onMounted(async function () {
     await getCommentsUser(props.user.id);
     await getAnnouncementCommentsUser(props.user.id);
     await getJobOfferCommentsUser(props.user.id);
+    await getPersonalPostCommentsUser(props.user.id);
+    await getDemonstrationCommentsUser(props.user.id);
     loading.value = 0;
 });
 
@@ -56,10 +74,16 @@ const deleteComment = async (id, type) => {
             ? await destroyComment(deleteId)
             :  type == "job" ?
                 await destroyJobOfferComment(deleteId)
+            :  type == "demonstration" ?
+                await destroyDemonstrationComment(deleteId)
+            :  type == "personalPost" ?
+                await destroyPersonalPostComment(deleteId)
             : await destroyAnnouncementComment(deleteId);
         await getCommentsUser(props.user.id);
         await getAnnouncementCommentsUser(props.user.id);
         await getJobOfferCommentsUser(props.user.id);
+        await getPersonalPostCommentsUser(props.user.id);
+        await getDemonstrationCommentsUser(props.user.id);
     }
 };
 
@@ -69,6 +93,8 @@ const selectComment = (comment) => {
     modifyComment.user_id = comment.user.id;
     modifyComment.post_id = comment.post ? comment.post.id : "";
     modifyComment.job_offer_id = comment.jobOffer ? comment.jobOffer.id : "";
+    modifyComment.demonstration_id = comment.demonstration ? comment.demonstration.id : "";
+    modifyComment.personal_post_id = comment.personalPost ? comment.personalPost.id : "";
     modifyComment.announcement_id = comment.announcement
         ? comment.announcement.id
         : "";
@@ -79,22 +105,34 @@ const saveComment = async () => {
         ? await updateComment(modifyComment)
         : modifyComment.job_offer_id ?
             await updateJobOfferComment(modifyComment)
+        : modifyComment.demonstration_id ?
+            await updateDemonstrationComment(modifyComment)
+        : modifyComment.personal_post_id ?
+            await updatePersonalPostComment(modifyComment)
         : await updateAnnouncementComment(modifyComment);
+
     modifyComment.id = "";
     modifyComment.content = "";
     modifyComment.user_id = "";
     modifyComment.post_id = "";
     modifyComment.announcement_id = "";
     modifyComment.job_offer_id = "";
+    modifyComment.demonstration_id = "";
+    modifyComment.personal_post_id = "";
+
     await getCommentsUser(props.user.id);
     await getAnnouncementCommentsUser(props.user.id);
     await getJobOfferCommentsUser(props.user.id);
+    await getPersonalPostCommentsUser(props.user.id);
+    await getDemonstrationCommentsUser(props.user.id);
 };
 
 const filteredComment = computed(() => {
     return comments.value
         .concat(announcementComments.value)
         .concat(jobOfferComments.value)
+        .concat(demonstrationComments.value)
+        .concat(personalPostComments.value)
         .filter((comment) => {
             return comment.post
                 ? comment.post.title
@@ -104,6 +142,14 @@ const filteredComment = computed(() => {
                     comment.jobOffer.title
                       .toLowerCase()
                       .includes(searchComment.value.toLowerCase())
+                : comment.demonstration ?
+                    comment.demonstration.title
+                        .toLowerCase()
+                        .includes(searchComment.value.toLowerCase())
+                : comment.personalPost ?
+                    comment.personalPost.title
+                        .toLowerCase()
+                        .includes(searchComment.value.toLowerCase())
                 : comment.announcement.title
                       .toLowerCase()
                       .includes(searchComment.value.toLowerCase());
@@ -153,7 +199,13 @@ const filteredComment = computed(() => {
                                 scope="col"
                                 class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
                             >
-                                {{ $t("articles") }} & {{ $t("propau") }} & Ads && Jobs
+                                Publication
+                            </th>
+                            <th
+                                scope="col"
+                                class="py-3 px-6 text-left text-xs font-medium uppercase tracking-wider text-gray-700"
+                            >
+                                Publication Type
                             </th>
                             <th
                                 scope="col"
@@ -209,6 +261,36 @@ const filteredComment = computed(() => {
                                     }}</router-link
                                 >
                                 <router-link
+                                    v-else-if="comment.demonstration"
+                                    :to="{
+                                        name: 'show.events',
+                                        params: {
+                                            id: comment.demonstration.id,
+                                            slug: comment.demonstration.slug,
+                                        },
+                                    }"
+                                    class="hover:underline"
+                                    >{{
+                                        comment.demonstration.title
+                                    }}</router-link
+                                >
+                                <router-link
+                                    v-else-if="comment.personalPost"
+                                    :to="{
+                                        name: 'compte',
+                                        params: { id: comment.user.id, slug: comment.user.slug },
+                                        query: {
+                                            personal_post: comment.personalPost.id
+                                        },
+                                        hash: '#personal_post'
+                                        
+                                    }"
+                                    class="hover:underline"
+                                    >{{
+                                        comment.personalPost.title
+                                    }}</router-link
+                                >
+                                <router-link
                                     v-else
                                     :to="{
                                         name: 'show.ads',
@@ -222,6 +304,15 @@ const filteredComment = computed(() => {
                                         comment.announcement.title
                                     }}</router-link
                                 >
+                            </td>
+                            <td
+                                class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
+                            >
+                             <span v-if="comment.post"> Post </span>
+                             <span v-else-if="comment.jobOffer"> Job </span>
+                             <span v-else-if="comment.demonstration"> Event </span>
+                             <span v-else-if="comment.personalPost"> Personal Post </span>
+                             <span v-else> Ads </span>
                             </td>
                             <td
                                 class="whitespace-nowrap py-4 px-6 text-sm font-medium text-gray-900"
@@ -283,6 +374,8 @@ const filteredComment = computed(() => {
                                                 comment.id,
                                                 comment.post ? 'post' 
                                                 : comment.jobOffer ? 'job'
+                                                : comment.demonstration ? 'demonstration'
+                                                : comment.personalPost ? 'personalPost'
                                                 : 'ads'
                                             )
                                         "
