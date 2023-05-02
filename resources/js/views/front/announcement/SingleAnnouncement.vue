@@ -1,4 +1,10 @@
 <template>
+    <Report
+        :open="openReport"
+        :toogleModal="toogleModal"
+        :id="id"
+        :type="'Ads'"
+    />
     <div
         class="mx-auto flex min-h-screen w-full flex-col bg-white p-4 text-lg md:space-y-2 lg:flex-row lg:space-x-2 xl:w-[90%]"
     >
@@ -121,6 +127,19 @@
                                 </router-link>
 
                                 <div class="flex items-center">
+                                    <div>
+                                        <button
+                                            @click="toogleModal()"
+                                            class="flex cursor-pointer items-center space-x-2 rounded-full border border-gray-400 px-2 py-1 text-xs text-gray-400 hover:border-white hover:bg-yellow-300 hover:text-white"
+                                        >
+                                            <ExclamationCircleIcon
+                                                class="h-5 w-5"
+                                            />
+                                            <span class="hidden lg:block">{{
+                                                $t("report")
+                                            }}</span>
+                                        </button>
+                                    </div>
                                     <div
                                         class="ml-3"
                                         v-if="user.id == announcement.user.id"
@@ -418,8 +437,11 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Report from '@/components/Report.vue';
+import { ExclamationCircleIcon } from '@heroicons/vue/24/solid';
 const modules = [Autoplay, Navigation, Pagination];
 const { locale } = useI18n();
+const openReport = ref(false);
 const router = useRouter();
 const props = defineProps({
     id: {
@@ -465,6 +487,10 @@ const storeComment = async () => {
     loadingC.value = 0;
     comment.content = "";
     await getAnnouncementCommentsPost(props.id);
+};
+
+const toogleModal = () => {
+    openReport.value = !openReport.value;
 };
 
 const sendContact = async () => {

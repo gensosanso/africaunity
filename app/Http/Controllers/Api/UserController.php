@@ -135,32 +135,7 @@ class UserController extends Controller
 
         return UserResource2::collection($users->get());
     }
-
-    public function user_report(Request $request)
-    {
-        $request->validate([
-            'user' => 'required',
-            'reported' => 'required',
-            'content' => 'required|string',
-        ]);
-
-        $admins = User::where('type', 'admin')->get();
-
-        $user = User::find($request->reported);
-        $url = "/account/$user->firstname/$user->id";
-
-        $userReport = User::find($request->user);
-
-        foreach ($admins as $admin) {
-            $admin->notify(new ReportNotification($url, $userReport, $request->content));
-        }
-
-        $response = [
-            'status' => true,
-            'message' => 'Report Send successfully!',
-        ];
-        return response($response, 201);
-    }
+   
 
     /**
      * Store a newly created resource in storage.

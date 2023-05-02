@@ -92,7 +92,7 @@ class PostController extends Controller
         return PostResource::collection($posts->orderBy('id', 'desc')->get());
     }
 
-    public function post_report(Request $request)
+   /* public function post_report(Request $request)
     {
         $request->validate([
             'user' => 'required',
@@ -116,7 +116,7 @@ class PostController extends Controller
             'message' => 'Report Send successfully!',
         ];
         return response($response, 201);
-    }
+    }*/
 
     public function post_user($user)
     {

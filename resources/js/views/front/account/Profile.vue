@@ -3,7 +3,7 @@
         :open="openReport"
         :toogleModal="toogleModal"
         :id="id"
-        :type="'account'"
+        :type="'Account'"
     />
 
     <section

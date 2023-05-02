@@ -152,7 +152,7 @@ const filteredDemonstration = computed(() => {
                                         <span class=" absolute px-2 py-1 text-white z-10 rounded-full bg-black/70 -top-6 text-xs group-hover:block hidden">
                                             {{ $t("modify") }}  </span>
                                     </router-link>
-                                    <button
+                                    <!-- <button
                                         @click="
                                             markDemonstration(demonstration.id)
                                         "
@@ -170,7 +170,7 @@ const filteredDemonstration = computed(() => {
                                             <span v-if="demonstration.status != 3">{{ $t("mark-provided") }}</span>
                                             <span v-else>{{ $t("mark-progress") }}</span>
                                         </span>
-                                    </button>
+                                    </button> -->
                                     <button
                                         @click="
                                             deleteDemonstration(demonstration.id)

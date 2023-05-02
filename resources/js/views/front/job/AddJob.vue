@@ -644,7 +644,7 @@
                             >{{ $t("description") }}
                             <span class="text-red-500">*</span>
                         </label>
-                        <RichText v-model="jobOffer.description"/>
+                        <RichText :key="keyComponent" v-model="jobOffer.description"/>
                     </div>
                 </div>
 
@@ -714,6 +714,8 @@ const { zones, getZones } = useZones();
 const { continents, getContinents } = useContinents();
 const { cities, getCities } = useCities();
 const { createJobOffer, errors, loading } = useJobOffers();
+const keyComponent = ref(0);
+
 
 const jobOffer = reactive({
     title: "",
@@ -774,6 +776,7 @@ onMounted(async () => {
             jobOffer.zone_id = route.query.zone_id;
             jobOffer.continent_id = route.query.continent_id;
             jobOffer.country_id = route.query.country_id;
+            keyComponent.value++;
 
             let activity_areas  = JSON.parse(route.query.activity_areas);
             let languages  = JSON.parse(route.query.languages);

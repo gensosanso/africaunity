@@ -497,6 +497,15 @@ const routes = [
             },
 
             {
+                path: "reportings",
+                component: () => import("@/views/back/Reporting.vue"),
+                name: "admin.reporting",
+                meta: {
+                    title: siteName + " - Reportings",
+                },
+            },
+
+            {
                 path: "category-personal-blog",
                 component: () =>
                     import("@/views/back/CategoryPersonalBlog.vue"),

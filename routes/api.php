@@ -36,6 +36,7 @@ use App\Http\Controllers\Api\OfferTypeController;
 use App\Http\Controllers\Api\PersonalPostCommentController;
 use App\Http\Controllers\Api\PersonalPostController;
 use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\ReportController;
 use App\Http\Controllers\Api\SizeCompanyController;
 use App\Http\Controllers\Api\StatusController;
 use App\Http\Controllers\Api\UniversityController;
@@ -84,13 +85,17 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
 
     Route::get("/dash-data", [DashboardController::class, 'index']);
 
+    Route::post("/report", [ReportController::class, 'index']);
+    Route::get("/reports", [ReportController::class, 'all']);
+    Route::delete("/reports/{reports}", [ReportController::class, 'delete']);
+
     Route::get("/posts-type/{type}/{lang}", [PostController::class, 'post_type']);
     Route::get("/posts-user/{user}", [PostController::class, 'post_user']);
     Route::get("/posts-date/{date}/{lang}", [PostController::class, 'post_date']);
     Route::post("/posts-filter", [PostController::class, 'filter']);
     Route::apiResource('posts', PostController::class);
     Route::get("/posts2/{post}", [PostController::class, 'show2']);
-    Route::post("/post-report", [PostController::class, 'post_report']);
+    //Route::post("/post-report", [PostController::class, 'post_report']);
 
     Route::post("/demonstrations-filter", [DemonstrationController::class, 'filter']);
     Route::get("/demonstrations-user/{user}", [DemonstrationController::class, 'demonstration_user']);
@@ -110,7 +115,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::post("/users-delete-data", [UserController::class, 'deleteData']);
     Route::post("/users-delete-user", [UserController::class, 'deleteUser']);
     Route::post("/users-filter", [UserController::class, 'filter']);
-    Route::post("/users-report", [UserController::class, 'user_report']);
+    //Route::post("/users-report", [UserController::class, 'user_report']);
 
     Route::apiResource('universities', UniversityController::class);
     Route::get('/university/all', [UniversityController::class, 'all']);

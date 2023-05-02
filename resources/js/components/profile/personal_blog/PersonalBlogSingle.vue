@@ -9,7 +9,8 @@ import { onMounted, reactive, ref } from 'vue';
 import { useI18n } from "vue-i18n";
 import usePersonalPostComments from "@/services/personalPostCommentServices";
 import Error from '@/components/Error.vue';
-import { UserCircleIcon } from '@heroicons/vue/24/solid';
+import { UserCircleIcon, ExclamationCircleIcon } from '@heroicons/vue/24/solid';
+import Report from '@/components/Report.vue';
 const { locale } = useI18n();
 const props = defineProps({
     id: {
@@ -27,6 +28,7 @@ const {
 } = usePersonalPostComments();
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 const loadingC = ref(0);
+const openReport = ref(false);
 const comment = reactive({
     user_id: user.id,
     personal_post_id: "",
@@ -49,10 +51,19 @@ const storeComment = async () => {
     comment.content = "";
     await getPersonalPostCommentsPost(props.id);
 };
+const toogleModal = () => {
+    openReport.value = !openReport.value;
+};
 </script>
 
 <template>
     <div>
+        <Report
+        :open="openReport"
+        :toogleModal="toogleModal"
+        :id="id"
+        :type="'Blog Post'"
+    />
         <button
             type="button"
             @click="goBack()"
@@ -143,7 +154,7 @@ const storeComment = async () => {
 
                     <div class="mt-4">
                         <div class="flex items-center justify-between">
-                            <!-- <div>
+                             <div>
                                         <button
                                             @click="toogleModal()"
                                             class="flex cursor-pointer items-center space-x-2 rounded-full border border-gray-400 px-2 py-1 text-xs text-gray-400 hover:border-white hover:bg-yellow-300 hover:text-white"
@@ -155,7 +166,7 @@ const storeComment = async () => {
                                                 $t("report")
                                             }}</span>
                                         </button>
-                                    </div> -->
+                                    </div> 
                         </div>
                     </div>
                     <div class="flex items-center space-x-3 px-2 py-4">
@@ -236,6 +247,7 @@ const storeComment = async () => {
                             </div>
                         </div>
                     </div>
+                   
                     <!-- Add Comment -->
                     <Error v-if="errors != ''">{{ errors }}</Error>
                     <form @submit.prevent="storeComment()">

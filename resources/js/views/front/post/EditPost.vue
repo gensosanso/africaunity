@@ -348,6 +348,8 @@ onMounted(async () => {
         router.push({ name: "home" });
     }
 
+    locale.value = post.value.language;
+
     await getContinents();
     await getZones();
     await getCountries();
@@ -381,6 +383,7 @@ const savePost = async () => {
                 name: "compte",
                 params: {
                     name: user.firstname,
+                    slug: user.slug,
                     id: user.id,
                 },
                 query: {
@@ -392,6 +395,7 @@ const savePost = async () => {
                 name: "compte",
                 params: {
                     name: user.firstname,
+                    slug: user.slug,
                     id: user.id,
                 },
                 query: {
@@ -407,6 +411,7 @@ const handelFileObject = async () => {
     post.value.image = file.value.files[0];
 };
 const changeLocale = (lang) => {
+    post.value.language = lang;
     locale.value = lang;
     localStorage.lang = locale.value;
 };

@@ -234,6 +234,7 @@ const filteredJob = computed(() => {
                                                size_company_id: jobOffer.size_company.id, 
                                                offer_type_id: jobOffer.offer_type.id, 
                                                level_study_id: jobOffer.level_study.id, 
+                                               contract_type_id: jobOffer.contract_type_id, 
                                                city_id: jobOffer.city.id, 
                                                zone_id: jobOffer.zone.id, 
                                                continent_id: jobOffer.continent.id, 

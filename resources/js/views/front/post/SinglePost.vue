@@ -3,7 +3,7 @@
         :open="openReport"
         :toogleModal="toogleModal"
         :id="id"
-        :type="'post'"
+        :type="'Post'"
     />
     <div
         class="mx-auto flex min-h-screen w-full flex-col bg-white p-4 text-lg md:space-y-2 lg:flex-row lg:space-x-2 xl:w-[90%]"

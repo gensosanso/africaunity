@@ -1727,21 +1727,17 @@
     "file": "assets/Header.2284a442.css",
     "src": "resources/js/components/Header.css"
   },
-  "RichText.css": {
-    "file": "assets/RichText.2181ddc5.css",
-    "src": "RichText.css"
-  },
   "effect-fade.css": {
     "file": "assets/effect-fade.8b6e9104.css",
     "src": "effect-fade.css"
   },
+  "RichText.css": {
+    "file": "assets/RichText.2181ddc5.css",
+    "src": "RichText.css"
+  },
   "DropZone.css": {
     "file": "assets/DropZone.7def20dc.css",
     "src": "DropZone.css"
-  },
-  "resources/js/views/front/demonstration/Demonstration.css": {
-    "file": "assets/Demonstration.8216b339.css",
-    "src": "resources/js/views/front/demonstration/Demonstration.css"
   },
   "resources/js/components/Sidebar.css": {
     "file": "assets/Sidebar.98895d3d.css",
@@ -1750,6 +1746,10 @@
   "resources/js/components/Footer.css": {
     "file": "assets/Footer.9b9fdd11.css",
     "src": "resources/js/components/Footer.css"
+  },
+  "resources/js/views/front/demonstration/Demonstration.css": {
+    "file": "assets/Demonstration.8216b339.css",
+    "src": "resources/js/views/front/demonstration/Demonstration.css"
   },
   "swiper.css": {
     "file": "assets/swiper.8962dd2d.css",

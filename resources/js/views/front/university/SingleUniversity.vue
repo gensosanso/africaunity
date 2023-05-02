@@ -1,4 +1,10 @@
 <template>
+    <Report
+        :open="openReport"
+        :toogleModal="toogleModal"
+        :id="id"
+        :type="'University'"
+    />
     <div class="mx-auto min-h-screen w-full bg-white px-20 text-lg xl:w-[90%]">
         <div>
             <div class="py-6 px-4" v-if="university.length != 0">
@@ -7,7 +13,7 @@
                     <img
                         class="h-96 w-full object-cover"
                         :src="university.image"
-                        alt=""
+                        :alt="university.name"
                     />
                     <div class="p-6">
                         <div>
@@ -46,6 +52,19 @@
                                 class="my-4 mt-2 py-4 text-gray-600"
                                 v-html="university.description"
                             ></p>
+                        </div>
+                        <div>
+                            <button
+                                @click="toogleModal()"
+                                class="flex cursor-pointer items-center space-x-2 rounded-full border border-gray-400 px-2 py-1 text-xs text-gray-400 hover:border-white hover:bg-yellow-300 hover:text-white"
+                            >
+                                <ExclamationCircleIcon
+                                    class="h-5 w-5"
+                                />
+                                <span class="hidden lg:block">{{
+                                    $t("report")
+                                }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -231,20 +250,18 @@
 </template>
 
 <script setup>
-import router from "@/router";
 import { reactive, ref, onMounted, computed } from "vue";
 import {
-    FaceFrownIcon,
     PlusCircleIcon,
     MegaphoneIcon,
-    CalendarIcon,
     UserIcon,
+    ExclamationCircleIcon,
 } from "@heroicons/vue/24/solid";
 import useUniversities from "@/services/universityServices.js";
 import useAnnouncements from "@/services/announcementServices.js";
 import usecategoryAnnouncements from "@/services/categoryAnnouncementServices.js";
-import Error from "@/components/Error.vue";
 import { useI18n } from "vue-i18n";
+import Report from '@/components/Report.vue';
 const { locale } = useI18n();
 const props = defineProps({
     id: {
@@ -256,7 +273,7 @@ const props = defineProps({
         type: String,
     },
 });
-
+const openReport = ref(false);
 const { university, getUniversity2, loading } = useUniversities();
 const { categoryAnnouncements, getCategoryAnnouncements } =
     usecategoryAnnouncements();
@@ -288,4 +305,8 @@ const filteredAnnouncement = computed(() => {
         return data;
     });
 });
+
+const toogleModal = () => {
+    openReport.value = !openReport.value;
+};
 </script>

@@ -37,6 +37,10 @@ class JobOffer extends Model
         'country_id',
     ];
 
+    protected $casts = [
+        'start_date' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

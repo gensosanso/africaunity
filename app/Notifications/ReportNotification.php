@@ -11,6 +11,8 @@ class ReportNotification extends Notification
 {
     use Queueable;
 
+    public $type;
+    public $reported;
     public $url;
     public $reportUser;
     public $content;
@@ -20,8 +22,10 @@ class ReportNotification extends Notification
      *
      * @return void
      */
-    public function __construct($url, $reportUser, $content)
+    public function __construct($type, $reported, $url, $reportUser, $content)
     {
+        $this->type = $type;
+        $this->reported = $reported;
         $this->url = $url;
         $this->reportUser = $reportUser;
         $this->content = $content;
@@ -46,8 +50,9 @@ class ReportNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('New Post Report')
-                    ->line('Report :'. url("$this->url"))
+                    ->line("New $this->type Report")
+                    ->line('Reported :'. $this->reported)
+                    ->line('Reported URL :'. url("$this->url"))
                     ->line('The user report : '.$this->reportUser->firstname.' '.$this->reportUser->lastname.'('.$this->reportUser->email.')')
                     ->line('Message : '.$this->content)
                     ->action('Login to manage', url('/admin'))

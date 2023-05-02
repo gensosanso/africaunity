@@ -8,6 +8,12 @@
         :open="openApply"
         :id="id"
     />
+        <Report
+        :open="openReport"
+        :toogleModal="toogleModalReport"
+        :id="id"
+        :type="'Job'"
+    />
     <div
         class="mx-auto flex min-h-screen w-full flex-col bg-white p-4 text-lg md:space-y-2 lg:flex-row lg:space-x-2 xl:w-[90%]"
     >
@@ -144,6 +150,19 @@
                                 </router-link>
 
                                 <div class="flex items-center">
+                                    <div>
+                                        <button
+                                            @click="toogleModalReport()"
+                                            class="flex cursor-pointer items-center space-x-2 rounded-full border border-gray-400 px-2 py-1 text-xs text-gray-400 hover:border-white hover:bg-yellow-300 hover:text-white"
+                                        >
+                                            <ExclamationCircleIcon
+                                                class="h-5 w-5"
+                                            />
+                                            <span class="hidden lg:block">{{
+                                                $t("report")
+                                            }}</span>
+                                        </button>
+                                    </div>
                                     <div
                                         class="ml-3"
                                         v-if="user.id == jobOffer.user.id"
@@ -580,6 +599,8 @@ import useJobOffers from "@/services/jobOfferServices.js";
 import useJobOfferComments from "@/services/jobOfferCommentServices.js";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
+import Report from '@/components/Report.vue';
+import { ExclamationCircleIcon } from '@heroicons/vue/24/solid';
 
 const {
     createJobOfferComment,
@@ -594,6 +615,7 @@ const { jobOffer, getJobOffer, loading, errors } = useJobOffers();
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
 const loadingC = ref(0);
 const url = window.location.href;
+const openReport = ref(false);
 const comment = reactive({
     user_id: user.id,
     job_offer_id: "",
@@ -622,5 +644,8 @@ const storeComment = async () => {
 
 const toogleModal = () => {
     openApply.value = !openApply.value;
+};
+const toogleModalReport = () => {
+    openReport.value = !openReport.value;
 };
 </script>

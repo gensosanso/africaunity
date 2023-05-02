@@ -73,6 +73,13 @@
                         <SwatchIcon class="h-6 w-6" />
                         <p class="text-base leading-4">Others</p>
                     </router-link>
+                    <router-link
+                        :to="{ name: 'admin.reporting' }"
+                        class="jusitfy-start flex w-full items-center space-x-6 rounded text-white focus:text-primary-blue focus:outline-none"
+                    >
+                        <ExclamationCircleIcon class="h-6 w-6" />
+                        <p class="text-base leading-4">Reportings</p>
+                    </router-link>
                 </div>
                 <div
                     class="flex w-full flex-col items-center justify-start border-b border-gray-600 px-4"
@@ -605,6 +612,7 @@ import {
 } from "@heroicons/vue/24/solid";
 import axios from "axios";
 import { reactive, ref, onMounted } from "vue";
+import { ExclamationCircleIcon } from '@heroicons/vue/24/solid';
 
 const user = reactive({});
 const verifAdmin = async () => {

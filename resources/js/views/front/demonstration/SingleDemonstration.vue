@@ -1,4 +1,10 @@
 <template>
+    <Report
+        :open="openReport"
+        :toogleModal="toogleModal"
+        :id="id"
+        :type="'Event'"
+    />
     <div
         class="mx-auto flex min-h-screen w-full flex-col bg-white p-4 text-lg md:space-y-2 lg:flex-row lg:space-x-2 xl:w-[90%]"
     >
@@ -131,6 +137,19 @@
                                 </router-link>
 
                                 <div class="flex items-center">
+                                    <div>
+                                        <button
+                                            @click="toogleModal()"
+                                            class="flex cursor-pointer items-center space-x-2 rounded-full border border-gray-400 px-2 py-1 text-xs text-gray-400 hover:border-white hover:bg-yellow-300 hover:text-white"
+                                        >
+                                            <ExclamationCircleIcon
+                                                class="h-5 w-5"
+                                            />
+                                            <span class="hidden lg:block">{{
+                                                $t("report")
+                                            }}</span>
+                                        </button>
+                                    </div>
                                     <div
                                         class="ml-3"
                                         v-if="user.id == demonstration.user.id"
@@ -485,6 +504,8 @@ import useDemonstrations from "@/services/demonstrationServices.js";
 import useDemonstrationComments from "@/services/demonstrationCommentServices.js";
 import { useI18n } from "vue-i18n";
 import Error from '@/components/Error.vue';
+import { ExclamationCircleIcon } from '@heroicons/vue/24/solid';
+import Report from '@/components/Report.vue';
 
 
 const { locale } = useI18n();
@@ -496,7 +517,7 @@ const {
 } = useDemonstrationComments();
 const { demonstration, getDemonstration, loading, errors } = useDemonstrations();
 const user = localStorage.user ? JSON.parse(localStorage.user) : "";
-
+const openReport = ref(false);
 const loadingC = ref(0);
 const url = window.location.href;
 const props = defineProps({
@@ -523,5 +544,8 @@ const storeComment = async () => {
     loadingC.value = 0;
     comment.content = "";
     await getDemonstrationCommentsPost(props.id);
+};
+const toogleModal = () => {
+    openReport.value = !openReport.value;
 };
 </script>

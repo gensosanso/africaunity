@@ -594,6 +594,7 @@
                             </label>
                             <select
                                 required
+                                v-if="jobOffer.contract_type"
                                 v-model="jobOffer.contract_type.id"
                                 class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                             >
@@ -773,7 +774,6 @@ onMounted(async () => {
         clanguages.value.push(item.id);
     }
 
-    await getCurrencies();
     await getContinents();
     await getZones();
     filteredZone(false);
@@ -784,6 +784,7 @@ onMounted(async () => {
     await getCities();
     filteredCity(false);
 
+    await getCurrencies();
     await getYearExperiences();
     await getWorkModes();
     await getWorkDepartments();

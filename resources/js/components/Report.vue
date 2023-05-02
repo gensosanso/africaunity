@@ -78,7 +78,6 @@
                             disabled
                             class="dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flex w-full items-center justify-center rounded-lg bg-blue-300 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
                         >
-                            {{ $t("send") }}...
                             <Spin :size="'small'" />
                         </button>
                     </form>
@@ -110,8 +109,9 @@ const props = defineProps({
 });
 
 const report = reactive({
-    user: JSON.parse(localStorage.user).id,
-    reported: props.id,
+    type: props.type,
+    reported_id: props.id,
+    user_id: JSON.parse(localStorage.user).id,
     content: "",
 });
 const loadingC = ref(0);
@@ -120,19 +120,11 @@ const sendReport = async () => {
     errors.value = "";
     try {
         loadingC.value = 1;
-        if (props.type == "post") {
-            await axios.post("/api/post-report", report, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.token}`,
-                },
-            });
-        } else {
-            await axios.post("/api/users-report", report, {
-                headers: {
-                    Authorization: `Bearer ${localStorage.token}`,
-                },
-            });
-        }
+        await axios.post("/api/report", report, {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
         loadingC.value = 2;
     } catch (e) {
         if (e.response.status == 422) {
