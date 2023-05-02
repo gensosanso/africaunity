@@ -15,7 +15,9 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
+        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_KEY_SECRET'));
         $fields = $request->validate([
+            'recaptcha' => 'required|string',
             'firstname' => 'required|string',
             'lastname' => 'nullable|string',
             'type' => 'required|string',
@@ -23,70 +25,87 @@ class AuthController extends Controller
             'password' => 'required|min:8|confirmed'
         ]);
 
-        $user = User::create([
-            'firstname' => $fields['firstname'],
-            'lastname' => $fields['lastname'],
-            'type' => $fields['type'],
-            'email' => $fields['email'],
-            'password' => Hash::make($fields['password']),
-        ]);
-        
-        $status = Status::query()->orderBy('id', 'asc')->first();
+        $resp = $recaptcha->verify($request->recaptcha);
+        if ($resp->isSuccess()) {
+            $user = User::create([
+                'firstname' => $fields['firstname'],
+                'lastname' => $fields['lastname'],
+                'type' => $fields['type'],
+                'email' => $fields['email'],
+                'password' => Hash::make($fields['password']),
+            ]);
+            
+            $status = Status::query()->orderBy('id', 'asc')->first();
 
-        Detail::create([
-            'user_id' => $user->id,
-            'status_id' => $status->id
-        ]);
+            Detail::create([
+                'user_id' => $user->id,
+                'status_id' => $status->id
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
 
-        //create token
-        $token = $user->createToken('myapptoken')->plainTextToken;
+            //create token
+            $token = $user->createToken('myapptoken')->plainTextToken;
 
-        $response = [
-            'status' => true,
-            'message' => 'registered successfully!',
-            'data' => [
-                'user' => new UserResource2($user),
-                'token' => $token
-            ]
-        ];
-        return response($response, 201);
+            $response = [
+                'status' => true,
+                'message' => 'registered successfully!',
+                'data' => [
+                    'user' => new UserResource2($user),
+                    'token' => $token
+                ]
+            ];
+            return response($response, 201);
+        } else {
+            $errors = $resp->getErrorCodes();
+            return response(['status' => false, 'message' => 'captcha error.'. $errors[0]], 403);
+        }
     }
 
     public function login(Request $request)
     {
+        
+        $recaptcha = new \ReCaptcha\ReCaptcha(env('RECAPTCHA_KEY_SECRET'));
         $fields = $request->validate([
             'email' => 'required|string|email',
+            'recaptcha' => 'required|string',
             'password' => 'required'
         ]);
-        //check email
-        $user = User::where('email', $fields['email'])->first();
-        //check password
-        if (!$user || !Hash::check($fields['password'], $user->password)) {
-            return response(['status' => false, 'message' => 'invalid email or password'], 401);
-        }
-        //verify activation email
-        if (!$user->email_verified_at) {
-            return response(['status' => false, 'message' => 'Your email address is not verified.'], 403);
-        }
-        //verify activation account
-        if ($user->status == 3) {
-            return response(['status' => false, 'message' => 'Your account is deactivated please contact our administrators.'], 403);
-        }
 
-        //create token
-        $token = $user->createToken('myapptoken')->plainTextToken;
+        
+        $resp = $recaptcha->verify($request->recaptcha);
+        if ($resp->isSuccess()) {
+            //check email
+            $user = User::where('email', $fields['email'])->first();
+            //check password
+            if (!$user || !Hash::check($fields['password'], $user->password)) {
+                return response(['status' => false, 'message' => 'invalid email or password'], 401);
+            }
+            //verify activation email
+            if (!$user->email_verified_at) {
+                return response(['status' => false, 'message' => 'Your email address is not verified.'], 403);
+            }
+            //verify activation account
+            if ($user->status == 3) {
+                return response(['status' => false, 'message' => 'Your account is deactivated please contact our administrators.'], 403);
+            }
 
-        $response = [
-            'status' => true,
-            'message' => 'Login successful!',
-            'data' => [
-                'user' => new UserResource2($user),
-                'token' => $token
-            ]
-        ];
-        return response($response, 201);
+            //create token
+            $token = $user->createToken('myapptoken')->plainTextToken;
+
+            $response = [
+                'status' => true,
+                'message' => 'Login successful!',
+                'data' => [
+                    'user' => new UserResource2($user),
+                    'token' => $token
+                ]
+            ];
+            return response($response, 201);
+        } else {
+            $errors = $resp->getErrorCodes();
+            return response(['status' => false, 'message' => 'captcha error.'. $errors[0]], 403);
+        }
     }
 
     public function login_admin(Request $request)

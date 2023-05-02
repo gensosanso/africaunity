@@ -169,13 +169,12 @@
                     </button>
                 </div>
             </router-link>
-            <router-link
+            <a href="/login"
                 v-else
-                :to="{ name: 'login' }"
                 class="mx-2 flex bg-primary-blue px-3 py-2 uppercase text-white transition-colors duration-200"
             >
                 {{ $t("login") }}
-            </router-link>
+            </a>
 
             <div
                 @mouseleave="open.lang = false"
@@ -407,12 +406,11 @@
                     </div>
                 </a>
                 <a
-                    href="#"
-                    @click.prevent="changeRoute('login')"
+                    href="/login"
                     v-else
                     class="bg-primary-blue px-3 py-2 uppercase text-white transition-colors duration-200"
                 >
-                    {{ $t("login") }} / {{ $t("register") }}
+                    {{ $t("login") }} 
                 </a>
 
                 <div class="relative py-2 px-3 uppercase text-menu">

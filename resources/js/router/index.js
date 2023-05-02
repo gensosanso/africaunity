@@ -1018,12 +1018,7 @@ router.beforeEach((to, from, next) => {
     ) {
         next({ name: "login.admin" });
     } else if (to.meta.requiresAuth && !localStorage.token) {
-        router.push({
-            name: "login",
-            params: {
-                redirect: "not-login",
-            },
-        });
+        window.location.href = '/login/not-login'
     } else {
         next();
     }

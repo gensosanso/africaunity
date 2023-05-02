@@ -29,10 +29,12 @@
 
     <link rel="icon" type="image/x-icon" href="{{ asset('/img/ico.png') }}">
     @vite(['resources/js/app.js'])
+    
+
 </head>
 
 <body class="bg-white" style="background-image:url('/img/random-shapes.svg')">
-
+  
     <div id="app" class="">
         
     </div>

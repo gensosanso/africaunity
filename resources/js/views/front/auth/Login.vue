@@ -53,7 +53,7 @@
                         {{ $t("login") }}
                     </h1>
                     <Error v-if="errors != ''">{{ errors }}</Error>
-                    <form @submit.prevent="login" class="py-7">
+                    <form @submit.prevent="(e) => login(e)" class="py-7">
                         <div class="relative">
                             <span
                                 ><EnvelopeIcon
@@ -64,6 +64,7 @@
                                 required
                                 v-model="user.email"
                                 :placeholder="$t('adresse') + ' ' + $t('email')"
+                                name="email"
                                 class="form-input mt-2 block w-full border-gray-400 px-3 pr-2 pl-10 placeholder:text-gray-400 focus:border-primary-blue focus:ring-primary-blue"
                             />
                         </div>
@@ -77,6 +78,7 @@
                                 required
                                 v-model="user.password"
                                 :placeholder="$t('password')"
+                                name="password"
                                 class="form-input mt-3 block w-full border-gray-400 px-5 pl-10 placeholder:text-gray-400 focus:border-primary-blue focus:ring-primary-blue"
                             />
                             <span
@@ -93,12 +95,12 @@
                                 />
                             </span>
                         </div>
-
+                        <ReCaptcha />
                         <div>
                             <button
                                 v-if="loading == 0"
                                 type="submit"
-                                class="mt-6 w-full bg-primary-blue px-8 py-2 text-lg text-white"
+                                class="mt-4 w-full bg-primary-blue px-8 py-2 text-lg text-white"
                             >
                                 {{ $t("login") }}
                             </button>
@@ -106,29 +108,9 @@
                                 v-if="loading == 1"
                                 disabled
                                 type="submit"
-                                class="mt-6 inline-flex w-full cursor-wait items-center justify-center bg-blue-300 px-8 py-2 text-lg text-white"
+                                class="mt-4 inline-flex w-full cursor-wait items-center justify-center bg-blue-300 px-8 py-2 text-lg text-white"
                             >
-                                <svg
-                                    class="mr-3 h-5 w-5 animate-spin text-white"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                >
-                                    <circle
-                                        class="opacity-25"
-                                        cx="12"
-                                        cy="12"
-                                        r="10"
-                                        stroke="currentColor"
-                                        stroke-width="4"
-                                    ></circle>
-                                    <path
-                                        class="opacity-75"
-                                        fill="currentColor"
-                                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                                    ></path>
-                                </svg>
-                                {{ $t("login") }}...
+                                <Spin :size="'small'" />
                             </button>
                         </div>
 
@@ -160,6 +142,8 @@ import {
 import NotLogin from "@/components/NotLogin.vue";
 import VerifyOK from "@/components/VerifyOK.vue";
 import { useRouter } from "vue-router";
+import Spin from "@/components/utils/Spin.vue";
+import ReCaptcha from "@/components/ReCaptcha.vue";
 const router = useRouter();
 const props = defineProps({
     redirect: {
@@ -175,6 +159,7 @@ const showPassword = ref(false);
 const user = reactive({
     email: "",
     password: "",
+    recaptcha: "",
 });
 
 const toogleModal = () => {
@@ -199,7 +184,9 @@ onMounted(async () => {
     }
 });
 
-const login = async () => {
+const login = async (e) => {
+    let recaptcha = document.querySelector('textarea[name=g-recaptcha-response]');
+    user.recaptcha = recaptcha ? recaptcha.value : '';
     await loginUser({ ...user });
     if (errors.value == "") {
         location.href = window.location.origin;

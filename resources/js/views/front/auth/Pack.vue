@@ -99,15 +99,12 @@
                                 }}</span>
                             </div>
                         </div>
-                        <router-link
-                            :to="{
-                                name: 'register',
-                                params: { type: 'particular' },
-                            }"
+                        <a 
+                                href="/register/particular"
                             class="mt-10 block w-full transform rounded-md bg-primary-blue px-4 py-2 text-center font-medium capitalize tracking-wide text-white transition-colors duration-200 hover:bg-primary-blue focus:bg-primary-blue focus:outline-none"
                         >
                             {{ $t("register") }}
-                        </router-link>
+                        </a>
                     </div>
 
                     <!--   <div
@@ -279,15 +276,11 @@
                             </div>
                         </div>
 
-                        <router-link
-                            :to="{
-                                name: 'register',
-                                params: { type: 'business2' },
-                            }"
+                        <a href="/register/business2"
                             class="mt-10 block w-full transform rounded-md bg-white px-4 py-2 text-center font-medium capitalize tracking-wide text-primary-blue transition-colors duration-200 hover:bg-gray-50 focus:bg-gray-50 focus:outline-none"
                         >
                             {{ $t("register") }}
-                        </router-link>
+                        </a>
                     </div>
                     <div
                         class="transform rounded-lg bg-white px-6 py-4 shadow transition-colors duration-200 hover:bg-gray-50"
@@ -377,24 +370,21 @@
                             </div>
                         </div>
 
-                        <router-link
-                            :to="{ name: 'register', params: { type: 'ip' } }"
+                        <a href="/register/ip"
                             class="mt-10 block w-full transform rounded-md bg-primary-blue px-4 py-2 text-center font-medium capitalize tracking-wide text-white transition-colors duration-200 hover:bg-primary-blue focus:bg-primary-blue focus:outline-none"
                         >
                             {{ $t("register") }}
-                        </router-link>
+                        </a>
                     </div>
                 </div>
             </div>
         </section>
         <div class="md:text-md mb-4 h-16 p-4 text-center text-lg">
             {{ $t("already-signup") }}
-            <router-link
-                class="text-primary-blue hover:underline"
-                :to="{ name: 'login' }"
+            <a href="/login"
             >
                 {{ $t("login") }}
-            </router-link>
+        </a>
         </div>
     </div>
 </template>
