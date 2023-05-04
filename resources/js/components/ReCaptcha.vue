@@ -1,6 +1,6 @@
 
 <template>
-    <div id="container_recaptcha" class="mt-4"></div>
+    <div id="container_recaptcha" class="my-4 w-full flex justify-center"></div>
 </template>
 
 <script setup>
