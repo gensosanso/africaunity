@@ -58,16 +58,16 @@
                                 }}</span>
 
                                 &nbsp;-&nbsp;
-                                <span v-if="$i18n.locale == 'en'">{{
+                                <span v-if="jobOffer.contract_type && $i18n.locale == 'en'">{{
                                     jobOffer.contract_type.name_en
                                 }}</span>
-                                <span v-else-if="$i18n.locale == 'fr'">{{
+                                <span v-else-if="jobOffer.contract_type && $i18n.locale == 'fr'">{{
                                     jobOffer.contract_type.name_fr
                                 }}</span>
-                                <span v-else-if="$i18n.locale == 'es'">{{
+                                <span v-else-if="jobOffer.contract_type && $i18n.locale == 'es'">{{
                                     jobOffer.contract_type.name_es
                                 }}</span>
-                                <span v-else>{{
+                                <span v-else-if="jobOffer.contract_type">{{
                                     jobOffer.contract_type.name_pt
                                 }}</span>
 

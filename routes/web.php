@@ -1,6 +1,7 @@
 <?php
 
 use App\Mail\TestMail;
+use App\Models\Post;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\URL;
@@ -17,6 +18,14 @@ Route::get('/storage-link', function () {
     if (symlink($targetFolder, $linkFolder)) {
         echo 'Symlink process successfully completed';
     }
+});
+
+Route::get('/sync-ministries', function () {
+  $posts = Post::all();
+  foreach ($posts as  $post) {
+    $post->ministries()->sync([$post->ministry_id]);
+  }
+  echo 'Posts Sync successfully';
 });
 
 Route::get('/', function () {

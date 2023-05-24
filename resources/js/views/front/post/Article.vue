@@ -31,7 +31,7 @@
                 v-else-if="posts.length != 0"
             >
                 <div
-                    class="dark:bg-gray-800 overflow-hidden rounded-lg bg-white shadow-md"
+                    class="dark:bg-gray-800 overflow-hidden flex flex-col rounded-lg bg-white shadow-md"
                     v-for="post in posts"
                     :key="post.id"
                 >
@@ -52,24 +52,30 @@
                             class="h-44 w-full text-gray-500"
                         />
                     </router-link>
-                    <div class="p-6">
-                        <div>
-                            <a
-                                href="#"
-                                class="rounded py-1 px-2 text-xs capitalize text-white"
-                                :style="'background:' + post.ministry.color"
-                            >
-                                <span v-if="$i18n.locale == 'en'">{{
-                                    post.ministry.name_en
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'fr'">{{
-                                    post.ministry.name_fr
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'es'">{{
-                                    post.ministry.name_es
-                                }}</span>
-                                <span v-else>{{ post.country.name_pt }}</span>
-                            </a>
+                    <div class="p-6 flex flex-col grow ">
+                        <div class="grow block">
+                            <ul class=" flex items-center gap-4 flex-wrap">
+                                <li
+                                    class=" rounded py-1 px-2 text-xs capitalize text-white"
+                                    v-for="ministry in post.ministries"
+                                    :style="'background:' + ministry.color"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        ministry.name_en.substring(0, 29) + "..."
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        ministry.name_fr.substring(0, 29) + "..."
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        ministry.name_es.substring(0, 29) + "..."
+                                    }}</span>
+                                    <span v-else>
+                                        {{
+                                             ministry.name_pt.substring(0, 29) + "..."
+                                        }}
+                                    </span>
+                                </li>
+                            </ul>
                             <router-link
                                 :to="{
                                     name: 'show.post',
@@ -77,9 +83,7 @@
                                 }"
                                 class="dark:text-white mt-2 block transform text-2xl font-semibold text-gray-800 transition-colors duration-200 hover:text-gray-600 hover:underline"
                                 >{{
-                                    post.title.length <= 20
-                                        ? post.title
-                                        : post.title.substring(0, 19) + "..."
+                                    post.title
                                 }}</router-link
                             >
                         </div>

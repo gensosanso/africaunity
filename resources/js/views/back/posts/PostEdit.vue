@@ -10,7 +10,7 @@
             <section class="mx-auto w-full bg-white p-6">
                 <Error v-if="errors != ''">{{ errors }}</Error>
                 <h2 class="text-md font-light text-gray-700">
-                    Add a new {{ type }}
+                    Edit a {{ type }}
                 </h2>
                 <form
                     @submit.prevent="savePost()"
@@ -95,7 +95,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div>
+                        <div class="col-span-2">
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="es"
@@ -120,7 +120,7 @@
                             </select>
                         </div>
 
-                        <div>
+                        <div class="col-span-2">
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="pt"
@@ -128,7 +128,8 @@
                             >
                             <select
                                 required
-                                v-model="post.ministry_id"
+                                multiple
+                                v-model="selectedMinistries"
                                 class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                             >
                                 <option
@@ -161,13 +162,7 @@
                                 for="pt"
                                 >Content</label
                             >
-                            <textarea
-                                required
-                                v-if="type == 'article'"
-                                ref="textarea"
-                                class="h-96 w-full"
-                            >
-                            </textarea>
+                            <RichText :key="keyComponent" v-if="type == 'article'" v-model="post.content"/>
 
                             <div v-else>
                                 <textarea
@@ -235,6 +230,7 @@ import useZones from "@/services/zoneServices.js";
 import useCountries from "@/services/countryServices.js";
 import useMinistries from "@/services/ministryServices.js";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
 const router = useRouter();
 
 const props = defineProps({
@@ -253,6 +249,8 @@ const { continents, getContinents } = useContinents();
 const { zones, getZones } = useZones();
 const { countries, getCountries } = useCountries();
 const { ministries, getMinistries } = useMinistries();
+const selectedMinistries = ref([]);
+const keyComponent = ref(0);
 const zoneFiltered = ref([]);
 const countryFiltered = ref([]);
 
@@ -275,19 +273,12 @@ const msgClick = ref("");
 const nbClick = ref(0);
 onMounted(async () => {
     await getPost(props.id);
+    keyComponent.value++;
 
-    if (props.type == "article") {
-        textarea.value.value = post.value.content;
-        sceditor.create(textarea.value, {
-            format: "bbcode",
-            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-            height: 400,
-            toolbarExclude:
-                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-            icons: "material",
-        });
+    for (const item of post.value.ministries) {
+        selectedMinistries.value.push(item.id);
     }
-    nbClick.value++;
+
     await getContinents(),
         await getZones(),
         await getCountries(),
@@ -301,14 +292,7 @@ onMounted(async () => {
 });
 
 const savePost = async () => {
-    if (props.type == "article") {
-        post.value.content = textarea.value.value;
-        if (nbClick.value == 1) {
-            nbClick.value++;
-            msgClick.value = "please click again";
-            return;
-        }
-    }
+    
     let formData = new FormData();
     formData.append("image", post.value.image);
     formData.append("title", post.value.title);
@@ -319,7 +303,7 @@ const savePost = async () => {
     formData.append("continent_id", post.value.continent_id);
     formData.append("zone_id", post.value.zone_id);
     formData.append("country_id", post.value.country_id);
-    formData.append("ministry_id", post.value.ministry_id);
+    formData.append("ministries", selectedMinistries.value);
     formData.append("_method", "PUT");
 
     await updatePost(formData, props.id);

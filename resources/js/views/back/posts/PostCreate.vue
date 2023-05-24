@@ -95,7 +95,7 @@
                                 </option>
                             </select>
                         </div>
-                        <div>
+                        <div class="col-span-2">
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="es"
@@ -119,7 +119,7 @@
                             </select>
                         </div>
 
-                        <div>
+                        <div class="col-span-2">
                             <label
                                 class="dark:text-gray-200 text-gray-700"
                                 for="pt"
@@ -127,7 +127,8 @@
                             >
                             <select
                                 required
-                                v-model="post.ministry_id"
+                                multiple
+                                v-model="post.ministries"
                                 class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                             >
                                 <option
@@ -161,13 +162,7 @@
                                 for="pt"
                                 >Content</label
                             >
-                            <textarea
-                                required
-                                v-if="type == 'article'"
-                                ref="textarea"
-                                class="h-96 w-full"
-                            >
-                            </textarea>
+                            <RichText v-if="type == 'article'" v-model="post.content"/>
 
                             <div v-else>
                                 <textarea
@@ -201,21 +196,7 @@
                         >
                             <Spin :size="'small'" />
                         </button>
-                        <Transition
-                            enter-active-class=" transition-all  "
-                            enter-from-class=" opacity-0  -translate-y-10"
-                            enter-to-class="  opacity-1 translate-y-0"
-                            leave-active-class=""
-                            leave-from-class=""
-                            leave-to-class=""
-                        >
-                            <span
-                                v-if="msgClick != ''"
-                                class="text-xs font-light italic"
-                            >
-                                {{ msgClick }}
-                            </span>
-                        </Transition>
+                        
                     </div>
                 </form>
             </section>
@@ -232,6 +213,7 @@ import useZones from "@/services/zoneServices.js";
 import useCountries from "@/services/countryServices.js";
 import useMinistries from "@/services/ministryServices.js";
 import { useRouter } from "vue-router";
+import RichText from '@/components/RichText.vue';
 const router = useRouter();
 
 const props = defineProps({
@@ -240,9 +222,7 @@ const props = defineProps({
         type: String,
     },
 });
-const textarea = ref("");
-const msgClick = ref("");
-const nbClick = ref(0);
+
 const file = ref(null);
 const types = ["article", "propau"];
 const user = JSON.parse(localStorage.user);
@@ -257,18 +237,6 @@ onMounted(async () => {
         router.push({ name: "admin.dash" });
     }
 
-    if (props.type == "article") {
-        sceditor.create(textarea.value, {
-            format: "xhtml",
-            style: "https://cdn.jsdelivr.net/npm/sceditor@3/minified/themes/content/default.min.css",
-            height: 400,
-            toolbarExclude:
-                "indent,outdent,email,date,time,ltr,rtl,print,subscript,superscript,table,code,quote,emoticon",
-            icons: "material",
-        });
-        textarea.value.value == "";
-    }
-    nbClick.value++;
     await getContinents(),
         await getZones(),
         await getCountries(),
@@ -281,10 +249,10 @@ const post = reactive({
     language: "fr",
     content: "",
     image: "",
-    continent_id: 1,
-    zone_id: 1,
-    country_id: 1,
-    ministry_id: 1,
+    continent_id: "",
+    zone_id: "",
+    country_id: "",
+    ministries: [],
 });
 
 const filteredZone = () => {
@@ -304,14 +272,7 @@ const filteredCountry = () => {
 const { createPost, errors, loading } = usePosts();
 
 const storePost = async () => {
-    if (props.type == "article") {
-        post.content = textarea.value.value;
-        if (nbClick.value == 1) {
-            nbClick.value++;
-            msgClick.value = "please click again";
-            return;
-        }
-    }
+
     let formData = new FormData();
     formData.append("image", post.image);
     formData.append("title", post.title);
@@ -322,7 +283,7 @@ const storePost = async () => {
     formData.append("continent_id", post.continent_id);
     formData.append("zone_id", post.zone_id);
     formData.append("country_id", post.country_id);
-    formData.append("ministry_id", post.ministry_id);
+    formData.append("ministries", post.ministries);
 
     await createPost(formData);
     if (errors.value == "") {

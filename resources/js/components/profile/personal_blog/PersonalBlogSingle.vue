@@ -62,7 +62,7 @@ const toogleModal = () => {
         :open="openReport"
         :toogleModal="toogleModal"
         :id="id"
-        :type="'Blog Post'"
+        :type="'BlogPost'"
     />
         <button
             type="button"

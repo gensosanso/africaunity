@@ -154,7 +154,7 @@
                             </option>
                         </select>
                     </div>
-                    <div class="col-span-2 lg:col-span-1">
+                    <div class="col-span-2">
                         <label class=" text-gray-700" for="es"
                             >{{ $t("country")
                             }}<span class="text-red-500">*</span></label
@@ -187,7 +187,7 @@
                         </select>
                     </div>
 
-                    <div class="col-span-2 lg:col-span-1">
+                    <div class="col-span-2">
                         <label class=" text-gray-700" for="pt"
                             >{{ $t("ministry")
                             }}<span class="text-red-500">*</span></label
@@ -195,7 +195,8 @@
 
                         <select
                             required
-                            v-model="post.ministry_id"
+                            multiple
+                            v-model="post.ministries"
                             class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                         >
                             <option
@@ -347,7 +348,7 @@ const post = reactive({
     continent_id: "",
     zone_id: "",
     country_id: "",
-    ministry_id: "",
+    ministries: [],
 });
 
 onMounted(async () => {
@@ -390,7 +391,7 @@ const storePost = async () => {
     formData.append("continent_id", post.continent_id);
     formData.append("zone_id", post.zone_id);
     formData.append("country_id", post.country_id);
-    formData.append("ministry_id", post.ministry_id);
+    formData.append("ministries", post.ministries);
 
     await createPost(formData);
     if (errors.value == "") {

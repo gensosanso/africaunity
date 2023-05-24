@@ -44,7 +44,7 @@ class ReportController extends Controller
                 $reported = "Announcement($ads->title)";
                 $url = "/ads/$ads->id/". Str::slug($ads->title);
                 break;
-            case 'blog post':
+            case 'blogpost':
                 $personalPost = PersonalPost::find($data['reported_id']);
                 $author = User::find($personalPost->user_id);
                 $reported = "BLog Post($personalPost->title)";

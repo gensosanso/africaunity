@@ -25,22 +25,25 @@
                             >
                                 {{ post.title }}
                             </h1>
-                            <a
-                                href="#"
-                                class="my-4 rounded py-1 px-2 text-xs capitalize text-white"
-                                :style="'background:' + post.ministry.color"
-                            >
-                                <span v-if="$i18n.locale == 'en'">{{
-                                    post.ministry.name_en
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'fr'">{{
-                                    post.ministry.name_fr
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'es'">{{
-                                    post.ministry.name_es
-                                }}</span>
-                                <span v-else>{{ post.country.name_pt }}</span>
-                            </a>
+                            
+                            <ul class=" flex my-4 items-center gap-4 flex-wrap">
+                                <li
+                                    class=" rounded py-1 px-2 text-xs capitalize text-white"
+                                    v-for="ministry in post.ministries"
+                                    :style="'background:' + ministry.color"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        ministry.name_en
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        ministry.name_fr
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        ministry.name_es
+                                    }}</span>
+                                    <span v-else>{{ ministry.name_pt }}</span>
+                                </li>
+                            </ul>
                             <div
                                 class="mt-2 flex space-x-2 text-xs text-gray-500"
                             >

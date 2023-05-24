@@ -455,7 +455,7 @@
                             required
                             multiple
                             v-model="jobOffer.activityAreas"
-                            class="form-select mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
+                            class="mt-2 block w-full rounded-md border border-gray-200 bg-white px-4 py-2 text-gray-700 focus:border-primary-blue focus:outline-none focus:ring-primary-blue"
                         >
                             <option
                                 v-for="activityArea in activityAreas"

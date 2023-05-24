@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "app.1.1.1.js",
+    "file": "app.1.1.2.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
@@ -97,844 +97,844 @@
       "resources/js/views/back/ministry/MinistryEdit.vue"
     ],
     "css": [
-      "app.1.1.1.css"
+      "app.1.1.2.css"
     ]
   },
   "resources/js/components/Header.vue": {
-    "file": "Header.1.1.1.js",
+    "file": "Header.1.1.2.js",
     "src": "resources/js/components/Header.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_HomeIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_swiper.min.1.1.1.js"
+      "_HomeIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_swiper.min.1.1.2.js"
     ],
     "css": [
-      "Header.1.1.1.css",
-      "effect-fade.1.1.1.css"
+      "Header.1.1.2.css",
+      "effect-fade.1.1.2.css"
     ]
   },
-  "_swiper.min.1.1.1.js": {
-    "file": "swiper.min.1.1.1.js",
+  "_swiper.min.1.1.2.js": {
+    "file": "swiper.min.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ],
     "css": [
-      "swiper.1.1.1.css"
+      "swiper.1.1.2.css"
     ]
   },
-  "_HomeIcon.1.1.1.js": {
-    "file": "HomeIcon.1.1.1.js",
+  "_HomeIcon.1.1.2.js": {
+    "file": "HomeIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_UserCircleIcon.1.1.1.js": {
-    "file": "UserCircleIcon.1.1.1.js",
+  "_UserCircleIcon.1.1.2.js": {
+    "file": "UserCircleIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/components/Footer.vue": {
-    "file": "Footer.1.1.1.js",
+    "file": "Footer.1.1.2.js",
     "src": "resources/js/components/Footer.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.1.1.1.js",
-      "_ChevronRightIcon.1.1.1.js"
+      "_postServices.1.1.2.js",
+      "_ChevronRightIcon.1.1.2.js"
     ],
     "css": [
-      "Footer.1.1.1.css"
+      "Footer.1.1.2.css"
     ]
   },
-  "_postServices.1.1.1.js": {
-    "file": "postServices.1.1.1.js",
+  "_postServices.1.1.2.js": {
+    "file": "postServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ChevronRightIcon.1.1.1.js": {
-    "file": "ChevronRightIcon.1.1.1.js",
+  "_ChevronRightIcon.1.1.2.js": {
+    "file": "ChevronRightIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Home.vue": {
-    "file": "Home.1.1.1.js",
+    "file": "Home.1.1.2.js",
     "src": "resources/js/views/front/Home.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_authServices.1.1.1.js",
-      "_FilterArticle.1.1.1.js",
-      "_swiper.min.1.1.1.js",
-      "_PhotoIcon.1.1.1.js",
+      "_authServices.1.1.2.js",
+      "_FilterArticle.1.1.2.js",
+      "_swiper.min.1.1.2.js",
+      "_PhotoIcon.1.1.2.js",
       "resources/js/app.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js",
-      "_BuildingOffice2Icon.1.1.1.js"
+      "_CalendarIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js",
+      "_BuildingOffice2Icon.1.1.2.js"
     ],
     "css": [
-      "effect-fade.1.1.1.css"
+      "effect-fade.1.1.2.css"
     ]
   },
-  "_authServices.1.1.1.js": {
-    "file": "authServices.1.1.1.js",
+  "_authServices.1.1.2.js": {
+    "file": "authServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_FilterArticle.1.1.1.js": {
-    "file": "FilterArticle.1.1.1.js",
+  "_FilterArticle.1.1.2.js": {
+    "file": "FilterArticle.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_CalendarIcon.1.1.1.js": {
-    "file": "CalendarIcon.1.1.1.js",
+  "_CalendarIcon.1.1.2.js": {
+    "file": "CalendarIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_UserIcon.1.1.1.js": {
-    "file": "UserIcon.1.1.1.js",
+  "_UserIcon.1.1.2.js": {
+    "file": "UserIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js": {
-    "file": "ChatBubbleOvalLeftEllipsisIcon.1.1.1.js",
+  "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js": {
+    "file": "ChatBubbleOvalLeftEllipsisIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BuildingOffice2Icon.1.1.1.js": {
-    "file": "BuildingOffice2Icon.1.1.1.js",
+  "_BuildingOffice2Icon.1.1.2.js": {
+    "file": "BuildingOffice2Icon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PhotoIcon.1.1.1.js": {
-    "file": "PhotoIcon.1.1.1.js",
+  "_PhotoIcon.1.1.2.js": {
+    "file": "PhotoIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Blog.vue": {
-    "file": "Blog.1.1.1.js",
+    "file": "Blog.1.1.2.js",
     "src": "resources/js/views/front/Blog.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_personalPostsServices.1.1.1.js",
-      "_categoryPersonalPostServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_BookOpenIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js"
+      "_personalPostsServices.1.1.2.js",
+      "_categoryPersonalPostServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_BookOpenIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js"
     ]
   },
-  "_personalPostsServices.1.1.1.js": {
-    "file": "personalPostsServices.1.1.1.js",
+  "_personalPostsServices.1.1.2.js": {
+    "file": "personalPostsServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_categoryPersonalPostServices.1.1.1.js": {
-    "file": "categoryPersonalPostServices.1.1.1.js",
+  "_categoryPersonalPostServices.1.1.2.js": {
+    "file": "categoryPersonalPostServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PlusCircleIcon.1.1.1.js": {
-    "file": "PlusCircleIcon.1.1.1.js",
+  "_PlusCircleIcon.1.1.2.js": {
+    "file": "PlusCircleIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BookOpenIcon.1.1.1.js": {
-    "file": "BookOpenIcon.1.1.1.js",
+  "_BookOpenIcon.1.1.2.js": {
+    "file": "BookOpenIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/post/Article.vue": {
-    "file": "Article.1.1.1.js",
+    "file": "Article.1.1.2.js",
     "src": "resources/js/views/front/post/Article.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_postServices.1.1.1.js",
-      "_PhotoIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_BookOpenIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js"
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_postServices.1.1.2.js",
+      "_PhotoIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_BookOpenIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js"
     ]
   },
-  "_countryServices.1.1.1.js": {
-    "file": "countryServices.1.1.1.js",
+  "_countryServices.1.1.2.js": {
+    "file": "countryServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_zoneServices.1.1.1.js": {
-    "file": "zoneServices.1.1.1.js",
+  "_zoneServices.1.1.2.js": {
+    "file": "zoneServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_continentServices.1.1.1.js": {
-    "file": "continentServices.1.1.1.js",
+  "_continentServices.1.1.2.js": {
+    "file": "continentServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ministryServices.1.1.1.js": {
-    "file": "ministryServices.1.1.1.js",
+  "_ministryServices.1.1.2.js": {
+    "file": "ministryServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/post/PropAu.vue": {
-    "file": "PropAu.1.1.1.js",
+    "file": "PropAu.1.1.2.js",
     "src": "resources/js/views/front/post/PropAu.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_postServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js"
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_postServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/post/AddPost.vue": {
-    "file": "AddPost.1.1.1.js",
+    "file": "AddPost.1.1.2.js",
     "src": "resources/js/views/front/post/AddPost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_postServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
-  "_RichText.1.1.1.js": {
-    "file": "RichText.1.1.1.js",
+  "_RichText.1.1.2.js": {
+    "file": "RichText.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ],
     "css": [
-      "RichText.1.1.1.css"
+      "RichText.1.1.2.css"
     ]
   },
   "resources/js/views/front/post/SinglePost.vue": {
-    "file": "SinglePost.1.1.1.js",
+    "file": "SinglePost.1.1.2.js",
     "src": "resources/js/views/front/post/SinglePost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_FilterArticle.1.1.1.js",
-      "_Report.1.1.1.js",
-      "_postServices.1.1.1.js",
-      "_commentServices.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_PencilSquareIcon.1.1.1.js"
+      "_FilterArticle.1.1.2.js",
+      "_Report.1.1.2.js",
+      "_postServices.1.1.2.js",
+      "_commentServices.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_PencilSquareIcon.1.1.2.js"
     ]
   },
-  "_Report.1.1.1.js": {
-    "file": "Report.1.1.1.js",
+  "_Report.1.1.2.js": {
+    "file": "Report.1.1.2.js",
     "imports": [
       "resources/js/app.js",
-      "_ExclamationCircleIcon.1.1.1.js"
+      "_ExclamationCircleIcon.1.1.2.js"
     ]
   },
-  "_commentServices.1.1.1.js": {
-    "file": "commentServices.1.1.1.js",
+  "_commentServices.1.1.2.js": {
+    "file": "commentServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ExclamationCircleIcon.1.1.1.js": {
-    "file": "ExclamationCircleIcon.1.1.1.js",
+  "_ExclamationCircleIcon.1.1.2.js": {
+    "file": "ExclamationCircleIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PencilSquareIcon.1.1.1.js": {
-    "file": "PencilSquareIcon.1.1.1.js",
+  "_PencilSquareIcon.1.1.2.js": {
+    "file": "PencilSquareIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/announcement/SingleAnnouncement.vue": {
-    "file": "SingleAnnouncement.1.1.1.js",
+    "file": "SingleAnnouncement.1.1.2.js",
     "src": "resources/js/views/front/announcement/SingleAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_swiper.min.1.1.1.js",
-      "_announcementCommentServices.1.1.1.js",
-      "_Report.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_PencilSquareIcon.1.1.1.js",
-      "_MapPinIcon.1.1.1.js",
-      "_EnvelopeIcon.1.1.1.js",
-      "_PhoneIcon.1.1.1.js",
-      "_GlobeEuropeAfricaIcon.1.1.1.js",
-      "_BriefcaseIcon.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_swiper.min.1.1.2.js",
+      "_announcementCommentServices.1.1.2.js",
+      "_Report.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_PencilSquareIcon.1.1.2.js",
+      "_MapPinIcon.1.1.2.js",
+      "_EnvelopeIcon.1.1.2.js",
+      "_PhoneIcon.1.1.2.js",
+      "_GlobeEuropeAfricaIcon.1.1.2.js",
+      "_BriefcaseIcon.1.1.2.js"
     ],
     "css": [
-      "SingleAnnouncement.1.1.1.css"
+      "SingleAnnouncement.1.1.2.css"
     ]
   },
-  "_announcementServices.1.1.1.js": {
-    "file": "announcementServices.1.1.1.js",
+  "_announcementServices.1.1.2.js": {
+    "file": "announcementServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_announcementCommentServices.1.1.1.js": {
-    "file": "announcementCommentServices.1.1.1.js",
+  "_announcementCommentServices.1.1.2.js": {
+    "file": "announcementCommentServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_MapPinIcon.1.1.1.js": {
-    "file": "MapPinIcon.1.1.1.js",
+  "_MapPinIcon.1.1.2.js": {
+    "file": "MapPinIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_EnvelopeIcon.1.1.1.js": {
-    "file": "EnvelopeIcon.1.1.1.js",
+  "_EnvelopeIcon.1.1.2.js": {
+    "file": "EnvelopeIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PhoneIcon.1.1.1.js": {
-    "file": "PhoneIcon.1.1.1.js",
+  "_PhoneIcon.1.1.2.js": {
+    "file": "PhoneIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_GlobeEuropeAfricaIcon.1.1.1.js": {
-    "file": "GlobeEuropeAfricaIcon.1.1.1.js",
+  "_GlobeEuropeAfricaIcon.1.1.2.js": {
+    "file": "GlobeEuropeAfricaIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BriefcaseIcon.1.1.1.js": {
-    "file": "BriefcaseIcon.1.1.1.js",
+  "_BriefcaseIcon.1.1.2.js": {
+    "file": "BriefcaseIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/announcement/EditAnnouncement.vue": {
-    "file": "EditAnnouncement.1.1.1.js",
+    "file": "EditAnnouncement.1.1.2.js",
     "src": "resources/js/views/front/announcement/EditAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_universityServices.1.1.1.js",
-      "_DropZone.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_universityServices.1.1.2.js",
+      "_DropZone.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
-  "_categoryAnnouncementServices.1.1.1.js": {
-    "file": "categoryAnnouncementServices.1.1.1.js",
+  "_categoryAnnouncementServices.1.1.2.js": {
+    "file": "categoryAnnouncementServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_currencyServices.1.1.1.js": {
-    "file": "currencyServices.1.1.1.js",
+  "_currencyServices.1.1.2.js": {
+    "file": "currencyServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_universityServices.1.1.1.js": {
-    "file": "universityServices.1.1.1.js",
+  "_universityServices.1.1.2.js": {
+    "file": "universityServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_DropZone.1.1.1.js": {
-    "file": "DropZone.1.1.1.js",
+  "_DropZone.1.1.2.js": {
+    "file": "DropZone.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ],
     "css": [
-      "DropZone.1.1.1.css"
+      "DropZone.1.1.2.css"
     ]
   },
   "resources/js/views/front/announcement/AddAnnouncement.vue": {
-    "file": "AddAnnouncement.1.1.1.js",
+    "file": "AddAnnouncement.1.1.2.js",
     "src": "resources/js/views/front/announcement/AddAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_universityServices.1.1.1.js",
-      "_DropZone.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_universityServices.1.1.2.js",
+      "_DropZone.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/front/job/AddJob.vue": {
-    "file": "AddJob.1.1.1.js",
+    "file": "AddJob.1.1.2.js",
     "src": "resources/js/views/front/job/AddJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_workDepartmentServices.1.1.1.js",
-      "_yearExperienceServices.1.1.1.js",
-      "_contractTypeServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_workDepartmentServices.1.1.2.js",
+      "_yearExperienceServices.1.1.2.js",
+      "_contractTypeServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
-  "_jobOfferServices.1.1.1.js": {
-    "file": "jobOfferServices.1.1.1.js",
+  "_jobOfferServices.1.1.2.js": {
+    "file": "jobOfferServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_activityAreaServices.1.1.1.js": {
-    "file": "activityAreaServices.1.1.1.js",
+  "_activityAreaServices.1.1.2.js": {
+    "file": "activityAreaServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_workDepartmentServices.1.1.1.js": {
-    "file": "workDepartmentServices.1.1.1.js",
+  "_workDepartmentServices.1.1.2.js": {
+    "file": "workDepartmentServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_yearExperienceServices.1.1.1.js": {
-    "file": "yearExperienceServices.1.1.1.js",
+  "_yearExperienceServices.1.1.2.js": {
+    "file": "yearExperienceServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_contractTypeServices.1.1.1.js": {
-    "file": "contractTypeServices.1.1.1.js",
+  "_contractTypeServices.1.1.2.js": {
+    "file": "contractTypeServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_languageServices.1.1.1.js": {
-    "file": "languageServices.1.1.1.js",
+  "_languageServices.1.1.2.js": {
+    "file": "languageServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_cityServices.1.1.1.js": {
-    "file": "cityServices.1.1.1.js",
+  "_cityServices.1.1.2.js": {
+    "file": "cityServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/job/SingleJob.vue": {
-    "file": "SingleJob.1.1.1.js",
+    "file": "SingleJob.1.1.2.js",
     "src": "resources/js/views/front/job/SingleJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_jobOfferCommentServices.1.1.1.js",
-      "_Report.1.1.1.js",
-      "_BuildingOffice2Icon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_PencilSquareIcon.1.1.1.js",
-      "_EnvelopeIcon.1.1.1.js",
-      "_GlobeEuropeAfricaIcon.1.1.1.js",
-      "_MapIcon.1.1.1.js",
-      "_BriefcaseIcon.1.1.1.js",
-      "_ComputerDesktopIcon.1.1.1.js",
-      "_MapPinIcon.1.1.1.js",
-      "_Squares2X2Icon.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_jobOfferCommentServices.1.1.2.js",
+      "_Report.1.1.2.js",
+      "_BuildingOffice2Icon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_PencilSquareIcon.1.1.2.js",
+      "_EnvelopeIcon.1.1.2.js",
+      "_GlobeEuropeAfricaIcon.1.1.2.js",
+      "_MapIcon.1.1.2.js",
+      "_BriefcaseIcon.1.1.2.js",
+      "_ComputerDesktopIcon.1.1.2.js",
+      "_MapPinIcon.1.1.2.js",
+      "_Squares2X2Icon.1.1.2.js"
     ]
   },
-  "_jobOfferCommentServices.1.1.1.js": {
-    "file": "jobOfferCommentServices.1.1.1.js",
+  "_jobOfferCommentServices.1.1.2.js": {
+    "file": "jobOfferCommentServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_MapIcon.1.1.1.js": {
-    "file": "MapIcon.1.1.1.js",
+  "_MapIcon.1.1.2.js": {
+    "file": "MapIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ComputerDesktopIcon.1.1.1.js": {
-    "file": "ComputerDesktopIcon.1.1.1.js",
+  "_ComputerDesktopIcon.1.1.2.js": {
+    "file": "ComputerDesktopIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_Squares2X2Icon.1.1.1.js": {
-    "file": "Squares2X2Icon.1.1.1.js",
+  "_Squares2X2Icon.1.1.2.js": {
+    "file": "Squares2X2Icon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/job/EditJob.vue": {
-    "file": "EditJob.1.1.1.js",
+    "file": "EditJob.1.1.2.js",
     "src": "resources/js/views/front/job/EditJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_workDepartmentServices.1.1.1.js",
-      "_yearExperienceServices.1.1.1.js",
-      "_contractTypeServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_workDepartmentServices.1.1.2.js",
+      "_yearExperienceServices.1.1.2.js",
+      "_contractTypeServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/front/post/EditPost.vue": {
-    "file": "EditPost.1.1.1.js",
+    "file": "EditPost.1.1.2.js",
     "src": "resources/js/views/front/post/EditPost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_postServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/front/profile/Establishment.vue": {
-    "file": "Establishment.1.1.1.js",
+    "file": "Establishment.1.1.2.js",
     "src": "resources/js/views/front/profile/Establishment.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js",
-      "_businessSizeServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_Profile.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_PhotoIcon.1.1.1.js"
+      "_userServices.1.1.2.js",
+      "_businessSizeServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_Profile.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_PhotoIcon.1.1.2.js"
     ]
   },
-  "_userServices.1.1.1.js": {
-    "file": "userServices.1.1.1.js",
+  "_userServices.1.1.2.js": {
+    "file": "userServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_businessSizeServices.1.1.1.js": {
-    "file": "businessSizeServices.1.1.1.js",
+  "_businessSizeServices.1.1.2.js": {
+    "file": "businessSizeServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_Profile.1.1.1.js": {
-    "file": "Profile.1.1.1.js",
+  "_Profile.1.1.2.js": {
+    "file": "Profile.1.1.2.js",
     "imports": [
-      "_PhotoIcon.1.1.1.js",
+      "_PhotoIcon.1.1.2.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/profile/Particular.vue": {
-    "file": "Particular.1.1.1.js",
+    "file": "Particular.1.1.2.js",
     "src": "resources/js/views/front/profile/Particular.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_Profile.1.1.1.js",
-      "_statusServices.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_PhotoIcon.1.1.1.js"
+      "_userServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_Profile.1.1.2.js",
+      "_statusServices.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_PhotoIcon.1.1.2.js"
     ]
   },
-  "_statusServices.1.1.1.js": {
-    "file": "statusServices.1.1.1.js",
+  "_statusServices.1.1.2.js": {
+    "file": "statusServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/profile/PoliticalInstitution.vue": {
-    "file": "PoliticalInstitution.1.1.1.js",
+    "file": "PoliticalInstitution.1.1.2.js",
     "src": "resources/js/views/front/profile/PoliticalInstitution.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js",
-      "_businessSizeServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_Profile.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_PhotoIcon.1.1.1.js"
+      "_userServices.1.1.2.js",
+      "_businessSizeServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_Profile.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_PhotoIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/job/Job.vue": {
-    "file": "Job.1.1.1.js",
+    "file": "Job.1.1.2.js",
     "src": "resources/js/views/front/job/Job.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_yearExperienceServices.1.1.1.js",
-      "_contractTypeServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_PhotoIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_BuildingOffice2Icon.1.1.1.js",
-      "_MapPinIcon.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_yearExperienceServices.1.1.2.js",
+      "_contractTypeServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_PhotoIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_BuildingOffice2Icon.1.1.2.js",
+      "_MapPinIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/university/Universities.vue": {
-    "file": "Universities.1.1.1.js",
+    "file": "Universities.1.1.2.js",
     "src": "resources/js/views/front/university/Universities.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_PhotoIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js"
+      "_universityServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_PhotoIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/university/SingleUniversity.vue": {
-    "file": "SingleUniversity.1.1.1.js",
+    "file": "SingleUniversity.1.1.2.js",
     "src": "resources/js/views/front/university/SingleUniversity.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.1.1.1.js",
-      "_announcementServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_Report.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_MegaphoneIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js"
+      "_universityServices.1.1.2.js",
+      "_announcementServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_Report.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_MegaphoneIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js"
     ]
   },
-  "_MegaphoneIcon.1.1.1.js": {
-    "file": "MegaphoneIcon.1.1.1.js",
+  "_MegaphoneIcon.1.1.2.js": {
+    "file": "MegaphoneIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/announcement/Announcement.vue": {
-    "file": "Announcement.1.1.1.js",
+    "file": "Announcement.1.1.2.js",
     "src": "resources/js/views/front/announcement/Announcement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_universityServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_PhotoIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_MegaphoneIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_universityServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_PhotoIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_MegaphoneIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/demonstration/Demonstration.vue": {
-    "file": "Demonstration.1.1.1.js",
+    "file": "Demonstration.1.1.2.js",
     "src": "resources/js/views/front/demonstration/Demonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_demonstrationModeServices.1.1.1.js",
-      "_demonstrationTypeServices.1.1.1.js",
-      "_demonstrationNicheServices.1.1.1.js",
-      "_demonstrationServices.1.1.1.js",
-      "_ChevronRightIcon.1.1.1.js",
-      "_PhotoIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_CalendarDaysIcon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_demonstrationModeServices.1.1.2.js",
+      "_demonstrationTypeServices.1.1.2.js",
+      "_demonstrationNicheServices.1.1.2.js",
+      "_demonstrationServices.1.1.2.js",
+      "_ChevronRightIcon.1.1.2.js",
+      "_PhotoIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_CalendarDaysIcon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js"
     ],
     "css": [
-      "Demonstration.1.1.1.css"
+      "Demonstration.1.1.2.css"
     ]
   },
-  "_demonstrationServices.1.1.1.js": {
-    "file": "demonstrationServices.1.1.1.js",
+  "_demonstrationServices.1.1.2.js": {
+    "file": "demonstrationServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_CalendarDaysIcon.1.1.1.js": {
-    "file": "CalendarDaysIcon.1.1.1.js",
+  "_CalendarDaysIcon.1.1.2.js": {
+    "file": "CalendarDaysIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_demonstrationModeServices.1.1.1.js": {
-    "file": "demonstrationModeServices.1.1.1.js",
+  "_demonstrationModeServices.1.1.2.js": {
+    "file": "demonstrationModeServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_demonstrationTypeServices.1.1.1.js": {
-    "file": "demonstrationTypeServices.1.1.1.js",
+  "_demonstrationTypeServices.1.1.2.js": {
+    "file": "demonstrationTypeServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_demonstrationNicheServices.1.1.1.js": {
-    "file": "demonstrationNicheServices.1.1.1.js",
+  "_demonstrationNicheServices.1.1.2.js": {
+    "file": "demonstrationNicheServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/demonstration/SingleDemonstration.vue": {
-    "file": "SingleDemonstration.1.1.1.js",
+    "file": "SingleDemonstration.1.1.2.js",
     "src": "resources/js/views/front/demonstration/SingleDemonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationServices.1.1.1.js",
-      "_demonstrationCommentServices.1.1.1.js",
-      "_Report.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_PencilSquareIcon.1.1.1.js",
-      "_EnvelopeIcon.1.1.1.js",
-      "_PhoneIcon.1.1.1.js",
-      "_GlobeEuropeAfricaIcon.1.1.1.js",
-      "_MapIcon.1.1.1.js",
-      "_BuildingOffice2Icon.1.1.1.js",
-      "_ComputerDesktopIcon.1.1.1.js",
-      "_MapPinIcon.1.1.1.js",
-      "_ClockIcon.1.1.1.js"
+      "_demonstrationServices.1.1.2.js",
+      "_demonstrationCommentServices.1.1.2.js",
+      "_Report.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_PencilSquareIcon.1.1.2.js",
+      "_EnvelopeIcon.1.1.2.js",
+      "_PhoneIcon.1.1.2.js",
+      "_GlobeEuropeAfricaIcon.1.1.2.js",
+      "_MapIcon.1.1.2.js",
+      "_BuildingOffice2Icon.1.1.2.js",
+      "_ComputerDesktopIcon.1.1.2.js",
+      "_MapPinIcon.1.1.2.js",
+      "_ClockIcon.1.1.2.js"
     ]
   },
-  "_demonstrationCommentServices.1.1.1.js": {
-    "file": "demonstrationCommentServices.1.1.1.js",
+  "_demonstrationCommentServices.1.1.2.js": {
+    "file": "demonstrationCommentServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ClockIcon.1.1.1.js": {
-    "file": "ClockIcon.1.1.1.js",
+  "_ClockIcon.1.1.2.js": {
+    "file": "ClockIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/demonstration/EditDemonstration.vue": {
-    "file": "EditDemonstration.1.1.1.js",
+    "file": "EditDemonstration.1.1.2.js",
     "src": "resources/js/views/front/demonstration/EditDemonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_demonstrationServices.1.1.1.js",
-      "_demonstrationModeServices.1.1.1.js",
-      "_demonstrationTypeServices.1.1.1.js",
-      "_demonstrationNicheServices.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_demonstrationServices.1.1.2.js",
+      "_demonstrationModeServices.1.1.2.js",
+      "_demonstrationTypeServices.1.1.2.js",
+      "_demonstrationNicheServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/front/demonstration/AddDemonstration.vue": {
-    "file": "AddDemonstration.1.1.1.js",
+    "file": "AddDemonstration.1.1.2.js",
     "src": "resources/js/views/front/demonstration/AddDemonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_demonstrationServices.1.1.1.js",
-      "_demonstrationModeServices.1.1.1.js",
-      "_demonstrationTypeServices.1.1.1.js",
-      "_demonstrationNicheServices.1.1.1.js",
-      "_RichText.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_demonstrationServices.1.1.2.js",
+      "_demonstrationModeServices.1.1.2.js",
+      "_demonstrationTypeServices.1.1.2.js",
+      "_demonstrationNicheServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/front/Contact.vue": {
-    "file": "Contact.1.1.1.js",
+    "file": "Contact.1.1.2.js",
     "src": "resources/js/views/front/Contact.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -942,166 +942,166 @@
     ]
   },
   "resources/js/views/front/auth/ForgotPassword.vue": {
-    "file": "ForgotPassword.1.1.1.js",
+    "file": "ForgotPassword.1.1.2.js",
     "src": "resources/js/views/front/auth/ForgotPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_EnvelopeIcon.1.1.1.js"
+      "_EnvelopeIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/auth/ResetPassword.vue": {
-    "file": "ResetPassword.1.1.1.js",
+    "file": "ResetPassword.1.1.2.js",
     "src": "resources/js/views/front/auth/ResetPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_LockClosedIcon.1.1.1.js"
+      "_LockClosedIcon.1.1.2.js"
     ]
   },
-  "_LockClosedIcon.1.1.1.js": {
-    "file": "LockClosedIcon.1.1.1.js",
+  "_LockClosedIcon.1.1.2.js": {
+    "file": "LockClosedIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/auth/Login.vue": {
-    "file": "Login.1.1.1.js",
+    "file": "Login.1.1.2.js",
     "src": "resources/js/views/front/auth/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_authServices.1.1.1.js",
-      "_ReCaptcha.1.1.1.js",
-      "_EnvelopeIcon.1.1.1.js",
-      "_LockClosedIcon.1.1.1.js",
-      "_EyeIcon.1.1.1.js"
+      "_authServices.1.1.2.js",
+      "_ReCaptcha.1.1.2.js",
+      "_EnvelopeIcon.1.1.2.js",
+      "_LockClosedIcon.1.1.2.js",
+      "_EyeIcon.1.1.2.js"
     ]
   },
-  "_ReCaptcha.1.1.1.js": {
-    "file": "ReCaptcha.1.1.1.js",
+  "_ReCaptcha.1.1.2.js": {
+    "file": "ReCaptcha.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_EyeIcon.1.1.1.js": {
-    "file": "EyeIcon.1.1.1.js",
+  "_EyeIcon.1.1.2.js": {
+    "file": "EyeIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/auth/Pack.vue": {
-    "file": "Pack.1.1.1.js",
+    "file": "Pack.1.1.2.js",
     "src": "resources/js/views/front/auth/Pack.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_CheckCircleIcon.1.1.1.js"
+      "_CheckCircleIcon.1.1.2.js"
     ]
   },
-  "_CheckCircleIcon.1.1.1.js": {
-    "file": "CheckCircleIcon.1.1.1.js",
+  "_CheckCircleIcon.1.1.2.js": {
+    "file": "CheckCircleIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/auth/Register.vue": {
-    "file": "Register.1.1.1.js",
+    "file": "Register.1.1.2.js",
     "src": "resources/js/views/front/auth/Register.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ReCaptcha.1.1.1.js",
-      "_authServices.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_EnvelopeIcon.1.1.1.js",
-      "_LockClosedIcon.1.1.1.js",
-      "_EyeIcon.1.1.1.js"
+      "_ReCaptcha.1.1.2.js",
+      "_authServices.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_EnvelopeIcon.1.1.2.js",
+      "_LockClosedIcon.1.1.2.js",
+      "_EyeIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/account/Profile.vue": {
-    "file": "Profile.1.1.12.js",
+    "file": "Profile.1.1.22.js",
     "src": "resources/js/views/front/account/Profile.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Report.1.1.1.js",
-      "_categoryPersonalPostServices.1.1.1.js",
-      "_personalPostsServices.1.1.1.js",
-      "_RichText.1.1.1.js",
-      "_ChevronRightIcon.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_PencilSquareIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js",
-      "_UserIcon.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_EyeIcon.1.1.1.js",
-      "_postServices.1.1.1.js",
-      "_ministryServices.1.1.1.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js",
-      "_BookOpenIcon.1.1.1.js",
-      "_announcementServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_jobOfferServices.1.1.1.js",
-      "_commentServices.1.1.1.js",
-      "_announcementCommentServices.1.1.1.js",
-      "_jobOfferCommentServices.1.1.1.js",
-      "_demonstrationCommentServices.1.1.1.js",
-      "_demonstrationServices.1.1.1.js",
-      "_userServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_businessSizeServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_legalStatusServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_statusServices.1.1.1.js",
-      "_NewspaperIcon.1.1.1.js",
-      "_MegaphoneIcon.1.1.1.js",
-      "_CalendarDaysIcon.1.1.1.js",
-      "_ClipboardIcon.1.1.1.js"
+      "_Report.1.1.2.js",
+      "_categoryPersonalPostServices.1.1.2.js",
+      "_personalPostsServices.1.1.2.js",
+      "_RichText.1.1.2.js",
+      "_ChevronRightIcon.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_PencilSquareIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js",
+      "_UserIcon.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_EyeIcon.1.1.2.js",
+      "_postServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js",
+      "_BookOpenIcon.1.1.2.js",
+      "_announcementServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_jobOfferServices.1.1.2.js",
+      "_commentServices.1.1.2.js",
+      "_announcementCommentServices.1.1.2.js",
+      "_jobOfferCommentServices.1.1.2.js",
+      "_demonstrationCommentServices.1.1.2.js",
+      "_demonstrationServices.1.1.2.js",
+      "_userServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_businessSizeServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_legalStatusServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_statusServices.1.1.2.js",
+      "_NewspaperIcon.1.1.2.js",
+      "_MegaphoneIcon.1.1.2.js",
+      "_CalendarDaysIcon.1.1.2.js",
+      "_ClipboardIcon.1.1.2.js"
     ]
   },
-  "_legalStatusServices.1.1.1.js": {
-    "file": "legalStatusServices.1.1.1.js",
+  "_legalStatusServices.1.1.2.js": {
+    "file": "legalStatusServices.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_NewspaperIcon.1.1.1.js": {
-    "file": "NewspaperIcon.1.1.1.js",
+  "_NewspaperIcon.1.1.2.js": {
+    "file": "NewspaperIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ClipboardIcon.1.1.1.js": {
-    "file": "ClipboardIcon.1.1.1.js",
+  "_ClipboardIcon.1.1.2.js": {
+    "file": "ClipboardIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_TrashIcon.1.1.1.js": {
-    "file": "TrashIcon.1.1.1.js",
+  "_TrashIcon.1.1.2.js": {
+    "file": "TrashIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/account/SettingAccount.vue": {
-    "file": "SettingAccount.1.1.1.js",
+    "file": "SettingAccount.1.1.2.js",
     "src": "resources/js/views/front/account/SettingAccount.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_LockClosedIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js",
-      "_CheckCircleIcon.1.1.1.js"
+      "_userServices.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_LockClosedIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js",
+      "_CheckCircleIcon.1.1.2.js"
     ]
   },
   "resources/js/views/front/NotFound.vue": {
-    "file": "NotFound.1.1.1.js",
+    "file": "NotFound.1.1.2.js",
     "src": "resources/js/views/front/NotFound.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -1109,16 +1109,16 @@
     ]
   },
   "resources/js/views/back/Login.vue": {
-    "file": "Login.1.1.12.js",
+    "file": "Login.1.1.22.js",
     "src": "resources/js/views/back/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_authServices.1.1.1.js"
+      "_authServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/DashHome.vue": {
-    "file": "DashHome.1.1.1.js",
+    "file": "DashHome.1.1.2.js",
     "src": "resources/js/views/back/DashHome.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -1126,669 +1126,671 @@
     ]
   },
   "resources/js/components/Sidebar.vue": {
-    "file": "Sidebar.1.1.1.js",
+    "file": "Sidebar.1.1.2.js",
     "src": "resources/js/components/Sidebar.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_HomeIcon.1.1.1.js",
-      "_UserGroupIcon.1.1.1.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.1.1.1.js",
-      "_ExclamationCircleIcon.1.1.1.js",
-      "_NewspaperIcon.1.1.1.js",
-      "_GlobeEuropeAfricaIcon.1.1.1.js",
-      "_MapIcon.1.1.1.js",
-      "_BuildingOffice2Icon.1.1.1.js",
-      "_ClipboardIcon.1.1.1.js",
-      "_CalendarDaysIcon.1.1.1.js",
-      "_ClockIcon.1.1.1.js",
-      "_Squares2X2Icon.1.1.1.js",
-      "_BriefcaseIcon.1.1.1.js",
-      "_MegaphoneIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js"
+      "_HomeIcon.1.1.2.js",
+      "_UserGroupIcon.1.1.2.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.1.1.2.js",
+      "_ExclamationCircleIcon.1.1.2.js",
+      "_NewspaperIcon.1.1.2.js",
+      "_GlobeEuropeAfricaIcon.1.1.2.js",
+      "_MapIcon.1.1.2.js",
+      "_BuildingOffice2Icon.1.1.2.js",
+      "_ClipboardIcon.1.1.2.js",
+      "_CalendarDaysIcon.1.1.2.js",
+      "_ClockIcon.1.1.2.js",
+      "_Squares2X2Icon.1.1.2.js",
+      "_BriefcaseIcon.1.1.2.js",
+      "_MegaphoneIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js"
     ],
     "css": [
-      "Sidebar.1.1.1.css"
+      "Sidebar.1.1.2.css"
     ]
   },
-  "_UserGroupIcon.1.1.1.js": {
-    "file": "UserGroupIcon.1.1.1.js",
+  "_UserGroupIcon.1.1.2.js": {
+    "file": "UserGroupIcon.1.1.2.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/back/Dashboard.vue": {
-    "file": "Dashboard.1.1.1.js",
+    "file": "Dashboard.1.1.2.js",
     "src": "resources/js/views/back/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_UserGroupIcon.1.1.1.js",
-      "_NewspaperIcon.1.1.1.js",
-      "_MegaphoneIcon.1.1.1.js",
-      "_BriefcaseIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js",
-      "_BookOpenIcon.1.1.1.js"
+      "_UserGroupIcon.1.1.2.js",
+      "_NewspaperIcon.1.1.2.js",
+      "_MegaphoneIcon.1.1.2.js",
+      "_BriefcaseIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js",
+      "_BookOpenIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/OtherTools.vue": {
-    "file": "OtherTools.1.1.1.js",
+    "file": "OtherTools.1.1.2.js",
     "src": "resources/js/views/back/OtherTools.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_languageServices.1.1.1.js",
-      "_statusServices.1.1.1.js",
-      "_businessSizeServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_workDepartmentServices.1.1.1.js",
-      "_yearExperienceServices.1.1.1.js",
-      "_contractTypeServices.1.1.1.js",
-      "_legalStatusServices.1.1.1.js"
+      "_languageServices.1.1.2.js",
+      "_statusServices.1.1.2.js",
+      "_businessSizeServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_workDepartmentServices.1.1.2.js",
+      "_yearExperienceServices.1.1.2.js",
+      "_contractTypeServices.1.1.2.js",
+      "_legalStatusServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/Reporting.vue": {
-    "file": "Reporting.1.1.1.js",
+    "file": "Reporting.1.1.2.js",
     "src": "resources/js/views/back/Reporting.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_TrashIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js"
+      "_TrashIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/CategoryPersonalBlog.vue": {
-    "file": "CategoryPersonalBlog.1.1.1.js",
+    "file": "CategoryPersonalBlog.1.1.2.js",
     "src": "resources/js/views/back/CategoryPersonalBlog.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryPersonalPostServices.1.1.1.js"
+      "_categoryPersonalPostServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/DemonstrationNiche.vue": {
-    "file": "DemonstrationNiche.1.1.1.js",
+    "file": "DemonstrationNiche.1.1.2.js",
     "src": "resources/js/views/back/DemonstrationNiche.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationNicheServices.1.1.1.js"
+      "_demonstrationNicheServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/DemonstrationType.vue": {
-    "file": "DemonstrationType.1.1.1.js",
+    "file": "DemonstrationType.1.1.2.js",
     "src": "resources/js/views/back/DemonstrationType.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationTypeServices.1.1.1.js"
+      "_demonstrationTypeServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/DemonstrationMode.vue": {
-    "file": "DemonstrationMode.1.1.1.js",
+    "file": "DemonstrationMode.1.1.2.js",
     "src": "resources/js/views/back/DemonstrationMode.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationModeServices.1.1.1.js"
+      "_demonstrationModeServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/posts/PostIndex.vue": {
-    "file": "PostIndex.1.1.1.js",
+    "file": "PostIndex.1.1.2.js",
     "src": "resources/js/views/back/posts/PostIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_postServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/posts/PostCreate.vue": {
-    "file": "PostCreate.1.1.1.js",
+    "file": "PostCreate.1.1.2.js",
     "src": "resources/js/views/back/posts/PostCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_ministryServices.1.1.1.js"
+      "_postServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/back/posts/PostEdit.vue": {
-    "file": "PostEdit.1.1.1.js",
+    "file": "PostEdit.1.1.2.js",
     "src": "resources/js/views/back/posts/PostEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_ministryServices.1.1.1.js"
+      "_postServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_ministryServices.1.1.2.js",
+      "_RichText.1.1.2.js"
     ]
   },
   "resources/js/views/back/personal_blog/PersonalBlogIndex.vue": {
-    "file": "PersonalBlogIndex.1.1.1.js",
+    "file": "PersonalBlogIndex.1.1.2.js",
     "src": "resources/js/views/back/personal_blog/PersonalBlogIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_personalPostsServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_personalPostsServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/personal_blog/PersonalBlogCreate.vue": {
-    "file": "PersonalBlogCreate.1.1.1.js",
+    "file": "PersonalBlogCreate.1.1.2.js",
     "src": "resources/js/views/back/personal_blog/PersonalBlogCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryPersonalPostServices.1.1.1.js",
-      "_personalPostsServices.1.1.1.js"
+      "_categoryPersonalPostServices.1.1.2.js",
+      "_personalPostsServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/personal_blog/PersonalBlogEdit.vue": {
-    "file": "PersonalBlogEdit.1.1.1.js",
+    "file": "PersonalBlogEdit.1.1.2.js",
     "src": "resources/js/views/back/personal_blog/PersonalBlogEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryPersonalPostServices.1.1.1.js",
-      "_personalPostsServices.1.1.1.js"
+      "_categoryPersonalPostServices.1.1.2.js",
+      "_personalPostsServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/demonstration/DemonstrationIndex.vue": {
-    "file": "DemonstrationIndex.1.1.1.js",
+    "file": "DemonstrationIndex.1.1.2.js",
     "src": "resources/js/views/back/demonstration/DemonstrationIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js",
-      "_CalendarIcon.1.1.1.js"
+      "_demonstrationServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js",
+      "_CalendarIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/demonstration/DemonstrationCreate.vue": {
-    "file": "DemonstrationCreate.1.1.1.js",
+    "file": "DemonstrationCreate.1.1.2.js",
     "src": "resources/js/views/back/demonstration/DemonstrationCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_demonstrationServices.1.1.1.js",
-      "_demonstrationModeServices.1.1.1.js",
-      "_demonstrationTypeServices.1.1.1.js",
-      "_demonstrationNicheServices.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_demonstrationServices.1.1.2.js",
+      "_demonstrationModeServices.1.1.2.js",
+      "_demonstrationTypeServices.1.1.2.js",
+      "_demonstrationNicheServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/demonstration/DemonstrationEdit.vue": {
-    "file": "DemonstrationEdit.1.1.1.js",
+    "file": "DemonstrationEdit.1.1.2.js",
     "src": "resources/js/views/back/demonstration/DemonstrationEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_demonstrationServices.1.1.1.js",
-      "_demonstrationModeServices.1.1.1.js",
-      "_demonstrationTypeServices.1.1.1.js",
-      "_demonstrationNicheServices.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_demonstrationServices.1.1.2.js",
+      "_demonstrationModeServices.1.1.2.js",
+      "_demonstrationTypeServices.1.1.2.js",
+      "_demonstrationNicheServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/continent/ContinentIndex.vue": {
-    "file": "ContinentIndex.1.1.1.js",
+    "file": "ContinentIndex.1.1.2.js",
     "src": "resources/js/views/back/continent/ContinentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_continentServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/continent/ContinentCreate.vue": {
-    "file": "ContinentCreate.1.1.1.js",
+    "file": "ContinentCreate.1.1.2.js",
     "src": "resources/js/views/back/continent/ContinentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.1.1.1.js"
+      "_continentServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/continent/ContinentEdit.vue": {
-    "file": "ContinentEdit.1.1.1.js",
+    "file": "ContinentEdit.1.1.2.js",
     "src": "resources/js/views/back/continent/ContinentEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.1.1.1.js"
+      "_continentServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/user/UserIndex.vue": {
-    "file": "UserIndex.1.1.1.js",
+    "file": "UserIndex.1.1.2.js",
     "src": "resources/js/views/back/user/UserIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js",
-      "_UserCircleIcon.1.1.1.js"
+      "_userServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js",
+      "_UserCircleIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/user/UserCreate.vue": {
-    "file": "UserCreate.1.1.1.js",
+    "file": "UserCreate.1.1.2.js",
     "src": "resources/js/views/back/user/UserCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js"
+      "_userServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/user/UserEdit.vue": {
-    "file": "UserEdit.1.1.1.js",
+    "file": "UserEdit.1.1.2.js",
     "src": "resources/js/views/back/user/UserEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.1.1.1.js"
+      "_userServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferIndex.vue": {
-    "file": "JobOfferIndex.1.1.1.js",
+    "file": "JobOfferIndex.1.1.2.js",
     "src": "resources/js/views/back/jobOffer/JobOfferIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js",
-      "_BuildingOffice2Icon.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js",
+      "_BuildingOffice2Icon.1.1.2.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferCreate.vue": {
-    "file": "JobOfferCreate.1.1.1.js",
+    "file": "JobOfferCreate.1.1.2.js",
     "src": "resources/js/views/back/jobOffer/JobOfferCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_workDepartmentServices.1.1.1.js",
-      "_yearExperienceServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_cityServices.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_workDepartmentServices.1.1.2.js",
+      "_yearExperienceServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_cityServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferEdit.vue": {
-    "file": "JobOfferEdit.1.1.1.js",
+    "file": "JobOfferEdit.1.1.2.js",
     "src": "resources/js/views/back/jobOffer/JobOfferEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_activityAreaServices.1.1.1.js",
-      "_workDepartmentServices.1.1.1.js",
-      "_yearExperienceServices.1.1.1.js",
-      "_languageServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_cityServices.1.1.1.js"
+      "_jobOfferServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_activityAreaServices.1.1.2.js",
+      "_workDepartmentServices.1.1.2.js",
+      "_yearExperienceServices.1.1.2.js",
+      "_languageServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_cityServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/comment/CommentIndex.vue": {
-    "file": "CommentIndex.1.1.1.js",
+    "file": "CommentIndex.1.1.2.js",
     "src": "resources/js/views/back/comment/CommentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_commentServices.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_commentServices.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/comment/CommentCreate.vue": {
-    "file": "CommentCreate.1.1.1.js",
+    "file": "CommentCreate.1.1.2.js",
     "src": "resources/js/views/back/comment/CommentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js"
+      "_countryServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue": {
-    "file": "AnnouncementCommentIndex.1.1.1.js",
+    "file": "AnnouncementCommentIndex.1.1.2.js",
     "src": "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementCommentServices.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_announcementCommentServices.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/announcement_comment/AnnouncementCommentCreate.vue": {
-    "file": "AnnouncementCommentCreate.1.1.1.js",
+    "file": "AnnouncementCommentCreate.1.1.2.js",
     "src": "resources/js/views/back/announcement_comment/AnnouncementCommentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js"
+      "_countryServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/zone/ZoneIndex.vue": {
-    "file": "ZoneIndex.1.1.1.js",
+    "file": "ZoneIndex.1.1.2.js",
     "src": "resources/js/views/back/zone/ZoneIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/zone/ZoneCreate.vue": {
-    "file": "ZoneCreate.1.1.1.js",
+    "file": "ZoneCreate.1.1.2.js",
     "src": "resources/js/views/back/zone/ZoneCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/zone/ZoneEdit.vue": {
-    "file": "ZoneEdit.1.1.1.js",
+    "file": "ZoneEdit.1.1.2.js",
     "src": "resources/js/views/back/zone/ZoneEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.1.1.1.js",
-      "_continentServices.1.1.1.js"
+      "_zoneServices.1.1.2.js",
+      "_continentServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/country/CountryIndex.vue": {
-    "file": "CountryIndex.1.1.1.js",
+    "file": "CountryIndex.1.1.2.js",
     "src": "resources/js/views/back/country/CountryIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_countryServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/country/CountryCreate.vue": {
-    "file": "CountryCreate.1.1.1.js",
+    "file": "CountryCreate.1.1.2.js",
     "src": "resources/js/views/back/country/CountryCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_zoneServices.1.1.1.js"
+      "_countryServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_zoneServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/country/CountryEdit.vue": {
-    "file": "CountryEdit.1.1.1.js",
+    "file": "CountryEdit.1.1.2.js",
     "src": "resources/js/views/back/country/CountryEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_zoneServices.1.1.1.js"
+      "_countryServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_zoneServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementIndex.vue": {
-    "file": "AnnouncementIndex.1.1.1.js",
+    "file": "AnnouncementIndex.1.1.2.js",
     "src": "resources/js/views/back/announcement/AnnouncementIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js",
-      "_MegaphoneIcon.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js",
+      "_MegaphoneIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementCreate.vue": {
-    "file": "AnnouncementCreate.1.1.1.js",
+    "file": "AnnouncementCreate.1.1.2.js",
     "src": "resources/js/views/back/announcement/AnnouncementCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_universityServices.1.1.1.js",
-      "_RichText.1.1.1.js",
-      "_DropZone.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_universityServices.1.1.2.js",
+      "_RichText.1.1.2.js",
+      "_DropZone.1.1.2.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementEdit.vue": {
-    "file": "AnnouncementEdit.1.1.1.js",
+    "file": "AnnouncementEdit.1.1.2.js",
     "src": "resources/js/views/back/announcement/AnnouncementEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.1.1.1.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_currencyServices.1.1.1.js",
-      "_universityServices.1.1.1.js",
-      "_RichText.1.1.1.js",
-      "_DropZone.1.1.1.js"
+      "_announcementServices.1.1.2.js",
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_currencyServices.1.1.2.js",
+      "_universityServices.1.1.2.js",
+      "_RichText.1.1.2.js",
+      "_DropZone.1.1.2.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyIndex.vue": {
-    "file": "CurrencyIndex.1.1.1.js",
+    "file": "CurrencyIndex.1.1.2.js",
     "src": "resources/js/views/back/currency/CurrencyIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_currencyServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyCreate.vue": {
-    "file": "CurrencyCreate.1.1.1.js",
+    "file": "CurrencyCreate.1.1.2.js",
     "src": "resources/js/views/back/currency/CurrencyCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.1.1.1.js"
+      "_currencyServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyEdit.vue": {
-    "file": "CurrencyEdit.1.1.1.js",
+    "file": "CurrencyEdit.1.1.2.js",
     "src": "resources/js/views/back/currency/CurrencyEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.1.1.1.js"
+      "_currencyServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementIndex.vue": {
-    "file": "CategoryAnnouncementIndex.1.1.1.js",
+    "file": "CategoryAnnouncementIndex.1.1.2.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_categoryAnnouncementServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementCreate.vue": {
-    "file": "CategoryAnnouncementCreate.1.1.1.js",
+    "file": "CategoryAnnouncementCreate.1.1.2.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.1.1.1.js"
+      "_categoryAnnouncementServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementEdit.vue": {
-    "file": "CategoryAnnouncementEdit.1.1.1.js",
+    "file": "CategoryAnnouncementEdit.1.1.2.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.1.1.1.js"
+      "_categoryAnnouncementServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/city/CityIndex.vue": {
-    "file": "CityIndex.1.1.1.js",
+    "file": "CityIndex.1.1.2.js",
     "src": "resources/js/views/back/city/CityIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_cityServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/city/CityCreate.vue": {
-    "file": "CityCreate.1.1.1.js",
+    "file": "CityCreate.1.1.2.js",
     "src": "resources/js/views/back/city/CityCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js"
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/city/CityEdit.vue": {
-    "file": "CityEdit.1.1.1.js",
+    "file": "CityEdit.1.1.2.js",
     "src": "resources/js/views/back/city/CityEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.1.1.1.js",
-      "_countryServices.1.1.1.js"
+      "_cityServices.1.1.2.js",
+      "_countryServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/university/UniversityIndex.vue": {
-    "file": "UniversityIndex.1.1.1.js",
+    "file": "UniversityIndex.1.1.2.js",
     "src": "resources/js/views/back/university/UniversityIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_universityServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/university/UniversityCreate.vue": {
-    "file": "UniversityCreate.1.1.1.js",
+    "file": "UniversityCreate.1.1.2.js",
     "src": "resources/js/views/back/university/UniversityCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_cityServices.1.1.1.js",
-      "_zoneServices.1.1.1.js"
+      "_universityServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_cityServices.1.1.2.js",
+      "_zoneServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/university/UniversityEdit.vue": {
-    "file": "UniversityEdit.1.1.1.js",
+    "file": "UniversityEdit.1.1.2.js",
     "src": "resources/js/views/back/university/UniversityEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.1.1.1.js",
-      "_continentServices.1.1.1.js",
-      "_countryServices.1.1.1.js",
-      "_zoneServices.1.1.1.js",
-      "_cityServices.1.1.1.js"
+      "_universityServices.1.1.2.js",
+      "_continentServices.1.1.2.js",
+      "_countryServices.1.1.2.js",
+      "_zoneServices.1.1.2.js",
+      "_cityServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryIndex.vue": {
-    "file": "MinistryIndex.1.1.1.js",
+    "file": "MinistryIndex.1.1.2.js",
     "src": "resources/js/views/back/ministry/MinistryIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.1.1.1.js",
-      "_PlusCircleIcon.1.1.1.js",
-      "_TrashIcon.1.1.1.js"
+      "_ministryServices.1.1.2.js",
+      "_PlusCircleIcon.1.1.2.js",
+      "_TrashIcon.1.1.2.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryCreate.vue": {
-    "file": "MinistryCreate.1.1.1.js",
+    "file": "MinistryCreate.1.1.2.js",
     "src": "resources/js/views/back/ministry/MinistryCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.1.1.1.js"
+      "_ministryServices.1.1.2.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryEdit.vue": {
-    "file": "MinistryEdit.1.1.1.js",
+    "file": "MinistryEdit.1.1.2.js",
     "src": "resources/js/views/back/ministry/MinistryEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.1.1.1.js"
+      "_ministryServices.1.1.2.js"
     ]
   },
   "resources/js/components/Header.css": {
-    "file": "Header.1.1.1.css",
+    "file": "Header.1.1.2.css",
     "src": "resources/js/components/Header.css"
   },
-  "RichText.css": {
-    "file": "RichText.1.1.1.css",
-    "src": "RichText.css"
-  },
-  "resources/js/components/Footer.css": {
-    "file": "Footer.1.1.1.css",
-    "src": "resources/js/components/Footer.css"
-  },
-  "swiper.css": {
-    "file": "swiper.1.1.1.css",
-    "src": "swiper.css"
+  "effect-fade.css": {
+    "file": "effect-fade.1.1.2.css",
+    "src": "effect-fade.css"
   },
   "DropZone.css": {
-    "file": "DropZone.1.1.1.css",
+    "file": "DropZone.1.1.2.css",
     "src": "DropZone.css"
   },
   "resources/js/components/Sidebar.css": {
-    "file": "Sidebar.1.1.1.css",
+    "file": "Sidebar.1.1.2.css",
     "src": "resources/js/components/Sidebar.css"
   },
-  "effect-fade.css": {
-    "file": "effect-fade.1.1.1.css",
-    "src": "effect-fade.css"
+  "RichText.css": {
+    "file": "RichText.1.1.2.css",
+    "src": "RichText.css"
+  },
+  "swiper.css": {
+    "file": "swiper.1.1.2.css",
+    "src": "swiper.css"
   },
   "resources/js/views/front/demonstration/Demonstration.css": {
-    "file": "Demonstration.1.1.1.css",
+    "file": "Demonstration.1.1.2.css",
     "src": "resources/js/views/front/demonstration/Demonstration.css"
   },
   "resources/js/views/front/announcement/SingleAnnouncement.css": {
-    "file": "SingleAnnouncement.1.1.1.css",
+    "file": "SingleAnnouncement.1.1.2.css",
     "src": "resources/js/views/front/announcement/SingleAnnouncement.css"
   },
+  "resources/js/components/Footer.css": {
+    "file": "Footer.1.1.2.css",
+    "src": "resources/js/components/Footer.css"
+  },
   "resources/js/app.css": {
-    "file": "app.1.1.1.css",
+    "file": "app.1.1.2.css",
     "src": "resources/js/app.css"
   }
 }

@@ -32,7 +32,7 @@ class PostRequest extends FormRequest
             'continent_id' => 'integer|required',
             'zone_id' => 'integer|required',
             'country_id' => 'integer|required',
-            'ministry_id' => 'integer|required',
+            'ministries' => 'required',
         ];
     }
 }

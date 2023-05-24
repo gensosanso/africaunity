@@ -64,10 +64,8 @@ class PostController extends Controller
 
         if ($request->ministry != "") {
             $ministry = $request->ministry;
-            $posts = $posts->with(['ministry' => function ($query) use ($ministry) {
-                $query->where('id', $ministry);
-            }])->whereHas('ministry', function (Builder $query) use ($ministry) {
-                $query->where('id', $ministry);
+            $posts = $posts->whereHas('ministries', function (Builder $query) use ($ministry) {
+                $query->where('ministries.id', $ministry);
             });
         }
 
@@ -166,7 +164,7 @@ class PostController extends Controller
                 'continent_id' => 'integer|required',
                 'zone_id' => 'integer|required',
                 'country_id' => 'integer|required',
-                'ministry_id' => 'integer|required',
+                'ministries' => 'required',
             ]);
 
             $data = [
@@ -178,7 +176,6 @@ class PostController extends Controller
                 'continent_id' => $fileds['continent_id'],
                 'zone_id' => $fileds['zone_id'],
                 'country_id' => $fileds['country_id'],
-                'ministry_id' => $fileds['ministry_id'],
                 'image' => ''
             ];
         } else {
@@ -192,7 +189,7 @@ class PostController extends Controller
                 'continent_id' => 'integer|required',
                 'zone_id' => 'integer|required',
                 'country_id' => 'integer|required',
-                'ministry_id' => 'integer|required',
+                'ministries' => 'required',
                 'image' => 'required|mimes:png,jpg,jpeg,gif|dimensions:min_width=100,min_height=200'
             ]);
             $filename = '/uploads/' . time() . '.' . $request->file('image')->extension();
@@ -207,11 +204,13 @@ class PostController extends Controller
                 'continent_id' => $fileds['continent_id'],
                 'zone_id' => $fileds['zone_id'],
                 'country_id' => $fileds['country_id'],
-                'ministry_id' => $fileds['ministry_id'],
                 'image' => $filename
             ];
         }
+
         $post = Post::create($data);
+        
+        $post->ministries()->toggle(explode(",",$request->ministries));
 
         return new PostResource($post);
     }
@@ -224,7 +223,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return new PostResource2($post);
+        return new PostResource($post);
     }
 
     public function show2(Post $post)
@@ -252,7 +251,7 @@ class PostController extends Controller
             'continent_id' => 'integer|required',
             'zone_id' => 'integer|required',
             'country_id' => 'integer|required',
-            'ministry_id' => 'integer|required',
+            'ministries' => 'required',
         ]);
         $data = [
             'title' => $fileds['title'],
@@ -263,7 +262,7 @@ class PostController extends Controller
             'continent_id' => $fileds['continent_id'],
             'zone_id' => $fileds['zone_id'],
             'country_id' => $fileds['country_id'],
-            'ministry_id' => $fileds['ministry_id'],
+
         ];
         if ($request->file('image')) {
             $request->validate([
@@ -278,6 +277,7 @@ class PostController extends Controller
         }
 
         $post->update($data);
+        $post->ministries()->sync(explode(",",$request->ministries));
 
         return new PostResource($post);
     }

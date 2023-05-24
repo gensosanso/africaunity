@@ -37,7 +37,8 @@ class DemonstrationController extends Controller
         if ($request->date  != "") {
             $date = Carbon::createFromFormat('Y-m-d', $request->date);
             $demonstrations->where(function ($query) use ($date) {
-                $query->whereDate('start_date', '<=' , $date)->whereDate('end_date', '>=', $date);
+                //$query->whereDate('start_date', '<=' , $date)->whereDate('end_date', '>=', $date);
+                $query->whereDate('end_date', '>=', $date);
             }); 
         } 
        

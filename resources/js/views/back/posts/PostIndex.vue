@@ -91,16 +91,6 @@
                                         : item.title.substring(0, 29) + "..."
                                 }}
                             </template>
-                            <template #item-ministry.name_en="item">
-                                {{
-                                    item.ministry.name_en <= 30
-                                        ? item.ministry.name_en
-                                        : item.ministry.name_en.substring(
-                                              0,
-                                              29
-                                          ) + "..."
-                                }}
-                            </template>
                             <template #item-id="item">
                                 <div>
                                     <router-link
@@ -143,6 +133,7 @@ import { reactive, ref, onMounted, computed, watch } from "vue";
 import usePosts from "@/services/postServices.js";
 import Error from "@/components/Error.vue";
 import { useRouter } from "vue-router";
+import useSizeCompanies from '@/services/sizeCompanyServices.js';
 const router = useRouter();
 const { posts, getPostsAll, destroyPost, loading, errors } = usePosts();
 const props = defineProps({
@@ -189,7 +180,6 @@ const headers = [
     { text: "Continent", value: "continent.name_en" },
     { text: "Zone", value: "zone.name_en" },
     { text: "Country", value: "country.name_en" },
-    { text: "Ministry", value: "ministry.name_en" },
     { text: "ACTION", value: "id" },
 ];
 </script>
