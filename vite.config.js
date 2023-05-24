@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 
-const VERSION = "1.1.2";
+const VERSION = "1.1.4";
 
 export default defineConfig({
     plugins: [

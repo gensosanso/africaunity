@@ -20,16 +20,16 @@
                     <span v-else>{{ ministry1.name_pt }}</span>
                 </h1>
                 <div
-                    class="border-t-2 text-justify py-4"
+                    class="border-t-2 text-justify py-4 w-full"
                     :style="'border-color:' + ministry1.color"
                 >
                     <div
-                    class="lg:flex lg:items-start lg:space-x-2"
+                    class="lg:flex lg:items-start lg:space-x-4 w-full"
                     v-if="articles1.length != 0"
                     >
-                    <div v-for="(article, index) in articles1" :key="index" >
+                    <template v-for="(article, index) in articles1" :key="index" >
                             <div
-                                class="overflow-hidden shadow bg-white"
+                                class="overflow-hidden shadow bg-white lg:w-1/2 w-full"
                                 v-if="index === 0"
                             >   <router-link 
                                     :to="{
@@ -131,8 +131,8 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
-                    <div class="space-y-2 grow">
+                    </template>
+                    <div class="space-y-2 w-full lg:w-1/2">
                         <div v-for="(article, index) in articles1" :key="index">
                             <div
                                 class="overflow-hidden w-full h-32 flex space-x-2 shadow bg-white"

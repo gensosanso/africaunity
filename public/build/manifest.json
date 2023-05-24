@@ -1753,22 +1753,6 @@
       "_ministryServices.1.1.2.js"
     ]
   },
-  "resources/js/components/Header.css": {
-    "file": "Header.1.1.2.css",
-    "src": "resources/js/components/Header.css"
-  },
-  "effect-fade.css": {
-    "file": "effect-fade.1.1.2.css",
-    "src": "effect-fade.css"
-  },
-  "DropZone.css": {
-    "file": "DropZone.1.1.2.css",
-    "src": "DropZone.css"
-  },
-  "resources/js/components/Sidebar.css": {
-    "file": "Sidebar.1.1.2.css",
-    "src": "resources/js/components/Sidebar.css"
-  },
   "RichText.css": {
     "file": "RichText.1.1.2.css",
     "src": "RichText.css"
@@ -1777,17 +1761,33 @@
     "file": "swiper.1.1.2.css",
     "src": "swiper.css"
   },
-  "resources/js/views/front/demonstration/Demonstration.css": {
-    "file": "Demonstration.1.1.2.css",
-    "src": "resources/js/views/front/demonstration/Demonstration.css"
+  "DropZone.css": {
+    "file": "DropZone.1.1.2.css",
+    "src": "DropZone.css"
+  },
+  "resources/js/components/Footer.css": {
+    "file": "Footer.1.1.2.css",
+    "src": "resources/js/components/Footer.css"
   },
   "resources/js/views/front/announcement/SingleAnnouncement.css": {
     "file": "SingleAnnouncement.1.1.2.css",
     "src": "resources/js/views/front/announcement/SingleAnnouncement.css"
   },
-  "resources/js/components/Footer.css": {
-    "file": "Footer.1.1.2.css",
-    "src": "resources/js/components/Footer.css"
+  "resources/js/components/Header.css": {
+    "file": "Header.1.1.2.css",
+    "src": "resources/js/components/Header.css"
+  },
+  "effect-fade.css": {
+    "file": "effect-fade.1.1.2.css",
+    "src": "effect-fade.css"
+  },
+  "resources/js/components/Sidebar.css": {
+    "file": "Sidebar.1.1.2.css",
+    "src": "resources/js/components/Sidebar.css"
+  },
+  "resources/js/views/front/demonstration/Demonstration.css": {
+    "file": "Demonstration.1.1.2.css",
+    "src": "resources/js/views/front/demonstration/Demonstration.css"
   },
   "resources/js/app.css": {
     "file": "app.1.1.2.css",

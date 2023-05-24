@@ -20,22 +20,28 @@
                         class="absolute flex h-full w-full flex-col justify-end space-y-1 bg-black/25 object-cover px-8 py-6 text-white"
                     >
                         <div>
-                            <a
-                                href="#"
-                                class="rounded py-1 px-2 text-xs capitalize"
-                                :style="'background:' + post.ministry.color"
-                            >
-                                <span v-if="$i18n.locale == 'en'">{{
-                                    post.ministry.name_en
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'fr'">{{
-                                    post.ministry.name_fr
-                                }}</span>
-                                <span v-else-if="$i18n.locale == 'es'">{{
-                                    post.ministry.name_es
-                                }}</span>
-                                <span v-else>{{ post.country.name_pt }}</span>
-                            </a>
+                            <ul class=" flex items-center gap-4 flex-wrap">
+                                <li
+                                    class=" rounded py-1 px-2 text-xs capitalize text-white"
+                                    v-for="ministry in post.ministries"
+                                    :style="'background:' + ministry.color"
+                                >
+                                    <span v-if="$i18n.locale == 'en'">{{
+                                        ministry.name_en.substring(0, 29) + "..."
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'fr'">{{
+                                        ministry.name_fr.substring(0, 29) + "..."
+                                    }}</span>
+                                    <span v-else-if="$i18n.locale == 'es'">{{
+                                        ministry.name_es.substring(0, 29) + "..."
+                                    }}</span>
+                                    <span v-else>
+                                        {{
+                                             ministry.name_pt.substring(0, 29) + "..."
+                                        }}
+                                    </span>
+                                </li>
+                            </ul>
                         </div>
                         <div>
                             <a href="#" class="text-lg hover:text-primary-blue">
