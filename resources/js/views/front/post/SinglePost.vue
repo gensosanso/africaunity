@@ -14,7 +14,7 @@
                     <!-- Post -->
                     <img
                         class="h-96 w-full object-cover"
-                        :src="post.image"
+                        :src="'/storage'+post.image"
                         v-if="post.type == 'article'"
                         alt=""
                     />

@@ -177,7 +177,7 @@ const deletePost = async (id) => {
                                 params: { id: post.id, slug: post.slug  },
                             }"
                             ><img
-                                :src="post.image"
+                                :src="'/storage'+post.image"
                                 class="h-full w-full bg-cover object-cover"
                                 :alt="post.title"
                         /></router-link>

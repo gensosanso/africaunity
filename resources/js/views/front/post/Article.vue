@@ -44,7 +44,7 @@
                         <img
                             v-if="post.image"
                             class="h-44 w-full object-cover"
-                            :src="post.image"
+                            :src="'/storage'+post.image"
                             alt=""
                         />
                         <BookOpenIcon

@@ -94,6 +94,16 @@
                         v-html="item.content"
                     ></div>
                 </template>
+
+                <template #item-url="item">
+                    <div>
+                        <a :href="item.url"
+                            class="dark:text-blue-500 ml-3 text-indigo-600 hover:underline"
+                        >
+                            view
+                        </a>
+                    </div>
+                </template>
                 
             </EasyDataTable>
         </div>
@@ -134,5 +144,6 @@ const headers = [
     { text: "USER REPORT", value: "user" },
     { text: "Type", value: "type" },
     { text: "REPORTED", value: "reported" },
+    { text: "REPORTED", value: "url" },
 ];
 </script>

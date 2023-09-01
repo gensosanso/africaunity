@@ -2,7 +2,7 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 
-const VERSION = "1.1.4";
+const hash = Math.floor(Math.random() * 90000) + 10000;
 
 export default defineConfig({
     plugins: [
@@ -24,9 +24,9 @@ export default defineConfig({
     build: {
         rollupOptions: {
           output: {
-              entryFileNames: `[name].${VERSION}.js`,
-              chunkFileNames: `[name].${VERSION}.js`,
-              assetFileNames: `[name].${VERSION}.[ext]`
+              entryFileNames: `[name].${hash}.js`,
+              chunkFileNames: `[name].${hash}.js`,
+              assetFileNames: `[name].${hash}.[ext]`
           }
         }
     },

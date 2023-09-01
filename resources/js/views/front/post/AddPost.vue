@@ -228,7 +228,7 @@
                                 v-if="post.image"
                                 :src="
                                     typeof post.image == 'string'
-                                        ? post.image
+                                        ? '/storage'+post.image
                                         : previewImage(post.image)
                                 "
                                 @load="

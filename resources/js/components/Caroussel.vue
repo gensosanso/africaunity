@@ -83,7 +83,7 @@
                         </div>
                     </div>
                     <img
-                        :src="post.image"
+                        :src="'storage/'+post.image"
                         :alt="post.title"
                         class="h-full w-full object-cover"
                     />
@@ -139,7 +139,7 @@
                         </div>
                     </div>
                     <img
-                        :src="post.image"
+                        :src="'storage/'+post.image"
                         :alt="post.title"
                         class="h-60 w-full object-cover md:h-full"
                     />

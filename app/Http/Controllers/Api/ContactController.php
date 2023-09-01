@@ -36,31 +36,43 @@ class ContactController extends Controller
             'content' => 'required|string',
         ]);
 
-        switch ($fields['about']) {
-            case 1:
-                $about = 'Invitation to a conference';
-                break;
-            case 2:
-                $about = 'Commercial proposition';
-                break;
-            case 3:
-                $about = 'Proposition of collaboration';
-                break;
-            case 4:
-                $about = 'Propose a university';
-                break;
-            case 5:
-                $about = 'Others';
-                break;
-        }
-
         $data = [
             'name' => $fields['name'],
             'email' => $fields['email'],
-            'about' => $about,
+            'about' => '',
             'city' => $fields['city'],
             'content' => $fields['content'],
         ];
+        switch ($fields['about']) {
+            case 1:
+                $data['about'] = 'Invitation to a conference';
+                Notification::route('mail', 'pierre.bassanaga@africaunity.net')->notify(new ContactNotification($data));
+                Notification::route('mail', 'suzannendjom@africaunity.net ')->notify(new ContactNotification($data));
+                Notification::route('mail', 'contact@africaunity.net')->notify(new ContactNotification($data));
+                break;
+            case 2:
+                $data['about'] = 'Commercial proposition';
+                Notification::route('mail', 'pierre.bassanaga@africaunity.net')->notify(new ContactNotification($data));
+                Notification::route('mail', 'suzannendjom@africaunity.net ')->notify(new ContactNotification($data));
+                Notification::route('mail', 'contact@africaunity.net')->notify(new ContactNotification($data));
+                break;
+            case 3:
+                $data['about'] = 'Proposition of collaboration';
+                Notification::route('mail', 'pierre.bassanaga@africaunity.net')->notify(new ContactNotification($data));
+                Notification::route('mail', 'suzannendjom@africaunity.net ')->notify(new ContactNotification($data));
+                Notification::route('mail', 'contact@africaunity.net')->notify(new ContactNotification($data));
+                break;
+            case 4:
+                $data['about'] = 'Propose a university';
+                Notification::route('mail', 'suzannendjom@africaunity.net ')->notify(new ContactNotification($data));
+                Notification::route('mail', 'contact@africaunity.net')->notify(new ContactNotification($data));
+                break;
+            case 5:
+                $data['about'] = 'Others';
+                Notification::route('mail', 'suzannendjom@africaunity.net ')->notify(new ContactNotification($data));
+                Notification::route('mail', 'contact@africaunity.net')->notify(new ContactNotification($data));
+                break;
+        }
 
         // $admins = User::where('type', 'admin')->get();
 
@@ -69,7 +81,7 @@ class ContactController extends Controller
         // }
 
         // Notification::route('mail', 'contact@africaunity.net')->notify(new ContactNotification($data));
-        Notification::route('mail', 'msigha.megasoft@gmail.com')->notify(new ContactNotification($data));
+        
 
         $response = [
             'status' => true,

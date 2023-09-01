@@ -36,8 +36,8 @@ class ReportController extends Controller
                 break;
             case 'account':
                 $user = User::find($data['reported_id']);
-                $reported = "User($user->firstname ". $user->lastname && $user->lastname  != 'null'  ? $user->lastname : '' ." | $user->email )";
-                $url = "/account/$user->id/". $user->lastname && $user->lastname  != 'null'  ? Str::slug("$user->firstname  $user->lastname") : Str::slug("$user->firstname");
+                $reported = "User($user->firstname | $user->email )";
+                $url = "/account/$user->id/";
                 break;
             case 'ads':
                 $ads = Announcement::find($data['reported_id']);
@@ -48,7 +48,7 @@ class ReportController extends Controller
                 $personalPost = PersonalPost::find($data['reported_id']);
                 $author = User::find($personalPost->user_id);
                 $reported = "BLog Post($personalPost->title)";
-                $url = "/account/$author->id/". $author->lastname && $author->lastname  != 'null'  ? Str::slug("$author->firstname  $author->lastname") : Str::slug("$author->firstname") . "/?personal_post=$personalPost->id#personal_post";
+                $url = "/account/$author->id/". "/?personal_post=$personalPost->id#personal_post";
                 break;
             case 'job':
                 $job = JobOffer::find($data['reported_id']);
@@ -69,13 +69,14 @@ class ReportController extends Controller
 
         $data['reported'] = $reported;
         $data['url'] = $url;
+        dd($data);
         Reporting::create($data);
 
-        $admins = User::where('type', 'admin')->get();
-        $userReport = User::find($data['user_id']);
+       $admins = User::where('type', 'admin')->get();
+       $userReport = User::find($data['user_id']);
 
-        foreach ($admins as $admin) {
-            $admin->notify(new ReportNotification($data['type'], $reported, $url, $userReport, $data['content']));
+      foreach ($admins as $admin) {
+           $admin->notify(new ReportNotification($data['type'], $reported, $url, $userReport, $data['content']));
         }
 
         $response = [

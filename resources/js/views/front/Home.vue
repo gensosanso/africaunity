@@ -38,7 +38,7 @@
                                     }"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>
@@ -146,7 +146,7 @@
                                     class=" w-36"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>
@@ -235,7 +235,7 @@
                                     }"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>
@@ -353,7 +353,7 @@
                                     class="w-36"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>
@@ -442,7 +442,7 @@
                                     }"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>
@@ -557,7 +557,7 @@
                                     class="w-36"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover h-64"
                                 /></router-link>
@@ -647,7 +647,7 @@
                                     }"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>
@@ -756,7 +756,7 @@
                                     class=" w-36"
                                 >
                                     <img
-                                        :src="article.image"
+                                        :src="'/storage'+article.image"
                                         alt=""
                                         class="object-cover w-full h-64"
                                 /></router-link>

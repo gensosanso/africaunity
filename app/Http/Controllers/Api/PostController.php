@@ -193,7 +193,7 @@ class PostController extends Controller
                 'image' => 'required|mimes:png,jpg,jpeg,gif|dimensions:min_width=100,min_height=200'
             ]);
             $filename = '/uploads/' . time() . '.' . $request->file('image')->extension();
-            $request->file('image')->storePubliclyAs('public', $filename);
+            $request->file('image')->storePubliclyAs('', $filename);
 
             $data = [
                 'title' => $fileds['title'],

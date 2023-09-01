@@ -1,4 +1,8 @@
 <template>
+    <Policy
+        :open="openPolicy"
+        :toogleModal="toogleModal"
+    />
     <div
         class="mx-auto min-h-screen w-full items-center justify-center bg-white px-2 py-8 md:space-x-6 md:px-12 lg:flex xl:w-[90%]"
     >
@@ -220,7 +224,7 @@
                         </div>
                         <ReCaptcha />
                         <div class="mt-10">
-                            <h3 class="text-primary-blue hover:underline">
+                            <h3 class="text-primary-blue hover:underline cursor-pointer" @click="toogleModal">
                                 {{ $t("show-confidentail-politic") }}
                             </h3>
                             <p class="text-left text-gray-400">
@@ -272,6 +276,7 @@ import ReCaptcha from "@/components/ReCaptcha.vue";
 import useAuth from "@/services/authServices.js";
 import { useRouter } from "vue-router";
 import Spin from '@/components/utils/Spin.vue';
+import Policy from "@/components/Policy.vue";
 const router = useRouter();
 const props = defineProps({
     type: {
@@ -279,6 +284,7 @@ const props = defineProps({
         type: String,
     },
 });
+const openPolicy = ref(false);
 const showPassword1 = ref(false);
 const showPassword2 = ref(false);
 const cuser = localStorage.user ? JSON.parse(localStorage.user) : "";
@@ -315,5 +321,8 @@ const register = async () => {
     } else {
         errors.value = "Veillez accepter notre politique de confidentialité";
     }
+};
+const toogleModal = () => {
+    openPolicy.value = !openPolicy.value;
 };
 </script>
