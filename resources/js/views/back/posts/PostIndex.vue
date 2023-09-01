@@ -61,6 +61,7 @@
                                         >Delete</span
                                     >
                                 </button>
+                                
                             </div>
                         </div>
                         <EasyDataTable
@@ -92,7 +93,7 @@
                                 }}
                             </template>
                             <template #item-id="item">
-                                <div>
+                                <!-- <div >
                                     <router-link
                                         :to="{
                                             name: 'admin.post.edit',
@@ -102,8 +103,8 @@
                                             },
                                         }"
                                         class="dark:text-blue-500 text-primary-blue hover:underline"
-                                        >Edit</router-link
-                                    >
+                                        >Edit
+                                    </router-link>
                                     <router-link
                                         :to="{
                                             name: 'show.post',
@@ -116,7 +117,46 @@
                                     >
                                         view
                                     </router-link>
+                                    
+                                    <div>
+                                        <input type="checkbox" v-model="isChecked" class="form-checkbox">
+                                        <label class="ml-2">Hide</label>
+                                    </div>
+                                </div> -->
+                                <div class="flex items-center">
+                                    <div>
+                                        <router-link
+                                        :to="{
+                                            name: 'admin.post.edit',
+                                            params: {
+                                            type: type,
+                                            id: item.id,
+                                            },
+                                        }"
+                                        class="dark:text-blue-500 text-primary-blue hover:underline"
+                                        >
+                                        Edit
+                                        </router-link>
+                                        <router-link
+                                        :to="{
+                                            name: 'show.post',
+                                            params: {
+                                            id: item.id,
+                                            slug: item.slug,
+                                            },
+                                        }"
+                                        class="dark:text-blue-500 ml-3 text-indigo-600 hover:underline"
+                                        >
+                                        View
+                                        </router-link>
+                                    </div>
+
+                                    <div class="ml-3">
+                                        <input type="checkbox" v-model="isChecked" class="form-checkbox">
+                                        <label class="ml-2 text-blue-900">Hide</label>
+                                    </div>
                                 </div>
+                                
                             </template>
                         </EasyDataTable>
                     </div>
