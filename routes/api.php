@@ -45,6 +45,7 @@ use App\Http\Controllers\Api\WorkDepartmentController;
 use App\Http\Controllers\Api\WorkModeController;
 use App\Http\Controllers\Api\YearExperienceController;
 use App\Http\Controllers\Api\ZoneController;
+use App\Http\Controllers\Api\TenderController;
 use App\Http\Controllers\StripeController;
 
 
@@ -190,6 +191,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
     Route::get("/jobOffers2/{jobOffer}", [JobOfferController::class, 'show2']);
     Route::post("/jobOffers-apply", [JobOfferController::class, 'jobOffers_apply']);
     Route::post("/jobOffers-filter", [JobOfferController::class, 'filter']);
+
+    Route::apiResource('tenders', TenderController::class);
+    Route::get('tenders-user/{id}', [TenderControllerController::class, 'tenders_user']);
+    Route::get('tenders-front', [TenderController::class, 'tenders_front']);
+    Route::get('tenders-mark-filled/{tender}', [TenderController::class, 'tenders_mark']);
+    Route::get("/tenders2/{tender}", [TenderController::class, 'show2']);
+    Route::post("/tenders-apply", [TenderController::class, 'tenders_apply']);
+    Route::post("/tenders-filter", [TenderController::class, 'filter']);
 
     Route::apiResource('announcements', AnnouncementController::class);
     Route::get('announcements-university/{id}', [AnnouncementController::class, 'announcements_university']);
