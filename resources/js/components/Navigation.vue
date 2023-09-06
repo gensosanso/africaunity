@@ -9,6 +9,7 @@
             >
                 <HomeIcon class="h-6 w-6" />
             </router-link>
+            
 
             <router-link
                 :to="{ name: 'articles' }"
@@ -16,6 +17,12 @@
             >
                 {{ $t("articles") }}
             </router-link>
+            <!-- <router-link
+                :to="{ name: 'tenders' }"
+                class="px-3 py-2 uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
+            >
+                {{ $t("tenders") }}
+            </router-link> -->
 
             <div
                 @mouseleave="open.profile = false"
@@ -95,14 +102,49 @@
                 
             
             </div>
+            <div class="relative px-3 py-2  uppercase text-white transition-colors duration-200 hover:bg-primary-blue " @mouseleave="openx.event = false" >
+                <router-link
+                :to="{ name: 'home' }"
+                class="flex cursor-pointer items-center justify-center"
+                @mouseover="openx.event = true"
+                >
+                    <span class="">{{ $t("jobs") }} </span> <ChevronDownIcon class="ml-2 h-5 w-5" />
+
+                </router-link>
+                    <div
+                    v-show="openx.event"
+                    class="absolute left-0 z-40 mt-2 flex w-60 flex-col bg-menu py-2"
+                    >
+                    <!-- <a 
+                        :href="`/events?date=${currYear}-${currMonth + 1}-${currdate}&profile=&enterType=&continent=&country=&zone=&city=&ministry=&activityArea=&eventType=&eventMode=`" 
+                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"    
+                    >
+                        Evenements
+                    </a> -->
+                    <router-link
+                        :to="{ name: 'jobs' }"
+                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
+                    >
+                    Offre d'emploi
+                    </router-link>
+                    <router-link
+                        :to="{ name: 'tenders' }"
+                        class="px-3 py-2 text-sm uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
+                    >
+                    Appels D'offre
+                    </router-link>
+                </div>
+                
+            
+            </div>
             
 
-            <router-link
+            <!-- <router-link
                 :to="{ name: 'jobs' }"
                 class="px-3 py-2 uppercase text-white transition-colors duration-200 hover:bg-primary-blue"
             >
                 {{ $t("jobs") }}
-            </router-link>
+            </router-link> -->
 
             <router-link
                 :to="{ name: 'contact' }"
@@ -529,6 +571,14 @@ onMounted(async () => {
     }
 });
 const open = reactive({
+    lang: false,
+    profile: false,
+    event: false,
+    search: false,
+    menu: false,
+    logout: false,
+});
+const openx = reactive({
     lang: false,
     profile: false,
     event: false,

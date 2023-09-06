@@ -21,6 +21,8 @@ class JobOfferController extends Controller
      */
     public function index()
     {
+        $jobOffers = JobOffer::latest()
+        ->get();
         return JobOfferResource::collection(JobOffer::latest()->get());
     }
 
@@ -172,12 +174,14 @@ class JobOfferController extends Controller
 
     public function jobOffers_home()
     {
-        return JobOfferResource::collection(JobOffer::where('status', '<>', 3)->limit(5)->orderBy('id', 'desc')->get());
+        return JobOfferResource::collection(JobOffer::where('status', '<>', 3)->limit(5)
+                                                           ->orderBy('id', 'desc')->get());
     }
 
     public function jobOffers_user($user)
     {
-        return JobOfferResource::collection(JobOffer::where('user_id', $user)->orderBy('id', 'desc')->get());
+        return JobOfferResource::collection(JobOffer::where('user_id', $user)
+                                           ->orderBy('id', 'desc')->get());
     }
 
     public function jobOffers_apply(Request $request)
@@ -216,6 +220,7 @@ class JobOfferController extends Controller
 
     public function store(Request $request)
     {
+       
         $fileds = $request->validate([
             'title' => 'required|string|between:1,50',
             'description' => 'required|string',
@@ -267,6 +272,7 @@ class JobOfferController extends Controller
             'zone_id' => $fileds['zone_id'],
             'continent_id' => $fileds['continent_id'],
             'country_id' => $fileds['country_id'],
+          
         ];
 
         if ($request->file('company_logo')) {
@@ -300,6 +306,7 @@ class JobOfferController extends Controller
 
     public function update(Request $request, JobOffer $jobOffer)
     {
+      
         $fileds = $request->validate([
             'title' => 'required|string|between:1,50',
             'description' => 'required|string',

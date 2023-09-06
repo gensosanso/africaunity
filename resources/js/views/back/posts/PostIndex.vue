@@ -152,7 +152,7 @@
                                     </div>
 
                                     <div class="ml-3">
-                                        <input type="checkbox" v-model="isChecked" class="form-checkbox">
+                                        <input type="checkbox" v-model="isChecked" class="form-checkbox"  @change="hidePosts($event)">
                                         <label class="ml-2 text-blue-900">Hide</label>
                                     </div>
                                 </div>
@@ -210,6 +210,9 @@ const deletePosts = async () => {
         }
     }
 };
+
+
+
 const searchField = ref("title");
 const searchValue = ref("");
 const headers = [

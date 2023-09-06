@@ -1,6 +1,6 @@
 {
   "resources/js/app.js": {
-    "file": "app.10946.js",
+    "file": "app.15778.js",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
@@ -16,13 +16,17 @@
       "resources/js/views/front/announcement/EditAnnouncement.vue",
       "resources/js/views/front/announcement/AddAnnouncement.vue",
       "resources/js/views/front/job/AddJob.vue",
+      "resources/js/views/front/tender/AddTender.vue",
       "resources/js/views/front/job/SingleJob.vue",
+      "resources/js/views/front/tender/SingleTender.vue",
       "resources/js/views/front/job/EditJob.vue",
+      "resources/js/views/front/tender/EditTender.vue",
       "resources/js/views/front/post/EditPost.vue",
       "resources/js/views/front/profile/Establishment.vue",
       "resources/js/views/front/profile/Particular.vue",
       "resources/js/views/front/profile/PoliticalInstitution.vue",
       "resources/js/views/front/job/Job.vue",
+      "resources/js/views/front/tender/tender.vue",
       "resources/js/views/front/university/Universities.vue",
       "resources/js/views/front/university/SingleUniversity.vue",
       "resources/js/views/front/announcement/Announcement.vue",
@@ -67,6 +71,7 @@
       "resources/js/views/back/jobOffer/JobOfferIndex.vue",
       "resources/js/views/back/jobOffer/JobOfferCreate.vue",
       "resources/js/views/back/jobOffer/JobOfferEdit.vue",
+      "resources/js/views/back/tender/TenderIndex.vue",
       "resources/js/views/back/comment/CommentIndex.vue",
       "resources/js/views/back/comment/CommentCreate.vue",
       "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue",
@@ -97,844 +102,947 @@
       "resources/js/views/back/ministry/MinistryEdit.vue"
     ],
     "css": [
-      "app.10946.css"
+      "app.15778.css"
     ]
   },
   "resources/js/components/Header.vue": {
-    "file": "Header.10946.js",
+    "file": "Header.15778.js",
     "src": "resources/js/components/Header.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_HomeIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_swiper.min.10946.js"
+      "_HomeIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_swiper.min.15778.js"
     ],
     "css": [
-      "Header.10946.css",
-      "effect-fade.10946.css"
+      "Header.15778.css",
+      "effect-fade.15778.css"
     ]
   },
-  "_swiper.min.10946.js": {
-    "file": "swiper.min.10946.js",
+  "_swiper.min.15778.js": {
+    "file": "swiper.min.15778.js",
     "imports": [
       "resources/js/app.js"
     ],
     "css": [
-      "swiper.10946.css"
+      "swiper.15778.css"
     ]
   },
-  "_HomeIcon.10946.js": {
-    "file": "HomeIcon.10946.js",
+  "_HomeIcon.15778.js": {
+    "file": "HomeIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_UserCircleIcon.10946.js": {
-    "file": "UserCircleIcon.10946.js",
+  "_UserCircleIcon.15778.js": {
+    "file": "UserCircleIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/components/Footer.vue": {
-    "file": "Footer.10946.js",
+    "file": "Footer.15778.js",
     "src": "resources/js/components/Footer.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.10946.js",
-      "_ChevronRightIcon.10946.js"
+      "_postServices.15778.js",
+      "_ChevronRightIcon.15778.js"
     ],
     "css": [
-      "Footer.10946.css"
+      "Footer.15778.css"
     ]
   },
-  "_postServices.10946.js": {
-    "file": "postServices.10946.js",
+  "_postServices.15778.js": {
+    "file": "postServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ChevronRightIcon.10946.js": {
-    "file": "ChevronRightIcon.10946.js",
+  "_ChevronRightIcon.15778.js": {
+    "file": "ChevronRightIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Home.vue": {
-    "file": "Home.10946.js",
+    "file": "Home.15778.js",
     "src": "resources/js/views/front/Home.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_authServices.10946.js",
-      "_FilterArticle.10946.js",
-      "_swiper.min.10946.js",
-      "_PhotoIcon.10946.js",
+      "_authServices.15778.js",
+      "_FilterArticle.15778.js",
+      "_swiper.min.15778.js",
+      "_PhotoIcon.15778.js",
       "resources/js/app.js",
-      "_CalendarIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.10946.js",
-      "_BuildingOffice2Icon.10946.js"
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js"
     ],
     "css": [
-      "effect-fade.10946.css"
+      "effect-fade.15778.css"
     ]
   },
-  "_authServices.10946.js": {
-    "file": "authServices.10946.js",
+  "_authServices.15778.js": {
+    "file": "authServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_FilterArticle.10946.js": {
-    "file": "FilterArticle.10946.js",
+  "_FilterArticle.15778.js": {
+    "file": "FilterArticle.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_CalendarIcon.10946.js": {
-    "file": "CalendarIcon.10946.js",
+  "_CalendarIcon.15778.js": {
+    "file": "CalendarIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_UserIcon.10946.js": {
-    "file": "UserIcon.10946.js",
+  "_UserIcon.15778.js": {
+    "file": "UserIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ChatBubbleOvalLeftEllipsisIcon.10946.js": {
-    "file": "ChatBubbleOvalLeftEllipsisIcon.10946.js",
+  "_ChatBubbleOvalLeftEllipsisIcon.15778.js": {
+    "file": "ChatBubbleOvalLeftEllipsisIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BuildingOffice2Icon.10946.js": {
-    "file": "BuildingOffice2Icon.10946.js",
+  "_BuildingOffice2Icon.15778.js": {
+    "file": "BuildingOffice2Icon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PhotoIcon.10946.js": {
-    "file": "PhotoIcon.10946.js",
+  "_PhotoIcon.15778.js": {
+    "file": "PhotoIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/Blog.vue": {
-    "file": "Blog.10946.js",
+    "file": "Blog.15778.js",
     "src": "resources/js/views/front/Blog.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_personalPostsServices.10946.js",
-      "_categoryPersonalPostServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_BookOpenIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_CalendarIcon.10946.js"
+      "_personalPostsServices.15778.js",
+      "_categoryPersonalPostServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_BookOpenIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_CalendarIcon.15778.js"
     ]
   },
-  "_personalPostsServices.10946.js": {
-    "file": "personalPostsServices.10946.js",
+  "_personalPostsServices.15778.js": {
+    "file": "personalPostsServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_categoryPersonalPostServices.10946.js": {
-    "file": "categoryPersonalPostServices.10946.js",
+  "_categoryPersonalPostServices.15778.js": {
+    "file": "categoryPersonalPostServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PlusCircleIcon.10946.js": {
-    "file": "PlusCircleIcon.10946.js",
+  "_PlusCircleIcon.15778.js": {
+    "file": "PlusCircleIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BookOpenIcon.10946.js": {
-    "file": "BookOpenIcon.10946.js",
+  "_BookOpenIcon.15778.js": {
+    "file": "BookOpenIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/post/Article.vue": {
-    "file": "Article.10946.js",
+    "file": "Article.15778.js",
     "src": "resources/js/views/front/post/Article.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_ministryServices.10946.js",
-      "_postServices.10946.js",
-      "_PhotoIcon.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_BookOpenIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_CalendarIcon.10946.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.10946.js"
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_ministryServices.15778.js",
+      "_postServices.15778.js",
+      "_PhotoIcon.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_BookOpenIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_CalendarIcon.15778.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.15778.js"
     ]
   },
-  "_countryServices.10946.js": {
-    "file": "countryServices.10946.js",
+  "_countryServices.15778.js": {
+    "file": "countryServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_zoneServices.10946.js": {
-    "file": "zoneServices.10946.js",
+  "_zoneServices.15778.js": {
+    "file": "zoneServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_continentServices.10946.js": {
-    "file": "continentServices.10946.js",
+  "_continentServices.15778.js": {
+    "file": "continentServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ministryServices.10946.js": {
-    "file": "ministryServices.10946.js",
+  "_ministryServices.15778.js": {
+    "file": "ministryServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/post/PropAu.vue": {
-    "file": "PropAu.10946.js",
+    "file": "PropAu.15778.js",
     "src": "resources/js/views/front/post/PropAu.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_ministryServices.10946.js",
-      "_postServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_CalendarIcon.10946.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.10946.js"
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_ministryServices.15778.js",
+      "_postServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_CalendarIcon.15778.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.15778.js"
     ]
   },
   "resources/js/views/front/post/AddPost.vue": {
-    "file": "AddPost.10946.js",
+    "file": "AddPost.15778.js",
     "src": "resources/js/views/front/post/AddPost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.10946.js",
-      "_continentServices.10946.js",
-      "_zoneServices.10946.js",
-      "_countryServices.10946.js",
-      "_ministryServices.10946.js",
-      "_RichText.10946.js"
+      "_postServices.15778.js",
+      "_continentServices.15778.js",
+      "_zoneServices.15778.js",
+      "_countryServices.15778.js",
+      "_ministryServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
-  "_RichText.10946.js": {
-    "file": "RichText.10946.js",
+  "_RichText.15778.js": {
+    "file": "RichText.15778.js",
     "imports": [
       "resources/js/app.js"
     ],
     "css": [
-      "RichText.10946.css"
+      "RichText.15778.css"
     ]
   },
   "resources/js/views/front/post/SinglePost.vue": {
-    "file": "SinglePost.10946.js",
+    "file": "SinglePost.15778.js",
     "src": "resources/js/views/front/post/SinglePost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_FilterArticle.10946.js",
-      "_Report.10946.js",
-      "_postServices.10946.js",
-      "_commentServices.10946.js",
-      "_CalendarIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_PencilSquareIcon.10946.js"
+      "_FilterArticle.15778.js",
+      "_Report.15778.js",
+      "_postServices.15778.js",
+      "_commentServices.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_PencilSquareIcon.15778.js"
     ]
   },
-  "_Report.10946.js": {
-    "file": "Report.10946.js",
+  "_Report.15778.js": {
+    "file": "Report.15778.js",
     "imports": [
       "resources/js/app.js",
-      "_ExclamationCircleIcon.10946.js"
+      "_ExclamationCircleIcon.15778.js"
     ]
   },
-  "_commentServices.10946.js": {
-    "file": "commentServices.10946.js",
+  "_commentServices.15778.js": {
+    "file": "commentServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ExclamationCircleIcon.10946.js": {
-    "file": "ExclamationCircleIcon.10946.js",
+  "_ExclamationCircleIcon.15778.js": {
+    "file": "ExclamationCircleIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PencilSquareIcon.10946.js": {
-    "file": "PencilSquareIcon.10946.js",
+  "_PencilSquareIcon.15778.js": {
+    "file": "PencilSquareIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/announcement/SingleAnnouncement.vue": {
-    "file": "SingleAnnouncement.10946.js",
+    "file": "SingleAnnouncement.15778.js",
     "src": "resources/js/views/front/announcement/SingleAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_swiper.min.10946.js",
-      "_announcementCommentServices.10946.js",
-      "_Report.10946.js",
-      "_CalendarIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_PencilSquareIcon.10946.js",
-      "_MapPinIcon.10946.js",
-      "_EnvelopeIcon.10946.js",
-      "_PhoneIcon.10946.js",
-      "_GlobeEuropeAfricaIcon.10946.js",
-      "_BriefcaseIcon.10946.js"
+      "_announcementServices.15778.js",
+      "_swiper.min.15778.js",
+      "_announcementCommentServices.15778.js",
+      "_Report.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_PencilSquareIcon.15778.js",
+      "_MapPinIcon.15778.js",
+      "_EnvelopeIcon.15778.js",
+      "_PhoneIcon.15778.js",
+      "_GlobeEuropeAfricaIcon.15778.js",
+      "_BriefcaseIcon.15778.js"
     ],
     "css": [
-      "SingleAnnouncement.10946.css"
+      "SingleAnnouncement.15778.css"
     ]
   },
-  "_announcementServices.10946.js": {
-    "file": "announcementServices.10946.js",
+  "_announcementServices.15778.js": {
+    "file": "announcementServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_announcementCommentServices.10946.js": {
-    "file": "announcementCommentServices.10946.js",
+  "_announcementCommentServices.15778.js": {
+    "file": "announcementCommentServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_MapPinIcon.10946.js": {
-    "file": "MapPinIcon.10946.js",
+  "_MapPinIcon.15778.js": {
+    "file": "MapPinIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_EnvelopeIcon.10946.js": {
-    "file": "EnvelopeIcon.10946.js",
+  "_EnvelopeIcon.15778.js": {
+    "file": "EnvelopeIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_PhoneIcon.10946.js": {
-    "file": "PhoneIcon.10946.js",
+  "_PhoneIcon.15778.js": {
+    "file": "PhoneIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_GlobeEuropeAfricaIcon.10946.js": {
-    "file": "GlobeEuropeAfricaIcon.10946.js",
+  "_GlobeEuropeAfricaIcon.15778.js": {
+    "file": "GlobeEuropeAfricaIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_BriefcaseIcon.10946.js": {
-    "file": "BriefcaseIcon.10946.js",
+  "_BriefcaseIcon.15778.js": {
+    "file": "BriefcaseIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/announcement/EditAnnouncement.vue": {
-    "file": "EditAnnouncement.10946.js",
+    "file": "EditAnnouncement.15778.js",
     "src": "resources/js/views/front/announcement/EditAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_currencyServices.10946.js",
-      "_universityServices.10946.js",
-      "_DropZone.10946.js",
-      "_RichText.10946.js"
+      "_announcementServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_currencyServices.15778.js",
+      "_universityServices.15778.js",
+      "_DropZone.15778.js",
+      "_RichText.15778.js"
     ]
   },
-  "_categoryAnnouncementServices.10946.js": {
-    "file": "categoryAnnouncementServices.10946.js",
+  "_categoryAnnouncementServices.15778.js": {
+    "file": "categoryAnnouncementServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_currencyServices.10946.js": {
-    "file": "currencyServices.10946.js",
+  "_currencyServices.15778.js": {
+    "file": "currencyServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_universityServices.10946.js": {
-    "file": "universityServices.10946.js",
+  "_universityServices.15778.js": {
+    "file": "universityServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_DropZone.10946.js": {
-    "file": "DropZone.10946.js",
+  "_DropZone.15778.js": {
+    "file": "DropZone.15778.js",
     "imports": [
       "resources/js/app.js"
     ],
     "css": [
-      "DropZone.10946.css"
+      "DropZone.15778.css"
     ]
   },
   "resources/js/views/front/announcement/AddAnnouncement.vue": {
-    "file": "AddAnnouncement.10946.js",
+    "file": "AddAnnouncement.15778.js",
     "src": "resources/js/views/front/announcement/AddAnnouncement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_currencyServices.10946.js",
-      "_universityServices.10946.js",
-      "_DropZone.10946.js",
-      "_RichText.10946.js"
+      "_announcementServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_currencyServices.15778.js",
+      "_universityServices.15778.js",
+      "_DropZone.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/front/job/AddJob.vue": {
-    "file": "AddJob.10946.js",
+    "file": "AddJob.15778.js",
     "src": "resources/js/views/front/job/AddJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_currencyServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_workDepartmentServices.10946.js",
-      "_yearExperienceServices.10946.js",
-      "_contractTypeServices.10946.js",
-      "_languageServices.10946.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_cityServices.10946.js",
-      "_RichText.10946.js"
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
-  "_jobOfferServices.10946.js": {
-    "file": "jobOfferServices.10946.js",
+  "_jobOfferServices.15778.js": {
+    "file": "jobOfferServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_activityAreaServices.10946.js": {
-    "file": "activityAreaServices.10946.js",
+  "_activityAreaServices.15778.js": {
+    "file": "activityAreaServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_workDepartmentServices.10946.js": {
-    "file": "workDepartmentServices.10946.js",
+  "_workDepartmentServices.15778.js": {
+    "file": "workDepartmentServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_yearExperienceServices.10946.js": {
-    "file": "yearExperienceServices.10946.js",
+  "_yearExperienceServices.15778.js": {
+    "file": "yearExperienceServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_contractTypeServices.10946.js": {
-    "file": "contractTypeServices.10946.js",
+  "_contractTypeServices.15778.js": {
+    "file": "contractTypeServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_languageServices.10946.js": {
-    "file": "languageServices.10946.js",
+  "_languageServices.15778.js": {
+    "file": "languageServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_cityServices.10946.js": {
-    "file": "cityServices.10946.js",
+  "_cityServices.15778.js": {
+    "file": "cityServices.15778.js",
     "imports": [
       "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/front/tender/AddTender.vue": {
+    "file": "AddTender.15778.js",
+    "src": "resources/js/views/front/tender/AddTender.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/front/job/SingleJob.vue": {
-    "file": "SingleJob.10946.js",
+    "file": "SingleJob.15778.js",
     "src": "resources/js/views/front/job/SingleJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_jobOfferCommentServices.10946.js",
-      "_Report.10946.js",
-      "_BuildingOffice2Icon.10946.js",
-      "_CalendarIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_PencilSquareIcon.10946.js",
-      "_EnvelopeIcon.10946.js",
-      "_GlobeEuropeAfricaIcon.10946.js",
-      "_MapIcon.10946.js",
-      "_BriefcaseIcon.10946.js",
-      "_ComputerDesktopIcon.10946.js",
-      "_MapPinIcon.10946.js",
-      "_Squares2X2Icon.10946.js"
+      "_Apply.15778.js",
+      "_jobOfferServices.15778.js",
+      "_jobOfferCommentServices.15778.js",
+      "_Report.15778.js",
+      "_BuildingOffice2Icon.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_PencilSquareIcon.15778.js",
+      "_EnvelopeIcon.15778.js",
+      "_GlobeEuropeAfricaIcon.15778.js",
+      "_MapIcon.15778.js",
+      "_BriefcaseIcon.15778.js",
+      "_ComputerDesktopIcon.15778.js",
+      "_MapPinIcon.15778.js",
+      "_Squares2X2Icon.15778.js"
     ]
   },
-  "_jobOfferCommentServices.10946.js": {
-    "file": "jobOfferCommentServices.10946.js",
+  "_Apply.15778.js": {
+    "file": "Apply.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_MapIcon.10946.js": {
-    "file": "MapIcon.10946.js",
+  "_jobOfferCommentServices.15778.js": {
+    "file": "jobOfferCommentServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ComputerDesktopIcon.10946.js": {
-    "file": "ComputerDesktopIcon.10946.js",
+  "_MapIcon.15778.js": {
+    "file": "MapIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_Squares2X2Icon.10946.js": {
-    "file": "Squares2X2Icon.10946.js",
+  "_ComputerDesktopIcon.15778.js": {
+    "file": "ComputerDesktopIcon.15778.js",
     "imports": [
       "resources/js/app.js"
+    ]
+  },
+  "_Squares2X2Icon.15778.js": {
+    "file": "Squares2X2Icon.15778.js",
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/front/tender/SingleTender.vue": {
+    "file": "SingleTender.15778.js",
+    "src": "resources/js/views/front/tender/SingleTender.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_Apply.15778.js",
+      "_jobOfferServices.15778.js",
+      "_jobOfferCommentServices.15778.js",
+      "_Report.15778.js",
+      "_BuildingOffice2Icon.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_PencilSquareIcon.15778.js",
+      "_EnvelopeIcon.15778.js",
+      "_GlobeEuropeAfricaIcon.15778.js",
+      "_MapIcon.15778.js",
+      "_BriefcaseIcon.15778.js",
+      "_ComputerDesktopIcon.15778.js",
+      "_MapPinIcon.15778.js",
+      "_Squares2X2Icon.15778.js"
     ]
   },
   "resources/js/views/front/job/EditJob.vue": {
-    "file": "EditJob.10946.js",
+    "file": "EditJob.15778.js",
     "src": "resources/js/views/front/job/EditJob.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_currencyServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_workDepartmentServices.10946.js",
-      "_yearExperienceServices.10946.js",
-      "_contractTypeServices.10946.js",
-      "_languageServices.10946.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_cityServices.10946.js",
-      "_RichText.10946.js"
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js",
+      "_RichText.15778.js"
+    ]
+  },
+  "resources/js/views/front/tender/EditTender.vue": {
+    "file": "EditTender.15778.js",
+    "src": "resources/js/views/front/tender/EditTender.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/front/post/EditPost.vue": {
-    "file": "EditPost.10946.js",
+    "file": "EditPost.15778.js",
     "src": "resources/js/views/front/post/EditPost.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.10946.js",
-      "_continentServices.10946.js",
-      "_zoneServices.10946.js",
-      "_countryServices.10946.js",
-      "_ministryServices.10946.js",
-      "_RichText.10946.js"
+      "_postServices.15778.js",
+      "_continentServices.15778.js",
+      "_zoneServices.15778.js",
+      "_countryServices.15778.js",
+      "_ministryServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/front/profile/Establishment.vue": {
-    "file": "Establishment.10946.js",
+    "file": "Establishment.15778.js",
     "src": "resources/js/views/front/profile/Establishment.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js",
-      "_businessSizeServices.10946.js",
-      "_countryServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_Profile.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_PhotoIcon.10946.js"
+      "_userServices.15778.js",
+      "_businessSizeServices.15778.js",
+      "_countryServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_Profile.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_PhotoIcon.15778.js"
     ]
   },
-  "_userServices.10946.js": {
-    "file": "userServices.10946.js",
+  "_userServices.15778.js": {
+    "file": "userServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_businessSizeServices.10946.js": {
-    "file": "businessSizeServices.10946.js",
+  "_businessSizeServices.15778.js": {
+    "file": "businessSizeServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_Profile.10946.js": {
-    "file": "Profile.10946.js",
+  "_Profile.15778.js": {
+    "file": "Profile.15778.js",
     "imports": [
-      "_PhotoIcon.10946.js",
+      "_PhotoIcon.15778.js",
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/profile/Particular.vue": {
-    "file": "Particular.10946.js",
+    "file": "Particular.15778.js",
     "src": "resources/js/views/front/profile/Particular.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js",
-      "_languageServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_countryServices.10946.js",
-      "_Profile.10946.js",
-      "_statusServices.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_PhotoIcon.10946.js"
+      "_userServices.15778.js",
+      "_languageServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_countryServices.15778.js",
+      "_Profile.15778.js",
+      "_statusServices.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_PhotoIcon.15778.js"
     ]
   },
-  "_statusServices.10946.js": {
-    "file": "statusServices.10946.js",
+  "_statusServices.15778.js": {
+    "file": "statusServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/profile/PoliticalInstitution.vue": {
-    "file": "PoliticalInstitution.10946.js",
+    "file": "PoliticalInstitution.15778.js",
     "src": "resources/js/views/front/profile/PoliticalInstitution.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js",
-      "_businessSizeServices.10946.js",
-      "_countryServices.10946.js",
-      "_Profile.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_PhotoIcon.10946.js"
+      "_userServices.15778.js",
+      "_businessSizeServices.15778.js",
+      "_countryServices.15778.js",
+      "_Profile.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_PhotoIcon.15778.js"
     ]
   },
   "resources/js/views/front/job/Job.vue": {
-    "file": "Job.10946.js",
+    "file": "Job.15778.js",
     "src": "resources/js/views/front/job/Job.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_currencyServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_yearExperienceServices.10946.js",
-      "_contractTypeServices.10946.js",
-      "_languageServices.10946.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_cityServices.10946.js",
-      "_PhotoIcon.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_BuildingOffice2Icon.10946.js",
-      "_MapPinIcon.10946.js"
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js",
+      "_Job.157782.js",
+      "_PlusCircleIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js",
+      "_MapPinIcon.15778.js",
+      "_PhotoIcon.15778.js"
+    ]
+  },
+  "_Job.157782.js": {
+    "file": "Job.157782.js",
+    "imports": [
+      "_PhotoIcon.15778.js",
+      "resources/js/app.js"
+    ]
+  },
+  "resources/js/views/front/tender/tender.vue": {
+    "file": "tender.15778.js",
+    "src": "resources/js/views/front/tender/tender.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js",
+      "_Job.157782.js",
+      "_PlusCircleIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js",
+      "_MapPinIcon.15778.js",
+      "_PhotoIcon.15778.js"
     ]
   },
   "resources/js/views/front/university/Universities.vue": {
-    "file": "Universities.10946.js",
+    "file": "Universities.15778.js",
     "src": "resources/js/views/front/university/Universities.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.10946.js",
-      "_continentServices.10946.js",
-      "_countryServices.10946.js",
-      "_cityServices.10946.js",
-      "_zoneServices.10946.js",
-      "_PhotoIcon.10946.js",
-      "_PlusCircleIcon.10946.js"
+      "_universityServices.15778.js",
+      "_continentServices.15778.js",
+      "_countryServices.15778.js",
+      "_cityServices.15778.js",
+      "_zoneServices.15778.js",
+      "_PhotoIcon.15778.js",
+      "_PlusCircleIcon.15778.js"
     ]
   },
   "resources/js/views/front/university/SingleUniversity.vue": {
-    "file": "SingleUniversity.10946.js",
+    "file": "SingleUniversity.15778.js",
     "src": "resources/js/views/front/university/SingleUniversity.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.10946.js",
-      "_announcementServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_Report.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_MegaphoneIcon.10946.js",
-      "_UserIcon.10946.js"
+      "_universityServices.15778.js",
+      "_announcementServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_Report.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_MegaphoneIcon.15778.js",
+      "_UserIcon.15778.js"
     ]
   },
-  "_MegaphoneIcon.10946.js": {
-    "file": "MegaphoneIcon.10946.js",
+  "_MegaphoneIcon.15778.js": {
+    "file": "MegaphoneIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/announcement/Announcement.vue": {
-    "file": "Announcement.10946.js",
+    "file": "Announcement.15778.js",
     "src": "resources/js/views/front/announcement/Announcement.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_universityServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_continentServices.10946.js",
-      "_countryServices.10946.js",
-      "_cityServices.10946.js",
-      "_zoneServices.10946.js",
-      "_PhotoIcon.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_MegaphoneIcon.10946.js",
-      "_UserIcon.10946.js"
+      "_announcementServices.15778.js",
+      "_universityServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_continentServices.15778.js",
+      "_countryServices.15778.js",
+      "_cityServices.15778.js",
+      "_zoneServices.15778.js",
+      "_PhotoIcon.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_MegaphoneIcon.15778.js",
+      "_UserIcon.15778.js"
     ]
   },
   "resources/js/views/front/demonstration/Demonstration.vue": {
-    "file": "Demonstration.10946.js",
+    "file": "Demonstration.15778.js",
     "src": "resources/js/views/front/demonstration/Demonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js",
-      "_continentServices.10946.js",
-      "_ministryServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_demonstrationModeServices.10946.js",
-      "_demonstrationTypeServices.10946.js",
-      "_demonstrationNicheServices.10946.js",
-      "_demonstrationServices.10946.js",
-      "_ChevronRightIcon.10946.js",
-      "_PhotoIcon.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_CalendarDaysIcon.10946.js",
-      "_CalendarIcon.10946.js",
-      "_UserCircleIcon.10946.js"
+      "_zoneServices.15778.js",
+      "_cityServices.15778.js",
+      "_countryServices.15778.js",
+      "_continentServices.15778.js",
+      "_ministryServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_demonstrationModeServices.15778.js",
+      "_demonstrationTypeServices.15778.js",
+      "_demonstrationNicheServices.15778.js",
+      "_demonstrationServices.15778.js",
+      "_ChevronRightIcon.15778.js",
+      "_PhotoIcon.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_CalendarDaysIcon.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserCircleIcon.15778.js"
     ],
     "css": [
-      "Demonstration.10946.css"
+      "Demonstration.15778.css"
     ]
   },
-  "_demonstrationServices.10946.js": {
-    "file": "demonstrationServices.10946.js",
+  "_demonstrationServices.15778.js": {
+    "file": "demonstrationServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_CalendarDaysIcon.10946.js": {
-    "file": "CalendarDaysIcon.10946.js",
+  "_CalendarDaysIcon.15778.js": {
+    "file": "CalendarDaysIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_demonstrationModeServices.10946.js": {
-    "file": "demonstrationModeServices.10946.js",
+  "_demonstrationModeServices.15778.js": {
+    "file": "demonstrationModeServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_demonstrationTypeServices.10946.js": {
-    "file": "demonstrationTypeServices.10946.js",
+  "_demonstrationTypeServices.15778.js": {
+    "file": "demonstrationTypeServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_demonstrationNicheServices.10946.js": {
-    "file": "demonstrationNicheServices.10946.js",
+  "_demonstrationNicheServices.15778.js": {
+    "file": "demonstrationNicheServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/demonstration/SingleDemonstration.vue": {
-    "file": "SingleDemonstration.10946.js",
+    "file": "SingleDemonstration.15778.js",
     "src": "resources/js/views/front/demonstration/SingleDemonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationServices.10946.js",
-      "_demonstrationCommentServices.10946.js",
-      "_Report.10946.js",
-      "_CalendarIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_PencilSquareIcon.10946.js",
-      "_EnvelopeIcon.10946.js",
-      "_PhoneIcon.10946.js",
-      "_GlobeEuropeAfricaIcon.10946.js",
-      "_MapIcon.10946.js",
-      "_BuildingOffice2Icon.10946.js",
-      "_ComputerDesktopIcon.10946.js",
-      "_MapPinIcon.10946.js",
-      "_ClockIcon.10946.js"
+      "_demonstrationServices.15778.js",
+      "_demonstrationCommentServices.15778.js",
+      "_Report.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_PencilSquareIcon.15778.js",
+      "_EnvelopeIcon.15778.js",
+      "_PhoneIcon.15778.js",
+      "_GlobeEuropeAfricaIcon.15778.js",
+      "_MapIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js",
+      "_ComputerDesktopIcon.15778.js",
+      "_MapPinIcon.15778.js",
+      "_ClockIcon.15778.js"
     ]
   },
-  "_demonstrationCommentServices.10946.js": {
-    "file": "demonstrationCommentServices.10946.js",
+  "_demonstrationCommentServices.15778.js": {
+    "file": "demonstrationCommentServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ClockIcon.10946.js": {
-    "file": "ClockIcon.10946.js",
+  "_ClockIcon.15778.js": {
+    "file": "ClockIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/demonstration/EditDemonstration.vue": {
-    "file": "EditDemonstration.10946.js",
+    "file": "EditDemonstration.15778.js",
     "src": "resources/js/views/front/demonstration/EditDemonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js",
-      "_currencyServices.10946.js",
-      "_continentServices.10946.js",
-      "_ministryServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_demonstrationServices.10946.js",
-      "_demonstrationModeServices.10946.js",
-      "_demonstrationTypeServices.10946.js",
-      "_demonstrationNicheServices.10946.js",
-      "_RichText.10946.js"
+      "_zoneServices.15778.js",
+      "_cityServices.15778.js",
+      "_countryServices.15778.js",
+      "_currencyServices.15778.js",
+      "_continentServices.15778.js",
+      "_ministryServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_demonstrationServices.15778.js",
+      "_demonstrationModeServices.15778.js",
+      "_demonstrationTypeServices.15778.js",
+      "_demonstrationNicheServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/front/demonstration/AddDemonstration.vue": {
-    "file": "AddDemonstration.10946.js",
+    "file": "AddDemonstration.15778.js",
     "src": "resources/js/views/front/demonstration/AddDemonstration.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js",
-      "_ministryServices.10946.js",
-      "_currencyServices.10946.js",
-      "_continentServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_demonstrationServices.10946.js",
-      "_demonstrationModeServices.10946.js",
-      "_demonstrationTypeServices.10946.js",
-      "_demonstrationNicheServices.10946.js",
-      "_RichText.10946.js"
+      "_zoneServices.15778.js",
+      "_cityServices.15778.js",
+      "_countryServices.15778.js",
+      "_ministryServices.15778.js",
+      "_currencyServices.15778.js",
+      "_continentServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_demonstrationServices.15778.js",
+      "_demonstrationModeServices.15778.js",
+      "_demonstrationTypeServices.15778.js",
+      "_demonstrationNicheServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/front/Contact.vue": {
-    "file": "Contact.10946.js",
+    "file": "Contact.15778.js",
     "src": "resources/js/views/front/Contact.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -942,166 +1050,166 @@
     ]
   },
   "resources/js/views/front/auth/ForgotPassword.vue": {
-    "file": "ForgotPassword.10946.js",
+    "file": "ForgotPassword.15778.js",
     "src": "resources/js/views/front/auth/ForgotPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_EnvelopeIcon.10946.js"
+      "_EnvelopeIcon.15778.js"
     ]
   },
   "resources/js/views/front/auth/ResetPassword.vue": {
-    "file": "ResetPassword.10946.js",
+    "file": "ResetPassword.15778.js",
     "src": "resources/js/views/front/auth/ResetPassword.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_LockClosedIcon.10946.js"
+      "_LockClosedIcon.15778.js"
     ]
   },
-  "_LockClosedIcon.10946.js": {
-    "file": "LockClosedIcon.10946.js",
+  "_LockClosedIcon.15778.js": {
+    "file": "LockClosedIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/auth/Login.vue": {
-    "file": "Login.10946.js",
+    "file": "Login.15778.js",
     "src": "resources/js/views/front/auth/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_authServices.10946.js",
-      "_ReCaptcha.10946.js",
-      "_EnvelopeIcon.10946.js",
-      "_LockClosedIcon.10946.js",
-      "_EyeIcon.10946.js"
+      "_authServices.15778.js",
+      "_ReCaptcha.15778.js",
+      "_EnvelopeIcon.15778.js",
+      "_LockClosedIcon.15778.js",
+      "_EyeIcon.15778.js"
     ]
   },
-  "_ReCaptcha.10946.js": {
-    "file": "ReCaptcha.10946.js",
+  "_ReCaptcha.15778.js": {
+    "file": "ReCaptcha.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_EyeIcon.10946.js": {
-    "file": "EyeIcon.10946.js",
+  "_EyeIcon.15778.js": {
+    "file": "EyeIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/auth/Pack.vue": {
-    "file": "Pack.10946.js",
+    "file": "Pack.15778.js",
     "src": "resources/js/views/front/auth/Pack.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_CheckCircleIcon.10946.js"
+      "_CheckCircleIcon.15778.js"
     ]
   },
-  "_CheckCircleIcon.10946.js": {
-    "file": "CheckCircleIcon.10946.js",
+  "_CheckCircleIcon.15778.js": {
+    "file": "CheckCircleIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/auth/Register.vue": {
-    "file": "Register.10946.js",
+    "file": "Register.15778.js",
     "src": "resources/js/views/front/auth/Register.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ReCaptcha.10946.js",
-      "_authServices.10946.js",
-      "_UserIcon.10946.js",
-      "_EnvelopeIcon.10946.js",
-      "_LockClosedIcon.10946.js",
-      "_EyeIcon.10946.js"
+      "_ReCaptcha.15778.js",
+      "_authServices.15778.js",
+      "_UserIcon.15778.js",
+      "_EnvelopeIcon.15778.js",
+      "_LockClosedIcon.15778.js",
+      "_EyeIcon.15778.js"
     ]
   },
   "resources/js/views/front/account/Profile.vue": {
-    "file": "Profile.109462.js",
+    "file": "Profile.157782.js",
     "src": "resources/js/views/front/account/Profile.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_Report.10946.js",
-      "_categoryPersonalPostServices.10946.js",
-      "_personalPostsServices.10946.js",
-      "_RichText.10946.js",
-      "_ChevronRightIcon.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_PencilSquareIcon.10946.js",
-      "_TrashIcon.10946.js",
-      "_CalendarIcon.10946.js",
-      "_UserIcon.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_EyeIcon.10946.js",
-      "_postServices.10946.js",
-      "_ministryServices.10946.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.10946.js",
-      "_BookOpenIcon.10946.js",
-      "_announcementServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_jobOfferServices.10946.js",
-      "_commentServices.10946.js",
-      "_announcementCommentServices.10946.js",
-      "_jobOfferCommentServices.10946.js",
-      "_demonstrationCommentServices.10946.js",
-      "_demonstrationServices.10946.js",
-      "_userServices.10946.js",
-      "_languageServices.10946.js",
-      "_businessSizeServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_legalStatusServices.10946.js",
-      "_countryServices.10946.js",
-      "_statusServices.10946.js",
-      "_NewspaperIcon.10946.js",
-      "_MegaphoneIcon.10946.js",
-      "_CalendarDaysIcon.10946.js",
-      "_ClipboardIcon.10946.js"
+      "_Report.15778.js",
+      "_categoryPersonalPostServices.15778.js",
+      "_personalPostsServices.15778.js",
+      "_RichText.15778.js",
+      "_ChevronRightIcon.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_PencilSquareIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_CalendarIcon.15778.js",
+      "_UserIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_EyeIcon.15778.js",
+      "_postServices.15778.js",
+      "_ministryServices.15778.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.15778.js",
+      "_BookOpenIcon.15778.js",
+      "_announcementServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_jobOfferServices.15778.js",
+      "_commentServices.15778.js",
+      "_announcementCommentServices.15778.js",
+      "_jobOfferCommentServices.15778.js",
+      "_demonstrationCommentServices.15778.js",
+      "_demonstrationServices.15778.js",
+      "_userServices.15778.js",
+      "_languageServices.15778.js",
+      "_businessSizeServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_legalStatusServices.15778.js",
+      "_countryServices.15778.js",
+      "_statusServices.15778.js",
+      "_NewspaperIcon.15778.js",
+      "_MegaphoneIcon.15778.js",
+      "_CalendarDaysIcon.15778.js",
+      "_ClipboardIcon.15778.js"
     ]
   },
-  "_legalStatusServices.10946.js": {
-    "file": "legalStatusServices.10946.js",
+  "_legalStatusServices.15778.js": {
+    "file": "legalStatusServices.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_NewspaperIcon.10946.js": {
-    "file": "NewspaperIcon.10946.js",
+  "_NewspaperIcon.15778.js": {
+    "file": "NewspaperIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_ClipboardIcon.10946.js": {
-    "file": "ClipboardIcon.10946.js",
+  "_ClipboardIcon.15778.js": {
+    "file": "ClipboardIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_TrashIcon.10946.js": {
-    "file": "TrashIcon.10946.js",
+  "_TrashIcon.15778.js": {
+    "file": "TrashIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/front/account/SettingAccount.vue": {
-    "file": "SettingAccount.10946.js",
+    "file": "SettingAccount.15778.js",
     "src": "resources/js/views/front/account/SettingAccount.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_LockClosedIcon.10946.js",
-      "_TrashIcon.10946.js",
-      "_CheckCircleIcon.10946.js"
+      "_userServices.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_LockClosedIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_CheckCircleIcon.15778.js"
     ]
   },
   "resources/js/views/front/NotFound.vue": {
-    "file": "NotFound.10946.js",
+    "file": "NotFound.15778.js",
     "src": "resources/js/views/front/NotFound.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -1109,16 +1217,16 @@
     ]
   },
   "resources/js/views/back/Login.vue": {
-    "file": "Login.109462.js",
+    "file": "Login.157782.js",
     "src": "resources/js/views/back/Login.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_authServices.10946.js"
+      "_authServices.15778.js"
     ]
   },
   "resources/js/views/back/DashHome.vue": {
-    "file": "DashHome.10946.js",
+    "file": "DashHome.15778.js",
     "src": "resources/js/views/back/DashHome.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -1126,671 +1234,683 @@
     ]
   },
   "resources/js/components/Sidebar.vue": {
-    "file": "Sidebar.10946.js",
+    "file": "Sidebar.15778.js",
     "src": "resources/js/components/Sidebar.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_HomeIcon.10946.js",
-      "_UserGroupIcon.10946.js",
-      "_ChatBubbleOvalLeftEllipsisIcon.10946.js",
-      "_ExclamationCircleIcon.10946.js",
-      "_NewspaperIcon.10946.js",
-      "_GlobeEuropeAfricaIcon.10946.js",
-      "_MapIcon.10946.js",
-      "_BuildingOffice2Icon.10946.js",
-      "_ClipboardIcon.10946.js",
-      "_CalendarDaysIcon.10946.js",
-      "_ClockIcon.10946.js",
-      "_Squares2X2Icon.10946.js",
-      "_BriefcaseIcon.10946.js",
-      "_MegaphoneIcon.10946.js",
-      "_UserCircleIcon.10946.js"
+      "_HomeIcon.15778.js",
+      "_UserGroupIcon.15778.js",
+      "_ChatBubbleOvalLeftEllipsisIcon.15778.js",
+      "_ExclamationCircleIcon.15778.js",
+      "_NewspaperIcon.15778.js",
+      "_GlobeEuropeAfricaIcon.15778.js",
+      "_MapIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js",
+      "_ClipboardIcon.15778.js",
+      "_CalendarDaysIcon.15778.js",
+      "_ClockIcon.15778.js",
+      "_Squares2X2Icon.15778.js",
+      "_BriefcaseIcon.15778.js",
+      "_MegaphoneIcon.15778.js",
+      "_UserCircleIcon.15778.js"
     ],
     "css": [
-      "Sidebar.10946.css"
+      "Sidebar.15778.css"
     ]
   },
-  "_UserGroupIcon.10946.js": {
-    "file": "UserGroupIcon.10946.js",
+  "_UserGroupIcon.15778.js": {
+    "file": "UserGroupIcon.15778.js",
     "imports": [
       "resources/js/app.js"
     ]
   },
   "resources/js/views/back/Dashboard.vue": {
-    "file": "Dashboard.10946.js",
+    "file": "Dashboard.15778.js",
     "src": "resources/js/views/back/Dashboard.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_UserGroupIcon.10946.js",
-      "_NewspaperIcon.10946.js",
-      "_MegaphoneIcon.10946.js",
-      "_BriefcaseIcon.10946.js",
-      "_UserCircleIcon.10946.js",
-      "_BookOpenIcon.10946.js"
+      "_UserGroupIcon.15778.js",
+      "_NewspaperIcon.15778.js",
+      "_MegaphoneIcon.15778.js",
+      "_BriefcaseIcon.15778.js",
+      "_UserCircleIcon.15778.js",
+      "_BookOpenIcon.15778.js"
     ]
   },
   "resources/js/views/back/OtherTools.vue": {
-    "file": "OtherTools.10946.js",
+    "file": "OtherTools.15778.js",
     "src": "resources/js/views/back/OtherTools.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_languageServices.10946.js",
-      "_statusServices.10946.js",
-      "_businessSizeServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_workDepartmentServices.10946.js",
-      "_yearExperienceServices.10946.js",
-      "_contractTypeServices.10946.js",
-      "_legalStatusServices.10946.js"
+      "_languageServices.15778.js",
+      "_statusServices.15778.js",
+      "_businessSizeServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_contractTypeServices.15778.js",
+      "_legalStatusServices.15778.js"
     ]
   },
   "resources/js/views/back/Reporting.vue": {
-    "file": "Reporting.10946.js",
+    "file": "Reporting.15778.js",
     "src": "resources/js/views/back/Reporting.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_TrashIcon.10946.js",
-      "_UserCircleIcon.10946.js"
+      "_TrashIcon.15778.js",
+      "_UserCircleIcon.15778.js"
     ]
   },
   "resources/js/views/back/CategoryPersonalBlog.vue": {
-    "file": "CategoryPersonalBlog.10946.js",
+    "file": "CategoryPersonalBlog.15778.js",
     "src": "resources/js/views/back/CategoryPersonalBlog.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryPersonalPostServices.10946.js"
+      "_categoryPersonalPostServices.15778.js"
     ]
   },
   "resources/js/views/back/DemonstrationNiche.vue": {
-    "file": "DemonstrationNiche.10946.js",
+    "file": "DemonstrationNiche.15778.js",
     "src": "resources/js/views/back/DemonstrationNiche.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationNicheServices.10946.js"
+      "_demonstrationNicheServices.15778.js"
     ]
   },
   "resources/js/views/back/DemonstrationType.vue": {
-    "file": "DemonstrationType.10946.js",
+    "file": "DemonstrationType.15778.js",
     "src": "resources/js/views/back/DemonstrationType.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationTypeServices.10946.js"
+      "_demonstrationTypeServices.15778.js"
     ]
   },
   "resources/js/views/back/DemonstrationMode.vue": {
-    "file": "DemonstrationMode.10946.js",
+    "file": "DemonstrationMode.15778.js",
     "src": "resources/js/views/back/DemonstrationMode.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationModeServices.10946.js"
+      "_demonstrationModeServices.15778.js"
     ]
   },
   "resources/js/views/back/posts/PostIndex.vue": {
-    "file": "PostIndex.10946.js",
+    "file": "PostIndex.15778.js",
     "src": "resources/js/views/back/posts/PostIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_postServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/posts/PostCreate.vue": {
-    "file": "PostCreate.10946.js",
+    "file": "PostCreate.15778.js",
     "src": "resources/js/views/back/posts/PostCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.10946.js",
-      "_continentServices.10946.js",
-      "_zoneServices.10946.js",
-      "_countryServices.10946.js",
-      "_ministryServices.10946.js",
-      "_RichText.10946.js"
+      "_postServices.15778.js",
+      "_continentServices.15778.js",
+      "_zoneServices.15778.js",
+      "_countryServices.15778.js",
+      "_ministryServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/back/posts/PostEdit.vue": {
-    "file": "PostEdit.10946.js",
+    "file": "PostEdit.15778.js",
     "src": "resources/js/views/back/posts/PostEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_postServices.10946.js",
-      "_continentServices.10946.js",
-      "_zoneServices.10946.js",
-      "_countryServices.10946.js",
-      "_ministryServices.10946.js",
-      "_RichText.10946.js"
+      "_postServices.15778.js",
+      "_continentServices.15778.js",
+      "_zoneServices.15778.js",
+      "_countryServices.15778.js",
+      "_ministryServices.15778.js",
+      "_RichText.15778.js"
     ]
   },
   "resources/js/views/back/personal_blog/PersonalBlogIndex.vue": {
-    "file": "PersonalBlogIndex.10946.js",
+    "file": "PersonalBlogIndex.15778.js",
     "src": "resources/js/views/back/personal_blog/PersonalBlogIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_personalPostsServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_personalPostsServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/personal_blog/PersonalBlogCreate.vue": {
-    "file": "PersonalBlogCreate.10946.js",
+    "file": "PersonalBlogCreate.15778.js",
     "src": "resources/js/views/back/personal_blog/PersonalBlogCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryPersonalPostServices.10946.js",
-      "_personalPostsServices.10946.js"
+      "_categoryPersonalPostServices.15778.js",
+      "_personalPostsServices.15778.js"
     ]
   },
   "resources/js/views/back/personal_blog/PersonalBlogEdit.vue": {
-    "file": "PersonalBlogEdit.10946.js",
+    "file": "PersonalBlogEdit.15778.js",
     "src": "resources/js/views/back/personal_blog/PersonalBlogEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryPersonalPostServices.10946.js",
-      "_personalPostsServices.10946.js"
+      "_categoryPersonalPostServices.15778.js",
+      "_personalPostsServices.15778.js"
     ]
   },
   "resources/js/views/back/demonstration/DemonstrationIndex.vue": {
-    "file": "DemonstrationIndex.10946.js",
+    "file": "DemonstrationIndex.15778.js",
     "src": "resources/js/views/back/demonstration/DemonstrationIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_demonstrationServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js",
-      "_CalendarIcon.10946.js"
+      "_demonstrationServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_CalendarIcon.15778.js"
     ]
   },
   "resources/js/views/back/demonstration/DemonstrationCreate.vue": {
-    "file": "DemonstrationCreate.10946.js",
+    "file": "DemonstrationCreate.15778.js",
     "src": "resources/js/views/back/demonstration/DemonstrationCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js",
-      "_currencyServices.10946.js",
-      "_continentServices.10946.js",
-      "_demonstrationServices.10946.js",
-      "_demonstrationModeServices.10946.js",
-      "_demonstrationTypeServices.10946.js",
-      "_demonstrationNicheServices.10946.js"
+      "_zoneServices.15778.js",
+      "_cityServices.15778.js",
+      "_countryServices.15778.js",
+      "_currencyServices.15778.js",
+      "_continentServices.15778.js",
+      "_demonstrationServices.15778.js",
+      "_demonstrationModeServices.15778.js",
+      "_demonstrationTypeServices.15778.js",
+      "_demonstrationNicheServices.15778.js"
     ]
   },
   "resources/js/views/back/demonstration/DemonstrationEdit.vue": {
-    "file": "DemonstrationEdit.10946.js",
+    "file": "DemonstrationEdit.15778.js",
     "src": "resources/js/views/back/demonstration/DemonstrationEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js",
-      "_currencyServices.10946.js",
-      "_continentServices.10946.js",
-      "_demonstrationServices.10946.js",
-      "_demonstrationModeServices.10946.js",
-      "_demonstrationTypeServices.10946.js",
-      "_demonstrationNicheServices.10946.js"
+      "_zoneServices.15778.js",
+      "_cityServices.15778.js",
+      "_countryServices.15778.js",
+      "_currencyServices.15778.js",
+      "_continentServices.15778.js",
+      "_demonstrationServices.15778.js",
+      "_demonstrationModeServices.15778.js",
+      "_demonstrationTypeServices.15778.js",
+      "_demonstrationNicheServices.15778.js"
     ]
   },
   "resources/js/views/back/continent/ContinentIndex.vue": {
-    "file": "ContinentIndex.10946.js",
+    "file": "ContinentIndex.15778.js",
     "src": "resources/js/views/back/continent/ContinentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_continentServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/continent/ContinentCreate.vue": {
-    "file": "ContinentCreate.10946.js",
+    "file": "ContinentCreate.15778.js",
     "src": "resources/js/views/back/continent/ContinentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.10946.js"
+      "_continentServices.15778.js"
     ]
   },
   "resources/js/views/back/continent/ContinentEdit.vue": {
-    "file": "ContinentEdit.10946.js",
+    "file": "ContinentEdit.15778.js",
     "src": "resources/js/views/back/continent/ContinentEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_continentServices.10946.js"
+      "_continentServices.15778.js"
     ]
   },
   "resources/js/views/back/user/UserIndex.vue": {
-    "file": "UserIndex.10946.js",
+    "file": "UserIndex.15778.js",
     "src": "resources/js/views/back/user/UserIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js",
-      "_UserCircleIcon.10946.js"
+      "_userServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_UserCircleIcon.15778.js"
     ]
   },
   "resources/js/views/back/user/UserCreate.vue": {
-    "file": "UserCreate.10946.js",
+    "file": "UserCreate.15778.js",
     "src": "resources/js/views/back/user/UserCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js"
+      "_userServices.15778.js"
     ]
   },
   "resources/js/views/back/user/UserEdit.vue": {
-    "file": "UserEdit.10946.js",
+    "file": "UserEdit.15778.js",
     "src": "resources/js/views/back/user/UserEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_userServices.10946.js"
+      "_userServices.15778.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferIndex.vue": {
-    "file": "JobOfferIndex.10946.js",
+    "file": "JobOfferIndex.15778.js",
     "src": "resources/js/views/back/jobOffer/JobOfferIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js",
-      "_BuildingOffice2Icon.10946.js"
+      "_jobOfferServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferCreate.vue": {
-    "file": "JobOfferCreate.10946.js",
+    "file": "JobOfferCreate.15778.js",
     "src": "resources/js/views/back/jobOffer/JobOfferCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_currencyServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_workDepartmentServices.10946.js",
-      "_yearExperienceServices.10946.js",
-      "_languageServices.10946.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_cityServices.10946.js"
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js"
     ]
   },
   "resources/js/views/back/jobOffer/JobOfferEdit.vue": {
-    "file": "JobOfferEdit.10946.js",
+    "file": "JobOfferEdit.15778.js",
     "src": "resources/js/views/back/jobOffer/JobOfferEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_jobOfferServices.10946.js",
-      "_currencyServices.10946.js",
-      "_activityAreaServices.10946.js",
-      "_workDepartmentServices.10946.js",
-      "_yearExperienceServices.10946.js",
-      "_languageServices.10946.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js",
-      "_cityServices.10946.js"
+      "_jobOfferServices.15778.js",
+      "_currencyServices.15778.js",
+      "_activityAreaServices.15778.js",
+      "_workDepartmentServices.15778.js",
+      "_yearExperienceServices.15778.js",
+      "_languageServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js",
+      "_cityServices.15778.js"
+    ]
+  },
+  "resources/js/views/back/tender/TenderIndex.vue": {
+    "file": "TenderIndex.15778.js",
+    "src": "resources/js/views/back/tender/TenderIndex.vue",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js",
+      "_jobOfferServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_BuildingOffice2Icon.15778.js"
     ]
   },
   "resources/js/views/back/comment/CommentIndex.vue": {
-    "file": "CommentIndex.10946.js",
+    "file": "CommentIndex.15778.js",
     "src": "resources/js/views/back/comment/CommentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_commentServices.10946.js",
-      "_TrashIcon.10946.js"
+      "_commentServices.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/comment/CommentCreate.vue": {
-    "file": "CommentCreate.10946.js",
+    "file": "CommentCreate.15778.js",
     "src": "resources/js/views/back/comment/CommentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js"
+      "_countryServices.15778.js"
     ]
   },
   "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue": {
-    "file": "AnnouncementCommentIndex.10946.js",
+    "file": "AnnouncementCommentIndex.15778.js",
     "src": "resources/js/views/back/announcement_comment/AnnouncementCommentIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementCommentServices.10946.js",
-      "_TrashIcon.10946.js"
+      "_announcementCommentServices.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/announcement_comment/AnnouncementCommentCreate.vue": {
-    "file": "AnnouncementCommentCreate.10946.js",
+    "file": "AnnouncementCommentCreate.15778.js",
     "src": "resources/js/views/back/announcement_comment/AnnouncementCommentCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js"
+      "_countryServices.15778.js"
     ]
   },
   "resources/js/views/back/zone/ZoneIndex.vue": {
-    "file": "ZoneIndex.10946.js",
+    "file": "ZoneIndex.15778.js",
     "src": "resources/js/views/back/zone/ZoneIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_zoneServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/zone/ZoneCreate.vue": {
-    "file": "ZoneCreate.10946.js",
+    "file": "ZoneCreate.15778.js",
     "src": "resources/js/views/back/zone/ZoneCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js"
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js"
     ]
   },
   "resources/js/views/back/zone/ZoneEdit.vue": {
-    "file": "ZoneEdit.10946.js",
+    "file": "ZoneEdit.15778.js",
     "src": "resources/js/views/back/zone/ZoneEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_zoneServices.10946.js",
-      "_continentServices.10946.js"
+      "_zoneServices.15778.js",
+      "_continentServices.15778.js"
     ]
   },
   "resources/js/views/back/country/CountryIndex.vue": {
-    "file": "CountryIndex.10946.js",
+    "file": "CountryIndex.15778.js",
     "src": "resources/js/views/back/country/CountryIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_countryServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/country/CountryCreate.vue": {
-    "file": "CountryCreate.10946.js",
+    "file": "CountryCreate.15778.js",
     "src": "resources/js/views/back/country/CountryCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js",
-      "_continentServices.10946.js",
-      "_zoneServices.10946.js"
+      "_countryServices.15778.js",
+      "_continentServices.15778.js",
+      "_zoneServices.15778.js"
     ]
   },
   "resources/js/views/back/country/CountryEdit.vue": {
-    "file": "CountryEdit.10946.js",
+    "file": "CountryEdit.15778.js",
     "src": "resources/js/views/back/country/CountryEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_countryServices.10946.js",
-      "_continentServices.10946.js",
-      "_zoneServices.10946.js"
+      "_countryServices.15778.js",
+      "_continentServices.15778.js",
+      "_zoneServices.15778.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementIndex.vue": {
-    "file": "AnnouncementIndex.10946.js",
+    "file": "AnnouncementIndex.15778.js",
     "src": "resources/js/views/back/announcement/AnnouncementIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js",
-      "_MegaphoneIcon.10946.js"
+      "_announcementServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js",
+      "_MegaphoneIcon.15778.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementCreate.vue": {
-    "file": "AnnouncementCreate.10946.js",
+    "file": "AnnouncementCreate.15778.js",
     "src": "resources/js/views/back/announcement/AnnouncementCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_currencyServices.10946.js",
-      "_universityServices.10946.js",
-      "_RichText.10946.js",
-      "_DropZone.10946.js"
+      "_announcementServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_currencyServices.15778.js",
+      "_universityServices.15778.js",
+      "_RichText.15778.js",
+      "_DropZone.15778.js"
     ]
   },
   "resources/js/views/back/announcement/AnnouncementEdit.vue": {
-    "file": "AnnouncementEdit.10946.js",
+    "file": "AnnouncementEdit.15778.js",
     "src": "resources/js/views/back/announcement/AnnouncementEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_announcementServices.10946.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_currencyServices.10946.js",
-      "_universityServices.10946.js",
-      "_RichText.10946.js",
-      "_DropZone.10946.js"
+      "_announcementServices.15778.js",
+      "_categoryAnnouncementServices.15778.js",
+      "_currencyServices.15778.js",
+      "_universityServices.15778.js",
+      "_RichText.15778.js",
+      "_DropZone.15778.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyIndex.vue": {
-    "file": "CurrencyIndex.10946.js",
+    "file": "CurrencyIndex.15778.js",
     "src": "resources/js/views/back/currency/CurrencyIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_currencyServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyCreate.vue": {
-    "file": "CurrencyCreate.10946.js",
+    "file": "CurrencyCreate.15778.js",
     "src": "resources/js/views/back/currency/CurrencyCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.10946.js"
+      "_currencyServices.15778.js"
     ]
   },
   "resources/js/views/back/currency/CurrencyEdit.vue": {
-    "file": "CurrencyEdit.10946.js",
+    "file": "CurrencyEdit.15778.js",
     "src": "resources/js/views/back/currency/CurrencyEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_currencyServices.10946.js"
+      "_currencyServices.15778.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementIndex.vue": {
-    "file": "CategoryAnnouncementIndex.10946.js",
+    "file": "CategoryAnnouncementIndex.15778.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_categoryAnnouncementServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementCreate.vue": {
-    "file": "CategoryAnnouncementCreate.10946.js",
+    "file": "CategoryAnnouncementCreate.15778.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.10946.js"
+      "_categoryAnnouncementServices.15778.js"
     ]
   },
   "resources/js/views/back/category_announcement/CategoryAnnouncementEdit.vue": {
-    "file": "CategoryAnnouncementEdit.10946.js",
+    "file": "CategoryAnnouncementEdit.15778.js",
     "src": "resources/js/views/back/category_announcement/CategoryAnnouncementEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_categoryAnnouncementServices.10946.js"
+      "_categoryAnnouncementServices.15778.js"
     ]
   },
   "resources/js/views/back/city/CityIndex.vue": {
-    "file": "CityIndex.10946.js",
+    "file": "CityIndex.15778.js",
     "src": "resources/js/views/back/city/CityIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_cityServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/city/CityCreate.vue": {
-    "file": "CityCreate.10946.js",
+    "file": "CityCreate.15778.js",
     "src": "resources/js/views/back/city/CityCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js"
+      "_cityServices.15778.js",
+      "_countryServices.15778.js"
     ]
   },
   "resources/js/views/back/city/CityEdit.vue": {
-    "file": "CityEdit.10946.js",
+    "file": "CityEdit.15778.js",
     "src": "resources/js/views/back/city/CityEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_cityServices.10946.js",
-      "_countryServices.10946.js"
+      "_cityServices.15778.js",
+      "_countryServices.15778.js"
     ]
   },
   "resources/js/views/back/university/UniversityIndex.vue": {
-    "file": "UniversityIndex.10946.js",
+    "file": "UniversityIndex.15778.js",
     "src": "resources/js/views/back/university/UniversityIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_universityServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/university/UniversityCreate.vue": {
-    "file": "UniversityCreate.10946.js",
+    "file": "UniversityCreate.15778.js",
     "src": "resources/js/views/back/university/UniversityCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.10946.js",
-      "_continentServices.10946.js",
-      "_countryServices.10946.js",
-      "_cityServices.10946.js",
-      "_zoneServices.10946.js"
+      "_universityServices.15778.js",
+      "_continentServices.15778.js",
+      "_countryServices.15778.js",
+      "_cityServices.15778.js",
+      "_zoneServices.15778.js"
     ]
   },
   "resources/js/views/back/university/UniversityEdit.vue": {
-    "file": "UniversityEdit.10946.js",
+    "file": "UniversityEdit.15778.js",
     "src": "resources/js/views/back/university/UniversityEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_universityServices.10946.js",
-      "_continentServices.10946.js",
-      "_countryServices.10946.js",
-      "_zoneServices.10946.js",
-      "_cityServices.10946.js"
+      "_universityServices.15778.js",
+      "_continentServices.15778.js",
+      "_countryServices.15778.js",
+      "_zoneServices.15778.js",
+      "_cityServices.15778.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryIndex.vue": {
-    "file": "MinistryIndex.10946.js",
+    "file": "MinistryIndex.15778.js",
     "src": "resources/js/views/back/ministry/MinistryIndex.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.10946.js",
-      "_PlusCircleIcon.10946.js",
-      "_TrashIcon.10946.js"
+      "_ministryServices.15778.js",
+      "_PlusCircleIcon.15778.js",
+      "_TrashIcon.15778.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryCreate.vue": {
-    "file": "MinistryCreate.10946.js",
+    "file": "MinistryCreate.15778.js",
     "src": "resources/js/views/back/ministry/MinistryCreate.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.10946.js"
+      "_ministryServices.15778.js"
     ]
   },
   "resources/js/views/back/ministry/MinistryEdit.vue": {
-    "file": "MinistryEdit.10946.js",
+    "file": "MinistryEdit.15778.js",
     "src": "resources/js/views/back/ministry/MinistryEdit.vue",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js",
-      "_ministryServices.10946.js"
+      "_ministryServices.15778.js"
     ]
   },
   "resources/js/components/Header.css": {
-    "file": "Header.10946.css",
+    "file": "Header.15778.css",
     "src": "resources/js/components/Header.css"
   },
-  "effect-fade.css": {
-    "file": "effect-fade.10946.css",
-    "src": "effect-fade.css"
-  },
-  "resources/js/views/front/demonstration/Demonstration.css": {
-    "file": "Demonstration.10946.css",
-    "src": "resources/js/views/front/demonstration/Demonstration.css"
-  },
-  "resources/js/components/Footer.css": {
-    "file": "Footer.10946.css",
-    "src": "resources/js/components/Footer.css"
-  },
-  "resources/js/components/Sidebar.css": {
-    "file": "Sidebar.10946.css",
-    "src": "resources/js/components/Sidebar.css"
-  },
-  "DropZone.css": {
-    "file": "DropZone.10946.css",
-    "src": "DropZone.css"
-  },
-  "swiper.css": {
-    "file": "swiper.10946.css",
-    "src": "swiper.css"
-  },
-  "resources/js/views/front/announcement/SingleAnnouncement.css": {
-    "file": "SingleAnnouncement.10946.css",
-    "src": "resources/js/views/front/announcement/SingleAnnouncement.css"
-  },
   "RichText.css": {
-    "file": "RichText.10946.css",
+    "file": "RichText.15778.css",
     "src": "RichText.css"
   },
+  "resources/js/components/Footer.css": {
+    "file": "Footer.15778.css",
+    "src": "resources/js/components/Footer.css"
+  },
+  "effect-fade.css": {
+    "file": "effect-fade.15778.css",
+    "src": "effect-fade.css"
+  },
+  "resources/js/components/Sidebar.css": {
+    "file": "Sidebar.15778.css",
+    "src": "resources/js/components/Sidebar.css"
+  },
+  "resources/js/views/front/announcement/SingleAnnouncement.css": {
+    "file": "SingleAnnouncement.15778.css",
+    "src": "resources/js/views/front/announcement/SingleAnnouncement.css"
+  },
+  "swiper.css": {
+    "file": "swiper.15778.css",
+    "src": "swiper.css"
+  },
+  "DropZone.css": {
+    "file": "DropZone.15778.css",
+    "src": "DropZone.css"
+  },
   "resources/js/app.css": {
-    "file": "app.10946.css",
+    "file": "app.15778.css",
     "src": "resources/js/app.css"
+  },
+  "resources/js/views/front/demonstration/Demonstration.css": {
+    "file": "Demonstration.15778.css",
+    "src": "resources/js/views/front/demonstration/Demonstration.css"
   }
 }

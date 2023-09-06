@@ -146,11 +146,39 @@ const routes = [
         },
     },
     {
+        path: "/add/tender/:duplicate?",
+        name: "add.tender",
+        props: true,
+        components: {
+            default: () => import("@/views/front/tender/AddTender.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " - Ajouter un appel d'offre",
+            requiresAuth: true,
+        },
+    },
+    {
         path: "/job/:id/:slug?",
         name: "show.job",
         props: true,
         components: {
             default: () => import("@/views/front/job/SingleJob.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: "",
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/tender/:id/:slug?",
+        name: "show.tender",
+        props: true,
+        components: {
+            default: () => import("@/views/front/tender/SingleTender.vue"),
             header: Header,
             footer: Footer,
         },
@@ -170,6 +198,20 @@ const routes = [
         },
         meta: {
             title: siteName + " - Editer une Offre d'emploi",
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/tender/:id/edit",
+        name: "edit.tender",
+        props: true,
+        components: {
+            default: () => import("@/views/front/tender/EditTender.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " - Editer un appel d'offre",
             requiresAuth: true,
         },
     },
@@ -237,6 +279,19 @@ const routes = [
         },
         meta: {
             title: siteName + " - Jobs",
+            requiresAuth: true,
+        },
+    },
+    {
+        path: "/tenders",
+        name: "tenders",
+        components: {
+            default: () => import("@/views/front/tender/tender.vue"),
+            header: Header,
+            footer: Footer,
+        },
+        meta: {
+            title: siteName + " - Appels d'offre",
             requiresAuth: true,
         },
     },
@@ -710,6 +765,34 @@ const routes = [
                 name: "admin.jobOffer.edit",
                 meta: {
                     title: siteName + " - Edit Job",
+                },
+            },
+            {
+                path: "tender",
+                component: () =>
+                    import("@/views/back/tender/TenderIndex.vue"),
+                name: "admin.tender.index",
+                meta: {
+                    title: siteName + " - Job",
+                },
+            },
+            {
+                path: "tender/create",
+                component: () =>
+                    import("@/views/back/tender/TenderCreate.vue"),
+                name: "admin.tender.create",
+                meta: {
+                    title: siteName + " - Create Tender",
+                },
+            },
+            {
+                path: "tender/edit/:id",
+                component: () =>
+                    import("@/views/back/tender/TenderEdit.vue"),
+                props: true,
+                name: "admin.tender.edit",
+                meta: {
+                    title: siteName + " - Edit Tender",
                 },
             },
             {

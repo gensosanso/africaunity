@@ -437,6 +437,71 @@
                         </router-link>
                     </div>
                 </div>
+                 <div
+                    class="flex w-full flex-col items-center justify-start border-b border-gray-600 px-4"
+                >
+                    <button
+                        @click="open.job = !open.job"
+                        class="flex w-full items-center justify-between space-x-14 py-2 text-left text-white focus:text-primary-blue focus:outline-none"
+                    >
+                        <p
+                            class="jusitfy-start flex w-full items-center text-base leading-4"
+                        >
+                            <BriefcaseIcon class="mr-6 h-6 w-6" />
+                            Tender
+                        </p>
+
+                        <ChevronDownIcon v-if="!open.job" class="h-10 w-10" />
+                        <ChevronUpIcon v-if="open.job" class="h-10 w-10" />
+                    </button>
+                    <div
+                        v-if="open.job"
+                        class="flex w-full flex-col items-start justify-start pb-1 md:w-auto"
+                    >
+                        <router-link
+                            :to="{ name: 'admin.tender.index' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <QueueListIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">All Tender</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.continent.index' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <GlobeEuropeAfricaIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Continent</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.zone.index' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <MapIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Zone</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.country.index' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <FlagIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Country</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.city.index' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <Squares2X2Icon class="h-6 w-6" />
+                            <p class="text-base leading-4">City</p>
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'admin.currency.index' }"
+                            class="flex w-full items-center justify-start space-x-6 rounded px-3 py-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:bg-gray-700 focus:text-white md:w-52"
+                        >
+                            <CurrencyDollarIcon class="h-6 w-6" />
+                            <p class="text-base leading-4">Currency</p>
+                        </router-link>
+                    </div>
+                </div>
                 <div
                     class="relative flex h-full w-full flex-col items-center justify-between pb-6"
                 >

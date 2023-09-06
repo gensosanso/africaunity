@@ -3,7 +3,7 @@
         <h1
             class="py-4 text-center text-5xl font-bold capitalize text-primary-blue"
         >
-            {{ $t("jobs") }}
+            {{ $t("offre d'emploi") }}
         </h1>
         <div class="py-8 px-6 lg:px-16">
             <div class="flex justify-end px-6 py-4">
